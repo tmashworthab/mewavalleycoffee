@@ -156,10 +156,9 @@ export default function Story() {
               specialty coffee at high altitude.
             </p>
             <p className="text-[#f0e6d8]/60 leading-relaxed mb-8">
-              We work directly with local farming communities in the hills of Nepal, ensuring
-              fair wages and sustainable practices that protect both the environment and a way
-              of life deeply rooted in the land. Every bag you purchase supports a family farmer
-              in one of the world's most extraordinary landscapes.
+              We are building direct relationships with producers and cooperatives in Nepal.
+              Every bag you purchase supports a family farmer in one of the world's most
+              extraordinary landscapes.
             </p>
 
             {/* Stats */}
@@ -167,7 +166,7 @@ export default function Story() {
               {[
                 { num: "2-5K", label: "Feet altitude" },
                 { num: "100%", label: "Arabica beans" },
-                { num: "Direct", label: "Trade sourcing" },
+                { num: "Nepal", label: "Origin" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <div className="text-2xl font-black text-[#c49b64] mb-1">{stat.num}</div>
