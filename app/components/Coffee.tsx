@@ -20,7 +20,7 @@ const tasting = [
   {
     icon: "🍫",
     label: "Chocolate",
-    desc: "Deep, dark cocoa undertones — rich and lingering on the finish.",
+    desc: "Deep, dark cocoa undertones - rich and lingering on the finish.",
     intensity: 90,
   },
   {
@@ -38,7 +38,7 @@ const tasting = [
   {
     icon: "✨",
     label: "Smooth",
-    desc: "Exceptionally clean mouthfeel — almost no bitterness.",
+    desc: "Exceptionally clean mouthfeel - almost no bitterness.",
     intensity: 95,
   },
 ];
@@ -63,7 +63,7 @@ const roasts = [
   {
     name: "Whole Bean",
     batch: "No. 38",
-    desc: "Unground for maximum freshness. Our single-origin beans at peak quality — grind to your preferred method right before brewing.",
+    desc: "Unground for maximum freshness. Our single-origin beans at peak quality - grind to your preferred method right before brewing.",
     grind: "Your choice",
     process: "Honey",
     active: false,
@@ -108,7 +108,7 @@ export default function Coffee() {
           </h2>
           <div className="section-divider mb-8" />
           <p className="text-[#f0e6d8]/50 max-w-xl mx-auto italic text-lg">
-            &ldquo;Exceptionally smooth and aromatic — distinctive flavours of chocolate and vanilla,
+            &ldquo;Exceptionally smooth and aromatic - distinctive flavours of chocolate and vanilla,
             with a delicious nutty finish.&rdquo;
           </p>
         </div>

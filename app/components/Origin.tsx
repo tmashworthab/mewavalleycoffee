@@ -30,7 +30,7 @@ const facts = [
   {
     num: "03",
     title: "Local Varieties",
-    body: "Our farmers cultivate heritage Arabica varieties adapted over generations to Nepal's unique terroir — varieties found nowhere else in the world.",
+    body: "Our farmers cultivate heritage Arabica varieties adapted over generations to Nepal's unique terroir - varieties found nowhere else in the world.",
   },
   {
     num: "04",
@@ -66,7 +66,7 @@ export default function Origin() {
           </h2>
           <div className="section-divider mb-8" />
           <p className="text-[#f0e6d8]/50 max-w-lg mx-auto">
-            Nepal sits at the eastern edge of the Himalayas — a land of extraordinary
+            Nepal sits at the eastern edge of the Himalayas - a land of extraordinary
             biodiversity and an emerging origin for truly exceptional coffee.
           </p>
         </div>
@@ -206,7 +206,7 @@ export default function Origin() {
                   </div>
                   <div className="text-right">
                     <p className="text-[9px] tracking-[0.3em] uppercase text-[#c49b64]/50">Altitude</p>
-                    <p className="text-sm font-bold text-[#f0e6d8]/80">2,000–5,000 ft</p>
+                    <p className="text-sm font-bold text-[#f0e6d8]/80">2,000-5,000 ft</p>
                   </div>
                 </div>
               </div>

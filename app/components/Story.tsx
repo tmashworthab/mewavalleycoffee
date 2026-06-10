@@ -131,7 +131,7 @@ export default function Story() {
 
                   {/* Text overlay */}
                   <text x="200" y="460" textAnchor="middle" fill="#c49b64" fontSize="11" letterSpacing="5" opacity="0.6" fontFamily="Arial">
-                    NEPAL · 2000–5000 FT
+                    NEPAL · 2000-5000 FT
                   </text>
                 </svg>
               </div>
@@ -151,7 +151,7 @@ export default function Story() {
             <p className="text-[#f0e6d8]/60 leading-relaxed mb-6">
               Nestled in the ancient valleys of Nepal, Mewa Valley Coffee sources its beans
               from small-scale farmers who have cultivated these lands for generations. The unique
-              microclimate — cool mountain air, rich volcanic soil, and abundant rainfall — creates
+              microclimate - cool mountain air, rich volcanic soil, and abundant rainfall - creates
               growing conditions unlike anywhere else on Earth.
             </p>
             <p className="text-[#f0e6d8]/60 leading-relaxed mb-8">
@@ -163,7 +163,7 @@ export default function Story() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[#c49b64]/15">
               {[
-                { num: "2–5K", label: "Feet altitude" },
+                { num: "2-5K", label: "Feet altitude" },
                 { num: "100%", label: "Arabica beans" },
                 { num: "Direct", label: "Trade sourcing" },
               ].map((stat) => (

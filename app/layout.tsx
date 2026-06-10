@@ -8,9 +8,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Mewa Valley Coffee — Nepal's Finest",
+  title: "Mewa Valley Coffee - Nepal's Finest",
   description:
-    "Exceptional single-origin coffee from the hills of Nepal. Grown between 2,000–5,000 feet, delivering chocolate, vanilla, and nutty notes in every cup.",
+    "Exceptional single-origin coffee from the hills of Nepal. Grown between 2,000-5,000 feet, delivering chocolate, vanilla, and nutty notes in every cup.",
 };
 
 export default function RootLayout({

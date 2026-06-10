@@ -82,7 +82,7 @@ export default function Order() {
           </h2>
           <div className="section-divider mb-8" />
           <p className="text-[#f0e6d8]/50 max-w-lg mx-auto">
-            We ship direct from Nepal to your door. Limited small-batch lots —
+            We ship direct from Nepal to your door. Limited small-batch lots -
             once a batch sells out, it&apos;s gone.
           </p>
         </div>
@@ -223,7 +223,7 @@ export default function Order() {
                     >
                       {products.map((p) => (
                         <option key={p.name} value={p.name}>
-                          {p.name} — {p.weight} ({p.price})
+                          {p.name} - {p.weight} ({p.price})
                         </option>
                       ))}
                     </select>
