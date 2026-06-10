@@ -1,3 +1,13 @@
+import Link from "next/link";
+
+const navLinks = [
+  { label: "For Roasters", href: "/for-roasters" },
+  { label: "Origin",       href: "/origin" },
+  { label: "Sample Lots",  href: "/sample-lots" },
+  { label: "Our Trip",     href: "/our-trip" },
+  { label: "Contact",      href: "/contact" },
+];
+
 export default function Footer() {
   return (
     <footer className="relative border-t border-[#c49b64]/10 py-16 px-6">
@@ -10,8 +20,8 @@ export default function Footer() {
               <p className="text-2xl font-black tracking-widest text-[#f0e6d8]">COFFEE</p>
             </div>
             <p className="text-xs text-[#f0e6d8]/30 leading-relaxed max-w-xs">
-              Single-origin coffee imported from the ancient hills of Nepal.
-              Small batches, exceptional quality.
+              Building direct sourcing relationships with Nepali producers and cooperatives.
+              First lots arriving after July 2026.
             </p>
           </div>
 
@@ -19,14 +29,14 @@ export default function Footer() {
           <div>
             <p className="text-[9px] tracking-[0.4em] uppercase text-[#c49b64]/50 mb-4">Navigate</p>
             <ul className="space-y-3">
-              {["Our Story", "The Coffee", "Origin", "Order"].map((l) => (
-                <li key={l}>
-                  <a
-                    href={`#${l.toLowerCase().replace(" ", "")}`}
+              {navLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
                     className="text-xs text-[#f0e6d8]/40 hover:text-[#c49b64] transition-colors tracking-widest uppercase"
                   >
-                    {l}
-                  </a>
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -38,9 +48,8 @@ export default function Footer() {
             <p className="text-xs text-[#f0e6d8]/40 leading-relaxed">
               hello@mewavalleycoffee.com
               <br /><br />
-              For wholesale and bulk orders,
-              <br />
-              use the order form above.
+              Roaster enquiries, sample requests,
+              <br />and wholesale — use the contact form.
             </p>
           </div>
         </div>
