@@ -77,7 +77,7 @@ export default function Hero() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-24">
         {/* Badge */}
         <div className="inline-flex items-center gap-3 mb-8">
           <span className="h-px w-12 bg-[#d4a96a]/50" />

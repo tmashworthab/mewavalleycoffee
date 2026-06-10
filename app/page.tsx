@@ -32,7 +32,7 @@ export default function Home() {
             style={{ background: "radial-gradient(ellipse at center, transparent 30%, rgba(28,24,20,0.7) 100%)" }}
           />
 
-          <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-24">
             <div className="inline-flex items-center gap-3 mb-8">
               <span className="h-px w-12 bg-[#d4a96a]/50" />
               <span className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] font-medium">
