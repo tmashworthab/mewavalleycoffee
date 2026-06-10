@@ -64,13 +64,13 @@ export default function OriginPage() {
 
         {/* Fact table */}
         <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto divide-y divide-[#c49b64]/10">
+          <div className="max-w-4xl mx-auto divide-y divide-[#d4a96a]/10">
             {facts.map((f) => (
               <div key={f.label} className="grid md:grid-cols-3 gap-4 py-8 items-start">
-                <p className="text-[10px] tracking-[0.4em] uppercase text-[#c49b64] font-medium pt-1">{f.label}</p>
+                <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] font-medium pt-1">{f.label}</p>
                 <div className="md:col-span-2">
-                  <p className="text-[#f0e6d8] font-bold mb-1">{f.value}</p>
-                  <p className="text-[#f0e6d8]/50 text-sm leading-relaxed">{f.note}</p>
+                  <p className="text-[#f5f0ea] font-bold mb-1">{f.value}</p>
+                  <p className="text-[#f5f0ea]/50 text-sm leading-relaxed">{f.note}</p>
                 </div>
               </div>
             ))}
@@ -78,23 +78,23 @@ export default function OriginPage() {
         </section>
 
         {/* Context note */}
-        <section className="py-16 px-6 border-t border-[#c49b64]/15">
+        <section className="py-16 px-6 border-t border-[#d4a96a]/15">
           <div className="max-w-4xl mx-auto">
-            <p className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] mb-6">A note on the origin</p>
-            <p className="text-[#f0e6d8]/60 leading-relaxed max-w-2xl mb-4">
+            <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-6">A note on the origin</p>
+            <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-4">
               Nepal's coffee industry is small and fragmented. Many growers are smallholders
               with less than a hectare under production. This makes traceability challenging
               but also means that direct relationships with producers or cooperatives are
               genuinely possible.
             </p>
-            <p className="text-[#f0e6d8]/60 leading-relaxed max-w-2xl mb-10">
+            <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-10">
               The cup profile from well-processed Nepali coffee is typically clean and
               sweet, with chocolate and nutty notes at lower altitudes and more delicate
               floral and fruit characteristics at the higher end of the growing range.
             </p>
             <Link
               href="/our-trip"
-              className="inline-flex items-center gap-3 text-[#c49b64] text-xs tracking-[0.3em] uppercase font-bold hover:gap-4 transition-all"
+              className="inline-flex items-center gap-3 text-[#d4a96a] text-xs tracking-[0.3em] uppercase font-bold hover:gap-4 transition-all"
             >
               Read about our July 2026 sourcing trip
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

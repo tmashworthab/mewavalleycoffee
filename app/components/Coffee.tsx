@@ -88,26 +88,26 @@ export default function Coffee() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, #0d0906 0%, #130b07 50%, #0d0906 100%)",
+            "linear-gradient(180deg, #1c1814 0%, #241a10 50%, #1c1814 100%)",
         }}
       />
 
       {/* Gold accent line top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c49b64]/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4a96a]/30 to-transparent" />
 
       <div ref={ref} className="relative max-w-6xl mx-auto">
         {/* Header */}
         <div
           className={`text-center mb-20 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <p className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] mb-4">
+          <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-4">
             Small Batch
           </p>
-          <h2 className="text-4xl md:text-5xl font-black tracking-widest uppercase text-[#f0e6d8] mb-6">
+          <h2 className="text-4xl md:text-5xl font-black tracking-widest uppercase text-[#f5f0ea] mb-6">
             The Coffee
           </h2>
           <div className="section-divider mb-8" />
-          <p className="text-[#f0e6d8]/50 max-w-xl mx-auto italic text-lg">
+          <p className="text-[#f5f0ea]/50 max-w-xl mx-auto italic text-lg">
             &ldquo;Exceptionally smooth and aromatic - distinctive flavours of chocolate and vanilla,
             with a delicious nutty finish.&rdquo;
           </p>
@@ -120,26 +120,26 @@ export default function Coffee() {
           {tasting.map((note, i) => (
             <div
               key={note.label}
-              className="card-hover relative p-6 border border-[#c49b64]/10 bg-[#1a0d06]/50 backdrop-blur-sm"
+              className="card-hover relative p-6 border border-[#d4a96a]/10 bg-[#2a1e14]/50 backdrop-blur-sm"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div className="text-3xl mb-4">{note.icon}</div>
-              <h4 className="text-sm font-bold tracking-[0.2em] uppercase text-[#f0e6d8] mb-2">
+              <h4 className="text-sm font-bold tracking-[0.2em] uppercase text-[#f5f0ea] mb-2">
                 {note.label}
               </h4>
-              <p className="text-xs text-[#f0e6d8]/40 leading-relaxed mb-4">
+              <p className="text-xs text-[#f5f0ea]/40 leading-relaxed mb-4">
                 {note.desc}
               </p>
               {/* Intensity bar */}
-              <div className="h-px bg-[#c49b64]/10 w-full">
+              <div className="h-px bg-[#d4a96a]/10 w-full">
                 <div
-                  className="h-px bg-gradient-to-r from-[#c49b64] to-[#d4b07a] transition-all duration-1000"
+                  className="h-px bg-gradient-to-r from-[#d4a96a] to-[#e0be88] transition-all duration-1000"
                   style={{ width: animated ? `${note.intensity}%` : "0%" }}
                 />
               </div>
               <div className="flex justify-between mt-1">
-                <span className="text-[9px] text-[#f0e6d8]/20 tracking-widest uppercase">Intensity</span>
-                <span className="text-[9px] text-[#c49b64]/60">{note.intensity}%</span>
+                <span className="text-[9px] text-[#f5f0ea]/20 tracking-widest uppercase">Intensity</span>
+                <span className="text-[9px] text-[#d4a96a]/60">{note.intensity}%</span>
               </div>
             </div>
           ))}
@@ -149,7 +149,7 @@ export default function Coffee() {
         <div
           className={`transition-all duration-1000 delay-400 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <p className="text-center text-[10px] tracking-[0.4em] uppercase text-[#c49b64] mb-8">
+          <p className="text-center text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-8">
             Select Your Roast
           </p>
 
@@ -161,8 +161,8 @@ export default function Coffee() {
                 onClick={() => setActiveRoast(i)}
                 className={`px-6 py-3 text-xs tracking-[0.2em] uppercase transition-all duration-300 border ${
                   activeRoast === i
-                    ? "bg-[#c49b64] text-[#0d0906] border-[#c49b64] font-bold"
-                    : "border-[#c49b64]/20 text-[#f0e6d8]/50 hover:border-[#c49b64]/50 hover:text-[#f0e6d8]"
+                    ? "bg-[#d4a96a] text-[#1c1814] border-[#d4a96a] font-bold"
+                    : "border-[#d4a96a]/20 text-[#f5f0ea]/50 hover:border-[#d4a96a]/50 hover:text-[#f5f0ea]"
                 }`}
               >
                 {r.name}
@@ -182,50 +182,50 @@ export default function Coffee() {
                 }`}
                 style={{ display: activeRoast === i ? "block" : "none" }}
               >
-                <div className="border border-[#c49b64]/15 bg-[#1a0d06]/50 p-8 md:p-12">
+                <div className="border border-[#d4a96a]/15 bg-[#2a1e14]/50 p-8 md:p-12">
                   <div className="flex items-start justify-between flex-wrap gap-4 mb-6">
                     <div>
-                      <p className="text-[10px] tracking-[0.4em] uppercase text-[#c49b64] mb-2">
+                      <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-2">
                         {r.batch}
                       </p>
-                      <h3 className="text-2xl md:text-3xl font-black tracking-widest uppercase text-[#f0e6d8]">
+                      <h3 className="text-2xl md:text-3xl font-black tracking-widest uppercase text-[#f5f0ea]">
                         {r.name}
                       </h3>
                     </div>
                     {/* Coffee bean icon */}
                     <svg width="56" height="40" viewBox="0 0 100 60" fill="none" opacity="0.5">
-                      <ellipse cx="50" cy="30" rx="45" ry="25" fill="#8b4513" />
-                      <path d="M50 8 Q70 30 50 52 Q30 30 50 8Z" fill="#6b3410" opacity="0.6" />
+                      <ellipse cx="50" cy="30" rx="45" ry="25" fill="#a05520" />
+                      <path d="M50 8 Q70 30 50 52 Q30 30 50 8Z" fill="#854218" opacity="0.6" />
                     </svg>
                   </div>
 
-                  <p className="text-[#f0e6d8]/60 leading-relaxed mb-8">{r.desc}</p>
+                  <p className="text-[#f5f0ea]/60 leading-relaxed mb-8">{r.desc}</p>
 
-                  <div className="grid grid-cols-3 gap-6 pt-6 border-t border-[#c49b64]/10">
+                  <div className="grid grid-cols-3 gap-6 pt-6 border-t border-[#d4a96a]/10">
                     <div>
-                      <p className="text-[9px] tracking-[0.3em] uppercase text-[#c49b64]/50 mb-1">
+                      <p className="text-[9px] tracking-[0.3em] uppercase text-[#d4a96a]/50 mb-1">
                         Grind
                       </p>
-                      <p className="text-sm text-[#f0e6d8]/80 font-medium">{r.grind}</p>
+                      <p className="text-sm text-[#f5f0ea]/80 font-medium">{r.grind}</p>
                     </div>
                     <div>
-                      <p className="text-[9px] tracking-[0.3em] uppercase text-[#c49b64]/50 mb-1">
+                      <p className="text-[9px] tracking-[0.3em] uppercase text-[#d4a96a]/50 mb-1">
                         Process
                       </p>
-                      <p className="text-sm text-[#f0e6d8]/80 font-medium">{r.process}</p>
+                      <p className="text-sm text-[#f5f0ea]/80 font-medium">{r.process}</p>
                     </div>
                     <div>
-                      <p className="text-[9px] tracking-[0.3em] uppercase text-[#c49b64]/50 mb-1">
+                      <p className="text-[9px] tracking-[0.3em] uppercase text-[#d4a96a]/50 mb-1">
                         Origin
                       </p>
-                      <p className="text-sm text-[#f0e6d8]/80 font-medium">Nepal Hills</p>
+                      <p className="text-sm text-[#f5f0ea]/80 font-medium">Nepal Hills</p>
                     </div>
                   </div>
 
                   <div className="mt-8">
                     <a
                       href="#order"
-                      className="inline-flex items-center gap-3 px-8 py-3 bg-[#c49b64] text-[#0d0906] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#d4b07a] transition-colors duration-300"
+                      className="inline-flex items-center gap-3 px-8 py-3 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#e0be88] transition-colors duration-300"
                     >
                       Order {r.name}
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

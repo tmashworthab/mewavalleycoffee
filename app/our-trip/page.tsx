@@ -54,10 +54,10 @@ export default function OurTrip() {
         />
 
         {/* What we will document */}
-        <section className="py-20 px-6 border-b border-[#c49b64]/15">
+        <section className="py-20 px-6 border-b border-[#d4a96a]/15">
           <div className="max-w-4xl mx-auto">
-            <p className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] mb-12">What we will document</p>
-            <div className="grid md:grid-cols-2 gap-0 border border-[#c49b64]/15">
+            <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-12">What we will document</p>
+            <div className="grid md:grid-cols-2 gap-0 border border-[#d4a96a]/15">
               {[
                 { label: "Producer or cooperative name and location" },
                 { label: "District and altitude of the growing land" },
@@ -70,13 +70,13 @@ export default function OurTrip() {
               ].map((item, i) => (
                 <div
                   key={item.label}
-                  className={`flex items-start gap-4 px-6 py-5 border-[#c49b64]/10
+                  className={`flex items-start gap-4 px-6 py-5 border-[#d4a96a]/10
                     ${i % 2 === 0 ? "md:border-r" : ""}
                     ${i < 6 ? "border-b" : ""}
                   `}
                 >
-                  <div className="w-1.5 h-1.5 bg-[#c49b64] flex-shrink-0 mt-1.5" />
-                  <p className="text-sm text-[#f0e6d8]/60 leading-relaxed">{item.label}</p>
+                  <div className="w-1.5 h-1.5 bg-[#d4a96a] flex-shrink-0 mt-1.5" />
+                  <p className="text-sm text-[#f5f0ea]/60 leading-relaxed">{item.label}</p>
                 </div>
               ))}
             </div>
@@ -86,18 +86,18 @@ export default function OurTrip() {
         {/* Phased plan */}
         <section className="py-20 px-6">
           <div className="max-w-4xl mx-auto">
-            <p className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] mb-12">Plan</p>
+            <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-12">Plan</p>
             <div className="space-y-12">
               {itinerary.map((phase, i) => (
                 <div key={phase.phase} className="grid md:grid-cols-3 gap-6">
                   <div>
-                    <p className="text-xl font-black tracking-wider uppercase text-[#f0e6d8] mb-1">{phase.phase}</p>
-                    <p className="text-xs tracking-[0.3em] uppercase text-[#c49b64]/60">{phase.timing}</p>
+                    <p className="text-xl font-black tracking-wider uppercase text-[#f5f0ea] mb-1">{phase.phase}</p>
+                    <p className="text-xs tracking-[0.3em] uppercase text-[#d4a96a]/60">{phase.timing}</p>
                   </div>
                   <ul className="md:col-span-2 space-y-3">
                     {phase.items.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-sm text-[#f0e6d8]/60 leading-relaxed">
-                        <div className="w-1.5 h-1.5 bg-[#c49b64]/50 flex-shrink-0 mt-1.5" />
+                      <li key={item} className="flex items-start gap-3 text-sm text-[#f5f0ea]/60 leading-relaxed">
+                        <div className="w-1.5 h-1.5 bg-[#d4a96a]/50 flex-shrink-0 mt-1.5" />
                         {item}
                       </li>
                     ))}
@@ -109,17 +109,17 @@ export default function OurTrip() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 px-6 border-t border-[#c49b64]/15">
+        <section className="py-16 px-6 border-t border-[#d4a96a]/15">
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div>
-              <p className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] mb-2">Follow the trip</p>
-              <p className="text-xl font-bold text-[#f0e6d8]">
+              <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-2">Follow the trip</p>
+              <p className="text-xl font-bold text-[#f5f0ea]">
                 Register your interest and we will share updates and samples when we return.
               </p>
             </div>
             <Link
               href="/contact"
-              className="flex-shrink-0 px-10 py-4 bg-[#c49b64] text-[#0d0906] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#d4b07a] transition-colors"
+              className="flex-shrink-0 px-10 py-4 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#e0be88] transition-colors"
             >
               Register Interest
             </Link>

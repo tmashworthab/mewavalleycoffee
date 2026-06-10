@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0d0906;
-  --foreground: #f0e6d8;
-  --gold: #c49b64;
-  --gold-light: #d4b07a;
-  --cream: #f0e6d8;
-  --brown-dark: #1a1008;
-  --brown-mid: #3d2010;
+  --background: #1c1814;
+  --foreground: #f5f0ea;
+  --gold: #d4a96a;
+  --gold-light: #e0be88;
+  --cream: #f5f0ea;
+  --brown-dark: #2a1e14;
+  --brown-mid: #4a2c18;
 }
 
 @theme inline {
@@ -30,7 +30,7 @@ body {
 
 ::selection {
   background: rgba(196, 155, 100, 0.35);
-  color: #f0e6d8;
+  color: #f5f0ea;
 }
 
 @keyframes float {
@@ -63,7 +63,7 @@ body {
 }
 
 .shimmer-text {
-  background: linear-gradient(90deg, #c49b64 0%, #f0e6d8 40%, #d4b07a 60%, #c49b64 100%);
+  background: linear-gradient(90deg, #d4a96a 0%, #f5f0ea 40%, #e0be88 60%, #d4a96a 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -85,7 +85,7 @@ body {
 .section-divider {
   width: 60px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #c49b64, transparent);
+  background: linear-gradient(90deg, transparent, #d4a96a, transparent);
   margin: 0 auto;
 }
 
@@ -110,7 +110,7 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background: #c49b64;
+  background: #d4a96a;
   transition: width 0.3s ease;
 }
 

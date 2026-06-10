@@ -49,7 +49,7 @@ export default function Origin() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 100%, rgba(61,32,16,0.3) 0%, transparent 70%), #0d0906",
+            "radial-gradient(ellipse at 50% 100%, rgba(61,32,16,0.3) 0%, transparent 70%), #1c1814",
         }}
       />
 
@@ -58,14 +58,14 @@ export default function Origin() {
         <div
           className={`text-center mb-20 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <p className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] mb-4">
+          <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-4">
             The Terroir
           </p>
-          <h2 className="text-4xl md:text-5xl font-black tracking-widest uppercase text-[#f0e6d8] mb-6">
+          <h2 className="text-4xl md:text-5xl font-black tracking-widest uppercase text-[#f5f0ea] mb-6">
             Born in Nepal
           </h2>
           <div className="section-divider mb-8" />
-          <p className="text-[#f0e6d8]/50 max-w-lg mx-auto">
+          <p className="text-[#f5f0ea]/50 max-w-lg mx-auto">
             Nepal sits at the eastern edge of the Himalayas - a land of extraordinary
             biodiversity and an emerging origin for truly exceptional coffee.
           </p>
@@ -84,15 +84,15 @@ export default function Origin() {
                 style={{ transitionDelay: `${200 + i * 100}ms` }}
               >
                 <div className="flex-shrink-0">
-                  <span className="text-[#c49b64]/30 text-4xl font-black leading-none">
+                  <span className="text-[#d4a96a]/30 text-4xl font-black leading-none">
                     {f.num}
                   </span>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold tracking-[0.15em] uppercase text-[#f0e6d8] mb-2">
+                  <h4 className="text-sm font-bold tracking-[0.15em] uppercase text-[#f5f0ea] mb-2">
                     {f.title}
                   </h4>
-                  <p className="text-[#f0e6d8]/50 text-sm leading-relaxed">{f.body}</p>
+                  <p className="text-[#f5f0ea]/50 text-sm leading-relaxed">{f.body}</p>
                 </div>
               </div>
             ))}
@@ -103,14 +103,14 @@ export default function Origin() {
             className={`transition-all duration-1000 delay-400 ${inView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
           >
             <div
-              className="relative aspect-square flex items-center justify-center border border-[#c49b64]/10 p-8"
-              style={{ background: "linear-gradient(135deg, #130b07 0%, #1a0d06 100%)" }}
+              className="relative aspect-square flex items-center justify-center border border-[#d4a96a]/10 p-8"
+              style={{ background: "linear-gradient(135deg, #241a10 0%, #2a1e14 100%)" }}
             >
               <svg viewBox="0 0 400 400" className="w-full h-full">
                 <defs>
                   <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#c49b64" stopOpacity="0.15" />
-                    <stop offset="100%" stopColor="#c49b64" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#d4a96a" stopOpacity="0.15" />
+                    <stop offset="100%" stopColor="#d4a96a" stopOpacity="0" />
                   </radialGradient>
                 </defs>
 
@@ -120,8 +120,8 @@ export default function Origin() {
                 {/* Latitude/longitude grid */}
                 {[80, 140, 200, 260, 320].map((v, i) => (
                   <g key={i} opacity="0.07">
-                    <line x1={v} y1="40" x2={v} y2="360" stroke="#c49b64" strokeWidth="0.5" />
-                    <line x1="40" y1={v} x2="360" y2={v} stroke="#c49b64" strokeWidth="0.5" />
+                    <line x1={v} y1="40" x2={v} y2="360" stroke="#d4a96a" strokeWidth="0.5" />
+                    <line x1="40" y1={v} x2="360" y2={v} stroke="#d4a96a" strokeWidth="0.5" />
                   </g>
                 ))}
 
@@ -133,7 +133,7 @@ export default function Origin() {
                     cy="200"
                     r={r}
                     fill="none"
-                    stroke="#c49b64"
+                    stroke="#d4a96a"
                     strokeWidth="0.5"
                     opacity={0.1 + i * 0.05}
                     strokeDasharray={i % 2 === 0 ? "4 4" : "none"}
@@ -143,8 +143,8 @@ export default function Origin() {
                 {/* Nepal silhouette (simplified) */}
                 <path
                   d="M80,190 L90,180 L110,175 L130,170 L150,165 L170,168 L190,162 L210,158 L230,162 L250,155 L270,160 L300,168 L320,175 L330,185 L325,200 L310,210 L295,205 L280,215 L260,218 L240,210 L220,215 L200,220 L180,215 L160,218 L140,212 L120,215 L100,210 L85,202 Z"
-                  fill="#2d1508"
-                  stroke="#c49b64"
+                  fill="#3d2510"
+                  stroke="#d4a96a"
                   strokeWidth="1"
                   opacity="0.8"
                 />
@@ -158,14 +158,14 @@ export default function Origin() {
                   <g key={m.label}>
                     <polygon
                       points={`${m.x - 10},${m.y + 5} ${m.x},${m.y - m.h} ${m.x + 10},${m.y + 5}`}
-                      fill="#c49b64"
+                      fill="#d4a96a"
                       opacity="0.6"
                     />
                     <text
                       x={m.x}
                       y={m.y + 20}
                       textAnchor="middle"
-                      fill="#c49b64"
+                      fill="#d4a96a"
                       fontSize="7"
                       opacity="0.5"
                       letterSpacing="1"
@@ -176,24 +176,24 @@ export default function Origin() {
                 ))}
 
                 {/* Coffee region pin */}
-                <circle cx="200" cy="195" r="6" fill="#c49b64" opacity="0.9" />
-                <circle cx="200" cy="195" r="12" fill="none" stroke="#c49b64" strokeWidth="1" opacity="0.4" />
-                <circle cx="200" cy="195" r="20" fill="none" stroke="#c49b64" strokeWidth="0.5" opacity="0.2" />
+                <circle cx="200" cy="195" r="6" fill="#d4a96a" opacity="0.9" />
+                <circle cx="200" cy="195" r="12" fill="none" stroke="#d4a96a" strokeWidth="1" opacity="0.4" />
+                <circle cx="200" cy="195" r="20" fill="none" stroke="#d4a96a" strokeWidth="0.5" opacity="0.2" />
 
                 {/* Label */}
-                <text x="200" y="235" textAnchor="middle" fill="#c49b64" fontSize="9" letterSpacing="3" opacity="0.7">
+                <text x="200" y="235" textAnchor="middle" fill="#d4a96a" fontSize="9" letterSpacing="3" opacity="0.7">
                   MEWA VALLEY
                 </text>
-                <text x="200" y="248" textAnchor="middle" fill="#f0e6d8" fontSize="7" letterSpacing="2" opacity="0.3">
+                <text x="200" y="248" textAnchor="middle" fill="#f5f0ea" fontSize="7" letterSpacing="2" opacity="0.3">
                   27.7°N · 85.3°E
                 </text>
 
                 {/* Compass rose */}
                 <g transform="translate(340, 340)" opacity="0.4">
-                  <line x1="0" y1="-16" x2="0" y2="16" stroke="#c49b64" strokeWidth="0.8" />
-                  <line x1="-16" y1="0" x2="16" y2="0" stroke="#c49b64" strokeWidth="0.8" />
-                  <polygon points="0,-16 -3,-8 3,-8" fill="#c49b64" />
-                  <text x="0" y="-18" textAnchor="middle" fill="#c49b64" fontSize="7">N</text>
+                  <line x1="0" y1="-16" x2="0" y2="16" stroke="#d4a96a" strokeWidth="0.8" />
+                  <line x1="-16" y1="0" x2="16" y2="0" stroke="#d4a96a" strokeWidth="0.8" />
+                  <polygon points="0,-16 -3,-8 3,-8" fill="#d4a96a" />
+                  <text x="0" y="-18" textAnchor="middle" fill="#d4a96a" fontSize="7">N</text>
                 </g>
               </svg>
 
@@ -201,12 +201,12 @@ export default function Origin() {
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="flex justify-between items-end">
                   <div>
-                    <p className="text-[9px] tracking-[0.3em] uppercase text-[#c49b64]/50">Region</p>
-                    <p className="text-sm font-bold text-[#f0e6d8]/80">Himalayan Foothills</p>
+                    <p className="text-[9px] tracking-[0.3em] uppercase text-[#d4a96a]/50">Region</p>
+                    <p className="text-sm font-bold text-[#f5f0ea]/80">Himalayan Foothills</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-[9px] tracking-[0.3em] uppercase text-[#c49b64]/50">Altitude</p>
-                    <p className="text-sm font-bold text-[#f0e6d8]/80">2,000-5,000 ft</p>
+                    <p className="text-[9px] tracking-[0.3em] uppercase text-[#d4a96a]/50">Altitude</p>
+                    <p className="text-sm font-bold text-[#f5f0ea]/80">2,000-5,000 ft</p>
                   </div>
                 </div>
               </div>
@@ -216,12 +216,12 @@ export default function Origin() {
 
         {/* Quote band */}
         <div
-          className={`mt-24 py-12 border-y border-[#c49b64]/15 text-center transition-all duration-1000 delay-600 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`mt-24 py-12 border-y border-[#d4a96a]/15 text-center transition-all duration-1000 delay-600 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <p className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64]/50 mb-4">
+          <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a]/50 mb-4">
             Our Promise
           </p>
-          <p className="text-xl md:text-2xl font-light italic text-[#f0e6d8]/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl font-light italic text-[#f5f0ea]/70 max-w-2xl mx-auto leading-relaxed">
             &ldquo;Every cup tells the story of a Nepali hillside, a farming family,
             and a tradition of extraordinary care.&rdquo;
           </p>

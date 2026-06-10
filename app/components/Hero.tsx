@@ -25,9 +25,9 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(ellipse at 30% 70%, #3d1a08 0%, transparent 55%),
-              radial-gradient(ellipse at 70% 30%, #2a1206 0%, transparent 50%),
-              linear-gradient(135deg, #0d0906 0%, #1a0d06 40%, #0f0806 100%)
+              radial-gradient(ellipse at 30% 70%, #4d2a12 0%, transparent 55%),
+              radial-gradient(ellipse at 70% 30%, #3a2010 0%, transparent 50%),
+              linear-gradient(135deg, #1c1814 0%, #2a1e14 40%, #1e1a15 100%)
             `,
           }}
         />
@@ -57,10 +57,10 @@ export default function Hero() {
             viewBox="0 0 100 60"
             fill="none"
           >
-            <ellipse cx="50" cy="30" rx="45" ry="25" fill="#8b4513" />
+            <ellipse cx="50" cy="30" rx="45" ry="25" fill="#a05520" />
             <path
               d="M50 8 Q70 30 50 52 Q30 30 50 8Z"
-              fill="#6b3410"
+              fill="#854218"
               opacity="0.6"
             />
           </svg>
@@ -72,7 +72,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 30%, rgba(13,9,6,0.8) 100%)",
+            "radial-gradient(ellipse at center, transparent 30%, rgba(28,24,20,0.7) 100%)",
         }}
       />
 
@@ -80,11 +80,11 @@ export default function Hero() {
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         {/* Badge */}
         <div className="inline-flex items-center gap-3 mb-8">
-          <span className="h-px w-12 bg-[#c49b64]/50" />
-          <span className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] font-medium">
+          <span className="h-px w-12 bg-[#d4a96a]/50" />
+          <span className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] font-medium">
             Single Origin · Nepal
           </span>
-          <span className="h-px w-12 bg-[#c49b64]/50" />
+          <span className="h-px w-12 bg-[#d4a96a]/50" />
         </div>
 
         {/* Mountain logo mark */}
@@ -92,13 +92,13 @@ export default function Hero() {
           <svg width="64" height="40" viewBox="0 0 64 40" fill="none">
             <polyline
               points="2,38 22,8 32,22 42,8 62,38"
-              stroke="#c49b64"
+              stroke="#d4a96a"
               strokeWidth="1.5"
               strokeLinejoin="round"
               fill="none"
             />
-            <circle cx="32" cy="18" r="4" fill="none" stroke="#c49b64" strokeWidth="1" />
-            <path d="M30 18 Q32 14 34 18" stroke="#c49b64" strokeWidth="0.8" fill="none" />
+            <circle cx="32" cy="18" r="4" fill="none" stroke="#d4a96a" strokeWidth="1" />
+            <path d="M30 18 Q32 14 34 18" stroke="#d4a96a" strokeWidth="0.8" fill="none" />
           </svg>
         </div>
 
@@ -106,28 +106,28 @@ export default function Hero() {
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-wider uppercase leading-none mb-4">
           <span className="shimmer-text">MEWA</span>
           <br />
-          <span className="text-[#f0e6d8]">VALLEY</span>
+          <span className="text-[#f5f0ea]">VALLEY</span>
         </h1>
 
-        <p className="text-xs md:text-sm tracking-[0.6em] uppercase text-[#c49b64]/80 mb-6 font-medium">
+        <p className="text-xs md:text-sm tracking-[0.6em] uppercase text-[#d4a96a]/80 mb-6 font-medium">
           Coffee
         </p>
 
         {/* Divider */}
         <div className="flex items-center justify-center gap-4 mb-8">
-          <span className="h-px w-16 bg-[#c49b64]/30" />
+          <span className="h-px w-16 bg-[#d4a96a]/30" />
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="2" fill="#c49b64" opacity="0.7" />
-            <circle cx="8" cy="8" r="6" stroke="#c49b64" strokeWidth="0.5" opacity="0.4" />
+            <circle cx="8" cy="8" r="2" fill="#d4a96a" opacity="0.7" />
+            <circle cx="8" cy="8" r="6" stroke="#d4a96a" strokeWidth="0.5" opacity="0.4" />
           </svg>
-          <span className="h-px w-16 bg-[#c49b64]/30" />
+          <span className="h-px w-16 bg-[#d4a96a]/30" />
         </div>
 
         {/* Tagline */}
-        <p className="text-lg md:text-xl text-[#f0e6d8]/60 max-w-xl mx-auto leading-relaxed mb-4 font-light">
+        <p className="text-lg md:text-xl text-[#f5f0ea]/60 max-w-xl mx-auto leading-relaxed mb-4 font-light">
           Mewa Valley Coffee connects UK and European roasters with traceable Nepali coffee lots sourced through direct producer relationships.
         </p>
-        <p className="text-sm md:text-base text-[#f0e6d8]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
+        <p className="text-sm md:text-base text-[#f5f0ea]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
           Mewa Valley Coffee is building direct sourcing relationships with Nepali producers
           and cooperatives. In July 2026, we will be visiting producers to document our first
           green coffee lots for UK and EU roasters.
@@ -137,7 +137,7 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#coffee"
-            className="group px-10 py-4 bg-[#c49b64] text-[#0d0906] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#d4b07a] transition-all duration-300 flex items-center gap-3"
+            className="group px-10 py-4 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#e0be88] transition-all duration-300 flex items-center gap-3"
           >
             Explore Our Coffee
             <svg
@@ -156,7 +156,7 @@ export default function Hero() {
           </a>
           <a
             href="#story"
-            className="px-10 py-4 border border-[#f0e6d8]/20 text-[#f0e6d8]/60 text-xs tracking-[0.3em] uppercase hover:border-[#c49b64]/50 hover:text-[#c49b64] transition-all duration-300"
+            className="px-10 py-4 border border-[#f5f0ea]/20 text-[#f5f0ea]/60 text-xs tracking-[0.3em] uppercase hover:border-[#d4a96a]/50 hover:text-[#d4a96a] transition-all duration-300"
           >
             Our Story
           </a>
@@ -164,8 +164,8 @@ export default function Hero() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-          <span className="text-[9px] tracking-[0.4em] uppercase text-[#f0e6d8]">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-[#c49b64] to-transparent" />
+          <span className="text-[9px] tracking-[0.4em] uppercase text-[#f5f0ea]">Scroll</span>
+          <div className="w-px h-12 bg-gradient-to-b from-[#d4a96a] to-transparent" />
         </div>
       </div>
     </section>
