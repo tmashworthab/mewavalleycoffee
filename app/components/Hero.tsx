@@ -124,8 +124,13 @@ export default function Hero() {
         </div>
 
         {/* Tagline */}
-        <p className="text-lg md:text-xl text-[#f0e6d8]/60 max-w-xl mx-auto leading-relaxed mb-12 italic font-light">
-          Grown in the ancient hills of Nepal, between 2,000 and 5,000 feet above the clouds.
+        <p className="text-lg md:text-xl text-[#f0e6d8]/60 max-w-xl mx-auto leading-relaxed mb-4 font-light">
+          Traceable coffee from Nepal's mountain valleys.
+        </p>
+        <p className="text-sm md:text-base text-[#f0e6d8]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
+          Mewa Valley Coffee is building direct sourcing relationships with Nepali producers
+          and cooperatives. In July 2026, we will be visiting producers to document our first
+          green coffee lots for UK and EU roasters.
         </p>
 
         {/* CTA buttons */}

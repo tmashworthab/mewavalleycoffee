@@ -156,9 +156,11 @@ export default function Story() {
               specialty coffee at high altitude.
             </p>
             <p className="text-[#f0e6d8]/60 leading-relaxed mb-8">
-              We are building direct relationships with producers and cooperatives in Nepal.
-              Every bag you purchase supports a family farmer in one of the world's most
-              extraordinary landscapes.
+              We are developing relationships with small-scale producers in Nepal's
+              coffee-growing hills, with a focus on transparency, lot-level traceability
+              and long-term partnerships. Our first sourcing trip will document producer
+              details, processing methods, harvest information and sample quality for
+              roasters interested in Nepali coffee.
             </p>
 
             {/* Stats */}
