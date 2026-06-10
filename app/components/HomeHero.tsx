@@ -118,15 +118,6 @@ export default function HomeHero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className={a("absolute bottom-10 left-1/2 -translate-x-1/2")} {...d(920)}>
-        <div className="flex flex-col items-center gap-2 animate-bounce-slow">
-          <span className="text-[9px] tracking-[0.4em] uppercase text-[#d4a96a]/30">Scroll</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-[#d4a96a]/30">
-            <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-      </div>
     </section>
   );
 }
