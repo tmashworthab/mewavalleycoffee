@@ -32,8 +32,8 @@ export default function Home() {
             style={{ background: "radial-gradient(ellipse at center, transparent 30%, rgba(28,24,20,0.7) 100%)" }}
           />
 
-          <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-24">
-            <div className="inline-flex items-center gap-3 mb-8">
+          <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-32 md:pt-24">
+            <div className="hidden sm:inline-flex items-center gap-3 mb-8">
               <span className="h-px w-12 bg-[#d4a96a]/50" />
               <span className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] font-medium">
                 Single Origin · Nepal
@@ -49,7 +49,7 @@ export default function Home() {
               </svg>
             </div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-wider uppercase leading-none mb-4">
+            <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-wider uppercase leading-none mb-4">
               <span className="text-[#d4a96a]">MEWA</span>
               <br />
               <span className="text-[#f5f0ea]">VALLEY</span>
@@ -65,10 +65,10 @@ export default function Home() {
               <span className="h-px w-16 bg-[#d4a96a]/30" />
             </div>
 
-            <p className="text-lg md:text-xl text-[#f5f0ea]/70 max-w-2xl mx-auto leading-relaxed mb-4 font-light">
+            <p className="text-lg md:text-xl text-[#f5f0ea]/70 max-w-2xl mx-auto leading-relaxed mb-12 sm:mb-4 font-light">
               Mewa Valley Coffee connects UK and European roasters with traceable Nepali coffee lots sourced through direct producer relationships.
             </p>
-            <p className="text-sm md:text-base text-[#f5f0ea]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
+            <p className="hidden sm:block text-sm md:text-base text-[#f5f0ea]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
               Mewa Valley Coffee is building direct sourcing relationships with Nepali producers
               and cooperatives. In July 2026, we will be visiting producers to document our first
               green coffee lots for UK and EU roasters.
