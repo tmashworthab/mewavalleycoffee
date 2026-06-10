@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-function useInView(threshold = 0.2) {
+function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
@@ -20,162 +20,74 @@ export default function Story() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="story" className="relative py-32 px-6 overflow-hidden">
-      {/* Background texture */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `repeating-linear-gradient(
-            45deg,
-            #c49b64 0px,
-            #c49b64 1px,
-            transparent 1px,
-            transparent 40px
-          )`,
-        }}
-      />
+    <section id="story" className="bg-[#f0ebe3] border-t-2 border-[#1a1a1a]">
 
-      <div ref={ref} className="max-w-6xl mx-auto">
-        {/* Section header */}
-        <div
-          className={`text-center mb-20 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-        >
-          <p className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] mb-4">
-            The Journey
-          </p>
-          <h2 className="text-4xl md:text-5xl font-black tracking-widest uppercase text-[#f0e6d8] mb-6">
-            Our Story
-          </h2>
-          <div className="section-divider" />
+      {/* Section header bar */}
+      <div className="border-b-2 border-[#1a1a1a] px-6 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <p className="text-xs tracking-[0.4em] uppercase font-black text-[#1a1a1a]">Our Story</p>
+          <p className="text-xs tracking-[0.4em] uppercase font-bold text-[#6b6560]">Est. Nepal</p>
         </div>
+      </div>
 
-        {/* Content grid */}
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Left: visual */}
-          <div
-            className={`transition-all duration-1000 delay-200 ${inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
-          >
-            <div className="relative">
-              {/* Decorative frame */}
-              <div className="absolute -top-4 -left-4 w-full h-full border border-[#c49b64]/20" />
-              <div
-                className="relative aspect-[4/5] flex items-center justify-center overflow-hidden"
-                style={{
-                  background: "linear-gradient(135deg, #1a0d06 0%, #2d1508 50%, #1a0d06 100%)",
-                }}
-              >
-                {/* Stylized mountain illustration */}
-                <svg viewBox="0 0 400 500" className="w-full h-full p-12">
-                  {/* Sky gradient */}
-                  <defs>
-                    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#0d0906" />
-                      <stop offset="100%" stopColor="#2d1508" stopOpacity="0.3" />
-                    </linearGradient>
-                    <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#3d2010" />
-                      <stop offset="100%" stopColor="#1a0d06" />
-                    </linearGradient>
-                    <linearGradient id="mountainGrad2" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#4a2a15" />
-                      <stop offset="100%" stopColor="#2d1508" />
-                    </linearGradient>
-                  </defs>
+      <div ref={ref} className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 border-b-2 border-[#1a1a1a]">
 
-                  {/* Stars */}
-                  {[
-                    [60, 40], [120, 25], [200, 15], [280, 35], [340, 20],
-                    [80, 70], [160, 55], [300, 60], [360, 80], [40, 90],
-                  ].map(([x, y], i) => (
-                    <circle key={i} cx={x} cy={y} r="1.5" fill="#c49b64" opacity={0.4 + (i % 3) * 0.2} />
-                  ))}
-
-                  {/* Moon */}
-                  <circle cx="330" cy="50" r="18" fill="none" stroke="#c49b64" strokeWidth="1" opacity="0.5" />
-                  <circle cx="336" cy="50" r="18" fill="#0d0906" />
-
-                  {/* Far mountains */}
-                  <polygon points="0,300 60,180 120,300" fill="url(#mountainGrad)" opacity="0.4" />
-                  <polygon points="50,300 140,140 230,300" fill="url(#mountainGrad)" opacity="0.5" />
-                  <polygon points="150,300 270,120 400,300" fill="url(#mountainGrad)" opacity="0.45" />
-                  <polygon points="300,300 380,170 400,300" fill="url(#mountainGrad)" opacity="0.4" />
-
-                  {/* Main mountain */}
-                  <polygon points="0,380 200,100 400,380" fill="url(#mountainGrad2)" />
-
-                  {/* Snow cap */}
-                  <polygon points="170,145 200,100 230,145 215,155 185,155" fill="#f0e6d8" opacity="0.15" />
-
-                  {/* Terraced fields */}
-                  {[0, 1, 2, 3].map((i) => (
-                    <path
-                      key={i}
-                      d={`M${80 + i * 20},${300 + i * 25} Q200,${290 + i * 22} ${320 - i * 20},${300 + i * 25}`}
-                      stroke="#c49b64"
-                      strokeWidth="0.8"
-                      fill="none"
-                      opacity="0.2"
-                    />
-                  ))}
-
-                  {/* Coffee plants silhouette */}
-                  {[100, 140, 180, 220, 260, 300].map((x, i) => (
-                    <g key={i} transform={`translate(${x}, ${380 - i * 5})`}>
-                      <ellipse cx="0" cy="-8" rx="10" ry="6" fill="#3d2010" opacity="0.8" />
-                      <rect x="-1" y="-8" width="2" height="20" fill="#2d1508" opacity="0.8" />
-                    </g>
-                  ))}
-
-                  {/* Ground */}
-                  <rect x="0" y="380" width="400" height="120" fill="#1a0d06" />
-
-                  {/* Text overlay */}
-                  <text x="200" y="460" textAnchor="middle" fill="#c49b64" fontSize="11" letterSpacing="5" opacity="0.6" fontFamily="Arial">
-                    NEPAL · 2000-5000 FT
-                  </text>
-                </svg>
-              </div>
-            </div>
+          {/* Left: big headline */}
+          <div className={`py-16 md:border-r-2 border-[#1a1a1a] md:pr-12 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <h2 className="text-5xl md:text-6xl font-black uppercase leading-none tracking-tight text-[#1a1a1a] mb-8">
+              WHERE<br />
+              CLOUDS<br />
+              MEET<br />
+              <span className="text-[#c8271a]">COFFEE</span>
+            </h2>
+            <div className="w-12 h-1 bg-[#c8271a] mb-8" />
+            <p className="text-sm leading-relaxed text-[#6b6560] max-w-sm font-medium">
+              Nestled in the ancient valleys of Nepal, our beans are sourced from small-scale
+              farmers who have cultivated these lands for generations. The unique microclimate -
+              cool mountain air, rich soil, and monsoon rainfall - creates growing conditions
+              unlike anywhere else on Earth.
+            </p>
           </div>
 
-          {/* Right: text */}
-          <div
-            className={`transition-all duration-1000 delay-400 ${inView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
-          >
-            <p className="text-[10px] tracking-[0.4em] uppercase text-[#c49b64] mb-6">
-              Est. In The Himalayas
-            </p>
-            <h3 className="text-3xl md:text-4xl font-bold text-[#f0e6d8] leading-tight mb-6">
-              Where the clouds meet the coffee trees
-            </h3>
-            <p className="text-[#f0e6d8]/60 leading-relaxed mb-6">
-              Nestled in the ancient valleys of Nepal, Mewa Valley Coffee sources its beans
-              from small-scale farmers who have cultivated these lands for generations. The unique
-              microclimate - cool mountain air, rich volcanic soil, and abundant rainfall - creates
-              growing conditions unlike anywhere else on Earth.
-            </p>
-            <p className="text-[#f0e6d8]/60 leading-relaxed mb-8">
-              We work directly with local farming communities, ensuring fair wages and sustainable
-              practices that protect both the environment and a centuries-old way of life. Every bag
-              you purchase supports a family in the hills of Nepal.
-            </p>
+          {/* Right: stats + text */}
+          <div className={`py-16 md:pl-12 transition-all duration-700 delay-200 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[#c49b64]/15">
+            {/* Big stat */}
+            <div className="mb-12">
+              <p className="text-[10px] tracking-[0.4em] uppercase font-black text-[#c8271a] mb-2">Altitude</p>
+              <p className="text-7xl font-black text-[#1a1a1a] leading-none">2K<span className="text-[#c8271a]">-</span>5K</p>
+              <p className="text-sm font-bold text-[#6b6560] tracking-widest uppercase mt-1">Feet Above Sea Level</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-8 mb-12">
               {[
-                { num: "2-5K", label: "Feet altitude" },
-                { num: "100%", label: "Arabica beans" },
-                { num: "Direct", label: "Trade sourcing" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-2xl font-black text-[#c49b64] mb-1">{stat.num}</div>
-                  <div className="text-[10px] tracking-[0.2em] uppercase text-[#f0e6d8]/40">
-                    {stat.label}
-                  </div>
+                { num: "100%", label: "Arabica Beans" },
+                { num: "Direct", label: "Trade Sourcing" },
+                { num: "Small", label: "Batch Roasted" },
+                { num: "Hand", label: "Picked Cherries" },
+              ].map((s) => (
+                <div key={s.label} className="border-l-4 border-[#c8271a] pl-4">
+                  <p className="text-2xl font-black text-[#1a1a1a] leading-none">{s.num}</p>
+                  <p className="text-[10px] tracking-[0.3em] uppercase font-bold text-[#6b6560] mt-1">{s.label}</p>
                 </div>
               ))}
             </div>
+
+            <p className="text-sm leading-relaxed text-[#6b6560] font-medium">
+              We work directly with local farming communities, ensuring fair wages
+              and sustainable practices. Every bag you purchase supports a family
+              in the hills of Nepal.
+            </p>
           </div>
+        </div>
+
+        {/* Pull quote */}
+        <div className={`py-16 text-center transition-all duration-700 delay-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          <p className="text-3xl md:text-4xl font-black uppercase text-[#1a1a1a] leading-tight max-w-3xl mx-auto">
+            "STRONG FLAVORS, RICH AROMA -<br />
+            <span className="text-[#c8271a]">COFFEE THAT FUELS YOUR PASSION"</span>
+          </p>
         </div>
       </div>
     </section>

@@ -1,166 +1,142 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
 export default function Hero() {
-  const parallaxRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (parallaxRef.current) {
-        const y = window.scrollY * 0.4;
-        parallaxRef.current.style.transform = `translateY(${y}px)`;
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image layer */}
-      <div ref={parallaxRef} className="absolute inset-0 scale-110">
-        {/* Deep coffee-toned gradient background */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 30% 70%, #3d1a08 0%, transparent 55%),
-              radial-gradient(ellipse at 70% 30%, #2a1206 0%, transparent 50%),
-              linear-gradient(135deg, #0d0906 0%, #1a0d06 40%, #0f0806 100%)
-            `,
-          }}
-        />
-        {/* Scattered bean shapes */}
-        {[
-          { top: "15%", left: "8%", size: 80, rotate: 30, opacity: 0.12 },
-          { top: "70%", left: "5%", size: 60, rotate: -20, opacity: 0.08 },
-          { top: "25%", right: "10%", size: 100, rotate: 50, opacity: 0.1 },
-          { top: "60%", right: "8%", size: 70, rotate: -40, opacity: 0.09 },
-          { top: "45%", left: "15%", size: 50, rotate: 15, opacity: 0.07 },
-          { top: "80%", right: "20%", size: 90, rotate: 70, opacity: 0.08 },
-          { top: "10%", left: "40%", size: 55, rotate: -10, opacity: 0.06 },
-        ].map((b, i) => (
-          <svg
-            key={i}
-            className={i % 2 === 0 ? "float-anim" : "float-anim-delay"}
-            style={{
-              position: "absolute",
-              top: b.top,
-              left: "left" in b ? b.left : undefined,
-              right: "right" in b ? b.right : undefined,
-              width: b.size,
-              height: b.size,
-              opacity: b.opacity,
-              transform: `rotate(${b.rotate}deg)`,
-            }}
-            viewBox="0 0 100 60"
-            fill="none"
-          >
-            <ellipse cx="50" cy="30" rx="45" ry="25" fill="#8b4513" />
-            <path
-              d="M50 8 Q70 30 50 52 Q30 30 50 8Z"
-              fill="#6b3410"
-              opacity="0.6"
-            />
-          </svg>
-        ))}
+    <section className="relative min-h-screen bg-[#f0ebe3] flex flex-col overflow-hidden pt-24">
+
+      {/* Top info bar */}
+      <div className="border-b-2 border-[#1a1a1a] py-2 px-6">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-[#6b6560]">Single Origin</span>
+          <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-[#6b6560]">Mewa Valley Coffee</span>
+          <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-[#6b6560]">Nepal Hills</span>
+        </div>
       </div>
 
-      {/* Vignette overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 30%, rgba(13,9,6,0.8) 100%)",
-        }}
-      />
+      {/* Main hero layout */}
+      <div className="flex-1 max-w-7xl mx-auto w-full px-6 grid md:grid-cols-2 gap-0 items-stretch">
 
-      {/* Hero content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-3 mb-8">
-          <span className="h-px w-12 bg-[#c49b64]/50" />
-          <span className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] font-medium">
-            Single Origin · Nepal
-          </span>
-          <span className="h-px w-12 bg-[#c49b64]/50" />
-        </div>
+        {/* Left: giant type */}
+        <div className="flex flex-col justify-center py-12 md:py-0 md:border-r-2 border-[#1a1a1a] md:pr-12">
+          <p className="text-[10px] tracking-[0.6em] uppercase font-black text-[#c8271a] mb-4">
+            Small Batch · No. 39
+          </p>
 
-        {/* Mountain logo mark */}
-        <div className="flex justify-center mb-6">
-          <svg width="64" height="40" viewBox="0 0 64 40" fill="none">
-            <polyline
-              points="2,38 22,8 32,22 42,8 62,38"
-              stroke="#c49b64"
-              strokeWidth="1.5"
-              strokeLinejoin="round"
-              fill="none"
-            />
-            <circle cx="32" cy="18" r="4" fill="none" stroke="#c49b64" strokeWidth="1" />
-            <path d="M30 18 Q32 14 34 18" stroke="#c49b64" strokeWidth="0.8" fill="none" />
-          </svg>
-        </div>
+          <h1 className="hero-title text-[clamp(4rem,12vw,8rem)] font-black uppercase leading-[0.88] tracking-tight text-[#1a1a1a] mb-8">
+            BOLD<br />
+            <span className="text-[#c8271a]">&</span><br />
+            BREWED
+          </h1>
 
-        {/* Main title */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-wider uppercase leading-none mb-4">
-          <span className="shimmer-text">MEWA</span>
-          <br />
-          <span className="text-[#f0e6d8]">VALLEY</span>
-        </h1>
+          <div className="w-12 h-1 bg-[#c8271a] mb-8" />
 
-        <p className="text-xs md:text-sm tracking-[0.6em] uppercase text-[#c49b64]/80 mb-6 font-medium">
-          Coffee
-        </p>
+          <p className="text-sm leading-relaxed text-[#6b6560] max-w-sm mb-10 font-medium">
+            Grown between 2,000 and 5,000 feet in the ancient hills of Nepal.
+            Exceptionally smooth - rich chocolate and vanilla with a nutty finish.
+          </p>
 
-        {/* Divider */}
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <span className="h-px w-16 bg-[#c49b64]/30" />
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="2" fill="#c49b64" opacity="0.7" />
-            <circle cx="8" cy="8" r="6" stroke="#c49b64" strokeWidth="0.5" opacity="0.4" />
-          </svg>
-          <span className="h-px w-16 bg-[#c49b64]/30" />
-        </div>
-
-        {/* Tagline */}
-        <p className="text-lg md:text-xl text-[#f0e6d8]/60 max-w-xl mx-auto leading-relaxed mb-12 italic font-light">
-          Grown in the ancient hills of Nepal, between 2,000 and 5,000 feet above the clouds.
-        </p>
-
-        {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#coffee"
-            className="group px-10 py-4 bg-[#c49b64] text-[#0d0906] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#d4b07a] transition-all duration-300 flex items-center gap-3"
-          >
-            Explore Our Coffee
-            <svg
-              className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="#order"
+              className="px-8 py-4 bg-[#c8271a] text-[#f0ebe3] text-xs tracking-[0.3em] uppercase font-black hover:bg-[#a81f15] transition-colors"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
-          <a
-            href="#story"
-            className="px-10 py-4 border border-[#f0e6d8]/20 text-[#f0e6d8]/60 text-xs tracking-[0.3em] uppercase hover:border-[#c49b64]/50 hover:text-[#c49b64] transition-all duration-300"
-          >
-            Our Story
-          </a>
+              Shop Now
+            </a>
+            <a
+              href="#story"
+              className="px-8 py-4 border-2 border-[#1a1a1a] text-[#1a1a1a] text-xs tracking-[0.3em] uppercase font-black hover:bg-[#1a1a1a] hover:text-[#f0ebe3] transition-colors"
+            >
+              Our Story
+            </a>
+          </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-          <span className="text-[9px] tracking-[0.4em] uppercase text-[#f0e6d8]">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-[#c49b64] to-transparent" />
+        {/* Right: visual panel */}
+        <div className="relative flex flex-col justify-end items-center pb-0 pt-8 md:pt-0 md:pl-12">
+
+          {/* Large decorative text behind */}
+          <div
+            className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+            aria-hidden
+          >
+            <span
+              className="text-[clamp(8rem,22vw,18rem)] font-black uppercase leading-none text-[#1a1a1a]/5 tracking-tighter"
+            >
+              NEPAL
+            </span>
+          </div>
+
+          {/* Coffee cup illustration (SVG) */}
+          <div className="relative z-10 w-full max-w-sm mx-auto">
+            <svg viewBox="0 0 320 400" className="w-full drop-shadow-2xl" fill="none">
+              {/* Tray */}
+              <rect x="30" y="330" width="260" height="50" rx="16" fill="#e8e0d4" stroke="#1a1a1a" strokeWidth="2.5"/>
+
+              {/* Left glass (iced latte) */}
+              <g>
+                <rect x="60" y="160" width="80" height="170" rx="8" fill="#f5f0ea" stroke="#1a1a1a" strokeWidth="2.5"/>
+                {/* milk layer */}
+                <rect x="62" y="250" width="76" height="78" rx="0 0 6 6" fill="#e8cfa8"/>
+                {/* coffee layer */}
+                <rect x="62" y="200" width="76" height="55" fill="#8b5c2a" opacity="0.85"/>
+                {/* foam top */}
+                <ellipse cx="100" cy="200" rx="38" ry="8" fill="#c8a070" opacity="0.7"/>
+                {/* ice cubes */}
+                <rect x="72" y="215" width="20" height="20" rx="3" fill="#f0ebe3" opacity="0.6" stroke="#1a1a1a" strokeWidth="1"/>
+                <rect x="100" y="225" width="18" height="18" rx="3" fill="#f0ebe3" opacity="0.6" stroke="#1a1a1a" strokeWidth="1"/>
+                <rect x="80" y="240" width="22" height="16" rx="3" fill="#f0ebe3" opacity="0.5" stroke="#1a1a1a" strokeWidth="1"/>
+              </g>
+
+              {/* Right glass (black iced) */}
+              <g>
+                <rect x="180" y="140" width="80" height="190" rx="8" fill="#f5f0ea" stroke="#1a1a1a" strokeWidth="2.5"/>
+                {/* dark coffee */}
+                <rect x="182" y="200" width="76" height="128" rx="0 0 6 6" fill="#2a1a0a" opacity="0.88"/>
+                {/* milk swirl on top */}
+                <ellipse cx="220" cy="200" rx="38" ry="10" fill="#c8a070" opacity="0.5"/>
+                <path d="M200 195 Q220 188 240 196" stroke="#f0ebe3" strokeWidth="2.5" strokeLinecap="round" opacity="0.6"/>
+                {/* ice cubes */}
+                <rect x="190" y="215" width="22" height="22" rx="3" fill="#f0ebe3" opacity="0.15" stroke="#f0ebe3" strokeWidth="1"/>
+                <rect x="220" y="230" width="20" height="20" rx="3" fill="#f0ebe3" opacity="0.15" stroke="#f0ebe3" strokeWidth="1"/>
+                <rect x="195" y="250" width="25" height="18" rx="3" fill="#f0ebe3" opacity="0.1" stroke="#f0ebe3" strokeWidth="1"/>
+              </g>
+
+              {/* Steam lines above left */}
+              <path d="M90 155 Q95 140 90 125" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" opacity="0.25"/>
+              <path d="M105 150 Q110 135 105 120" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" opacity="0.2"/>
+
+              {/* Label sticker on left glass */}
+              <rect x="65" y="170" width="70" height="22" rx="3" fill="#c8271a"/>
+              <text x="100" y="184" textAnchor="middle" fill="#f0ebe3" fontSize="7" fontWeight="900" letterSpacing="2" fontFamily="Arial">MEWA VALLEY</text>
+            </svg>
+          </div>
+
+          {/* Bottom label */}
+          <div className="relative z-10 w-full border-t-2 border-[#1a1a1a] mt-4 py-4 flex justify-between items-center">
+            <div>
+              <p className="text-[9px] tracking-[0.4em] uppercase font-bold text-[#6b6560]">Altitude</p>
+              <p className="text-sm font-black text-[#1a1a1a]">2,000 - 5,000 ft</p>
+            </div>
+            <div className="text-center">
+              <p className="text-[9px] tracking-[0.4em] uppercase font-bold text-[#6b6560]">Process</p>
+              <p className="text-sm font-black text-[#1a1a1a]">Washed</p>
+            </div>
+            <div className="text-right">
+              <p className="text-[9px] tracking-[0.4em] uppercase font-bold text-[#6b6560]">Origin</p>
+              <p className="text-sm font-black text-[#1a1a1a]">Nepal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scrolling marquee */}
+      <div className="border-t-2 border-b-2 border-[#1a1a1a] bg-[#c8271a] py-3 overflow-hidden mt-auto">
+        <div className="marquee-track flex gap-0 whitespace-nowrap w-max">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span key={i} className="text-[#f0ebe3] text-xs font-black tracking-[0.4em] uppercase px-8">
+              Single Origin Nepal &nbsp;·&nbsp; Small Batch &nbsp;·&nbsp; Arabica &nbsp;·&nbsp; Direct Trade &nbsp;·&nbsp; 2000-5000ft &nbsp;·&nbsp;
+            </span>
+          ))}
         </div>
       </div>
     </section>
