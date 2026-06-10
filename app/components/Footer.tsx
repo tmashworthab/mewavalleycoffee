@@ -49,7 +49,7 @@ export default function Footer() {
               hello@mewavalleycoffee.com
               <br /><br />
               Roaster enquiries, sample requests,
-              <br />and wholesale — use the contact form.
+              <br />and wholesale - use the contact form.
             </p>
           </div>
         </div>

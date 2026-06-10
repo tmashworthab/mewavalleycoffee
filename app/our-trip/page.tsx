@@ -4,14 +4,14 @@ import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 
 export const metadata = {
-  title: "Our Trip — Mewa Valley Coffee",
+  title: "Our Trip - Mewa Valley Coffee",
   description: "Our July 2026 producer sourcing trip to Nepal's coffee-growing hills.",
 };
 
 const itinerary = [
   {
     phase: "Pre-trip",
-    timing: "April – June 2026",
+    timing: "April - June 2026",
     items: [
       "Identify target districts and initial producer contacts",
       "Connect with Nepali coffee associations and cooperatives",
@@ -32,7 +32,7 @@ const itinerary = [
   },
   {
     phase: "Post-trip",
-    timing: "August – September 2026",
+    timing: "August - September 2026",
     items: [
       "Cup all samples and score for specialty quality",
       "Publish lot sheets on this website",

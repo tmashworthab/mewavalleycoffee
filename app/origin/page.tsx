@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 
 export const metadata = {
-  title: "Origin — Mewa Valley Coffee",
+  title: "Origin - Mewa Valley Coffee",
   description: "The geography, climate, and growing conditions behind Nepali specialty coffee.",
 };
 
@@ -21,7 +21,7 @@ const facts = [
   },
   {
     label: "Altitude",
-    value: "2,000 – 5,000 ft",
+    value: "2,000 - 5,000 ft",
     note: "High altitude slows cherry development, concentrating sugars and producing denser beans.",
   },
   {
@@ -31,7 +31,7 @@ const facts = [
   },
   {
     label: "Harvest",
-    value: "Oct – Jan",
+    value: "Oct - Jan",
     note: "Main crop harvest runs October through January. Processing typically follows immediately after picking.",
   },
   {

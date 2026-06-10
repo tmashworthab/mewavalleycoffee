@@ -4,14 +4,14 @@ import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 
 export const metadata = {
-  title: "For Roasters — Mewa Valley Coffee",
+  title: "For Roasters - Mewa Valley Coffee",
   description: "Green coffee sourcing information for UK and EU roasters interested in Nepali specialty coffee.",
 };
 
 const points = [
   {
     heading: "What we are offering",
-    body: "Traceable green coffee from Nepal's highland growing regions. Our first lots will be documented at producer level — covering farm or cooperative details, altitude, variety, processing method, and harvest date.",
+    body: "Traceable green coffee from Nepal's highland growing regions. Our first lots will be documented at producer level - covering farm or cooperative details, altitude, variety, processing method, and harvest date.",
   },
   {
     heading: "Who this is for",
@@ -27,7 +27,7 @@ const points = [
   },
   {
     heading: "Volumes",
-    body: "Initial lots will be small — likely 60–300kg per lot. This is not a commodity supply; it is designed for roasters who want a specific, documentable Nepal single origin.",
+    body: "Initial lots will be small - likely 60-300kg per lot. This is not a commodity supply; it is designed for roasters who want a specific, documentable Nepal single origin.",
   },
   {
     heading: "Pricing",

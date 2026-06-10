@@ -35,7 +35,7 @@ export default function Contact() {
             </h1>
             <p className="text-[#f0e6d8]/50 text-lg max-w-2xl leading-relaxed font-light">
               Whether you are a roaster looking for samples, an importer wanting to discuss
-              volumes, or simply curious about Nepali coffee — get in touch.
+              volumes, or simply curious about Nepali coffee - get in touch.
             </p>
           </div>
         </section>

@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 const pages = [
   { href: "/for-roasters", label: "For Roasters", desc: "What we offer, who we are, and why Nepal." },
   { href: "/origin",       label: "Origin",       desc: "The geography and growing conditions of Nepal's coffee hills." },
-  { href: "/sample-lots",  label: "Sample Lots",  desc: "Lot information for roasters — arriving after July 2026." },
+  { href: "/sample-lots",  label: "Sample Lots",  desc: "Lot information for roasters - arriving after July 2026." },
   { href: "/our-trip",     label: "Our Trip",     desc: "Our July 2026 producer sourcing trip." },
   { href: "/contact",      label: "Contact",      desc: "Roaster enquiry form." },
 ];

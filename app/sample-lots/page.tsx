@@ -4,8 +4,8 @@ import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 
 export const metadata = {
-  title: "Sample Lots — Mewa Valley Coffee",
-  description: "Green coffee sample lots from Nepal — arriving after July 2026.",
+  title: "Sample Lots - Mewa Valley Coffee",
+  description: "Green coffee sample lots from Nepal - arriving after July 2026.",
 };
 
 const lotFields = [
@@ -49,7 +49,7 @@ export default function SampleLots() {
         {/* Placeholder lot sheet */}
         <section className="py-12 px-6">
           <div className="max-w-4xl mx-auto">
-            <p className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] mb-8">Lot sheet format — example</p>
+            <p className="text-[10px] tracking-[0.5em] uppercase text-[#c49b64] mb-8">Lot sheet format - example</p>
 
             <div className="border border-[#c49b64]/15 overflow-hidden">
               {/* Header */}
@@ -58,7 +58,7 @@ export default function SampleLots() {
                   LOT MVC-001
                 </p>
                 <span className="text-[9px] tracking-[0.3em] uppercase bg-[#c49b64]/20 text-[#c49b64] px-3 py-1 font-bold">
-                  Pending — July 2026
+                  Pending - July 2026
                 </span>
               </div>
 
