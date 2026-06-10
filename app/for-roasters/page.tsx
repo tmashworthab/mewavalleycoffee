@@ -2,6 +2,7 @@ import Link from "next/link";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
+import Reveal from "../components/Reveal";
 
 export const metadata = {
   title: "For Roasters - Mewa Valley Coffee",
@@ -47,33 +48,37 @@ export default function ForRoasters() {
         />
 
         <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto space-y-0 divide-y divide-[#d4a96a]/10">
-            {points.map((p) => (
-              <div key={p.heading} className="grid md:grid-cols-3 gap-6 py-10">
-                <h2 className="text-sm font-bold tracking-[0.15em] uppercase text-[#d4a96a]">
-                  {p.heading}
-                </h2>
-                <p className="md:col-span-2 text-[#f5f0ea]/60 leading-relaxed">{p.body}</p>
-              </div>
+          <div className="max-w-4xl mx-auto divide-y divide-[#d4a96a]/10">
+            {points.map((p, i) => (
+              <Reveal key={p.heading} delay={i * 80}>
+                <div className="grid md:grid-cols-3 gap-6 py-10">
+                  <h2 className="text-sm font-bold tracking-[0.15em] uppercase text-[#d4a96a]">
+                    {p.heading}
+                  </h2>
+                  <p className="md:col-span-2 text-[#f5f0ea]/60 leading-relaxed">{p.body}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
         {/* CTA band */}
-        <section className="py-16 px-6 border-t border-[#d4a96a]/15">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div>
-              <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-2">Interested?</p>
-              <p className="text-xl font-bold text-[#f5f0ea]">Register your interest before our July 2026 trip.</p>
+        <Reveal>
+          <section className="py-16 px-6 border-t border-[#d4a96a]/15">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+              <div>
+                <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-2">Interested?</p>
+                <p className="text-xl font-bold text-[#f5f0ea]">Register your interest before our July 2026 trip.</p>
+              </div>
+              <Link
+                href="/contact"
+                className="flex-shrink-0 px-10 py-4 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#e0be88] transition-all duration-300"
+              >
+                Get in Touch
+              </Link>
             </div>
-            <Link
-              href="/contact"
-              className="flex-shrink-0 px-10 py-4 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#e0be88] transition-colors"
-            >
-              Get in Touch
-            </Link>
-          </div>
-        </section>
+          </section>
+        </Reveal>
       </main>
       <Footer />
     </>

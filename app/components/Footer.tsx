@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Reveal from "./Reveal";
 
 const navLinks = [
   { label: "For Roasters", href: "/for-roasters" },
@@ -11,6 +12,7 @@ const navLinks = [
 export default function Footer() {
   return (
     <footer className="relative border-t border-[#d4a96a]/10 py-16 px-6">
+      <Reveal>
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
@@ -70,6 +72,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      </Reveal>
     </footer>
   );
 }

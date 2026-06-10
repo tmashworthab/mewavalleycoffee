@@ -128,6 +128,19 @@ body {
   will-change: transform;
 }
 
+.ease-spring {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 2.4s ease-in-out infinite;
+}
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: clamp(2.5rem, 10vw, 5rem);

@@ -1,11 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import Reveal from "../components/Reveal";
 
 export default function Contact() {
+  const [mounted, setMounted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 60);
+    return () => clearTimeout(t);
+  }, []);
+
+  const tr = "transition-all duration-700 ease-spring";
+  const show = "opacity-100 translate-y-0";
+  const hide = "opacity-0 translate-y-4";
   const [form, setForm] = useState({
     name: "",
     business: "",
@@ -29,11 +40,13 @@ export default function Contact() {
         {/* Header */}
         <section className="relative pt-40 pb-16 px-6 border-b border-[#d4a96a]/15">
           <div className="max-w-4xl mx-auto">
-            <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-4">Get in Touch</p>
-            <h1 className="text-4xl md:text-6xl font-black tracking-widest uppercase text-[#f5f0ea] leading-none mb-6">
+            <p className={`${tr} ${mounted ? show : hide} text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-4`} style={{ transitionDelay: "100ms" }}>
+              Get in Touch
+            </p>
+            <h1 className={`${tr} ${mounted ? show : hide} text-4xl md:text-6xl font-black tracking-widest uppercase text-[#f5f0ea] leading-none mb-6`} style={{ transitionDelay: "220ms" }}>
               Contact
             </h1>
-            <p className="text-[#f5f0ea]/50 text-lg max-w-2xl leading-relaxed font-light">
+            <p className={`${tr} ${mounted ? show : hide} text-[#f5f0ea]/50 text-lg max-w-2xl leading-relaxed font-light`} style={{ transitionDelay: "380ms" }}>
               Whether you are a roaster looking for samples, an importer wanting to discuss
               volumes, or simply curious about Nepali coffee - get in touch.
             </p>
@@ -44,6 +57,7 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-16">
 
             {/* Left: context */}
+            <Reveal>
             <div>
               <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-6">What happens next</p>
               <div className="space-y-6 text-sm text-[#f5f0ea]/50 leading-relaxed">
@@ -57,9 +71,11 @@ export default function Contact() {
                 <p className="text-[#f5f0ea]/50">hello@mewavalleycoffee.com</p>
               </div>
             </div>
+            </Reveal>
 
             {/* Right: form */}
-            <div className="md:col-span-2">
+            <Reveal delay={120} className="md:col-span-2">
+            <div>
               {submitted ? (
                 <div className="flex flex-col items-start py-12">
                   <div className="w-12 h-12 border border-[#d4a96a]/40 flex items-center justify-center mb-6">
@@ -143,6 +159,7 @@ export default function Contact() {
                 </form>
               )}
             </div>
+            </Reveal>
           </div>
         </section>
       </main>

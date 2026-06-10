@@ -16,10 +16,16 @@ const links = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      const sy = window.scrollY;
+      setScrolled(sy > 60);
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(total > 0 ? (sy / total) * 100 : 0);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -74,6 +80,12 @@ export default function Nav() {
           <span className={`block h-px w-6 bg-[#f5f0ea] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </div>
+
+      {/* Scroll progress */}
+      <div
+        className="absolute bottom-0 left-0 h-px bg-[#d4a96a]/60 transition-all duration-100 ease-out"
+        style={{ width: `${progress}%` }}
+      />
 
       <div className={`md:hidden transition-all duration-300 overflow-hidden ${menuOpen ? "max-h-80" : "max-h-0"}`}>
         <ul className="flex flex-col px-6 py-4 gap-4 bg-[#1c1814]/98 border-t border-[#d4a96a]/10">
