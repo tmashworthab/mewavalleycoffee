@@ -150,14 +150,16 @@ export default function Story() {
             </h3>
             <p className="text-[#f0e6d8]/60 leading-relaxed mb-6">
               Nestled in the ancient valleys of Nepal, Mewa Valley Coffee sources its beans
-              from small-scale farmers who have cultivated these lands for generations. The unique
-              microclimate - cool mountain air, rich volcanic soil, and abundant rainfall - creates
-              growing conditions unlike anywhere else on Earth.
+              from small-scale farmers cultivating some of the Himalayan region's most promising
+              highland growing conditions. The unique microclimate, with cool mountain air,
+              mineral-rich soils, and abundant rainfall, creates exceptional conditions for
+              specialty coffee at high altitude.
             </p>
             <p className="text-[#f0e6d8]/60 leading-relaxed mb-8">
-              We work directly with local farming communities, ensuring fair wages and sustainable
-              practices that protect both the environment and a centuries-old way of life. Every bag
-              you purchase supports a family in the hills of Nepal.
+              We work directly with local farming communities in the hills of Nepal, ensuring
+              fair wages and sustainable practices that protect both the environment and a way
+              of life deeply rooted in the land. Every bag you purchase supports a family farmer
+              in one of the world's most extraordinary landscapes.
             </p>
 
             {/* Stats */}
