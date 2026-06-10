@@ -82,8 +82,7 @@ export default function Order() {
           </h2>
           <div className="section-divider mb-8" />
           <p className="text-[#f0e6d8]/50 max-w-lg mx-auto">
-            We ship direct from Nepal to your door. Limited small-batch lots -
-            once a batch sells out, it&apos;s gone.
+            Register your interest and we will be in touch when samples are confirmed after our July 2026 sourcing trip.
           </p>
         </div>
 

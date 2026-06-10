@@ -125,7 +125,7 @@ export default function Hero() {
 
         {/* Tagline */}
         <p className="text-lg md:text-xl text-[#f0e6d8]/60 max-w-xl mx-auto leading-relaxed mb-4 font-light">
-          Traceable coffee from Nepal's mountain valleys.
+          Mewa Valley Coffee connects UK and European roasters with traceable Nepali coffee lots sourced through direct producer relationships.
         </p>
         <p className="text-sm md:text-base text-[#f0e6d8]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
           Mewa Valley Coffee is building direct sourcing relationships with Nepali producers
