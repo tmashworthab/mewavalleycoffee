@@ -33,7 +33,7 @@ export default function Home() {
           />
 
           <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-32 md:pt-24">
-            <div className="hidden sm:inline-flex items-center gap-3 mb-8">
+            <div className="hidden sm:inline-flex items-center gap-3 mb-14">
               <span className="h-px w-12 bg-[#d4a96a]/50" />
               <span className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] font-medium">
                 Single Origin · Nepal
