@@ -19,7 +19,7 @@ function useInView(threshold = 0.15) {
 const products = [
   {
     name: "Espresso Roast",
-    sub: "Small Batch No. 39",
+    sub: "First lots arriving after July 2026 sourcing trip",
     weight: "250g",
     price: "£18",
     notes: ["Chocolate", "Vanilla", "Nutty"],
@@ -27,7 +27,7 @@ const products = [
   },
   {
     name: "Filter Roast",
-    sub: "Small Batch No. 37",
+    sub: "Sample lots pending confirmation",
     weight: "250g",
     price: "£17",
     notes: ["Floral", "Fruit", "Caramel"],
@@ -35,7 +35,7 @@ const products = [
   },
   {
     name: "Whole Bean",
-    sub: "Small Batch No. 38",
+    sub: "Sample lots pending confirmation",
     weight: "500g",
     price: "£30",
     notes: ["Chocolate", "Vanilla", "Nutty"],

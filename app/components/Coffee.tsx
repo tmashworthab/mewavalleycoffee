@@ -46,7 +46,7 @@ const tasting = [
 const roasts = [
   {
     name: "Espresso Roast",
-    batch: "No. 39",
+    batch: "First lots arriving after July 2026 sourcing trip",
     desc: "Our flagship dark roast. Full-bodied and intense, perfect for espresso machines and moka pots. Brings out the deepest chocolate notes.",
     grind: "Fine",
     process: "Washed",
@@ -54,7 +54,7 @@ const roasts = [
   },
   {
     name: "Filter Roast",
-    batch: "No. 37",
+    batch: "Sample lots pending confirmation",
     desc: "A medium roast that lets the floral and fruit notes shine. Ideal for pour-over, drip, and French press brewing methods.",
     grind: "Medium-Coarse",
     process: "Natural",
@@ -62,7 +62,7 @@ const roasts = [
   },
   {
     name: "Whole Bean",
-    batch: "No. 38",
+    batch: "Sample lots pending confirmation",
     desc: "Unground for maximum freshness. Our single-origin beans at peak quality - grind to your preferred method right before brewing.",
     grind: "Your choice",
     process: "Honey",
@@ -186,7 +186,7 @@ export default function Coffee() {
                   <div className="flex items-start justify-between flex-wrap gap-4 mb-6">
                     <div>
                       <p className="text-[10px] tracking-[0.4em] uppercase text-[#c49b64] mb-2">
-                        Small Batch Lot · {r.batch}
+                        {r.batch}
                       </p>
                       <h3 className="text-2xl md:text-3xl font-black tracking-widest uppercase text-[#f0e6d8]">
                         {r.name}
