@@ -104,7 +104,7 @@ export default function Hero() {
 
         {/* Main title */}
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-wider uppercase leading-none mb-4">
-          <span className="shimmer-text">MEWA</span>
+          <span className="text-[#d4a96a]">MEWA</span>
           <br />
           <span className="text-[#f5f0ea]">VALLEY</span>
         </h1>
