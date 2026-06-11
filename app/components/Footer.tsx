@@ -61,15 +61,6 @@ export default function Footer() {
           <p className="text-[9px] tracking-[0.3em] uppercase text-[#f5f0ea]/20">
             © {new Date().getFullYear()} Mewa Valley Coffee. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
-            <svg width="28" height="20" viewBox="0 0 100 60" fill="none" opacity="0.3">
-              <ellipse cx="50" cy="30" rx="45" ry="25" fill="#d4a96a" />
-              <path d="M50 8 Q70 30 50 52 Q30 30 50 8Z" fill="#a07a50" opacity="0.6" />
-            </svg>
-            <span className="text-[9px] tracking-[0.3em] uppercase text-[#f5f0ea]/20">
-              Nepal · Est. 2024
-            </span>
-          </div>
         </div>
       </div>
       </Reveal>
