@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import LogoMark from "./LogoMark";
 
 const links = [
   { label: "Home", href: "/" },
@@ -40,15 +41,7 @@ export default function Nav() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
-          <svg width="36" height="36" viewBox="0 0 100 100" fill="none" className="flex-shrink-0">
-            <circle cx="50" cy="50" r="44" stroke="#d4a96a" strokeWidth="5" />
-            <path
-              d="M 11,72 L 28,19 L 43,55 L 50,66 L 57,55 L 72,19 L 89,72"
-              stroke="#d4a96a" strokeWidth="7" strokeLinecap="round" strokeLinejoin="miter"
-            />
-            <ellipse cx="50" cy="76" rx="11" ry="9" stroke="#d4a96a" strokeWidth="5" />
-            <path d="M 50,67 C 46,71 54,75 50,85" stroke="#d4a96a" strokeWidth="3" strokeLinecap="round" />
-          </svg>
+          <LogoMark size={36} />
           <div className="flex flex-col leading-none">
             <span className="text-[10px] tracking-[0.4em] text-[#d4a96a] uppercase">Mewa Valley</span>
             <span className="text-xl font-bold tracking-widest text-[#f5f0ea] group-hover:text-[#d4a96a] transition-colors duration-300">

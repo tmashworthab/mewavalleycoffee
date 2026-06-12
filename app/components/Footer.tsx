@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
+import LogoMark from "./LogoMark";
 
 const navLinks = [
   { label: "For Roasters", href: "/for-roasters" },
@@ -18,13 +19,9 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <svg width="40" height="40" viewBox="0 0 100 100" fill="none" className="flex-shrink-0 opacity-80">
-                <circle cx="50" cy="50" r="44" stroke="#d4a96a" strokeWidth="5" />
-                <path d="M 11,72 L 28,19 L 43,55 L 50,66 L 57,55 L 72,19 L 89,72"
-                  stroke="#d4a96a" strokeWidth="7" strokeLinecap="round" strokeLinejoin="miter" />
-                <ellipse cx="50" cy="76" rx="11" ry="9" stroke="#d4a96a" strokeWidth="5" />
-                <path d="M 50,67 C 46,71 54,75 50,85" stroke="#d4a96a" strokeWidth="3" strokeLinecap="round" />
-              </svg>
+              <div className="opacity-80">
+                <LogoMark size={40} />
+              </div>
               <div>
                 <p className="text-[10px] tracking-[0.4em] text-[#d4a96a] uppercase">Mewa Valley</p>
                 <p className="text-2xl font-black tracking-widest text-[#f5f0ea]">COFFEE</p>

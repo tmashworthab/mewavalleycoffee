@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import LogoMark from "./LogoMark";
 
 export default function HomeHero() {
   const [mounted, setMounted] = useState(false);
@@ -60,15 +61,7 @@ export default function HomeHero() {
 
         {/* Logo mark */}
         <div className={a("flex justify-center mb-6")} {...d(220)}>
-          <svg width="88" height="88" viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="44" stroke="#d4a96a" strokeWidth="4" />
-            <path
-              d="M 11,72 L 28,19 L 43,55 L 50,66 L 57,55 L 72,19 L 89,72"
-              stroke="#d4a96a" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="miter"
-            />
-            <ellipse cx="50" cy="76" rx="11" ry="9" stroke="#d4a96a" strokeWidth="3.5" />
-            <path d="M 50,67 C 46,71 54,75 50,85" stroke="#d4a96a" strokeWidth="2.5" strokeLinecap="round" />
-          </svg>
+          <LogoMark size={88} />
         </div>
 
         {/* Title */}
