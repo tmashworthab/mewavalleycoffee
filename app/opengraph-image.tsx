@@ -7,8 +7,8 @@ export const contentType = "image/png";
 export const alt = "Mewa Valley Coffee — Single Origin Nepal";
 
 export default function Image() {
-  const logoData = readFileSync(join(process.cwd(), "public/logo.png"));
-  const logoSrc = `data:image/png;base64,${logoData.toString("base64")}`;
+  const logoData = readFileSync(join(process.cwd(), "public/logo.svg"));
+  const logoSrc = `data:image/svg+xml;base64,${logoData.toString("base64")}`;
 
   return new ImageResponse(
     (

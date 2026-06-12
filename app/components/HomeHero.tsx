@@ -61,7 +61,7 @@ export default function HomeHero() {
 
         {/* Logo mark */}
         <div className={a("flex justify-center mb-6")} {...d(220)}>
-          <Image src="/logo.png" alt="Mewa Valley Coffee" width={110} height={110} />
+          <Image src="/logo.svg" alt="Mewa Valley Coffee" width={110} height={110} unoptimized />
         </div>
 
         {/* Title */}

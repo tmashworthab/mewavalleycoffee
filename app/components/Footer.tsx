@@ -19,7 +19,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Image src="/logo.png" alt="" width={44} height={44} style={{ opacity: 0.85 }} />
+              <Image src="/logo.svg" alt="" width={44} height={44} unoptimized style={{ opacity: 0.85 }} />
               <div>
                 <p className="text-[10px] tracking-[0.4em] text-[#d4a96a] uppercase">Mewa Valley</p>
                 <p className="text-2xl font-black tracking-widest text-[#f5f0ea]">COFFEE</p>

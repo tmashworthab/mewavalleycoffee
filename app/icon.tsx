@@ -6,8 +6,8 @@ export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
 export default function Icon() {
-  const logoData = readFileSync(join(process.cwd(), "public/logo.png"));
-  const logoSrc = `data:image/png;base64,${logoData.toString("base64")}`;
+  const logoData = readFileSync(join(process.cwd(), "public/logo.svg"));
+  const logoSrc = `data:image/svg+xml;base64,${logoData.toString("base64")}`;
 
   return new ImageResponse(
     (
