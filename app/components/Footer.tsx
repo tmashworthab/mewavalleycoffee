@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "./Reveal";
-import LogoMark from "./LogoMark";
 
 const navLinks = [
   { label: "For Roasters", href: "/for-roasters" },
@@ -19,9 +19,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="opacity-80">
-                <LogoMark size={40} />
-              </div>
+              <Image src="/logo.png" alt="" width={44} height={44} style={{ mixBlendMode: "screen", opacity: 0.85 }} />
               <div>
                 <p className="text-[10px] tracking-[0.4em] text-[#d4a96a] uppercase">Mewa Valley</p>
                 <p className="text-2xl font-black tracking-widest text-[#f5f0ea]">COFFEE</p>

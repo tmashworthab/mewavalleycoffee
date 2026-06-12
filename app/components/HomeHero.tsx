@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import LogoMark from "./LogoMark";
 
 export default function HomeHero() {
   const [mounted, setMounted] = useState(false);
@@ -61,7 +61,7 @@ export default function HomeHero() {
 
         {/* Logo mark */}
         <div className={a("flex justify-center mb-6")} {...d(220)}>
-          <LogoMark size={88} />
+          <Image src="/logo.png" alt="Mewa Valley Coffee" width={110} height={110} style={{ mixBlendMode: "screen" }} />
         </div>
 
         {/* Title */}

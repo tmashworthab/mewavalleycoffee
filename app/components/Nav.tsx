@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import LogoMark from "./LogoMark";
+import Image from "next/image";
 
 const links = [
   { label: "Home", href: "/" },
@@ -41,7 +41,7 @@ export default function Nav() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
-          <LogoMark size={36} />
+          <Image src="/logo.png" alt="" width={36} height={36} style={{ mixBlendMode: "screen" }} />
           <div className="flex flex-col leading-none">
             <span className="text-[10px] tracking-[0.4em] text-[#d4a96a] uppercase">Mewa Valley</span>
             <span className="text-xl font-bold tracking-widest text-[#f5f0ea] group-hover:text-[#d4a96a] transition-colors duration-300">
