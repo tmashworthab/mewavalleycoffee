@@ -26,7 +26,7 @@ export default function Image() {
       >
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 40%, rgba(10,6,4,0.6) 100%)" }} />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logoSrc} width={200} height={200} style={{ mixBlendMode: "screen" }} alt="" />
+        <img src={logoSrc} width={200} height={200} alt="" />
         <div style={{ color: "#d4a96a", fontSize: 52, fontWeight: 900, letterSpacing: 14, marginTop: 24, textTransform: "uppercase" }}>
           MEWA VALLEY
         </div>

@@ -13,7 +13,7 @@ export default function Icon() {
     (
       <div style={{ background: "#1c1814", width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logoSrc} width={56} height={56} style={{ mixBlendMode: "screen" }} alt="" />
+        <img src={logoSrc} width={56} height={56} alt="" />
       </div>
     ),
     { ...size }
