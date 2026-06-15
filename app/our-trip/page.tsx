@@ -65,6 +65,26 @@ export default function OurTrip() {
           subtitle="In July 2026 we will travel to Nepal's coffee-growing districts to document producers, collect samples, and establish the sourcing relationships that will underpin Mewa Valley Coffee."
         />
 
+        {/* Our story */}
+        <section className="py-20 px-6 border-b border-[#d4a96a]/15">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
+            <Reveal>
+              <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a]">Our Story</p>
+            </Reveal>
+            <Reveal delay={80} className="md:col-span-2 space-y-4 text-[#f5f0ea]/60 leading-relaxed">
+              <p>
+                Mewa Valley Coffee began from a personal connection to Nepal and a growing interest in bringing properly documented Nepali coffee to UK and European roasters.
+              </p>
+              <p>
+                Our family links in Nepal allow us to speak directly with producers, cooperatives and exporters. But access is only the beginning. For roasters, the coffee still has to be traceable, sampleable, exportable and good in the cup.
+              </p>
+              <p>
+                We are currently building supplier relationships, arranging green coffee samples and preparing independent UK cupping before making any commercial claims.
+              </p>
+            </Reveal>
+          </div>
+        </section>
+
         {/* What we will document */}
         <section className="py-20 px-6 border-b border-[#d4a96a]/15">
           <div className="max-w-4xl mx-auto">

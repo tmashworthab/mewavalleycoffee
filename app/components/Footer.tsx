@@ -61,7 +61,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-[#d4a96a]/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-[#d4a96a]/10 flex flex-col gap-4">
+          <p className="text-[10px] text-[#f5f0ea]/25 leading-relaxed max-w-3xl">
+            Mewa Valley Coffee is currently preparing supplier-reported Gulmi 2026 coffee information for independent UK cupping. No commercial lot claims are final until samples have been verified.
+          </p>
           <p className="text-[9px] tracking-[0.3em] uppercase text-[#f5f0ea]/20">
             © {new Date().getFullYear()} Mewa Valley Coffee. All rights reserved.
           </p>

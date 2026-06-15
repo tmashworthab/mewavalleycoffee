@@ -19,6 +19,30 @@ export default function Home() {
       <main>
         <HomeHero />
 
+        {/* Gulmi 2026 section */}
+        <section className="py-20 px-6 border-t border-[#d4a96a]/10">
+          <div className="max-w-4xl mx-auto">
+            <Reveal>
+              <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-6">Gulmi 2026 Samples in Progress</p>
+              <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-4">
+                We are currently in discussion with an established coffee cooperative in Gulmi District, Lumbini Province, Nepal. Supplier-reported information indicates Arabica coffee grown at 1,100+ masl (metres above sea level), washed and natural processing, moisture below 11%, and cup scores in the 81–85 range.
+              </p>
+              <p className="text-[#f5f0ea]/40 text-sm leading-relaxed max-w-2xl mb-8">
+                All supplier information is subject to sample verification, lot confirmation and independent UK cupping before any commercial offer is made.
+              </p>
+              <Link
+                href="/sample-lots"
+                className="inline-flex items-center gap-3 text-[#d4a96a] text-xs tracking-[0.3em] uppercase font-bold hover:gap-5 transition-all duration-300"
+              >
+                View pending sample lots
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </Reveal>
+          </div>
+        </section>
+
         {/* Page index */}
         <section className="py-24 px-6">
           <div className="max-w-4xl mx-auto">

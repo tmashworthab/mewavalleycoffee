@@ -47,8 +47,7 @@ export default function Contact() {
               Contact
             </h1>
             <p className={`${tr} ${mounted ? show : hide} text-[#f5f0ea]/50 text-lg max-w-2xl leading-relaxed font-light`} style={{ transitionDelay: "380ms" }}>
-              Whether you are a roaster looking for samples, an importer wanting to discuss
-              volumes, or simply curious about Nepali coffee - get in touch.
+              Are you a roaster, importer or coffee buyer interested in evaluating Nepali green coffee? Register your interest and we will contact you when properly labelled Gulmi 2026 samples are available for UK cupping.
             </p>
           </div>
         </section>
@@ -61,7 +60,7 @@ export default function Contact() {
             <div>
               <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-6">What happens next</p>
               <div className="space-y-6 text-sm text-[#f5f0ea]/50 leading-relaxed">
-                <p>We will respond to all enquiries within 48 hours.</p>
+                <p>We aim to respond within 2 working days.</p>
                 <p>If you are a roaster interested in samples, we will add you to our list and contact you when lots are confirmed after our July 2026 sourcing trip.</p>
                 <p>If you have questions about the origin or our sourcing approach, we are happy to talk through the details.</p>
               </div>
@@ -85,7 +84,7 @@ export default function Contact() {
                   </div>
                   <h2 className="text-2xl font-black tracking-widest uppercase text-[#f5f0ea] mb-3">Thank you</h2>
                   <p className="text-[#f5f0ea]/50 text-sm max-w-sm leading-relaxed">
-                    We have received your message and will be in touch within 48 hours.
+                    We have received your message and will aim to respond within 2 working days.
                   </p>
                 </div>
               ) : (
@@ -131,11 +130,13 @@ export default function Contact() {
                     <label className={labelClass}>Are you interested in... *</label>
                     <select required value={form.interest} onChange={set("interest")} className={`${inputClass} bg-[#1c1814]`}>
                       <option value="" disabled>Select one</option>
+                      <option value="gulmi-2026">Gulmi 2026 samples</option>
                       <option value="green-samples">Green samples for cupping</option>
-                      <option value="roasted">Roasted coffee</option>
-                      <option value="private-label">Private label</option>
+                      <option value="roaster-enquiry">Roaster enquiry</option>
+                      <option value="importer-enquiry">Importer enquiry</option>
+                      <option value="private-label">Private label / contract roasting</option>
+                      <option value="future-roasted">Future roasted coffee</option>
                       <option value="general">General information</option>
-                      <option value="multiple">Multiple of the above</option>
                     </select>
                   </div>
 

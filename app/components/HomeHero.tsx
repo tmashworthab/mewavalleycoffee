@@ -86,12 +86,11 @@ export default function HomeHero() {
 
         {/* Body text */}
         <div className={a()} {...d(580)}>
-          <p className="text-lg md:text-xl text-[#f5f0ea]/70 max-w-2xl mx-auto leading-relaxed mb-12 sm:mb-4 font-light">
-            Mewa Valley Coffee connects UK and European roasters with traceable Nepali coffee lots sourced through direct producer relationships.
+          <p className="text-lg md:text-xl text-[#f5f0ea]/70 max-w-2xl mx-auto leading-relaxed mb-4 font-light">
+            Traceable Nepali green coffee for UK and European roasters.
           </p>
-          <p className="hidden sm:block text-sm md:text-base text-[#f5f0ea]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
-            Building direct sourcing relationships with Nepali producers and cooperatives.
-            First lots arriving after July 2026.
+          <p className="text-sm md:text-base text-[#f5f0ea]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
+            Mewa Valley Coffee is building direct relationships with Nepali cooperatives and producers. We are currently arranging washed and natural Arabica samples from Gulmi District, Nepal, with independent UK cupping pending.
           </p>
         </div>
 
@@ -107,10 +106,16 @@ export default function HomeHero() {
             </svg>
           </Link>
           <Link
+            href="/sample-lots"
+            className="px-10 py-4 border border-[#f5f0ea]/20 text-[#f5f0ea]/60 text-xs tracking-[0.3em] uppercase hover:border-[#d4a96a]/50 hover:text-[#d4a96a] transition-all duration-300"
+          >
+            View Sample Lots
+          </Link>
+          <Link
             href="/contact"
             className="px-10 py-4 border border-[#f5f0ea]/20 text-[#f5f0ea]/60 text-xs tracking-[0.3em] uppercase hover:border-[#d4a96a]/50 hover:text-[#d4a96a] transition-all duration-300"
           >
-            Get in Touch
+            Register Interest
           </Link>
         </div>
       </div>

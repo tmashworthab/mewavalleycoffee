@@ -16,29 +16,29 @@ const facts = [
     note: "Landlocked country in South Asia, bordered by India and China (Tibet).",
   },
   {
-    label: "Region",
-    value: "Himalayan Foothills",
-    note: "Coffee is grown in the mid-hill districts including Gulmi, Palpa, Ilam, Kaski, and Lamjung.",
+    label: "Our focus",
+    value: "Gulmi District",
+    note: "Our current supplier conversations are focused on Arabica coffee from Resunga Municipality, Gulmi District, Lumbini Province.",
   },
   {
     label: "Altitude",
-    value: "2,000 - 5,000 ft",
-    note: "High altitude slows cherry development, concentrating sugars and producing denser beans.",
+    value: "1,100+ masl",
+    note: "Altitude varies by district and farm. Our current Gulmi supplier lead reports coffee grown at 1,100+ masl (metres above sea level). High altitude slows cherry development, concentrating sugars and producing denser beans.",
   },
   {
     label: "Variety",
     value: "Arabica",
-    note: "Primarily Bourbon and Typica derivatives, with some local selections. Nepal has no Robusta production at altitude.",
+    note: "Local Gulmi Arabica variety, verification pending. Nepal has no Robusta production at altitude.",
   },
   {
     label: "Harvest",
-    value: "Oct - Jan",
-    note: "Main crop harvest runs October through January. Processing typically follows immediately after picking.",
+    value: "Jan – Mar (Gulmi)",
+    note: "Harvest varies by district, altitude and producer. Our current Gulmi supplier information indicates a January–March 2026 harvest.",
   },
   {
     label: "Processing",
     value: "Washed & Natural",
-    note: "Both methods are used. Washed lots tend to produce cleaner, brighter cups. Naturals show more fruit character.",
+    note: "Both methods are available from our current Gulmi supplier. Washed lots tend to produce cleaner, brighter cups. Naturals show more fruit character.",
   },
   {
     label: "Climate",
@@ -48,7 +48,7 @@ const facts = [
   {
     label: "Status",
     value: "Emerging Origin",
-    note: "Nepal has been producing coffee commercially since the 1980s but remains largely unknown outside specialty circles.",
+    note: "Nepal has been producing coffee commercially since the 1980s but remains largely unknown outside specialty circles. Export documentation is available from established cooperatives.",
   },
 ];
 
@@ -86,15 +86,13 @@ export default function OriginPage() {
             <div className="max-w-4xl mx-auto">
               <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-6">A note on the origin</p>
               <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-4">
-                Nepal's coffee industry is small and fragmented. Many growers are smallholders
-                with less than a hectare under production. This makes traceability challenging
-                but also means that direct relationships with producers or cooperatives are
-                genuinely possible.
+                Gulmi District is one of Nepal's recognised coffee-growing areas. Our current supplier conversations are focused on Arabica coffee from Resunga Municipality, grown at 1,100+ masl and processed as washed and natural lots.
+              </p>
+              <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-4">
+                Nepal's coffee industry is small and fragmented. Many growers are smallholders with less than a hectare under production. This makes traceability challenging but also means that direct relationships with producers or cooperatives are genuinely possible.
               </p>
               <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-10">
-                The cup profile from well-processed Nepali coffee is typically clean and
-                sweet, with chocolate and nutty notes at lower altitudes and more delicate
-                floral and fruit characteristics at the higher end of the growing range.
+                During our July 2026 sourcing visit, we aim to document farm and cooperative details, processing methods, storage conditions, sample quality and export readiness.
               </p>
               <Link
                 href="/our-trip"

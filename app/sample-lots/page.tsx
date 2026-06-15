@@ -5,22 +5,52 @@ import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 
 export const metadata = {
-  title: "Sample Lots - Mewa Valley Coffee",
-  description: "Green coffee sample lots from Nepal - arriving after July 2026.",
+  title: "Sample Lots | Gulmi 2026 Nepali Coffee | Mewa Valley Coffee",
+  description:
+    "View pending Gulmi 2026 washed and natural Arabica sample lot information from Nepal. Supplier-reported data, independent UK cupping pending.",
 };
 
-const lotFields = [
-  "Lot reference",
-  "Producer / cooperative",
-  "District",
-  "Altitude (metres)",
-  "Variety",
-  "Processing method",
-  "Harvest date",
-  "Bag weight available",
-  "Cupping notes",
-  "Sample availability",
+const washedFields = [
+  { field: "Status", info: "Pending sample verification" },
+  { field: "Origin", info: "Gulmi District, Lumbini Province, Nepal" },
+  { field: "Municipality", info: "Resunga Municipality" },
+  { field: "Producer/cooperative", info: "Established Gulmi cooperative, legal export name being confirmed" },
+  { field: "Altitude", info: "1,100+ masl" },
+  { field: "Species", info: "Arabica" },
+  { field: "Variety", info: "Local Gulmi Arabica, verification pending" },
+  { field: "Process", info: "Washed" },
+  { field: "Harvest", info: "January–March 2026" },
+  { field: "Moisture", info: "Supplier-reported below 11%" },
+  { field: "Cup score", info: "Supplier-reported 81–85, independent UK cupping pending" },
+  { field: "Available volume", info: "Part of supplier-reported 5,000–6,000kg total" },
+  { field: "Sample sizes", info: "300g, 1kg or 5kg green coffee" },
+  { field: "Export documents", info: "Commercial invoice, packing list, certificate of origin, phytosanitary certificate" },
 ];
+
+const naturalFields = washedFields.map((f) =>
+  f.field === "Process" ? { field: "Process", info: "Natural" } : f
+);
+
+function LotTable({ lotRef, fields }: { lotRef: string; fields: { field: string; info: string }[] }) {
+  return (
+    <div className="border border-[#d4a96a]/15 overflow-hidden">
+      <div className="bg-[#d4a96a]/10 border-b border-[#d4a96a]/15 px-6 py-4 flex items-center justify-between">
+        <p className="text-sm font-bold tracking-widest uppercase text-[#f5f0ea]">{lotRef}</p>
+        <span className="text-[9px] tracking-[0.3em] uppercase bg-[#d4a96a]/20 text-[#d4a96a] px-3 py-1 font-bold">
+          Pending verification
+        </span>
+      </div>
+      <div className="divide-y divide-[#d4a96a]/10">
+        {fields.map((row) => (
+          <div key={row.field} className="grid grid-cols-2 px-6 py-4">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-[#d4a96a]/60 font-medium">{row.field}</p>
+            <p className="text-sm text-[#f5f0ea]/70">{row.info}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function SampleLots() {
   return (
@@ -30,7 +60,7 @@ export default function SampleLots() {
         <PageHero
           eyebrow="Green Coffee"
           title="Sample Lots"
-          subtitle="Lot sheets will be published here after our July 2026 sourcing trip. Register your interest to be notified when samples are available."
+          subtitle="Our first sample lots are currently being arranged from Gulmi District, Nepal. All details below are supplier-reported and subject to sample verification, lot confirmation and independent UK cupping."
         />
 
         {/* Status banner */}
@@ -40,49 +70,29 @@ export default function SampleLots() {
               <div className="border border-[#d4a96a]/30 bg-[#d4a96a]/5 px-8 py-6 flex flex-col md:flex-row items-start md:items-center gap-4">
                 <div className="w-2 h-2 rounded-full bg-[#d4a96a] flex-shrink-0 mt-1 md:mt-0" />
                 <p className="text-[#f5f0ea]/70 text-sm leading-relaxed">
-                  <span className="text-[#d4a96a] font-bold">First lots arriving after July 2026 sourcing trip.</span>
-                  {" "}We are visiting producers in Nepal in July 2026 to document and select green coffee for UK and EU roasters.
-                  Sample lots will be listed here in lot-sheet format once confirmed.
+                  <span className="text-[#d4a96a] font-bold">These are not yet confirmed commercial lots.</span>
+                  {" "}Samples must be independently cupped in the UK before any claims are made about final score, flavour profile or specialty status.
                 </p>
               </div>
             </Reveal>
           </div>
         </section>
 
-        {/* Placeholder lot sheet */}
+        {/* Lot sheets */}
         <section className="py-12 px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto space-y-16">
             <Reveal>
-              <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-8">Lot sheet format - example</p>
+              <LotTable lotRef="MVC-GULMI-2026-WASHED" fields={washedFields} />
+            </Reveal>
+            <Reveal delay={80}>
+              <LotTable lotRef="MVC-GULMI-2026-NATURAL" fields={naturalFields} />
             </Reveal>
 
-            <Reveal delay={80}>
-              <div className="border border-[#d4a96a]/15 overflow-hidden">
-                {/* Header */}
-                <div className="bg-[#d4a96a]/10 border-b border-[#d4a96a]/15 px-6 py-4 flex items-center justify-between">
-                  <p className="text-sm font-bold tracking-widest uppercase text-[#f5f0ea]">
-                    LOT MVC-001
-                  </p>
-                  <span className="text-[9px] tracking-[0.3em] uppercase bg-[#d4a96a]/20 text-[#d4a96a] px-3 py-1 font-bold">
-                    Pending - July 2026
-                  </span>
-                </div>
-
-                {/* Fields */}
-                <div className="divide-y divide-[#d4a96a]/10">
-                  {lotFields.map((field) => (
-                    <div key={field} className="grid grid-cols-2 px-6 py-4">
-                      <p className="text-[10px] tracking-[0.3em] uppercase text-[#d4a96a]/60 font-medium">{field}</p>
-                      <p className="text-sm text-[#f5f0ea]/20 italic">To be confirmed</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="px-6 py-5 border-t border-[#d4a96a]/15 bg-[#d4a96a]/5">
-                  <p className="text-xs text-[#f5f0ea]/30 leading-relaxed">
-                    Each lot will include full producer documentation, processing details, and green sample availability for cupping.
-                  </p>
-                </div>
+            <Reveal delay={160}>
+              <div className="border-l-2 border-[#d4a96a]/30 pl-6">
+                <p className="text-sm text-[#f5f0ea]/40 leading-relaxed">
+                  These are not yet confirmed commercial lots. Samples must be independently cupped in the UK before any claims are made about final score, flavour profile or specialty status.
+                </p>
               </div>
             </Reveal>
           </div>
@@ -94,7 +104,7 @@ export default function SampleLots() {
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
               <div>
                 <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-2">Be first to know</p>
-                <p className="text-xl font-bold text-[#f5f0ea]">Register your interest and we will contact you when samples are ready.</p>
+                <p className="text-xl font-bold text-[#f5f0ea]">Register your interest and we will contact you when samples are ready for UK cupping.</p>
               </div>
               <Link
                 href="/contact"
