@@ -87,10 +87,10 @@ export default function HomeHero() {
         {/* Body text */}
         <div className={a()} {...d(580)}>
           <p className="text-lg md:text-xl text-[#f5f0ea]/70 max-w-2xl mx-auto leading-relaxed mb-4 font-light">
-            Traceable Nepali green coffee for UK and European roasters.
+            Introducing Nepali Arabica coffee to roasters across the UK and Europe.
           </p>
           <p className="text-sm md:text-base text-[#f5f0ea]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
-            Mewa Valley Coffee is building direct relationships with Nepali cooperatives and producers. We are currently arranging washed and natural Arabica samples from Gulmi District, Nepal, with independent UK cupping pending.
+            Mewa Valley Coffee connects roasters with carefully sourced green coffee from Nepal, working directly with local cooperatives and producers to build transparent, lasting relationships. We are currently preparing washed and natural Arabica samples from Gulmi District, with independent UK cupping pending.
           </p>
         </div>
 
