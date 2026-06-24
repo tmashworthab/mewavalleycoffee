@@ -102,12 +102,6 @@ export default function HomeHero() {
             </svg>
           </Link>
           <Link
-            href="/sample-lots"
-            className="px-10 py-4 border border-[#f5f0ea]/20 text-[#f5f0ea]/60 text-xs tracking-[0.3em] uppercase hover:border-[#d4a96a]/50 hover:text-[#d4a96a] transition-all duration-300"
-          >
-            View Sample Lots
-          </Link>
-          <Link
             href="/contact"
             className="px-10 py-4 border border-[#f5f0ea]/20 text-[#f5f0ea]/60 text-xs tracking-[0.3em] uppercase hover:border-[#d4a96a]/50 hover:text-[#d4a96a] transition-all duration-300"
           >

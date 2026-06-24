@@ -9,8 +9,6 @@ const links = [
   { label: "Home", href: "/" },
   { label: "For Roasters", href: "/for-roasters" },
   { label: "Origin", href: "/origin" },
-  { label: "Sample Lots", href: "/sample-lots" },
-  { label: "Our Trip", href: "/our-trip" },
   { label: "Contact", href: "/contact" },
 ];
 

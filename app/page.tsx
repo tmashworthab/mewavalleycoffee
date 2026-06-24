@@ -7,8 +7,6 @@ import Link from "next/link";
 const pages = [
   { href: "/for-roasters", label: "For Roasters", desc: "What we offer, who we are, and why Nepal." },
   { href: "/origin",       label: "Origin",       desc: "The geography and growing conditions of Nepal's coffee hills." },
-  { href: "/sample-lots",  label: "Sample Lots",  desc: "Lot information for roasters - arriving after July 2026." },
-  { href: "/our-trip",     label: "Our Trip",     desc: "Our July 2026 producer sourcing trip." },
   { href: "/contact",      label: "Contact",      desc: "Roaster enquiry form." },
 ];
 
@@ -27,18 +25,9 @@ export default function Home() {
               <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-4">
                 We are currently in discussion with an established coffee cooperative in Gulmi District, Lumbini Province, Nepal. Supplier-reported information indicates Arabica coffee grown at 1,100+ masl (metres above sea level), washed and natural processing, moisture below 11%, and cup scores in the 81–85 range.
               </p>
-              <p className="text-[#f5f0ea]/40 text-sm leading-relaxed max-w-2xl mb-8">
+              <p className="text-[#f5f0ea]/40 text-sm leading-relaxed max-w-2xl">
                 All supplier information is subject to sample verification, lot confirmation and independent UK cupping before any commercial offer is made.
               </p>
-              <Link
-                href="/sample-lots"
-                className="inline-flex items-center gap-3 text-[#d4a96a] text-xs tracking-[0.3em] uppercase font-bold hover:gap-5 transition-all duration-300"
-              >
-                View pending sample lots
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
             </Reveal>
           </div>
         </section>

@@ -91,18 +91,9 @@ export default function OriginPage() {
               <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-4">
                 Nepal's coffee industry is small and fragmented. Many growers are smallholders with less than a hectare under production. This makes traceability challenging but also means that direct relationships with producers or cooperatives are genuinely possible.
               </p>
-              <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-10">
+              <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl">
                 During our July 2026 sourcing visit, we aim to document farm and cooperative details, processing methods, storage conditions, sample quality and export readiness.
               </p>
-              <Link
-                href="/our-trip"
-                className="inline-flex items-center gap-3 text-[#d4a96a] text-xs tracking-[0.3em] uppercase font-bold hover:gap-5 transition-all duration-300"
-              >
-                Read about our July 2026 sourcing trip
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
             </div>
           </section>
         </Reveal>
