@@ -8,9 +8,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Mewa Valley Coffee | Traceable Nepali Green Coffee",
+  title: "Mewa Valley Coffee | Premium High-Altitude Nepali Coffee",
   description:
-    "Mewa Valley Coffee connects UK and European roasters with traceable Nepali green coffee. Gulmi 2026 washed and natural Arabica samples are pending independent UK cupping.",
+    "Mewa Valley Coffee connects UK and European roasters with premium high-altitude Nepali coffee. Gulmi 2026 washed and natural Arabica samples are pending independent UK cupping.",
 };
 
 export default function RootLayout({

@@ -32,7 +32,12 @@ export default function HomeHero() {
       />
       <div
         className="absolute inset-0"
-        style={{ background: "radial-gradient(ellipse at center, transparent 30%, rgba(28,24,20,0.75) 100%)" }}
+        style={{ background: "radial-gradient(ellipse at center 60%, transparent 48%, rgba(28,24,20,0.6) 88%, rgba(28,24,20,0.85) 100%)" }}
+      />
+      {/* Bottom fade into next section */}
+      <div
+        className="absolute bottom-0 inset-x-0 h-40 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, #1c1814)" }}
       />
       {/* Noise grain texture */}
       <div
@@ -87,7 +92,7 @@ export default function HomeHero() {
         {/* Body text */}
         <div className={a()} {...d(580)}>
           <p className="text-lg md:text-xl text-[#f5f0ea]/70 max-w-2xl mx-auto leading-relaxed mb-4 font-light">
-            Introducing Nepali Arabica coffee to roasters across the UK and Europe.
+            Premium high-altitude Nepali coffee for UK and European roasters.
           </p>
           <p className="text-sm md:text-base text-[#f5f0ea]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
             Mewa Valley Coffee connects roasters with carefully sourced green coffee from Nepal, working directly with local cooperatives and producers to build transparent, lasting relationships. We are currently preparing washed and natural Arabica samples from Gulmi District, with independent UK cupping pending.
