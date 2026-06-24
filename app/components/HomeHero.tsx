@@ -55,6 +55,15 @@ export default function HomeHero() {
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-32 md:pt-24">
 
+        {/* Badge */}
+        <div className={a("hidden sm:inline-flex items-center gap-3 mb-14")} {...d(100)}>
+          <span className="h-px w-12 bg-[#d4a96a]/50" />
+          <span className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] font-medium">
+            Single Origin · Nepal
+          </span>
+          <span className="h-px w-12 bg-[#d4a96a]/50" />
+        </div>
+
         {/* Logo mark */}
         <div className={a("flex justify-center mb-6")} {...d(220)}>
           <Image src="/logo.svg" alt="Mewa Valley Coffee" width={110} height={110} unoptimized />
