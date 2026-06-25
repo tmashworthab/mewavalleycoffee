@@ -70,7 +70,9 @@ export default function Contact() {
 
               <div className="mt-10 pt-8 border-t border-[#d4a96a]/15 space-y-3 text-sm">
                 <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-4">{c.directHeading}</p>
-                <p className="text-[#f5f0ea]/50">hello@mewavalleycoffee.com</p>
+                <a href="mailto:info@mewavalley.com" className="text-[#f5f0ea]/50 hover:text-[#d4a96a] transition-colors">
+                  info@mewavalley.com
+                </a>
               </div>
             </div>
             </Reveal>

@@ -4,7 +4,11 @@ import Image from "next/image";
 import Reveal from "./Reveal";
 import { useLanguage } from "../lib/language";
 
-export default function Footer() {
+interface FooterProps {
+  phone?: string;
+}
+
+export default function Footer({ phone }: FooterProps) {
   const { t } = useLanguage();
 
   const navLinks = [
@@ -53,7 +57,17 @@ export default function Footer() {
           <div>
             <p className="text-[9px] tracking-[0.4em] uppercase text-[#d4a96a]/50 mb-4">{t.footer.contactHeading}</p>
             <p className="text-xs text-[#f5f0ea]/40 leading-relaxed">
-              hello@mewavalleycoffee.com
+              <a href="mailto:info@mewavalley.com" className="hover:text-[#d4a96a] transition-colors">
+                info@mewavalley.com
+              </a>
+              {phone && (
+                <>
+                  <br />
+                  <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:text-[#d4a96a] transition-colors">
+                    Phone: {phone}
+                  </a>
+                </>
+              )}
               <br /><br />
               {t.footer.contactBody}
             </p>

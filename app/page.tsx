@@ -10,7 +10,7 @@ export default function Home() {
       <main>
         <HomeHero />
       </main>
-      <Footer />
+      <Footer phone="+44 7341848470" />
     </>
   );
 }
