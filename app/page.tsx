@@ -1,16 +1,14 @@
+"use client";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import HomeHero from "./components/HomeHero";
 import Reveal from "./components/Reveal";
 import Link from "next/link";
-
-const pages = [
-  { href: "/for-roasters", label: "For Roasters", desc: "What we offer, who we are, and why Nepal." },
-  { href: "/origin",       label: "Origin",       desc: "The geography and growing conditions of Nepal's coffee hills." },
-  { href: "/contact",      label: "Contact",      desc: "Roaster enquiry form." },
-];
+import { useLanguage } from "./lib/language";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <>
       <Nav />
@@ -21,12 +19,12 @@ export default function Home() {
         <section className="py-20 px-6 border-t border-[#d4a96a]/10">
           <div className="max-w-4xl mx-auto">
             <Reveal>
-              <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-6">Gulmi 2026 Samples in Progress</p>
+              <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-6">{t.home.gulmiHeading}</p>
               <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-4">
-                We are currently in discussion with an established coffee cooperative in Gulmi District, Lumbini Province, Nepal. Supplier-reported information indicates Arabica coffee grown at 1,100+ masl (metres above sea level), washed and natural processing, moisture below 11%, and cup scores in the 81–85 range.
+                {t.home.gulmiBody}
               </p>
               <p className="text-[#f5f0ea]/40 text-sm leading-relaxed max-w-2xl">
-                All supplier information is subject to sample verification, lot confirmation and independent UK cupping before any commercial offer is made.
+                {t.home.gulmiNote}
               </p>
             </Reveal>
           </div>
@@ -36,10 +34,10 @@ export default function Home() {
         <section className="py-24 px-6">
           <div className="max-w-4xl mx-auto">
             <Reveal>
-              <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-12">Explore</p>
+              <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-12">{t.home.exploreHeading}</p>
             </Reveal>
             <div className="divide-y divide-[#d4a96a]/10">
-              {pages.map((p, i) => (
+              {t.home.pages.map((p, i) => (
                 <Reveal key={p.href} delay={i * 70}>
                   <Link
                     href={p.href}

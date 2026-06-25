@@ -2,8 +2,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../lib/language";
 
 export default function HomeHero() {
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);
@@ -83,10 +85,10 @@ export default function HomeHero() {
         {/* Body text */}
         <div className={a()} {...d(580)}>
           <p className="text-lg md:text-xl text-[#f5f0ea]/70 max-w-2xl mx-auto leading-relaxed mb-4 font-light">
-            Premium high-altitude Nepali coffee for UK and European roasters.
+            {t.hero.tagline}
           </p>
           <p className="text-sm md:text-base text-[#f5f0ea]/50 max-w-xl mx-auto leading-relaxed mb-12 font-light">
-            Mewa Valley Coffee connects roasters with carefully sourced green coffee from Nepal, working directly with local cooperatives and producers to build transparent, lasting relationships. We are currently preparing washed and natural Arabica samples from Gulmi District, with independent UK cupping pending.
+            {t.hero.body}
           </p>
         </div>
 
@@ -96,7 +98,7 @@ export default function HomeHero() {
             href="/for-roasters"
             className="group px-10 py-4 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#e0be88] transition-all duration-300 flex items-center gap-3"
           >
-            For Roasters
+            {t.hero.forRoasters}
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -105,7 +107,7 @@ export default function HomeHero() {
             href="/contact"
             className="px-10 py-4 border border-[#f5f0ea]/20 text-[#f5f0ea]/60 text-xs tracking-[0.3em] uppercase hover:border-[#d4a96a]/50 hover:text-[#d4a96a] transition-all duration-300"
           >
-            Register Interest
+            {t.hero.registerInterest}
           </Link>
         </div>
       </div>

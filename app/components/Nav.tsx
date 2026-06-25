@@ -4,19 +4,21 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-
-const links = [
-  { label: "Home", href: "/" },
-  { label: "For Roasters", href: "/for-roasters" },
-  { label: "Origin", href: "/origin" },
-  { label: "Contact", href: "/contact" },
-];
+import { useLanguage } from "../lib/language";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [progress, setProgress] = useState(0);
   const pathname = usePathname();
+  const { lang, setLang, t } = useLanguage();
+
+  const links = [
+    { label: t.nav.home, href: "/" },
+    { label: t.nav.forRoasters, href: "/for-roasters" },
+    { label: t.nav.origin, href: "/origin" },
+    { label: t.nav.contact, href: "/contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => {
@@ -28,6 +30,10 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const toggleLang = () => setLang(lang === "en" ? "ne" : "en");
+  const langToggleClass =
+    "inline-flex items-center gap-2 px-5 py-2 border border-[#d4a96a]/50 text-[#d4a96a] text-xs tracking-[0.2em] uppercase hover:bg-[#d4a96a] hover:text-[#1c1814] transition-all duration-300 font-medium";
 
   return (
     <nav
@@ -65,12 +71,15 @@ export default function Nav() {
           ))}
         </ul>
 
-        <Link
-          href="/contact"
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2 border border-[#d4a96a]/50 text-[#d4a96a] text-xs tracking-[0.2em] uppercase hover:bg-[#d4a96a] hover:text-[#1c1814] transition-all duration-300 font-medium"
+        <button
+          onClick={toggleLang}
+          aria-label="Toggle language"
+          className={`${langToggleClass} hidden md:inline-flex`}
         >
-          Enquire
-        </Link>
+          <span className={lang === "en" ? "font-bold" : "opacity-50"}>EN</span>
+          <span className="opacity-40">/</span>
+          <span className={lang === "ne" ? "font-bold" : "opacity-50"}>NE</span>
+        </button>
 
         <button
           className="md:hidden flex flex-col gap-1.5 p-2"
@@ -89,7 +98,7 @@ export default function Nav() {
         style={{ width: `${progress}%` }}
       />
 
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${menuOpen ? "max-h-80" : "max-h-0"}`}>
+      <div className={`md:hidden transition-all duration-300 overflow-hidden ${menuOpen ? "max-h-96" : "max-h-0"}`}>
         <ul className="flex flex-col px-6 py-4 gap-4 bg-[#1c1814]/98 border-t border-[#d4a96a]/10">
           {links.map((l) => (
             <li key={l.href}>
@@ -105,13 +114,15 @@ export default function Nav() {
             </li>
           ))}
           <li>
-            <Link
-              href="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="inline-block mt-2 px-5 py-2 border border-[#d4a96a]/50 text-[#d4a96a] text-xs tracking-[0.2em] uppercase"
+            <button
+              onClick={toggleLang}
+              aria-label="Toggle language"
+              className={`${langToggleClass} mt-2`}
             >
-              Enquire
-            </Link>
+              <span className={lang === "en" ? "font-bold" : "opacity-50"}>EN</span>
+              <span className="opacity-40">/</span>
+              <span className={lang === "ne" ? "font-bold" : "opacity-50"}>NE</span>
+            </button>
           </li>
         </ul>
       </div>

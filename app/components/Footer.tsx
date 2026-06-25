@@ -1,14 +1,18 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import Reveal from "./Reveal";
-
-const navLinks = [
-  { label: "For Roasters", href: "/for-roasters" },
-  { label: "Origin",       href: "/origin" },
-  { label: "Contact",      href: "/contact" },
-];
+import { useLanguage } from "../lib/language";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { label: t.nav.forRoasters, href: "/for-roasters" },
+    { label: t.nav.origin, href: "/origin" },
+    { label: t.nav.contact, href: "/contact" },
+  ];
+
   return (
     <footer className="relative border-t border-[#d4a96a]/10 py-16 px-6">
       <Reveal>
@@ -24,14 +28,13 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-xs text-[#f5f0ea]/30 leading-relaxed max-w-xs">
-              Building direct sourcing relationships with Nepali producers and cooperatives.
-              First lots arriving after July 2026.
+              {t.footer.tagline}
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#d4a96a]/50 mb-4">Navigate</p>
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#d4a96a]/50 mb-4">{t.footer.navigate}</p>
             <ul className="space-y-3">
               {navLinks.map((l) => (
                 <li key={l.href}>
@@ -48,12 +51,11 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#d4a96a]/50 mb-4">Contact</p>
+            <p className="text-[9px] tracking-[0.4em] uppercase text-[#d4a96a]/50 mb-4">{t.footer.contactHeading}</p>
             <p className="text-xs text-[#f5f0ea]/40 leading-relaxed">
               hello@mewavalleycoffee.com
               <br /><br />
-              Roaster enquiries, sample requests,
-              <br />and wholesale - use the contact form.
+              {t.footer.contactBody}
             </p>
           </div>
         </div>
@@ -61,10 +63,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-[#d4a96a]/10 flex flex-col gap-4">
           <p className="text-[10px] text-[#f5f0ea]/25 leading-relaxed max-w-3xl">
-            Mewa Valley Coffee is currently preparing supplier-reported Gulmi 2026 coffee information for independent UK cupping. No commercial lot claims are final until samples have been verified.
+            {t.footer.disclaimer}
           </p>
           <p className="text-[9px] tracking-[0.3em] uppercase text-[#f5f0ea]/20">
-            © {new Date().getFullYear()} Mewa Valley Coffee. All rights reserved.
+            © {new Date().getFullYear()} Mewa Valley Coffee. {t.footer.rights}
           </p>
         </div>
       </div>

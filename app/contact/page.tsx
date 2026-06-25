@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Reveal from "../components/Reveal";
+import { useLanguage } from "../lib/language";
 
 export default function Contact() {
+  const { t } = useLanguage();
+  const c = t.contact;
   const [mounted, setMounted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -41,13 +44,13 @@ export default function Contact() {
         <section className="relative pt-40 pb-16 px-6 border-b border-[#d4a96a]/15">
           <div className="max-w-4xl mx-auto">
             <p className={`${tr} ${mounted ? show : hide} text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-4`} style={{ transitionDelay: "100ms" }}>
-              Get in Touch
+              {c.eyebrow}
             </p>
             <h1 className={`${tr} ${mounted ? show : hide} text-4xl md:text-6xl font-black tracking-widest uppercase text-[#f5f0ea] leading-none mb-6`} style={{ transitionDelay: "220ms" }}>
-              Contact
+              {c.title}
             </h1>
             <p className={`${tr} ${mounted ? show : hide} text-[#f5f0ea]/50 text-lg max-w-2xl leading-relaxed font-light`} style={{ transitionDelay: "380ms" }}>
-              Are you a roaster, importer or coffee buyer interested in evaluating Nepali green coffee? Register your interest and we will contact you when properly labelled Gulmi 2026 samples are available for UK cupping.
+              {c.subtitle}
             </p>
           </div>
         </section>
@@ -58,15 +61,15 @@ export default function Contact() {
             {/* Left: context */}
             <Reveal>
             <div>
-              <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-6">What happens next</p>
+              <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-6">{c.whatNextHeading}</p>
               <div className="space-y-6 text-sm text-[#f5f0ea]/50 leading-relaxed">
-                <p>We aim to respond within 2 working days.</p>
-                <p>If you are a roaster interested in samples, we will add you to our list and contact you when lots are confirmed after our July 2026 sourcing trip.</p>
-                <p>If you have questions about the origin or our sourcing approach, we are happy to talk through the details.</p>
+                <p>{c.whatNext1}</p>
+                <p>{c.whatNext2}</p>
+                <p>{c.whatNext3}</p>
               </div>
 
               <div className="mt-10 pt-8 border-t border-[#d4a96a]/15 space-y-3 text-sm">
-                <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-4">Direct</p>
+                <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-4">{c.directHeading}</p>
                 <p className="text-[#f5f0ea]/50">hello@mewavalleycoffee.com</p>
               </div>
             </div>
@@ -82,9 +85,9 @@ export default function Contact() {
                       <path d="M4 10l4 4 8-8" stroke="#d4a96a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
-                  <h2 className="text-2xl font-black tracking-widest uppercase text-[#f5f0ea] mb-3">Thank you</h2>
+                  <h2 className="text-2xl font-black tracking-widest uppercase text-[#f5f0ea] mb-3">{c.thankYouHeading}</h2>
                   <p className="text-[#f5f0ea]/50 text-sm max-w-sm leading-relaxed">
-                    We have received your message and will aim to respond within 2 working days.
+                    {c.thankYouBody}
                   </p>
                 </div>
               ) : (
@@ -94,60 +97,54 @@ export default function Contact() {
                 >
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className={labelClass}>Name *</label>
-                      <input type="text" required value={form.name} onChange={set("name")} className={inputClass} placeholder="Your full name" />
+                      <label className={labelClass}>{c.labels.name}</label>
+                      <input type="text" required value={form.name} onChange={set("name")} className={inputClass} placeholder={c.placeholders.name} />
                     </div>
                     <div>
-                      <label className={labelClass}>Business *</label>
-                      <input type="text" required value={form.business} onChange={set("business")} className={inputClass} placeholder="Company or roastery name" />
+                      <label className={labelClass}>{c.labels.business}</label>
+                      <input type="text" required value={form.business} onChange={set("business")} className={inputClass} placeholder={c.placeholders.business} />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className={labelClass}>Role *</label>
-                      <input type="text" required value={form.role} onChange={set("role")} className={inputClass} placeholder="e.g. Head of Sourcing" />
+                      <label className={labelClass}>{c.labels.role}</label>
+                      <input type="text" required value={form.role} onChange={set("role")} className={inputClass} placeholder={c.placeholders.role} />
                     </div>
                     <div>
-                      <label className={labelClass}>Email *</label>
-                      <input type="email" required value={form.email} onChange={set("email")} className={inputClass} placeholder="you@example.com" />
+                      <label className={labelClass}>{c.labels.email}</label>
+                      <input type="email" required value={form.email} onChange={set("email")} className={inputClass} placeholder={c.placeholders.email} />
                     </div>
                   </div>
 
                   <div>
-                    <label className={labelClass}>Are you a... *</label>
+                    <label className={labelClass}>{c.labels.areYouA}</label>
                     <select required value={form.type} onChange={set("type")} className={`${inputClass} bg-[#1c1814]`}>
-                      <option value="" disabled>Select one</option>
-                      <option value="roaster">Roaster</option>
-                      <option value="importer">Importer</option>
-                      <option value="cafe">Café</option>
-                      <option value="consumer">Consumer</option>
-                      <option value="other">Other</option>
+                      <option value="" disabled>{c.selectOne}</option>
+                      {c.typeOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                      ))}
                     </select>
                   </div>
 
                   <div>
-                    <label className={labelClass}>Are you interested in... *</label>
+                    <label className={labelClass}>{c.labels.interestedIn}</label>
                     <select required value={form.interest} onChange={set("interest")} className={`${inputClass} bg-[#1c1814]`}>
-                      <option value="" disabled>Select one</option>
-                      <option value="gulmi-2026">Gulmi 2026 samples</option>
-                      <option value="green-samples">Green samples for cupping</option>
-                      <option value="roaster-enquiry">Roaster enquiry</option>
-                      <option value="importer-enquiry">Importer enquiry</option>
-                      <option value="private-label">Private label / contract roasting</option>
-                      <option value="future-roasted">Future roasted coffee</option>
-                      <option value="general">General information</option>
+                      <option value="" disabled>{c.selectOne}</option>
+                      {c.interestOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                      ))}
                     </select>
                   </div>
 
                   <div>
-                    <label className={labelClass}>Comments</label>
+                    <label className={labelClass}>{c.labels.comments}</label>
                     <textarea
                       rows={5}
                       value={form.comments}
                       onChange={set("comments")}
                       className={inputClass}
-                      placeholder="Any questions, context about your business, volumes you have in mind..."
+                      placeholder={c.placeholders.comments}
                     />
                   </div>
 
@@ -155,7 +152,7 @@ export default function Contact() {
                     type="submit"
                     className="w-full py-4 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.4em] uppercase font-black hover:bg-[#e0be88] transition-colors"
                   >
-                    Send Enquiry
+                    {c.submit}
                   </button>
                 </form>
               )}
