@@ -19,7 +19,7 @@ export default function HomeHero() {
   const d = (ms: number) => ({ style: { transitionDelay: `${ms}ms` } as React.CSSProperties });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pb-40">
       {/* Background gradients */}
       <div
         className="absolute inset-0"
