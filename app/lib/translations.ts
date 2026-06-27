@@ -20,7 +20,7 @@ export const translations = {
     },
     hero: {
       tagline: "Premium high-altitude Nepali coffee for UK and European roasters.",
-      body: "Mewa Valley Coffee connects roasters with carefully sourced green coffee from Nepal, working directly with local cooperatives and producers to build transparent, lasting relationships. We are currently preparing washed and natural Arabica samples from Gulmi District, with independent UK cupping pending.",
+      body: "Mewa Valley Coffee connects roasters with carefully sourced green Arabica from Nepal, working directly with producers across Gulmi, Solukhumbu, Ilam and the surrounding hill districts to build transparent, lasting relationships. We are currently sourcing washed, natural and honey-processed samples for independent UK cupping.",
       forRoasters: "For Roasters",
       registerInterest: "Register Interest",
     },
@@ -213,7 +213,7 @@ export const translations = {
     },
     hero: {
       tagline: "यूके र युरोपका रोस्टरहरूका लागि उच्च गुणस्तरीय, उच्च-उचाइको नेपाली कफी।",
-      body: "मेवा भ्याली कफीले रोस्टरहरूलाई नेपालबाट होसियारीपूर्वक स्रोत गरिएको हरियो कफीसँग जोड्छ, स्थानीय सहकारी र उत्पादकहरूसँग प्रत्यक्ष काम गरी पारदर्शी र दिगो सम्बन्ध निर्माण गर्दै। हामी हाल गुल्मी जिल्लाबाट धोएको र प्राकृतिक अराबिका नमूना तयार गर्दैछौं, स्वतन्त्र यूके कपिङ हुन बाँकी छ।",
+      body: "मेवा भ्याली कफीले रोस्टरहरूलाई नेपालबाट होसियारीपूर्वक स्रोत गरिएको हरियो अराबिकासँग जोड्छ, गुल्मी, सोलुखुम्बु, इलाम र वरपरका पहाडी जिल्लाहरूका उत्पादकहरूसँग प्रत्यक्ष काम गरी पारदर्शी र दिगो सम्बन्ध निर्माण गर्दै। हामी हाल स्वतन्त्र यूके कपिङका लागि धोएको, प्राकृतिक र हनी-प्रशोधित नमूना स्रोत गर्दैछौं।",
       forRoasters: "रोस्टरहरूका लागि",
       registerInterest: "चासो दर्ता गर्नुहोस्",
     },
