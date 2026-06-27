@@ -136,13 +136,6 @@ export const translations = {
           note: "Nepal has been producing coffee commercially since the 1980s but remains largely unknown outside specialty circles. We are assessing several supplier leads of varying readiness, from established exporters to newer producers.",
         },
       ],
-      noteHeading: "A note on the origin",
-      noteBody1:
-        "We are currently in conversation with several coffee suppliers across Nepal's hill districts, spanning Koshi and Lumbini provinces, including Gulmi, Bhojpur, Ilam and Solukhumbu. Reported altitudes, processing methods and cup scores vary by supplier and will be detailed individually as samples are confirmed.",
-      noteBody2:
-        "Nepal's coffee industry is small and fragmented. Many growers are smallholders with less than a hectare under production. This makes traceability challenging but also means that direct relationships with producers or cooperatives are genuinely possible.",
-      noteBody3:
-        "During our July 2026 sourcing visit, we aim to document farm and cooperative details, processing methods, storage conditions, sample quality and export readiness.",
     },
     contact: {
       eyebrow: "Get in Touch",
@@ -328,13 +321,6 @@ export const translations = {
           note: "नेपालले १९८० को दशकदेखि व्यावसायिक रूपमा कफी उत्पादन गरिरहेको छ तर स्पेशल्टी सर्कलबाहेक अझै धेरै अज्ञात छ। हामी स्थापित निर्यातकर्तादेखि नयाँ उत्पादकसम्म फरक-फरक तयारी अवस्थाका धेरै सप्लायर लीडको मूल्याङ्कन गर्दैछौं।",
         },
       ],
-      noteHeading: "उत्पत्तिको बारेमा एक नोट",
-      noteBody1:
-        "हामी हाल नेपालका पहाडी जिल्लाहरूका धेरै कफी सप्लायरहरूसँग कुराकानी गर्दैछौं, जो कोशी र लुम्बिनी प्रदेशमा फैलिएका छन्, जसमा गुल्मी, भोजपुर, इलाम र सोलुखुम्बु समावेश छन्। रिपोर्ट गरिएको उचाइ, प्रशोधन विधि, र कप स्कोर सप्लायरअनुसार फरक हुन्छन् र नमूना पुष्टि भएपछि व्यक्तिगत रूपमा विस्तृत गरिनेछ।",
-      noteBody2:
-        "नेपालको कफी उद्योग सानो र विखण्डित छ। धेरै उत्पादकहरू एक हेक्टरभन्दा कम जमिनमा उत्पादन गर्ने साना किसान हुन्। यसले ट्रेसेबिलिटीलाई चुनौतीपूर्ण बनाउँछ तर यसको अर्थ उत्पादक वा सहकारीहरूसँग प्रत्यक्ष सम्बन्ध साँच्चै सम्भव छ भन्ने पनि हो।",
-      noteBody3:
-        "हाम्रो जुलाई २०२६ स्रोत भ्रमणको क्रममा, हामी खेत र सहकारी विवरण, प्रशोधन विधि, भण्डारण अवस्था, नमूना गुणस्तर, र निर्यात तयारी दस्तावेजीकरण गर्ने लक्ष्य राख्छौं।",
     },
     contact: {
       eyebrow: "सम्पर्कमा रहनुहोस्",

@@ -27,18 +27,6 @@ export default function OriginContent() {
           ))}
         </div>
       </section>
-
-      {/* Context note */}
-      <Reveal>
-        <section className="py-16 px-6 border-t border-[#d4a96a]/15">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-6">{o.noteHeading}</p>
-            <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-4">{o.noteBody1}</p>
-            <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl mb-4">{o.noteBody2}</p>
-            <p className="text-[#f5f0ea]/60 leading-relaxed max-w-2xl">{o.noteBody3}</p>
-          </div>
-        </section>
-      </Reveal>
     </>
   );
 }
