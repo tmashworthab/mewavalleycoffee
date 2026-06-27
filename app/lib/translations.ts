@@ -14,7 +14,7 @@ export const translations = {
       navigate: "Navigate",
       contactHeading: "Contact",
       disclaimer:
-        "Mewa Valley Coffee is currently preparing supplier-reported Gulmi 2026 coffee information for independent UK cupping. No commercial lot claims are final until samples have been verified.",
+        "All cup scores and lot details on this site are currently supplier-reported. Mewa Valley Coffee is arranging independent UK cupping, and no commercial lot claims are final until samples have been verified.",
       rights: "All rights reserved.",
     },
     hero: {
@@ -206,7 +206,7 @@ export const translations = {
       navigate: "नेभिगेसन",
       contactHeading: "सम्पर्क",
       disclaimer:
-        "मेवा भ्याली कफीले हाल गुल्मी २०२६ कफी सम्बन्धी सप्लायरले रिपोर्ट गरेको जानकारी स्वतन्त्र यूके कपिङका लागि तयार गर्दै छ। नमूनाहरू प्रमाणित नभएसम्म कुनै पनि व्यावसायिक लट दाबी अन्तिम मानिने छैन।",
+        "यस साइटमा रहेका सबै कप स्कोर र लट विवरण हाल सप्लायरद्वारा रिपोर्ट गरिएका हुन्। मेवा भ्याली कफीले स्वतन्त्र यूके कपिङको व्यवस्था गर्दैछ, र नमूनाहरू प्रमाणित नभएसम्म कुनै पनि व्यावसायिक लट दाबी अन्तिम मानिने छैन।",
       rights: "सर्वाधिकार सुरक्षित।",
     },
     hero: {
