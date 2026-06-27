@@ -102,28 +102,28 @@ export const translations = {
         },
         {
           label: "Our focus",
-          value: "Gulmi District",
-          note: "Our current supplier conversations are focused on Arabica coffee from Resunga Municipality, Gulmi District, Lumbini Province.",
+          value: "Multiple Hill Districts",
+          note: "Our current supplier conversations span coffee-growing districts across Koshi and Lumbini provinces, including Gulmi, Bhojpur, Ilam and Solukhumbu.",
         },
         {
           label: "Altitude",
-          value: "1,100+ masl",
-          note: "Altitude varies by district and farm. Our current Gulmi supplier lead reports coffee grown at 1,100+ masl (metres above sea level). High altitude slows cherry development, concentrating sugars and producing denser beans.",
+          value: "800–1,600 masl",
+          note: "Altitude varies by district and farm. Supplier-reported growing altitudes across our current sourcing range from roughly 800 to 1,600 masl (metres above sea level). Higher altitude slows cherry development, concentrating sugars and producing denser beans.",
         },
         {
           label: "Variety",
           value: "Arabica",
-          note: "Local Gulmi Arabica variety, verification pending. Nepal has no Robusta production at altitude.",
+          note: "Predominantly Arabica, with some Robusta grown at lower altitude in parts of Koshi Province. Specific varieties are still being confirmed with each supplier.",
         },
         {
           label: "Harvest",
-          value: "Jan – Mar (Gulmi)",
-          note: "Harvest varies by district, altitude and producer. Our current Gulmi supplier information indicates a January–March 2026 harvest.",
+          value: "Varies by district",
+          note: "Harvest timing varies by district, altitude and producer. Our Gulmi supplier lead, for example, reports a January–March harvest.",
         },
         {
           label: "Processing",
-          value: "Washed & Natural",
-          note: "Both methods are available from our current Gulmi supplier. Washed lots tend to produce cleaner, brighter cups. Naturals show more fruit character.",
+          value: "Washed, Natural & Honey",
+          note: "Processing methods reported across our current suppliers include washed, natural and yellow honey, depending on the producer.",
         },
         {
           label: "Climate",
@@ -133,12 +133,12 @@ export const translations = {
         {
           label: "Status",
           value: "Emerging Origin",
-          note: "Nepal has been producing coffee commercially since the 1980s but remains largely unknown outside specialty circles. Export documentation is available from established cooperatives.",
+          note: "Nepal has been producing coffee commercially since the 1980s but remains largely unknown outside specialty circles. We are assessing several supplier leads of varying readiness, from established exporters to newer producers.",
         },
       ],
       noteHeading: "A note on the origin",
       noteBody1:
-        "Gulmi District is one of Nepal's recognised coffee-growing areas. Our current supplier conversations are focused on Arabica coffee from Resunga Municipality, grown at 1,100+ masl and processed as washed and natural lots.",
+        "We are currently in conversation with several coffee suppliers across Nepal's hill districts, spanning Koshi and Lumbini provinces, including Gulmi, Bhojpur, Ilam and Solukhumbu. Reported altitudes, processing methods and cup scores vary by supplier and will be detailed individually as samples are confirmed.",
       noteBody2:
         "Nepal's coffee industry is small and fragmented. Many growers are smallholders with less than a hectare under production. This makes traceability challenging but also means that direct relationships with producers or cooperatives are genuinely possible.",
       noteBody3:
@@ -294,28 +294,28 @@ export const translations = {
         },
         {
           label: "हाम्रो केन्द्रबिन्दु",
-          value: "गुल्मी जिल्ला",
-          note: "हाम्रा हालका सप्लायर वार्ता लुम्बिनी प्रदेशको गुल्मी जिल्ला, रेसुङ्गा नगरपालिकाको अराबिका कफीमा केन्द्रित छन्।",
+          value: "विभिन्न पहाडी जिल्ला",
+          note: "हाम्रा हालका सप्लायर वार्ताहरू कोशी र लुम्बिनी प्रदेशका कफी उत्पादन जिल्लाहरूमा फैलिएका छन्, जसमा गुल्मी, भोजपुर, इलाम र सोलुखुम्बु समावेश छन्।",
         },
         {
           label: "उचाइ",
-          value: "समुद्री सतहभन्दा १,१००+ मिटर",
-          note: "उचाइ जिल्ला र खेतअनुसार फरक हुन्छ। हाम्रो हालको गुल्मी सप्लायर लीडले समुद्री सतहभन्दा १,१००+ मिटर उचाइमा कफी उत्पादन भएको रिपोर्ट गर्छ। उच्च उचाइले चेरी विकास ढिलो गराउँछ, चिनी सघन बनाउँछ र बढी घना दाना उत्पादन गर्छ।",
+          value: "समुद्री सतहभन्दा ८००–१,६०० मिटर",
+          note: "उचाइ जिल्ला र खेतअनुसार फरक हुन्छ। हाम्रो हालको स्रोतमा सप्लायरले रिपोर्ट गरेको उचाइ लगभग ८०० देखि १,६०० मिटरसम्म फरक पर्छ। बढी उचाइले चेरी विकास ढिलो गराउँछ, चिनी सघन बनाउँछ र बढी घना दाना उत्पादन गर्छ।",
         },
         {
           label: "जात",
           value: "अराबिका",
-          note: "स्थानीय गुल्मी अराबिका जात, प्रमाणीकरण बाँकी। नेपालमा उचाइमा रोबुस्टा उत्पादन हुँदैन।",
+          note: "प्रमुख रूपमा अराबिका, कोशी प्रदेशका केही भागमा कम उचाइमा रोबुस्टा पनि उत्पादन हुन्छ। प्रत्येक सप्लायरसँग विशेष जातको पुष्टि हुन बाँकी छ।",
         },
         {
           label: "फसल",
-          value: "जनवरी – मार्च (गुल्मी)",
-          note: "फसल जिल्ला, उचाइ, र उत्पादकअनुसार फरक हुन्छ। हाम्रो हालको गुल्मी सप्लायर जानकारीले जनवरी–मार्च २०२६ फसल देखाउँछ।",
+          value: "जिल्लाअनुसार फरक",
+          note: "फसल समय जिल्ला, उचाइ, र उत्पादकअनुसार फरक हुन्छ। उदाहरणका लागि, हाम्रो गुल्मी सप्लायर लीडले जनवरी–मार्च फसल रिपोर्ट गर्छ।",
         },
         {
           label: "प्रशोधन",
-          value: "धोएको र प्राकृतिक",
-          note: "हाम्रो हालको गुल्मी सप्लायरबाट दुवै विधि उपलब्ध छन्। धोएको लटले सफा, उज्यालो कप उत्पादन गर्ने झुकाव राख्छ। प्राकृतिकले बढी फलको स्वाद देखाउँछ।",
+          value: "धोएको, प्राकृतिक र हनी",
+          note: "हाम्रा हालका सप्लायरहरूले रिपोर्ट गरेका प्रशोधन विधिमा उत्पादकअनुसार धोएको, प्राकृतिक, र यलो हनी समावेश छन्।",
         },
         {
           label: "मौसम",
@@ -325,12 +325,12 @@ export const translations = {
         {
           label: "स्थिति",
           value: "उदीयमान उत्पत्ति स्थल",
-          note: "नेपालले १९८० को दशकदेखि व्यावसायिक रूपमा कफी उत्पादन गरिरहेको छ तर स्पेशल्टी सर्कलबाहेक अझै धेरै अज्ञात छ। स्थापित सहकारीहरूबाट निर्यात कागजात उपलब्ध छ।",
+          note: "नेपालले १९८० को दशकदेखि व्यावसायिक रूपमा कफी उत्पादन गरिरहेको छ तर स्पेशल्टी सर्कलबाहेक अझै धेरै अज्ञात छ। हामी स्थापित निर्यातकर्तादेखि नयाँ उत्पादकसम्म फरक-फरक तयारी अवस्थाका धेरै सप्लायर लीडको मूल्याङ्कन गर्दैछौं।",
         },
       ],
       noteHeading: "उत्पत्तिको बारेमा एक नोट",
       noteBody1:
-        "गुल्मी जिल्ला नेपालका मान्यता प्राप्त कफी उत्पादन क्षेत्रहरू मध्ये एक हो। हाम्रा हालका सप्लायर वार्ताहरू रेसुङ्गा नगरपालिकाको अराबिका कफीमा केन्द्रित छन्, जो समुद्री सतहभन्दा १,१००+ मिटरमा उत्पादन हुन्छ र धोएको र प्राकृतिक लटको रूपमा प्रशोधन गरिन्छ।",
+        "हामी हाल नेपालका पहाडी जिल्लाहरूका धेरै कफी सप्लायरहरूसँग कुराकानी गर्दैछौं, जो कोशी र लुम्बिनी प्रदेशमा फैलिएका छन्, जसमा गुल्मी, भोजपुर, इलाम र सोलुखुम्बु समावेश छन्। रिपोर्ट गरिएको उचाइ, प्रशोधन विधि, र कप स्कोर सप्लायरअनुसार फरक हुन्छन् र नमूना पुष्टि भएपछि व्यक्तिगत रूपमा विस्तृत गरिनेछ।",
       noteBody2:
         "नेपालको कफी उद्योग सानो र विखण्डित छ। धेरै उत्पादकहरू एक हेक्टरभन्दा कम जमिनमा उत्पादन गर्ने साना किसान हुन्। यसले ट्रेसेबिलिटीलाई चुनौतीपूर्ण बनाउँछ तर यसको अर्थ उत्पादक वा सहकारीहरूसँग प्रत्यक्ष सम्बन्ध साँच्चै सम्भव छ भन्ने पनि हो।",
       noteBody3:
