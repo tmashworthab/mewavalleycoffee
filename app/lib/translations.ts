@@ -13,7 +13,6 @@ export const translations = {
         "Building direct sourcing relationships with Nepali producers and cooperatives. First lots arriving after July 2026.",
       navigate: "Navigate",
       contactHeading: "Contact",
-      contactBody: "Roaster enquiries, sample requests, and wholesale - use the contact form.",
       disclaimer:
         "Mewa Valley Coffee is currently preparing supplier-reported Gulmi 2026 coffee information for independent UK cupping. No commercial lot claims are final until samples have been verified.",
       rights: "All rights reserved.",
@@ -206,7 +205,6 @@ export const translations = {
         "नेपाली उत्पादक र सहकारीहरूसँग प्रत्यक्ष स्रोत सम्बन्ध निर्माण गर्दै। पहिलो लटहरू जुलाई २०२६ पछि आउने छन्।",
       navigate: "नेभिगेसन",
       contactHeading: "सम्पर्क",
-      contactBody: "रोस्टर सोधपुछ, नमूना अनुरोध, र थोक खरिदका लागि सम्पर्क फारम प्रयोग गर्नुहोस्।",
       disclaimer:
         "मेवा भ्याली कफीले हाल गुल्मी २०२६ कफी सम्बन्धी सप्लायरले रिपोर्ट गरेको जानकारी स्वतन्त्र यूके कपिङका लागि तयार गर्दै छ। नमूनाहरू प्रमाणित नभएसम्म कुनै पनि व्यावसायिक लट दाबी अन्तिम मानिने छैन।",
       rights: "सर्वाधिकार सुरक्षित।",

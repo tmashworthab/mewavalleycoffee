@@ -68,8 +68,6 @@ export default function Footer({ phone }: FooterProps) {
                   </a>
                 </>
               )}
-              <br /><br />
-              {t.footer.contactBody}
             </p>
           </div>
         </div>
