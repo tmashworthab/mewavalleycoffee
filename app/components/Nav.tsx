@@ -16,8 +16,8 @@ export default function Nav() {
 
   const links = [
     { label: t.nav.home, href: "/" },
-    { label: t.nav.forRoasters, href: "/for-roasters" },
     { label: t.nav.about, href: "/about" },
+    { label: t.nav.contact, href: "/contact" },
   ];
 
   useEffect(() => {

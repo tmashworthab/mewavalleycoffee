@@ -12,8 +12,8 @@ export default function Footer({ phone }: FooterProps) {
   const { t } = useLanguage();
 
   const navLinks = [
-    { label: t.nav.forRoasters, href: "/for-roasters" },
     { label: t.nav.about, href: "/about" },
+    { label: t.nav.contact, href: "/contact" },
   ];
 
   return (
