@@ -25,30 +25,6 @@ export default function ForRoastersContent() {
         </div>
       </section>
 
-      {/* Current supplier info table */}
-      <section className="py-20 px-6 border-b border-[#d4a96a]/10">
-        <div className="max-w-4xl mx-auto">
-          <Reveal>
-            <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-8">{f.supplierHeading}</p>
-          </Reveal>
-          <Reveal delay={80}>
-            <div className="border border-[#d4a96a]/15 overflow-hidden">
-              <div className="bg-[#d4a96a]/10 border-b border-[#d4a96a]/15 px-6 py-3">
-                <p className="text-[9px] tracking-[0.3em] uppercase text-[#d4a96a]/70 font-bold">{f.supplierBannerNote}</p>
-              </div>
-              <div className="divide-y divide-[#d4a96a]/10">
-                {f.supplierTable.map((row) => (
-                  <div key={row.field} className="grid grid-cols-2 px-6 py-4">
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-[#d4a96a]/60 font-medium">{row.field}</p>
-                    <p className="text-sm text-[#f5f0ea]/70">{row.info}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* What roasters can expect */}
       <section className="py-20 px-6 border-b border-[#d4a96a]/10">
         <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
