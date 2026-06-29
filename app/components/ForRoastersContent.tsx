@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import PageHero from "./PageHero";
 import Reveal from "./Reveal";
 import { useLanguage } from "../lib/language";
@@ -77,12 +76,12 @@ export default function ForRoastersContent() {
               <p className="text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-2">{f.ctaEyebrow}</p>
               <p className="text-xl font-bold text-[#f5f0ea]">{f.ctaHeading}</p>
             </div>
-            <Link
-              href="/contact"
+            <a
+              href="mailto:info@mewavalley.com"
               className="flex-shrink-0 px-10 py-4 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#e0be88] transition-all duration-300"
             >
               {f.ctaButton}
-            </Link>
+            </a>
           </div>
         </section>
       </Reveal>

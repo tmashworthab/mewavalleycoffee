@@ -5,8 +5,7 @@ export const translations = {
     nav: {
       home: "Home",
       forRoasters: "For Roasters",
-      origin: "Origin",
-      contact: "Contact",
+      about: "About Us",
     },
     footer: {
       tagline:
@@ -32,8 +31,7 @@ export const translations = {
       exploreHeading: "Explore",
       pages: [
         { href: "/for-roasters", label: "For Roasters", desc: "What we offer, who we are, and why Nepal." },
-        { href: "/origin", label: "Origin", desc: "The geography and growing conditions of Nepal's coffee hills." },
-        { href: "/contact", label: "Contact", desc: "Roaster enquiry form." },
+        { href: "/about", label: "About Us", desc: "Our story and where we're sourcing from." },
       ],
     },
     forRoasters: {
@@ -72,108 +70,31 @@ export const translations = {
       ctaHeading: "Interested in cupping Nepali green coffee samples?",
       ctaButton: "Register Interest",
     },
-    origin: {
-      eyebrow: "The Terroir",
-      title: "Origin",
-      subtitle: "Nepal is an emerging specialty coffee origin with genuine potential. Here are the facts.",
-      facts: [
-        {
-          label: "Country",
-          value: "Nepal",
-          note: "Landlocked country in South Asia, bordered by India and China (Tibet).",
-        },
-        {
-          label: "Our focus",
-          value: "Multiple Hill Districts",
-          note: "Our current supplier conversations span coffee-growing districts across Koshi and Lumbini provinces, including Gulmi, Bhojpur, Ilam and Solukhumbu.",
-        },
-        {
-          label: "Altitude",
-          value: "800–1,600 masl",
-          note: "Altitude varies by district and farm. Supplier-reported growing altitudes across our current sourcing range from roughly 800 to 1,600 masl (metres above sea level). Higher altitude slows cherry development, concentrating sugars and producing denser beans.",
-        },
-        {
-          label: "Variety",
-          value: "Arabica",
-          note: "Predominantly Arabica, with some Robusta grown at lower altitude in parts of Koshi Province. Specific varieties are still being confirmed with each supplier.",
-        },
-        {
-          label: "Harvest",
-          value: "Varies by district",
-          note: "Harvest timing varies by district, altitude and producer. Our Gulmi supplier lead, for example, reports a January–March harvest.",
-        },
-        {
-          label: "Processing",
-          value: "Washed, Natural & Honey",
-          note: "Processing methods reported across our current suppliers include washed, natural and yellow honey, depending on the producer.",
-        },
-        {
-          label: "Climate",
-          value: "Subtropical Highland",
-          note: "Cool dry winters, warm monsoon summers. The monsoon brings reliable rainfall critical to cherry development.",
-        },
-        {
-          label: "Status",
-          value: "Emerging Origin",
-          note: "Nepal has been producing coffee commercially since the 1980s but remains largely unknown outside specialty circles. We are assessing several supplier leads of varying readiness, from established exporters to newer producers.",
-        },
-      ],
-    },
-    contact: {
-      eyebrow: "Get in Touch",
-      title: "Contact",
-      subtitle:
-        "Are you a roaster, importer or coffee buyer interested in evaluating Nepali green coffee? Register your interest and we will contact you when properly labelled Gulmi 2026 samples are available for UK cupping.",
-      whatNextHeading: "What happens next",
-      whatNext1: "We aim to respond within 2 working days.",
-      whatNext2:
-        "If you are a roaster interested in samples, we will add you to our list and contact you when lots are confirmed after our July 2026 sourcing trip.",
-      whatNext3: "If you have questions about the origin or our sourcing approach, we are happy to talk through the details.",
-      directHeading: "Direct",
-      thankYouHeading: "Thank you",
-      thankYouBody: "We have received your message and will aim to respond within 2 working days.",
-      labels: {
-        name: "Name *",
-        business: "Business *",
-        role: "Role *",
-        email: "Email *",
-        areYouA: "Are you a... *",
-        interestedIn: "Are you interested in... *",
-        comments: "Comments",
-      },
-      placeholders: {
-        name: "Your full name",
-        business: "Company or roastery name",
-        role: "e.g. Head of Sourcing",
-        email: "you@example.com",
-        comments: "Any questions, context about your business, volumes you have in mind...",
-      },
-      selectOne: "Select one",
-      typeOptions: [
-        { value: "roaster", label: "Roaster" },
-        { value: "importer", label: "Importer" },
-        { value: "cafe", label: "Café" },
-        { value: "consumer", label: "Consumer" },
-        { value: "other", label: "Other" },
-      ],
-      interestOptions: [
-        { value: "gulmi-2026", label: "Gulmi 2026 samples" },
-        { value: "green-samples", label: "Green samples for cupping" },
-        { value: "roaster-enquiry", label: "Roaster enquiry" },
-        { value: "importer-enquiry", label: "Importer enquiry" },
-        { value: "private-label", label: "Private label / contract roasting" },
-        { value: "future-roasted", label: "Future roasted coffee" },
-        { value: "general", label: "General information" },
-      ],
-      submit: "Send Enquiry",
+    about: {
+      eyebrow: "Who We Are",
+      title: "About Us",
+      aboutHeading: "About",
+      aboutBody1:
+        "The coffee we're sourcing is grown in the foothills of the Himalayas, home to the tallest mountains in the world. Nepal's climate is well suited to high-quality beans: cool, dry winters and warm monsoon summers that bring the reliable rainfall cherry development depends on.",
+      aboutBody2:
+        "Nepal has a youthful, enthusiastic and fast-growing coffee culture that remains largely unknown in Europe. We want to bring that community, and the premium product at the centre of it, to Britain.",
+      sourcingHeading: "Our Sourcing",
+      sourcingBody1:
+        "We're in active conversations with several suppliers of varying readiness, from established exporters to newer producers. These span coffee-growing districts across Koshi and Lumbini provinces, including Gulmi, Bhojpur, Ilam and Solukhumbu.",
+      mapAlt: "Map of Mewa Valley Coffee's sourcing districts in Nepal",
+      sourcingBody2:
+        "Between them, our suppliers offer a wide range of processing methods, including washed, natural and yellow honey. They grow predominantly Arabica, with some Robusta at lower altitude in parts of Koshi Province.",
+      sourcingBody3:
+        "Across our current sourcing, growing altitudes run from roughly 800 to 1,600 masl (metres above sea level). Higher altitude slows cherry development, concentrating sugars and producing denser beans.",
+      sourcingBody4:
+        "We're looking to partner with local roasters who are as excited about Nepalese coffee as we are.",
     },
   },
   ne: {
     nav: {
       home: "गृहपृष्ठ",
       forRoasters: "रोस्टरहरूका लागि",
-      origin: "उत्पत्ति",
-      contact: "सम्पर्क",
+      about: "हाम्रो बारेमा",
     },
     footer: {
       tagline:
@@ -199,8 +120,7 @@ export const translations = {
       exploreHeading: "अन्वेषण गर्नुहोस्",
       pages: [
         { href: "/for-roasters", label: "रोस्टरहरूका लागि", desc: "हामी के प्रदान गर्छौं, हामी को हौं, र किन नेपाल।" },
-        { href: "/origin", label: "उत्पत्ति", desc: "नेपालका कफी पहाडहरूको भूगोल र उत्पादन अवस्था।" },
-        { href: "/contact", label: "सम्पर्क", desc: "रोस्टर सोधपुछ फारम।" },
+        { href: "/about", label: "हाम्रो बारेमा", desc: "हाम्रो कथा र हामी कहाँबाट स्रोत गर्छौं।" },
       ],
     },
     forRoasters: {
@@ -239,100 +159,24 @@ export const translations = {
       ctaHeading: "नेपाली हरियो कफी नमूना कपिङ गर्न चासो छ?",
       ctaButton: "चासो दर्ता गर्नुहोस्",
     },
-    origin: {
-      eyebrow: "टेरोयर",
-      title: "उत्पत्ति",
-      subtitle: "नेपाल साँच्चै सम्भावना भएको उदीयमान स्पेशल्टी कफी उत्पत्ति स्थल हो। यहाँ तथ्यहरू छन्।",
-      facts: [
-        {
-          label: "देश",
-          value: "नेपाल",
-          note: "दक्षिण एशियाको भूपरिवेष्ठित देश, भारत र चीन (तिब्बत) सँग सीमा जोडिएको।",
-        },
-        {
-          label: "हाम्रो केन्द्रबिन्दु",
-          value: "विभिन्न पहाडी जिल्ला",
-          note: "हाम्रा हालका सप्लायर वार्ताहरू कोशी र लुम्बिनी प्रदेशका कफी उत्पादन जिल्लाहरूमा फैलिएका छन्, जसमा गुल्मी, भोजपुर, इलाम र सोलुखुम्बु समावेश छन्।",
-        },
-        {
-          label: "उचाइ",
-          value: "समुद्री सतहभन्दा ८००–१,६०० मिटर",
-          note: "उचाइ जिल्ला र खेतअनुसार फरक हुन्छ। हाम्रो हालको स्रोतमा सप्लायरले रिपोर्ट गरेको उचाइ लगभग ८०० देखि १,६०० मिटरसम्म फरक पर्छ। बढी उचाइले चेरी विकास ढिलो गराउँछ, चिनी सघन बनाउँछ र बढी घना दाना उत्पादन गर्छ।",
-        },
-        {
-          label: "जात",
-          value: "अराबिका",
-          note: "प्रमुख रूपमा अराबिका, कोशी प्रदेशका केही भागमा कम उचाइमा रोबुस्टा पनि उत्पादन हुन्छ। प्रत्येक सप्लायरसँग विशेष जातको पुष्टि हुन बाँकी छ।",
-        },
-        {
-          label: "फसल",
-          value: "जिल्लाअनुसार फरक",
-          note: "फसल समय जिल्ला, उचाइ, र उत्पादकअनुसार फरक हुन्छ। उदाहरणका लागि, हाम्रो गुल्मी सप्लायर लीडले जनवरी–मार्च फसल रिपोर्ट गर्छ।",
-        },
-        {
-          label: "प्रशोधन",
-          value: "धोएको, प्राकृतिक र हनी",
-          note: "हाम्रा हालका सप्लायरहरूले रिपोर्ट गरेका प्रशोधन विधिमा उत्पादकअनुसार धोएको, प्राकृतिक, र यलो हनी समावेश छन्।",
-        },
-        {
-          label: "मौसम",
-          value: "उपोष्णकटिबन्धीय उच्च भूमि",
-          note: "चिसो सुख्खा हिउँद, न्यानो मनसुन गर्मी। मनसुनले चेरी विकासका लागि महत्त्वपूर्ण भरपर्दो वर्षा ल्याउँछ।",
-        },
-        {
-          label: "स्थिति",
-          value: "उदीयमान उत्पत्ति स्थल",
-          note: "नेपालले १९८० को दशकदेखि व्यावसायिक रूपमा कफी उत्पादन गरिरहेको छ तर स्पेशल्टी सर्कलबाहेक अझै धेरै अज्ञात छ। हामी स्थापित निर्यातकर्तादेखि नयाँ उत्पादकसम्म फरक-फरक तयारी अवस्थाका धेरै सप्लायर लीडको मूल्याङ्कन गर्दैछौं।",
-        },
-      ],
-    },
-    contact: {
-      eyebrow: "सम्पर्कमा रहनुहोस्",
-      title: "सम्पर्क",
-      subtitle:
-        "तपाईं नेपाली हरियो कफी मूल्याङ्कन गर्न चासो राख्ने रोस्टर, आयातकर्ता वा कफी खरिदकर्ता हुनुहुन्छ? आफ्नो चासो दर्ता गर्नुहोस् र उचित लेबल भएको गुल्मी २०२६ नमूना यूके कपिङका लागि उपलब्ध हुँदा हामी तपाईंलाई सम्पर्क गर्नेछौं।",
-      whatNextHeading: "अब के हुन्छ",
-      whatNext1: "हामी २ कार्य दिनभित्र जवाफ दिने लक्ष्य राख्छौं।",
-      whatNext2:
-        "तपाईं नमूनामा चासो राख्ने रोस्टर हुनुहुन्छ भने, हामी तपाईंलाई हाम्रो सूचीमा थप्नेछौं र हाम्रो जुलाई २०२६ स्रोत भ्रमणपछि लट पुष्टि भएपछि सम्पर्क गर्नेछौं।",
-      whatNext3: "उत्पत्ति वा हाम्रो स्रोत दृष्टिकोणको बारेमा प्रश्न भएमा, हामी विवरणहरू छलफल गर्न खुसी छौं।",
-      directHeading: "प्रत्यक्ष",
-      thankYouHeading: "धन्यवाद",
-      thankYouBody: "हामीले तपाईंको सन्देश प्राप्त गरेका छौं र २ कार्य दिनभित्र जवाफ दिने प्रयास गर्नेछौं।",
-      labels: {
-        name: "नाम *",
-        business: "व्यवसाय *",
-        role: "पद *",
-        email: "इमेल *",
-        areYouA: "तपाईं... हुनुहुन्छ? *",
-        interestedIn: "तपाईं... मा चासो राख्नुहुन्छ? *",
-        comments: "टिप्पणी",
-      },
-      placeholders: {
-        name: "तपाईंको पूरा नाम",
-        business: "कम्पनी वा रोस्टरी नाम",
-        role: "जस्तै: सोर्सिङ प्रमुख",
-        email: "you@example.com",
-        comments: "कुनै प्रश्न, तपाईंको व्यवसायको बारेमा सन्दर्भ, मनमा रहेको परिमाण...",
-      },
-      selectOne: "एक चयन गर्नुहोस्",
-      typeOptions: [
-        { value: "roaster", label: "रोस्टर" },
-        { value: "importer", label: "आयातकर्ता" },
-        { value: "cafe", label: "क्याफे" },
-        { value: "consumer", label: "उपभोक्ता" },
-        { value: "other", label: "अन्य" },
-      ],
-      interestOptions: [
-        { value: "gulmi-2026", label: "गुल्मी २०२६ नमूना" },
-        { value: "green-samples", label: "कपिङका लागि हरियो नमूना" },
-        { value: "roaster-enquiry", label: "रोस्टर सोधपुछ" },
-        { value: "importer-enquiry", label: "आयातकर्ता सोधपुछ" },
-        { value: "private-label", label: "प्राइवेट लेबल / सम्झौता रोस्टिङ" },
-        { value: "future-roasted", label: "भविष्यको रोस्ट गरिएको कफी" },
-        { value: "general", label: "सामान्य जानकारी" },
-      ],
-      submit: "सोधपुछ पठाउनुहोस्",
+    about: {
+      eyebrow: "हामी को हौं",
+      title: "हाम्रो बारेमा",
+      aboutHeading: "बारेमा",
+      aboutBody1:
+        "हामीले स्रोत गर्ने कफी हिमालयको फेदीमा उत्पादन हुन्छ, जहाँ विश्वका सबैभन्दा अग्ला हिमालहरू छन्। नेपालको मौसम उच्च गुणस्तरका दानाका लागि उपयुक्त छ: चिसो सुख्खा हिउँद र न्यानो मनसुन गर्मी, जसले चेरी विकासका लागि आवश्यक भरपर्दो वर्षा ल्याउँछ।",
+      aboutBody2:
+        "नेपालमा युवा, उत्साही र छिटो बढ्दो कफी संस्कृति छ जो युरोपमा अझै धेरै अज्ञात छ। हामी त्यो समुदाय, र त्यसको केन्द्रमा रहेको प्रिमियम उत्पादन, बेलायतमा ल्याउन चाहन्छौं।",
+      sourcingHeading: "हाम्रो स्रोत",
+      sourcingBody1:
+        "हामी विभिन्न तयारी अवस्थाका धेरै सप्लायरहरूसँग सक्रिय कुराकानी गर्दैछौं, स्थापित निर्यातकर्तादेखि नयाँ उत्पादकसम्म। यी कोशी र लुम्बिनी प्रदेशका कफी उत्पादन जिल्लाहरूमा फैलिएका छन्, जसमा गुल्मी, भोजपुर, इलाम र सोलुखुम्बु समावेश छन्।",
+      mapAlt: "नेपालमा मेवा भ्याली कफीका स्रोत जिल्लाहरूको नक्सा",
+      sourcingBody2:
+        "हाम्रा सप्लायरहरूले सामूहिक रूपमा धोएको, प्राकृतिक र यलो हनी सहित विभिन्न प्रशोधन विधि प्रदान गर्छन्। उनीहरू प्रमुख रूपमा अराबिका उत्पादन गर्छन्, कोशी प्रदेशका केही भागमा कम उचाइमा केही रोबुस्टा पनि।",
+      sourcingBody3:
+        "हाम्रो हालको स्रोतमा, उत्पादन उचाइ लगभग ८०० देखि १,६०० मिटर (समुद्री सतहभन्दा माथि) सम्म फरक पर्छ। बढी उचाइले चेरी विकास ढिलो गराउँछ, चिनी सघन बनाउँछ र बढी घना दाना उत्पादन गर्छ।",
+      sourcingBody4:
+        "हामी नेपाली कफीप्रति हामीजस्तै उत्साहित स्थानीय रोस्टरहरूसँग साझेदारी गर्न खोज्दैछौं।",
     },
   },
 };

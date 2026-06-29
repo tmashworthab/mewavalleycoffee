@@ -13,8 +13,7 @@ export default function Footer({ phone }: FooterProps) {
 
   const navLinks = [
     { label: t.nav.forRoasters, href: "/for-roasters" },
-    { label: t.nav.origin, href: "/origin" },
-    { label: t.nav.contact, href: "/contact" },
+    { label: t.nav.about, href: "/about" },
   ];
 
   return (
