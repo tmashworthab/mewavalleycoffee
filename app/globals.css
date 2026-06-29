@@ -141,6 +141,15 @@ body {
   animation: bounceSlow 2.4s ease-in-out infinite;
 }
 
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 24s ease-in-out infinite alternate;
+}
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: clamp(2.5rem, 10vw, 5rem);

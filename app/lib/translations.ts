@@ -35,14 +35,13 @@ export const translations = {
     about: {
       eyebrow: "Who We Are",
       title: "About Us",
-      aboutHeading: "About",
       aboutBody1:
         "The coffee we're sourcing is grown in the foothills of the Himalayas, home to the tallest mountains in the world. Nepal's climate is well suited to high-quality beans: cool, dry winters and warm monsoon summers that bring the reliable rainfall cherry development depends on.",
       aboutBody2:
         "Nepal has a youthful, enthusiastic and fast-growing coffee culture that remains largely unknown in Europe. We want to bring that community, and the premium product at the centre of it, to Britain.",
-      sourcingHeading: "Our Sourcing",
       sourcingBody1:
         "We're in active conversations with several suppliers of varying readiness, from established exporters to newer producers. These span coffee-growing districts across Koshi and Lumbini provinces, including Gulmi, Bhojpur, Ilam and Solukhumbu.",
+      hillAlt: "Hills near Mewa Valley Coffee's sourcing districts in Nepal",
       mapAlt: "Map of Mewa Valley Coffee's sourcing districts in Nepal",
       sourcingBody2:
         "Between them, our suppliers offer a wide range of processing methods, including washed, natural and yellow honey. They grow predominantly Arabica, with some Robusta at lower altitude in parts of Koshi Province.",
@@ -134,14 +133,13 @@ export const translations = {
     about: {
       eyebrow: "हामी को हौं",
       title: "हाम्रो बारेमा",
-      aboutHeading: "बारेमा",
       aboutBody1:
         "हामीले स्रोत गर्ने कफी हिमालयको फेदीमा उत्पादन हुन्छ, जहाँ विश्वका सबैभन्दा अग्ला हिमालहरू छन्। नेपालको मौसम उच्च गुणस्तरका दानाका लागि उपयुक्त छ: चिसो सुख्खा हिउँद र न्यानो मनसुन गर्मी, जसले चेरी विकासका लागि आवश्यक भरपर्दो वर्षा ल्याउँछ।",
       aboutBody2:
         "नेपालमा युवा, उत्साही र छिटो बढ्दो कफी संस्कृति छ जो युरोपमा अझै धेरै अज्ञात छ। हामी त्यो समुदाय, र त्यसको केन्द्रमा रहेको प्रिमियम उत्पादन, बेलायतमा ल्याउन चाहन्छौं।",
-      sourcingHeading: "हाम्रो स्रोत",
       sourcingBody1:
         "हामी विभिन्न तयारी अवस्थाका धेरै सप्लायरहरूसँग सक्रिय कुराकानी गर्दैछौं, स्थापित निर्यातकर्तादेखि नयाँ उत्पादकसम्म। यी कोशी र लुम्बिनी प्रदेशका कफी उत्पादन जिल्लाहरूमा फैलिएका छन्, जसमा गुल्मी, भोजपुर, इलाम र सोलुखुम्बु समावेश छन्।",
+      hillAlt: "नेपालमा मेवा भ्याली कफीका स्रोत जिल्लाहरू नजिकका पहाडहरू",
       mapAlt: "नेपालमा मेवा भ्याली कफीका स्रोत जिल्लाहरूको नक्सा",
       sourcingBody2:
         "हाम्रा सप्लायरहरूले सामूहिक रूपमा धोएको, प्राकृतिक र यलो हनी सहित विभिन्न प्रशोधन विधि प्रदान गर्छन्। उनीहरू प्रमुख रूपमा अराबिका उत्पादन गर्छन्, कोशी प्रदेशका केही भागमा कम उचाइमा केही रोबुस्टा पनि।",
