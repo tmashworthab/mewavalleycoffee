@@ -51,10 +51,9 @@ export const translations = {
         "We're looking to partner with local roasters who are as excited about Nepalese coffee as we are.",
     },
     contact: {
-      eyebrow: "Get in Touch",
       title: "Contact",
       subtitle:
-        "Are you a roaster, importer or coffee buyer interested in evaluating Nepali green coffee? Register your interest and we will contact you when properly labelled Gulmi 2026 samples are available for UK cupping.",
+        "Are you a roaster, importer or coffee buyer interested in evaluating Nepali green coffee? We'd love to hear from you.",
       whatNextHeading: "What happens next",
       whatNext1: "We aim to respond within 2 working days.",
       whatNext2:
@@ -149,10 +148,9 @@ export const translations = {
         "हामी नेपाली कफीप्रति हामीजस्तै उत्साहित स्थानीय रोस्टरहरूसँग साझेदारी गर्न खोज्दैछौं।",
     },
     contact: {
-      eyebrow: "सम्पर्कमा रहनुहोस्",
       title: "सम्पर्क",
       subtitle:
-        "तपाईं नेपाली हरियो कफी मूल्याङ्कन गर्न चासो राख्ने रोस्टर, आयातकर्ता वा कफी खरिदकर्ता हुनुहुन्छ? आफ्नो चासो दर्ता गर्नुहोस् र उचित लेबल भएको गुल्मी २०२६ नमूना यूके कपिङका लागि उपलब्ध हुँदा हामी तपाईंलाई सम्पर्क गर्नेछौं।",
+        "तपाईं नेपाली हरियो कफी मूल्याङ्कन गर्न चासो राख्ने रोस्टर, आयातकर्ता वा कफी खरिदकर्ता हुनुहुन्छ? हामी तपाईंबाट सुन्न पाउँदा खुसी हुनेछौं।",
       whatNextHeading: "अब के हुन्छ",
       whatNext1: "हामी २ कार्य दिनभित्र जवाफ दिने लक्ष्य राख्छौं।",
       whatNext2:

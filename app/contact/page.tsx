@@ -43,9 +43,6 @@ export default function Contact() {
         {/* Header */}
         <section className="relative pt-40 pb-16 px-6 border-b border-[#d4a96a]/15">
           <div className="max-w-4xl mx-auto">
-            <p className={`${tr} ${mounted ? show : hide} text-[10px] tracking-[0.5em] uppercase text-[#d4a96a] mb-4`} style={{ transitionDelay: "100ms" }}>
-              {c.eyebrow}
-            </p>
             <h1 className={`${tr} ${mounted ? show : hide} text-4xl md:text-6xl font-black tracking-widest uppercase text-[#f5f0ea] leading-none mb-6`} style={{ transitionDelay: "220ms" }}>
               {c.title}
             </h1>
