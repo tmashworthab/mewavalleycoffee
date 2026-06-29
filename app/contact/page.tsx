@@ -58,11 +58,8 @@ export default function Contact() {
             {/* Left: context */}
             <Reveal>
             <div>
-              <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-6">{c.whatNextHeading}</p>
-              <div className="space-y-6 text-sm text-[#f5f0ea]/50 leading-relaxed">
+              <div className="text-sm text-[#f5f0ea]/50 leading-relaxed">
                 <p>{c.whatNext1}</p>
-                <p>{c.whatNext2}</p>
-                <p>{c.whatNext3}</p>
               </div>
 
               <div className="mt-10 pt-8 border-t border-[#d4a96a]/15 space-y-3 text-sm">

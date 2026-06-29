@@ -54,11 +54,7 @@ export const translations = {
       title: "Contact",
       subtitle:
         "Are you a roaster, importer or coffee buyer interested in evaluating Nepali green coffee? We'd love to hear from you.",
-      whatNextHeading: "What happens next",
       whatNext1: "We aim to respond within 2 working days.",
-      whatNext2:
-        "If you are a roaster interested in samples, we will add you to our list and contact you when lots are confirmed after our July 2026 sourcing trip.",
-      whatNext3: "If you have questions about the origin or our sourcing approach, we are happy to talk through the details.",
       directHeading: "Direct",
       thankYouHeading: "Thank you",
       thankYouBody: "We have received your message and will aim to respond within 2 working days.",
@@ -151,11 +147,7 @@ export const translations = {
       title: "सम्पर्क",
       subtitle:
         "तपाईं नेपाली हरियो कफी मूल्याङ्कन गर्न चासो राख्ने रोस्टर, आयातकर्ता वा कफी खरिदकर्ता हुनुहुन्छ? हामी तपाईंबाट सुन्न पाउँदा खुसी हुनेछौं।",
-      whatNextHeading: "अब के हुन्छ",
       whatNext1: "हामी २ कार्य दिनभित्र जवाफ दिने लक्ष्य राख्छौं।",
-      whatNext2:
-        "तपाईं नमूनामा चासो राख्ने रोस्टर हुनुहुन्छ भने, हामी तपाईंलाई हाम्रो सूचीमा थप्नेछौं र हाम्रो जुलाई २०२६ स्रोत भ्रमणपछि लट पुष्टि भएपछि सम्पर्क गर्नेछौं।",
-      whatNext3: "उत्पत्ति वा हाम्रो स्रोत दृष्टिकोणको बारेमा प्रश्न भएमा, हामी विवरणहरू छलफल गर्न खुसी छौं।",
       directHeading: "प्रत्यक्ष",
       thankYouHeading: "धन्यवाद",
       thankYouBody: "हामीले तपाईंको सन्देश प्राप्त गरेका छौं र २ कार्य दिनभित्र जवाफ दिने प्रयास गर्नेछौं।",
