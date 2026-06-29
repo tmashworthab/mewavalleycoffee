@@ -81,7 +81,19 @@ export default function AboutContent() {
           </Reveal>
 
           <Reveal delay={240}>
-            <p className="text-[#f5f0ea]/60 leading-relaxed text-lg">{a.sourcingBody4}</p>
+            <p className="text-[#f5f0ea]/60 leading-relaxed mb-10 text-lg">{a.sourcingBody4}</p>
+          </Reveal>
+
+          <Reveal delay={320}>
+            <div className="relative w-full border border-[#d4a96a]/15 overflow-hidden">
+              <Image
+                src="/nepal-hill-3.jpg"
+                alt={a.hillAlt}
+                width={1600}
+                height={1200}
+                className="w-full h-auto"
+              />
+            </div>
           </Reveal>
         </div>
       </section>
