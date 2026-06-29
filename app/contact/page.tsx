@@ -11,6 +11,8 @@ export default function Contact() {
   const c = t.contact;
   const [mounted, setMounted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 60);
@@ -23,15 +25,31 @@ export default function Contact() {
   const [form, setForm] = useState({
     name: "",
     business: "",
-    role: "",
     email: "",
-    type: "",
-    interest: "",
-    comments: "",
+    message: "",
   });
 
-  const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+  const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
+  };
 
   const labelClass = "block text-[9px] tracking-[0.35em] uppercase font-bold text-[#d4a96a]/70 mb-2";
   const inputClass = "w-full bg-transparent border border-[#d4a96a]/20 px-4 py-3 text-sm text-[#f5f0ea] placeholder-[#f5f0ea]/20 focus:outline-none focus:border-[#d4a96a]/60 transition-colors";
@@ -87,10 +105,7 @@ export default function Contact() {
                   </p>
                 </div>
               ) : (
-                <form
-                  onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
-                  className="space-y-6"
-                >
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className={labelClass}>{c.labels.name}</label>
@@ -102,51 +117,30 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className={labelClass}>{c.labels.role}</label>
-                      <input type="text" required value={form.role} onChange={set("role")} className={inputClass} placeholder={c.placeholders.role} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>{c.labels.email}</label>
-                      <input type="email" required value={form.email} onChange={set("email")} className={inputClass} placeholder={c.placeholders.email} />
-                    </div>
+                  <div>
+                    <label className={labelClass}>{c.labels.email}</label>
+                    <input type="email" required value={form.email} onChange={set("email")} className={inputClass} placeholder={c.placeholders.email} />
                   </div>
 
                   <div>
-                    <label className={labelClass}>{c.labels.areYouA}</label>
-                    <select required value={form.type} onChange={set("type")} className={`${inputClass} bg-[#1c1814]`}>
-                      <option value="" disabled>{c.selectOne}</option>
-                      {c.typeOptions.map((opt) => (
-                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className={labelClass}>{c.labels.interestedIn}</label>
-                    <select required value={form.interest} onChange={set("interest")} className={`${inputClass} bg-[#1c1814]`}>
-                      <option value="" disabled>{c.selectOne}</option>
-                      {c.interestOptions.map((opt) => (
-                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className={labelClass}>{c.labels.comments}</label>
+                    <label className={labelClass}>{c.labels.message}</label>
                     <textarea
                       rows={5}
-                      value={form.comments}
-                      onChange={set("comments")}
+                      value={form.message}
+                      onChange={set("message")}
                       className={inputClass}
-                      placeholder={c.placeholders.comments}
+                      placeholder={c.placeholders.message}
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-sm text-red-400/80">{c.sendError}</p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.4em] uppercase font-black hover:bg-[#e0be88] transition-colors"
+                    disabled={sending}
+                    className="w-full py-4 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.4em] uppercase font-black hover:bg-[#e0be88] transition-colors disabled:opacity-50"
                   >
                     {c.submit}
                   </button>
