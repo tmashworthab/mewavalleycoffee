@@ -81,22 +81,36 @@ export default function AboutContent() {
           </Reveal>
 
           <Reveal delay={240}>
-            <p className="text-[#f5f0ea]/60 leading-relaxed mb-10 text-lg">{a.sourcingBody4}</p>
-          </Reveal>
-
-          <Reveal delay={320}>
-            <div className="relative w-full border border-[#d4a96a]/15 overflow-hidden">
-              <Image
-                src="/nepal-hill-3.jpg"
-                alt={a.hillAlt}
-                width={1600}
-                height={1200}
-                className="w-full h-auto"
-              />
-            </div>
+            <p className="text-[#f5f0ea]/60 leading-relaxed text-lg">{a.sourcingBody4}</p>
           </Reveal>
         </div>
       </section>
+
+      {/* Closing background photo */}
+      <Reveal>
+        <section className="relative min-h-[60vh] md:min-h-[85vh] overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 overflow-hidden">
+            <Image
+              src="/nepal-hill-3.jpg"
+              alt={a.hillAlt}
+              fill
+              sizes="100vw"
+              className="object-cover animate-slow-zoom"
+            />
+          </div>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(28,24,20,0.55) 0%, rgba(28,24,20,0.3) 35%, rgba(28,24,20,0.55) 70%, rgba(28,24,20,0.92) 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: "radial-gradient(ellipse at center, transparent 35%, rgba(10,7,5,0.5) 100%)" }}
+          />
+        </section>
+      </Reveal>
     </>
   );
 }
