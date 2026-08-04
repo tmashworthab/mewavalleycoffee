@@ -1,14 +1,13 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useLanguage } from "../../lib/language";
+import { content } from "../../lib/content";
 import Reveal from "../Reveal";
 import { Eyebrow } from "./primitives";
 import ridge from "../../media/nepal-ridge.jpg";
 
 export default function Invitation() {
-  const { t } = useLanguage();
-  const c = t.cta;
+  const c = content.cta;
 
   return (
     <section className="relative overflow-hidden grain">
@@ -29,16 +28,19 @@ export default function Invitation() {
 
       <div className="relative max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 py-32 sm:py-44 lg:py-56">
         <div className="max-w-[40rem]">
-          <Eyebrow className="mb-8">{c.eyebrow}</Eyebrow>
+          <Eyebrow ck="cta.eyebrow" className="mb-8" />
 
           <Reveal delay={80}>
-            <h2 className="font-serif-display type-title text-[#f2ede6] mb-8 text-balance">
+            <h2
+              className="font-serif-display type-title text-[#f2ede6] mb-8 text-balance"
+              data-ck="cta.title"
+            >
               {c.title}
             </h2>
           </Reveal>
 
           <Reveal delay={160}>
-            <p className="font-serif-body type-lead text-[#f2ede6]/70 mb-12">
+            <p className="font-serif-body type-lead text-[#f2ede6]/70 mb-12" data-ck="cta.body">
               {c.body}
             </p>
           </Reveal>
@@ -48,7 +50,9 @@ export default function Invitation() {
               href="/contact"
               className="group inline-flex items-center gap-4 text-[#f2ede6] hover:text-[#c9a468] transition-colors duration-500"
             >
-              <span className="type-eyebrow">{c.button}</span>
+              <span className="type-eyebrow" data-ck="cta.button">
+                {c.button}
+              </span>
               <span className="relative block w-12 h-px bg-current overflow-hidden">
                 <span className="absolute inset-0 bg-current origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out-expo" />
               </span>

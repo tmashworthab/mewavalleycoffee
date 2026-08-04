@@ -5,19 +5,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logoMark from "../media/logo.png";
-import { useLanguage } from "../lib/language";
-import LanguageDropdown from "./LanguageDropdown";
+import { content } from "../lib/content";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { t } = useLanguage();
 
   const links = [
-    { label: t.nav.home, href: "/" },
-    { label: t.nav.about, href: "/about" },
-    { label: t.nav.contact, href: "/contact" },
+    { label: content.nav.home, ck: "nav.home", href: "/" },
+    { label: content.nav.about, ck: "nav.about", href: "/about" },
+    { label: content.nav.contact, ck: "nav.contact", href: "/contact" },
   ];
 
   useEffect(() => {
@@ -69,44 +67,37 @@ export default function Nav() {
               className="transition-opacity duration-500 group-hover:opacity-80"
             />
             <span className="hidden sm:flex flex-col leading-none">
-              <span className="type-eyebrow text-[#c9a468] text-[0.5625rem]">
-                Mewa Valley
-              </span>
+              <span className="type-eyebrow text-[#c9a468] text-[0.5625rem]">Mewa Valley</span>
               <span className="font-serif-display text-[1.0625rem] tracking-wide text-[#f2ede6] mt-1 group-hover:text-[#c9a468] transition-colors duration-500">
                 Coffee
               </span>
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-12">
-            <ul className="flex items-center gap-10 list-none m-0 p-0">
-              {links.map((l) => {
-                const active = pathname === l.href;
-                return (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      data-active={active}
-                      aria-current={active ? "page" : undefined}
-                      className={`nav-link type-eyebrow transition-colors duration-500 ${
-                        active
-                          ? "text-[#c9a468]"
-                          : "text-[#f2ede6]/60 hover:text-[#f2ede6]"
-                      }`}
-                    >
-                      {l.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-            <LanguageDropdown />
-          </div>
+          <ul className="hidden md:flex items-center gap-10 list-none m-0 p-0">
+            {links.map((l) => {
+              const active = pathname === l.href;
+              return (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    data-active={active}
+                    aria-current={active ? "page" : undefined}
+                    className={`nav-link type-eyebrow transition-colors duration-500 ${
+                      active ? "text-[#c9a468]" : "text-[#f2ede6]/60 hover:text-[#f2ede6]"
+                    }`}
+                  >
+                    <span data-ck={l.ck}>{l.label}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
 
           <button
             className="md:hidden flex flex-col items-end justify-center gap-[6px] -mr-3 min-w-11 min-h-11 px-3"
             onClick={() => setMenuOpen(true)}
-            aria-label={t.nav.menu}
+            aria-label={content.nav.menu}
             aria-expanded={menuOpen}
           >
             <span className="block h-px w-6 bg-[#f2ede6]" />
@@ -118,9 +109,7 @@ export default function Nav() {
       {/* Mobile sheet — full screen, generous, editorial */}
       <div
         className={`md:hidden fixed inset-0 z-[60] transition-opacity duration-500 ease-out-expo ${
-          menuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!menuOpen}
       >
@@ -131,16 +120,11 @@ export default function Nav() {
             <Image src={logoMark} alt="" width={32} height={32} />
             <button
               onClick={() => setMenuOpen(false)}
-              aria-label={t.nav.close}
+              aria-label={content.nav.close}
               className="-mr-3 px-3 min-w-11 min-h-11 flex items-center justify-end text-[#f2ede6]"
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path
-                  d="M4 4l12 12M16 4L4 16"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                />
+                <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
               </svg>
             </button>
           </div>
@@ -152,14 +136,8 @@ export default function Nav() {
                   href={l.href}
                   onClick={() => setMenuOpen(false)}
                   className={`block font-serif-display text-[2.5rem] leading-[1.5] transition-all duration-700 ease-out-expo ${
-                    pathname === l.href
-                      ? "text-[#c9a468]"
-                      : "text-[#f2ede6]/85"
-                  } ${
-                    menuOpen
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-3"
-                  }`}
+                    pathname === l.href ? "text-[#c9a468]" : "text-[#f2ede6]/85"
+                  } ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
                   style={{ transitionDelay: menuOpen ? `${120 + i * 80}ms` : "0ms" }}
                 >
                   {l.label}
@@ -168,14 +146,10 @@ export default function Nav() {
             ))}
           </ul>
 
-          <div className="pt-8 border-t border-[#c9a468]/15 flex items-center justify-between">
-            <a
-              href="mailto:info@mewavalley.com"
-              className="type-caption text-[#f2ede6]/60 link-underline"
-            >
+          <div className="pt-8 border-t border-[#c9a468]/15">
+            <a href="mailto:info@mewavalley.com" className="type-caption text-[#f2ede6]/60 link-underline">
               info@mewavalley.com
             </a>
-            <LanguageDropdown variant="inline" />
           </div>
         </div>
       </div>

@@ -3,11 +3,10 @@
 import { useState } from "react";
 import PageHero from "./PageHero";
 import Reveal from "./Reveal";
-import { useLanguage } from "../lib/language";
+import { content } from "../lib/content";
 
 export default function ContactContent() {
-  const { t } = useLanguage();
-  const c = t.contact;
+  const c = content.contact;
 
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
@@ -50,19 +49,19 @@ export default function ContactContent() {
 
   return (
     <>
-      <PageHero title={c.title} subtitle={c.subtitle} />
+      <PageHero titleCk="contact.title" subtitleCk="contact.subtitle" />
 
       <section className="px-6 sm:px-10 lg:px-16 pb-32 sm:pb-40 pt-8">
         <div className="max-w-[88rem] mx-auto grid lg:grid-cols-12 gap-y-16 gap-x-16">
           {/* Left rail */}
           <Reveal className="lg:col-span-4">
             <p className="font-serif-body type-body text-[#f2ede6]/60">
-              {c.whatNext1}
+              <span data-ck="contact.whatNext1">{c.whatNext1}</span>
             </p>
 
             <div className="mt-12 pt-10 border-t border-[#c9a468]/15">
               <p className="type-eyebrow text-[#c9a468] mb-5">
-                {c.directHeading}
+                <span data-ck="contact.directHeading">{c.directHeading}</span>
               </p>
               <a
                 href="mailto:info@mewavalley.com"
@@ -96,10 +95,10 @@ export default function ContactContent() {
                   </svg>
                 </div>
                 <h2 className="font-serif-display type-subtitle text-[#f2ede6] mb-4">
-                  {c.thankYouHeading}
+                  <span data-ck="contact.thankYouHeading">{c.thankYouHeading}</span>
                 </h2>
                 <p className="font-serif-body type-body text-[#f2ede6]/60 max-w-md">
-                  {c.thankYouBody}
+                  <span data-ck="contact.thankYouBody">{c.thankYouBody}</span>
                 </p>
               </div>
             ) : (
@@ -107,7 +106,7 @@ export default function ContactContent() {
                 <div className="grid sm:grid-cols-2 gap-x-10 gap-y-10">
                   <div>
                     <label htmlFor="name" className={labelClass}>
-                      {c.labels.name}{" "}
+                      <span data-ck="contact.labels.name">{c.labels.name}</span>{" "}
                       <span className="text-[#c9a468]" aria-hidden="true">
                         *
                       </span>
@@ -127,7 +126,7 @@ export default function ContactContent() {
 
                   <div>
                     <label htmlFor="business" className={labelClass}>
-                      {c.labels.business}{" "}
+                      <span data-ck="contact.labels.business">{c.labels.business}</span>{" "}
                       <span className="text-[#c9a468]" aria-hidden="true">
                         *
                       </span>
@@ -148,7 +147,7 @@ export default function ContactContent() {
 
                 <div className="mt-10">
                   <label htmlFor="email" className={labelClass}>
-                    {c.labels.email}{" "}
+                    <span data-ck="contact.labels.email">{c.labels.email}</span>{" "}
                     <span className="text-[#c9a468]" aria-hidden="true">
                       *
                     </span>
@@ -168,7 +167,7 @@ export default function ContactContent() {
 
                 <div className="mt-10">
                   <label htmlFor="message" className={labelClass}>
-                    {c.labels.message}
+                    <span data-ck="contact.labels.message">{c.labels.message}</span>
                   </label>
                   <textarea
                     id="message"
@@ -186,7 +185,7 @@ export default function ContactContent() {
                     role="alert"
                     className="mt-8 font-serif-body text-[0.9375rem] text-[#e6a08a]"
                   >
-                    {c.sendError}
+                    <span data-ck="contact.sendError">{c.sendError}</span>
                   </p>
                 )}
 

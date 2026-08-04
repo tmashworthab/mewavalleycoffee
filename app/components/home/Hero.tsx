@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useLanguage } from "../../lib/language";
+import { content } from "../../lib/content";
 import ridge from "../../media/nepal-ridge.jpg";
 
 export default function Hero() {
-  const { t } = useLanguage();
-  const h = t.hero;
+  const h = content.hero;
   const [mounted, setMounted] = useState(false);
   const [offset, setOffset] = useState(0);
 
@@ -33,9 +32,7 @@ export default function Hero() {
   }, []);
 
   const rise = (delay: number) =>
-    ({
-      transitionDelay: `${delay}ms`,
-    }) as React.CSSProperties;
+    ({ transitionDelay: `${delay}ms` }) as React.CSSProperties;
 
   const riseClass = `transition-all duration-[1300ms] ease-out-expo ${
     mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
@@ -43,7 +40,6 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100svh] flex items-end overflow-hidden grain">
-      {/* Photograph */}
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute inset-0 will-change-transform"
@@ -78,35 +74,32 @@ export default function Hero() {
       />
       <div className="absolute inset-0 scrim-vignette pointer-events-none" />
 
-      {/* Content */}
       <div className="relative w-full max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 pb-20 sm:pb-24 lg:pb-32 pt-40">
         <p
           className={`type-eyebrow text-[#c9a468] mb-6 sm:mb-8 ${riseClass}`}
           style={rise(500)}
+          data-ck="hero.eyebrow"
         >
           {h.eyebrow}
         </p>
 
         <h1 className="font-serif-display type-display text-[#f2ede6] max-w-[16ch] text-balance">
-          <span
-            className={`block ${riseClass}`}
-            style={rise(650)}
-          >
+          <span className={`block ${riseClass}`} style={rise(650)} data-ck="hero.headline">
             {h.headline}
           </span>
           <span
             className={`block text-[#f2ede6]/70 ${riseClass}`}
             style={rise(850)}
+            data-ck="hero.sub"
           >
             {h.sub}
           </span>
         </h1>
 
-        <div
-          className={`mt-12 sm:mt-16 flex items-center gap-4 ${riseClass}`}
-          style={rise(1100)}
-        >
-          <span className="type-eyebrow text-[#f2ede6]/55">{h.scroll}</span>
+        <div className={`mt-12 sm:mt-16 flex items-center gap-4 ${riseClass}`} style={rise(1100)}>
+          <span className="type-eyebrow text-[#f2ede6]/55" data-ck="hero.scroll">
+            {h.scroll}
+          </span>
           <svg
             width="12"
             height="26"

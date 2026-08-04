@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Newsreader } from "next/font/google";
-import { LanguageProvider } from "./lib/language";
 import "./globals.css";
+import EditorMount from "./components/edit/EditorMount";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -79,7 +79,8 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <LanguageProvider>{children}</LanguageProvider>
+        {children}
+        <EditorMount />
       </body>
     </html>
   );
