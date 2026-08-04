@@ -3,6 +3,9 @@ import Image from "next/image";
 import PageHero from "./PageHero";
 import Reveal from "./Reveal";
 import { useLanguage } from "../lib/language";
+import { PhotoBreak, Hairline } from "./home/primitives";
+import farmhouse from "../media/nepal-farmhouse.jpg";
+import valley from "../media/nepal-valley.jpg";
 
 export default function AboutContent() {
   const { t } = useLanguage();
@@ -12,105 +15,73 @@ export default function AboutContent() {
     <>
       <PageHero eyebrow={a.eyebrow} title={a.title} />
 
-      {/* Intro over big background photo */}
-      <section className="relative min-h-[80vh] md:min-h-screen overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src="/nepal-hill.jpg"
-            alt={a.hillAlt}
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover animate-slow-zoom"
-          />
-        </div>
-        {/* Overlay for legibility */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(28,24,20,0.6) 0%, rgba(28,24,20,0.4) 35%, rgba(28,24,20,0.6) 70%, rgba(28,24,20,0.92) 100%)",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: "radial-gradient(ellipse at center, transparent 30%, rgba(10,7,5,0.55) 100%)" }}
-        />
-
-        <div className="relative z-10 max-w-3xl mx-auto px-6 py-20 text-center">
-          <Reveal>
-            <p className="text-[#f5f0ea] text-lg md:text-xl leading-relaxed font-light mb-6 drop-shadow-lg">
-              {a.aboutBody1}
-            </p>
-          </Reveal>
-          <Reveal delay={100}>
-            <p className="text-[#f5f0ea] text-lg md:text-xl leading-relaxed font-light mb-6 drop-shadow-lg">
-              {a.aboutBody2}
-            </p>
-          </Reveal>
-          <Reveal delay={200}>
-            <span className="block h-px w-16 bg-[#d4a96a]/60 mx-auto mb-6" />
-            <p className="text-[#f5f0ea] text-lg md:text-xl leading-relaxed font-light drop-shadow-lg">
-              {a.sourcingBody1}
-            </p>
-          </Reveal>
+      {/* Opening statement — set in the reading serif, wide measure, no photo
+          competing with it. The photography arrives immediately after. */}
+      <section className="px-6 sm:px-10 lg:px-16 pb-24 sm:pb-32">
+        <div className="max-w-[88rem] mx-auto">
+          <div className="max-w-[46rem]">
+            <Reveal>
+              <p className="font-serif-body type-lead text-[#f2ede6]/85 mb-8">
+                {a.aboutBody1}
+              </p>
+            </Reveal>
+            <Reveal delay={110}>
+              <p className="font-serif-body type-body text-[#f2ede6]/65">
+                {a.aboutBody2}
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* Remaining sourcing detail + map */}
-      <section className="py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <Reveal>
-            <p className="text-[#f5f0ea]/60 leading-relaxed mb-10 text-lg">{a.sourcingBody2}</p>
-          </Reveal>
+      <PhotoBreak src={valley} alt={a.hillAlt} height="mid" />
 
-          <Reveal delay={80}>
-            <p className="text-[#f5f0ea]/60 leading-relaxed mb-10 text-lg">{a.sourcingBody3}</p>
-          </Reveal>
+      {/* Sourcing detail */}
+      <section className="px-6 sm:px-10 lg:px-16 py-28 sm:py-36">
+        <div className="max-w-[88rem] mx-auto">
+          <div className="max-w-[46rem] mb-20 sm:mb-28">
+            <Reveal>
+              <p className="font-serif-body type-lead text-[#f2ede6]/85 mb-8">
+                {a.sourcingBody1}
+              </p>
+            </Reveal>
+            <Reveal delay={110}>
+              <p className="font-serif-body type-body text-[#f2ede6]/65 mb-8">
+                {a.sourcingBody2}
+              </p>
+            </Reveal>
+            <Reveal delay={190}>
+              <p className="font-serif-body type-body text-[#f2ede6]/65">
+                {a.sourcingBody3}
+              </p>
+            </Reveal>
+          </div>
 
-          <Reveal delay={160}>
-            <div className="relative w-full mb-10 border border-[#d4a96a]/15 overflow-hidden">
+          <Reveal variant="mask" delay={80}>
+            <div className="relative w-full max-w-[64rem]">
               <Image
                 src="/nepal-sourcing-map.png"
                 alt={a.mapAlt}
                 width={1200}
                 height={900}
+                sizes="(max-width: 1024px) 100vw, 64rem"
                 className="w-full h-auto"
               />
             </div>
           </Reveal>
 
-          <Reveal delay={240}>
-            <p className="text-[#f5f0ea]/60 leading-relaxed text-lg">{a.sourcingBody4}</p>
-          </Reveal>
+          <div className="mt-20 sm:mt-28 max-w-[46rem]">
+            <Hairline />
+            <Reveal delay={80}>
+              <p className="font-serif-display type-subtitle text-[#f2ede6]/90 pt-12 text-balance">
+                {a.sourcingBody4}
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* Closing background photo */}
-      <Reveal>
-        <section className="relative min-h-[60vh] md:min-h-[85vh] overflow-hidden flex items-center justify-center">
-          <div className="absolute inset-0 overflow-hidden">
-            <Image
-              src="/nepal-hill-3.jpg"
-              alt={a.hillAlt}
-              fill
-              sizes="100vw"
-              className="object-cover animate-slow-zoom"
-            />
-          </div>
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(28,24,20,0.55) 0%, rgba(28,24,20,0.3) 35%, rgba(28,24,20,0.55) 70%, rgba(28,24,20,0.92) 100%)",
-            }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{ background: "radial-gradient(ellipse at center, transparent 35%, rgba(10,7,5,0.5) 100%)" }}
-          />
-        </section>
-      </Reveal>
+      <PhotoBreak src={farmhouse} alt={a.hillAlt} height="mid" position="object-[center_40%]" />
     </>
   );
 }

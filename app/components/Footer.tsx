@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import logoMark from "../media/logo.png";
 import Reveal from "./Reveal";
 import { useLanguage } from "../lib/language";
 
@@ -12,76 +13,100 @@ export default function Footer({ phone }: FooterProps) {
   const { t } = useLanguage();
 
   const navLinks = [
+    { label: t.nav.home, href: "/" },
     { label: t.nav.about, href: "/about" },
     { label: t.nav.contact, href: "/contact" },
   ];
 
   return (
-    <footer className="relative border-t border-[#d4a96a]/10 py-16 px-6">
-      <Reveal>
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Image src="/logo.svg" alt="" width={44} height={44} unoptimized style={{ opacity: 0.85 }} />
-              <div>
-                <p className="text-[10px] tracking-[0.4em] text-[#d4a96a] uppercase">Mewa Valley</p>
-                <p className="text-2xl font-black tracking-widest text-[#f5f0ea]">COFFEE</p>
+    <footer className="relative border-t border-[#c9a468]/10 px-6 sm:px-10 lg:px-16 py-20 sm:py-24">
+      <div className="max-w-[88rem] mx-auto">
+        <Reveal>
+          <div className="grid md:grid-cols-12 gap-y-14 gap-x-12">
+            {/* Brand */}
+            <div className="md:col-span-5">
+              <div className="flex items-center gap-3 mb-6">
+                <Image
+                  src={logoMark}
+                  alt=""
+                  width={38}
+                  height={38}
+                  style={{ opacity: 0.8 }}
+                />
+                <span className="flex flex-col leading-none">
+                  <span className="type-eyebrow text-[#c9a468] text-[0.5625rem]">
+                    Mewa Valley
+                  </span>
+                  <span className="font-serif-display text-xl text-[#f2ede6] mt-1">
+                    Coffee
+                  </span>
+                </span>
               </div>
+              <p className="font-serif-body text-[0.9375rem] leading-relaxed text-[#f2ede6]/55 max-w-xs">
+                {t.footer.tagline}
+              </p>
             </div>
-            <p className="text-xs text-[#f5f0ea]/30 leading-relaxed max-w-xs">
-              {t.footer.tagline}
-            </p>
-          </div>
 
-          {/* Links */}
-          <div>
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#d4a96a]/50 mb-4">{t.footer.navigate}</p>
-            <ul className="space-y-3">
-              {navLinks.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-xs text-[#f5f0ea]/40 hover:text-[#d4a96a] transition-colors tracking-widest uppercase"
+            {/* Links */}
+            <div className="md:col-span-3">
+              <p className="type-eyebrow text-[#f2ede6]/55 mb-6">
+                {t.footer.navigate}
+              </p>
+              <ul className="space-y-4 list-none m-0 p-0">
+                {navLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="type-caption text-[#f2ede6]/60 hover:text-[#c9a468] transition-colors duration-500 link-underline"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div className="md:col-span-4">
+              <p className="type-eyebrow text-[#f2ede6]/55 mb-6">
+                {t.footer.contactHeading}
+              </p>
+              <ul className="space-y-4 list-none m-0 p-0">
+                <li>
+                  <a
+                    href="mailto:info@mewavalley.com"
+                    className="type-caption text-[#f2ede6]/60 hover:text-[#c9a468] transition-colors duration-500 link-underline"
                   >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <p className="text-[9px] tracking-[0.4em] uppercase text-[#d4a96a]/50 mb-4">{t.footer.contactHeading}</p>
-            <p className="text-xs text-[#f5f0ea]/40 leading-relaxed">
-              <a href="mailto:info@mewavalley.com" className="hover:text-[#d4a96a] transition-colors">
-                info@mewavalley.com
-              </a>
-              {phone && (
-                <>
-                  <br />
-                  <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:text-[#d4a96a] transition-colors">
-                    Phone: {phone}
+                    info@mewavalley.com
                   </a>
-                </>
-              )}
+                </li>
+                {phone && (
+                  <li>
+                    <a
+                      href={`tel:${phone.replace(/\s+/g, "")}`}
+                      className="type-caption text-[#f2ede6]/60 hover:text-[#c9a468] transition-colors duration-500 link-underline"
+                    >
+                      {phone}
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Disclosure — deliberately kept, it is part of the trust story */}
+        <Reveal delay={80}>
+          <div className="mt-20 pt-10 border-t border-[#c9a468]/10 flex flex-col gap-6">
+            <p className="type-caption text-[#f2ede6]/52 leading-relaxed max-w-3xl">
+              {t.footer.disclaimer}
+            </p>
+            <p className="type-caption text-[#f2ede6]/52 text-[0.6875rem]">
+              © {new Date().getFullYear()} Mewa Valley Coffee. {t.footer.rights}
             </p>
           </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="pt-8 border-t border-[#d4a96a]/10 flex flex-col gap-4">
-          <p className="text-[10px] text-[#f5f0ea]/25 leading-relaxed max-w-3xl">
-            {t.footer.disclaimer}
-          </p>
-          <p className="text-[9px] tracking-[0.3em] uppercase text-[#f5f0ea]/20">
-            © {new Date().getFullYear()} Mewa Valley Coffee. {t.footer.rights}
-          </p>
-        </div>
+        </Reveal>
       </div>
-      </Reveal>
     </footer>
   );
 }

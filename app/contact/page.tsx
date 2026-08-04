@@ -1,157 +1,29 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import type { Metadata } from "next";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import Reveal from "../components/Reveal";
-import { useLanguage } from "../lib/language";
+import ContactContent from "../components/ContactContent";
 
-export default function Contact() {
-  const { t } = useLanguage();
-  const c = t.contact;
-  const [mounted, setMounted] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState(false);
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Roaster, importer or coffee buyer interested in evaluating Nepali green coffee? Send us an enquiry — we aim to reply within two working days.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact — Mewa Valley Coffee",
+    description:
+      "Roaster, importer or coffee buyer interested in evaluating Nepali green coffee? Send us an enquiry.",
+    url: "/contact",
+  },
+};
 
-  useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 60);
-    return () => clearTimeout(t);
-  }, []);
-
-  const tr = "transition-all duration-700 ease-spring";
-  const show = "opacity-100 translate-y-0";
-  const hide = "opacity-0 translate-y-4";
-  const [form, setForm] = useState({
-    name: "",
-    business: "",
-    email: "",
-    message: "",
-  });
-
-  const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((f) => ({ ...f, [field]: e.target.value }));
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSending(true);
-    setError(false);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error("Request failed");
-      setSubmitted(true);
-    } catch {
-      setError(true);
-    } finally {
-      setSending(false);
-    }
-  };
-
-  const labelClass = "block text-[9px] tracking-[0.35em] uppercase font-bold text-[#d4a96a]/70 mb-2";
-  const inputClass = "w-full bg-transparent border border-[#d4a96a]/20 px-4 py-3 text-sm text-[#f5f0ea] placeholder-[#f5f0ea]/20 focus:outline-none focus:border-[#d4a96a]/60 transition-colors";
-
+export default function ContactPage() {
   return (
     <>
       <Nav />
-      <main>
-        {/* Header */}
-        <section className="relative pt-40 pb-16 px-6 border-b border-[#d4a96a]/15">
-          <div className="max-w-4xl mx-auto">
-            <h1 className={`${tr} ${mounted ? show : hide} text-4xl md:text-6xl font-black tracking-widest uppercase text-[#f5f0ea] leading-none mb-6`} style={{ transitionDelay: "220ms" }}>
-              {c.title}
-            </h1>
-            <p className={`${tr} ${mounted ? show : hide} text-[#f5f0ea]/50 text-lg max-w-2xl leading-relaxed font-light`} style={{ transitionDelay: "380ms" }}>
-              {c.subtitle}
-            </p>
-          </div>
-        </section>
-
-        <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-16">
-
-            {/* Left: context */}
-            <Reveal>
-            <div>
-              <div className="text-sm text-[#f5f0ea]/50 leading-relaxed">
-                <p>{c.whatNext1}</p>
-              </div>
-
-              <div className="mt-10 pt-8 border-t border-[#d4a96a]/15 space-y-3 text-sm">
-                <p className="text-[10px] tracking-[0.4em] uppercase text-[#d4a96a] mb-4">{c.directHeading}</p>
-                <a href="mailto:info@mewavalley.com" className="text-[#f5f0ea]/50 hover:text-[#d4a96a] transition-colors">
-                  info@mewavalley.com
-                </a>
-              </div>
-            </div>
-            </Reveal>
-
-            {/* Right: form */}
-            <Reveal delay={120} className="md:col-span-2">
-            <div>
-              {submitted ? (
-                <div className="flex flex-col items-start py-12">
-                  <div className="w-12 h-12 border border-[#d4a96a]/40 flex items-center justify-center mb-6">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M4 10l4 4 8-8" stroke="#d4a96a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <h2 className="text-2xl font-black tracking-widest uppercase text-[#f5f0ea] mb-3">{c.thankYouHeading}</h2>
-                  <p className="text-[#f5f0ea]/50 text-sm max-w-sm leading-relaxed">
-                    {c.thankYouBody}
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className={labelClass}>{c.labels.name}</label>
-                      <input type="text" required value={form.name} onChange={set("name")} className={inputClass} placeholder={c.placeholders.name} />
-                    </div>
-                    <div>
-                      <label className={labelClass}>{c.labels.business}</label>
-                      <input type="text" required value={form.business} onChange={set("business")} className={inputClass} placeholder={c.placeholders.business} />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className={labelClass}>{c.labels.email}</label>
-                    <input type="email" required value={form.email} onChange={set("email")} className={inputClass} placeholder={c.placeholders.email} />
-                  </div>
-
-                  <div>
-                    <label className={labelClass}>{c.labels.message}</label>
-                    <textarea
-                      rows={5}
-                      value={form.message}
-                      onChange={set("message")}
-                      className={inputClass}
-                      placeholder={c.placeholders.message}
-                    />
-                  </div>
-
-                  {error && (
-                    <p className="text-sm text-red-400/80">{c.sendError}</p>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={sending}
-                    className="w-full py-4 bg-[#d4a96a] text-[#1c1814] text-xs tracking-[0.4em] uppercase font-black hover:bg-[#e0be88] transition-colors disabled:opacity-50"
-                  >
-                    {c.submit}
-                  </button>
-                </form>
-              )}
-            </div>
-            </Reveal>
-          </div>
-        </section>
+      <main id="main">
+        <ContactContent />
       </main>
-      <Footer />
+      <Footer phone="+44 7341848470" />
     </>
   );
 }
