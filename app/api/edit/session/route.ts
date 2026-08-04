@@ -9,6 +9,7 @@ import {
   hintCookieOptions,
   HINT_COOKIE,
   editorConfigured,
+  missingConfig,
 } from "../../../lib/editor-session";
 
 export const dynamic = "force-dynamic";
@@ -18,7 +19,7 @@ export async function GET() {
   const store = await cookies();
   const ok = await verifyToken(store.get(SESSION_COOKIE)?.value);
   return NextResponse.json(
-    { authenticated: ok, configured: editorConfigured() },
+    { authenticated: ok, configured: editorConfigured(), missing: missingConfig() },
     { headers: { "Cache-Control": "no-store" } }
   );
 }

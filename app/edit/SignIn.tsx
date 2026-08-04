@@ -9,12 +9,14 @@ export default function SignIn() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [configured, setConfigured] = useState<boolean | null>(null);
+  const [missing, setMissing] = useState<string[]>([]);
 
   useEffect(() => {
     fetch("/api/edit/session", { cache: "no-store" })
       .then((r) => r.json())
       .then((d) => {
         setConfigured(Boolean(d?.configured));
+        setMissing(Array.isArray(d?.missing) ? d.missing : []);
         if (d?.authenticated) router.replace("/");
       })
       .catch(() => setConfigured(false));
@@ -55,10 +57,27 @@ export default function SignIn() {
         </p>
 
         {configured === false ? (
-          <p className="font-serif-body text-[0.9375rem] text-[#e6a08a]">
-            The editor has not been set up on this deployment yet. An
-            EDITOR_PASSWORD needs adding to the hosting environment.
-          </p>
+          <div>
+            <p className="font-serif-body text-[0.9375rem] text-[#e6a08a] mb-5">
+              This deployment cannot see its editor settings, so sign-in is
+              switched off.
+            </p>
+            <p className="type-caption text-[#f2ede6]/55 mb-3">
+              Not visible to the running app:
+            </p>
+            <ul className="list-none p-0 m-0 space-y-1.5">
+              {missing.map((name) => (
+                <li key={name} className="type-caption text-[#f2ede6]/70 font-mono">
+                  {name}
+                </li>
+              ))}
+            </ul>
+            <p className="type-caption text-[#f2ede6]/45 mt-5 leading-relaxed">
+              Add these in Railway under the site&rsquo;s service, then redeploy.
+              Check the spelling exactly, and that they are on the same service
+              and environment as the site itself.
+            </p>
+          </div>
         ) : (
           <form onSubmit={submit}>
             <label

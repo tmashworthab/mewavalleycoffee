@@ -27,6 +27,20 @@ export function editorConfigured(): boolean {
   return Boolean(process.env.EDITOR_PASSWORD) && Boolean(secretKey());
 }
 
+/**
+ * Names — never values — of the environment variables the running app cannot
+ * see. Reporting this is safe: it reveals nothing an unconfigured deployment
+ * would not already give away, and it turns "why won't it work" into a fact.
+ */
+export function missingConfig(): string[] {
+  const missing: string[] = [];
+  if (!process.env.EDITOR_PASSWORD) missing.push("EDITOR_PASSWORD");
+  if (!process.env.EDITOR_SECRET) missing.push("EDITOR_SECRET (optional)");
+  if (!process.env.GITHUB_TOKEN) missing.push("GITHUB_TOKEN");
+  if (!process.env.GITHUB_REPO) missing.push("GITHUB_REPO");
+  return missing;
+}
+
 async function sign(payload: string, secret: string): Promise<string> {
   const key = await crypto.subtle.importKey(
     "raw",
