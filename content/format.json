@@ -11,6 +11,7 @@
     "font": "sans"
   },
   "premise.body1": {
+    "size": 5,
     "font": "sans"
   }
 }
