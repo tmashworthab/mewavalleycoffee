@@ -7,6 +7,7 @@ import {
   isAlignment,
   isSizeStep,
   isFont,
+  isColour,
   type FieldFormat,
   type FormatMap,
 } from "../../../lib/format";
@@ -121,21 +122,33 @@ export async function POST(request: NextRequest) {
       rejected.push(key);
       continue;
     }
-    const { align, size, font } = value as Record<string, unknown>;
+    const { align, size, font, colour, bold, italic, underline } =
+      value as Record<string, unknown>;
+
     // Each property is checked against its closed set, so nothing arbitrary
     // can reach a class name or a style attribute.
+    const isBool = (v: unknown) => v === undefined || typeof v === "boolean";
     if (
       (align !== undefined && !isAlignment(align)) ||
       (size !== undefined && !isSizeStep(size)) ||
-      (font !== undefined && !isFont(font))
+      (font !== undefined && !isFont(font)) ||
+      (colour !== undefined && !isColour(colour)) ||
+      !isBool(bold) ||
+      !isBool(italic) ||
+      !isBool(underline)
     ) {
       rejected.push(key);
       continue;
     }
+
     const entry: FieldFormat = {};
     if (isAlignment(align)) entry.align = align;
     if (isSizeStep(size)) entry.size = size;
     if (isFont(font)) entry.font = font;
+    if (isColour(colour)) entry.colour = colour;
+    if (bold === true) entry.bold = true;
+    if (italic === true) entry.italic = true;
+    if (underline === true) entry.underline = true;
 
     if (Object.keys(entry).length === 0) delete nextFormat[key];
     else nextFormat[key] = entry;

@@ -57,8 +57,18 @@ Clicking any text brings up a toolbar above it:
   Geist (its sans), Instrument Serif, Cormorant and Space Grotesk. Pick
   **Default** to go back. The three extra faces are only downloaded by visitors
   if a page actually uses one.
+- **Bold, italic, underline** — the **B**, *I* and U buttons. These apply to
+  the whole field, not to a selected word.
+- **Colour** — the circular swatch. Five choices plus Default. Every option is
+  legible on the site's dark background, which is why it is a fixed set rather
+  than a full colour picker.
 - **Lists** — bullet and numbered, on body text only. Clicking bullet while
   already bulleted removes it; clicking numbered while bulleted converts.
+
+### Line breaks and paragraphs
+
+Press Enter in body text for a new line, and Enter twice for a new paragraph
+with a gap. What you see while editing is what gets published.
 
 Formatting is **shared across all three languages**, because alignment and
 size are design decisions rather than translation decisions — this stops the

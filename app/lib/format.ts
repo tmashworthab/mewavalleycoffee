@@ -54,12 +54,39 @@ export const FONT_LABELS: Record<FontChoice, string> = {
   modern: "Space Grotesk",
 };
 
+/**
+ * Text colours. Every option is legible on the site's dark ground — an open
+ * colour picker would let a field be set to something invisible against it.
+ */
+export const COLOURS = ["cream", "muted", "gold", "goldLight", "white"] as const;
+export type Colour = (typeof COLOURS)[number];
+
+export const COLOUR_LABELS: Record<Colour, string> = {
+  cream: "Cream",
+  muted: "Muted",
+  gold: "Gold",
+  goldLight: "Light gold",
+  white: "White",
+};
+
+export const COLOUR_SWATCH: Record<Colour, string> = {
+  cream: "#f2ede6",
+  muted: "#cfc7bd",
+  gold: "#c9a468",
+  goldLight: "#e2cda2",
+  white: "#ffffff",
+};
+
 export type Role = "display" | "title" | "body" | "label";
 
 export interface FieldFormat {
   align?: Alignment;
   size?: SizeStep;
   font?: FontChoice;
+  colour?: Colour;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
 }
 
 export type FormatMap = Record<string, FieldFormat>;
@@ -83,6 +110,10 @@ export function isFont(v: unknown): v is FontChoice {
   return typeof v === "string" && (FONTS as readonly string[]).includes(v);
 }
 
+export function isColour(v: unknown): v is Colour {
+  return typeof v === "string" && (COLOURS as readonly string[]).includes(v);
+}
+
 const ALIGN_CLASS: Record<Alignment, string> = {
   left: "text-left",
   center: "text-center",
@@ -101,6 +132,10 @@ export function formatClasses(path: string): string {
   if (f.align) classes.push(ALIGN_CLASS[f.align]);
   if (isSizeStep(f.size)) classes.push(`fs-${f.size}`);
   if (f.font) classes.push(`ff-${f.font}`);
+  if (f.colour) classes.push(`tc-${f.colour}`);
+  if (f.bold) classes.push("tx-bold");
+  if (f.italic) classes.push("tx-italic");
+  if (f.underline) classes.push("tx-underline");
   return classes.join(" ");
 }
 

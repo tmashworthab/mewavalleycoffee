@@ -476,3 +476,23 @@ body {
   letter-spacing: normal;
   text-transform: none;
 }
+
+/* ---------- Editor colours and emphasis ---------- */
+/* Scoped to [data-ck] so these beat the design's own Tailwind colour and
+   weight utilities, which have the same single-class specificity. */
+
+[data-ck].tc-cream     { color: #f2ede6; }
+[data-ck].tc-muted     { color: #cfc7bd; }
+[data-ck].tc-gold      { color: #c9a468; }
+[data-ck].tc-goldLight { color: #e2cda2; }
+[data-ck].tc-white     { color: #ffffff; }
+
+[data-ck].tx-bold   { font-weight: 600; }
+[data-ck].tx-italic { font-style: italic; }
+
+[data-ck].tx-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: currentColor;
+}

@@ -8,7 +8,11 @@ import {
   MIN_STEP,
   MAX_STEP,
   nearestStep,
+  COLOURS,
+  COLOUR_LABELS,
+  COLOUR_SWATCH,
   type Alignment,
+  type Colour,
   type FontChoice,
   type SizeStep,
 } from "../../lib/format";
@@ -17,6 +21,10 @@ export interface FieldFormatState {
   align?: Alignment;
   size?: SizeStep;
   font?: FontChoice;
+  colour?: Colour;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
 }
 
 const ALIGN_ICON: Record<Alignment, string> = {
@@ -39,6 +47,8 @@ export default function FormatBar({
   onAlign,
   onSizeStep,
   onFont,
+  onColour,
+  onToggle,
   onList,
 }: {
   target: HTMLElement | null;
@@ -46,12 +56,15 @@ export default function FormatBar({
   onAlign: (a: Alignment) => void;
   onSizeStep: (delta: number, fallback: SizeStep) => void;
   onFont: (f: FontChoice | null) => void;
+  onColour: (c: Colour | null) => void;
+  onToggle: (k: "bold" | "italic" | "underline") => void;
   onList: (kind: "bullet" | "number") => void;
 }) {
   const bar = useRef<HTMLDivElement>(null);
   // Tracked by field key rather than a boolean, so the menu closes by
   // derivation when focus moves instead of needing an effect to reset it.
   const [openForKey, setOpenForKey] = useState<string | null>(null);
+  const [colourOpenFor, setColourOpenFor] = useState<string | null>(null);
 
   useEffect(() => {
     const el = bar.current;
@@ -76,11 +89,13 @@ export default function FormatBar({
       window.removeEventListener("scroll", place);
       window.removeEventListener("resize", place);
     };
-  }, [target, openForKey]);
+  }, [target, openForKey, colourOpenFor]);
 
   if (!target) return null;
 
   const fontOpen = openForKey !== null && openForKey === target.dataset.ck;
+  const colourOpen =
+    colourOpenFor !== null && colourOpenFor === target.dataset.ck;
 
   const isBody = target.dataset.ckMultiline === "true";
 
@@ -199,6 +214,94 @@ export default function FormatBar({
                 }`}
               >
                 {FONT_LABELS[f]}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <span className="w-px h-5 bg-[#c9a468]/20 mx-1" />
+
+      {/* Emphasis */}
+      <button
+        onClick={() => onToggle("bold")}
+        aria-label="Bold"
+        aria-pressed={!!state.bold}
+        className={`${btn} font-semibold ${state.bold ? on : off}`}
+      >
+        B
+      </button>
+      <button
+        onClick={() => onToggle("italic")}
+        aria-label="Italic"
+        aria-pressed={!!state.italic}
+        className={`${btn} italic font-serif ${state.italic ? on : off}`}
+      >
+        I
+      </button>
+      <button
+        onClick={() => onToggle("underline")}
+        aria-label="Underline"
+        aria-pressed={!!state.underline}
+        className={`${btn} underline underline-offset-2 ${state.underline ? on : off}`}
+      >
+        U
+      </button>
+
+      <span className="w-px h-5 bg-[#c9a468]/20 mx-1" />
+
+      {/* Colour */}
+      <div className="relative">
+        <button
+          onClick={() =>
+            setColourOpenFor(colourOpen ? null : (target.dataset.ck ?? null))
+          }
+          aria-label="Colour"
+          aria-expanded={colourOpen}
+          className={`${btn} ${off} flex items-center gap-1.5`}
+        >
+          <span
+            className="block w-3.5 h-3.5 rounded-full border border-[#f2ede6]/25"
+            style={{
+              background: state.colour
+                ? COLOUR_SWATCH[state.colour]
+                : "linear-gradient(135deg,#f2ede6 50%,#c9a468 50%)",
+            }}
+          />
+          <svg width="8" height="5" viewBox="0 0 8 5" fill="none" aria-hidden="true">
+            <path d="M1 1l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
+        </button>
+
+        {colourOpen && (
+          <div className="absolute left-0 top-full mt-2 w-40 rounded-lg border border-[#c9a468]/30 bg-[#141210] shadow-2xl py-1.5 z-10">
+            <button
+              onClick={() => {
+                onColour(null);
+                setColourOpenFor(null);
+              }}
+              className={`w-full text-left px-3 py-2 text-[12px] ${
+                state.colour ? "text-[#f2ede6]/45 hover:bg-[#f2ede6]/8" : "text-[#c9a468]"
+              }`}
+            >
+              Default
+            </button>
+            {COLOURS.map((c) => (
+              <button
+                key={c}
+                onClick={() => {
+                  onColour(c);
+                  setColourOpenFor(null);
+                }}
+                className={`w-full text-left px-3 py-2 text-[12px] flex items-center gap-2.5 ${
+                  state.colour === c ? "text-[#c9a468]" : "text-[#f2ede6]/70 hover:bg-[#f2ede6]/8"
+                }`}
+              >
+                <span
+                  className="block w-3.5 h-3.5 rounded-full border border-[#f2ede6]/20 shrink-0"
+                  style={{ background: COLOUR_SWATCH[c] }}
+                />
+                {COLOUR_LABELS[c]}
               </button>
             ))}
           </div>

@@ -7,6 +7,7 @@ import {
   format as publishedFormat,
   STEP_REM,
   type Alignment,
+  type Colour,
   type FontChoice,
   type SizeStep,
 } from "../../lib/format";
@@ -16,7 +17,15 @@ const DRAFT_PREFIX = "mvc-draft-edits";
 const FORMAT_DRAFT_KEY = "mvc-draft-format";
 
 type Edits = Record<string, string>;
-type FieldFormat = { align?: Alignment; size?: SizeStep; font?: FontChoice };
+type FieldFormat = {
+  align?: Alignment;
+  size?: SizeStep;
+  font?: FontChoice;
+  colour?: Colour;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+};
 type FormatEdits = Record<string, FieldFormat>;
 
 /* Some strings are rendered with decoration around them (the pull quote sits
@@ -34,6 +43,18 @@ function bare(node: HTMLElement, raw: string): string {
 /** The field's source text, which differs from what is rendered for lists. */
 function sourceOf(node: HTMLElement): string {
   return node.dataset.ckRaw ?? node.textContent ?? "";
+}
+
+/**
+ * Read what the author actually typed.
+ *
+ * contenteditable represents some line breaks as `\n` text and others as
+ * <br> elements, and textContent silently drops the latter — so paragraph
+ * breaks would survive or vanish depending on where they were typed.
+ * innerText is layout-aware and reports both as newlines.
+ */
+function typedText(node: HTMLElement): string {
+  return node.innerText ?? node.textContent ?? "";
 }
 
 function draftKey(locale: string) {
@@ -122,6 +143,7 @@ export default function EditorOverlay({
       right: "text-right",
     } as const;
     const FONTS = ["serif", "sans", "display", "classic", "modern"] as const;
+    const COLOURS = ["cream", "muted", "gold", "goldLight", "white"] as const;
 
     for (const [key, f] of Object.entries(formatEdits)) {
       const node = document.querySelector<HTMLElement>(
@@ -137,6 +159,13 @@ export default function EditorOverlay({
 
       for (const name of FONTS) node.classList.remove(`ff-${name}`);
       if (f.font) node.classList.add(`ff-${f.font}`);
+
+      for (const c of COLOURS) node.classList.remove(`tc-${c}`);
+      if (f.colour) node.classList.add(`tc-${f.colour}`);
+
+      node.classList.toggle("tx-bold", !!f.bold);
+      node.classList.toggle("tx-italic", !!f.italic);
+      node.classList.toggle("tx-underline", !!f.underline);
     }
   }, [formatEdits]);
 
@@ -160,7 +189,7 @@ export default function EditorOverlay({
       if (!(el instanceof HTMLElement)) return;
 
       const key = el.dataset.ck!;
-      const value = bare(el, el.textContent ?? "");
+      const value = bare(el, typedText(el));
       const original = bare(el, originals.current.get(key) ?? "");
 
       setEdits((prev) => {
@@ -226,6 +255,26 @@ export default function EditorOverlay({
     []
   );
 
+  /** Flip a boolean style flag on the focused field. */
+  const toggleFieldFlag = useCallback(
+    (key: string, flag: "bold" | "italic" | "underline") => {
+      setFormatEdits((prev) => {
+        const current: FieldFormat = {
+          ...(prev[key] ?? publishedFormat[key] ?? {}),
+        };
+        if (current[flag]) delete current[flag];
+        else current[flag] = true;
+
+        const next = { ...prev };
+        if (Object.keys(current).length === 0) delete next[key];
+        else next[key] = current;
+        localStorage.setItem(FORMAT_DRAFT_KEY, JSON.stringify(next));
+        return next;
+      });
+    },
+    []
+  );
+
   const setFieldFormat = useCallback((key: string, patch: FieldFormat) => {
     setFormatEdits((prev) => {
       const current: FieldFormat = {
@@ -236,7 +285,7 @@ export default function EditorOverlay({
         // option also clears it — but only for align and font, which are
         // pickers. Size is a stepper, so landing on the same number again
         // must be a no-op rather than a reset.
-        const isToggle = k === "align" || k === "font";
+        const isToggle = k === "align" || k === "font" || k === "colour";
         if (v === null || (isToggle && current[k as keyof FieldFormat] === v)) {
           delete current[k as keyof FieldFormat];
         } else {
@@ -261,7 +310,7 @@ export default function EditorOverlay({
         `[data-ck="${CSS.escape(key)}"]`
       );
       if (!el) return;
-      const lines = (el.textContent ?? "").split("\n");
+      const lines = typedText(el).split("\n");
       const anyMarker = /^\s*([-•*]|\d+[.)])\s+/;
       const bulletMarker = /^\s*[-•*]\s+/;
       const numberMarker = /^\s*\d+[.)]\s+/;
@@ -311,6 +360,10 @@ export default function EditorOverlay({
         for (const name of ["serif", "sans", "display", "classic", "modern"]) {
           node.classList.remove(`ff-${name}`);
         }
+        for (const c of ["cream", "muted", "gold", "goldLight", "white"]) {
+          node.classList.remove(`tc-${c}`);
+        }
+        node.classList.remove("tx-bold", "tx-italic", "tx-underline");
         node.style.fontSize = "";
       }
     }
@@ -342,7 +395,7 @@ export default function EditorOverlay({
           `[data-ck="${CSS.escape(key)}"]`
         );
         if (node) {
-          originals.current.set(key, node.textContent ?? "");
+          originals.current.set(key, typedText(node));
           delete node.dataset.dirty;
         }
       }
@@ -394,6 +447,11 @@ export default function EditorOverlay({
           activeKey &&
           setFieldFormat(activeKey, { font: f as FontChoice | undefined })
         }
+        onColour={(c) =>
+          activeKey &&
+          setFieldFormat(activeKey, { colour: c as Colour | undefined })
+        }
+        onToggle={(k) => activeKey && toggleFieldFlag(activeKey, k)}
         onList={applyList}
       />
 

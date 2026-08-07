@@ -64,13 +64,30 @@ export function isRich(text: string): boolean {
   return text.includes("\n");
 }
 
+/**
+ * A single newline is a line break, a blank line starts a new paragraph — so
+ * what is published matches what the author saw while typing.
+ */
+function Lines({ lines }: { lines: string[] }) {
+  return (
+    <>
+      {lines.map((line, i) => (
+        <Fragment key={i}>
+          {i > 0 && <br />}
+          {line}
+        </Fragment>
+      ))}
+    </>
+  );
+}
+
 export default function RichText({ text }: { text: string }) {
   const blocks = parseBlocks(text);
 
   // The overwhelmingly common case: one plain paragraph, rendered as bare text
   // so the surrounding element keeps the markup it always had.
   if (blocks.length === 1 && blocks[0].kind === "para") {
-    return <>{blocks[0].lines.join(" ")}</>;
+    return <Lines lines={blocks[0].lines} />;
   }
 
   return (
@@ -97,7 +114,7 @@ export default function RichText({ text }: { text: string }) {
         return (
           <Fragment key={i}>
             {i > 0 && <span className="rich-break" aria-hidden="true" />}
-            {block.lines.join(" ")}
+            <Lines lines={block.lines} />
           </Fragment>
         );
       })}
