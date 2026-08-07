@@ -16,7 +16,7 @@
   "hero": {
     "eyebrow": "Nepal",
     "headline": "Premium Coffee",
-    "sub": "From the foothills of the Himalayas",
+    "sub": "from the foothills of the Himalayas",
     "scroll": "Scroll",
     "alt": "Cloud moving across a forested ridge in the hill districts of eastern Nepal, a dirt road cut into the slope"
   },
@@ -29,7 +29,7 @@
     "statAltitudeLabel": "Growing altitude",
     "statDistricts": "Solu, Ilam, Bhojpur, Dankuta",
     "statDistrictsLabel": "Provinces we source from",
-    "statHarvest": "Now",
+    "statHarvest": "August 2026",
     "statHarvestLabel": "Available in the uk"
   },
   "coffee": {
