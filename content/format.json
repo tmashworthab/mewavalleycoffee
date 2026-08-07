@@ -9,5 +9,8 @@
   "hero.intro": {
     "size": 5,
     "font": "sans"
+  },
+  "premise.body1": {
+    "font": "sans"
   }
 }
