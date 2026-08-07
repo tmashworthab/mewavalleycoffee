@@ -39,18 +39,18 @@
     "body2": "Producer-reported cup scores currently sit in the 81–85 band, with moisture below 11%. Those are their numbers, not ours — and we treat them as a starting point rather than a claim.",
     "altCherry": "A single ripe red coffee cherry on the branch, surrounded by wet green leaves after rain",
     "specVarietal": "Varietal",
-    "specVarietalValue": "Arabica: Bourbon and Typica",
+    "specVarietalValue": "Arabica, some Robusta",
     "specProcess": "Processing",
-    "specProcessValue": "Washed",
+    "specProcessValue": "Washed · Natural · Yellow honey",
     "specMoisture": "Moisture",
     "specMoistureValue": "Below 11%",
     "specScore": "Cup score",
-    "specScoreValue": "84-90"
+    "specScoreValue": "81–85, producer-reported"
   },
   "map": {
     "eyebrow": "Where it comes from",
     "title": "Four districts, two provinces",
-    "body": "Gulmi and the Lumbini hills to the west; Bhojpur, Ilam and Solukhumbu in Koshi to the east. ",
+    "body": "Gulmi and the Lumbini hills to the west; Bhojpur, Ilam and Solukhumbu in Koshi to the east. Different altitudes, different processing traditions, genuinely different cups.",
     "alt": "Map of Nepal showing Mewa Valley Coffee's sourcing districts across Koshi and Lumbini provinces"
   },
   "gallery": {
@@ -63,9 +63,9 @@
   },
   "cta": {
     "eyebrow": "Roasters",
-    "title": "Come and Try",
-    "body": "We are looking for UK and European roasters to work with us introducing Nepali coffee to the world. Send us a message below",
-    "button": "Start a conversation"
+    "title": "Come and taste it before anyone else has",
+    "body": "We are looking for a small number of UK and European roasters to evaluate the first samples. If Nepal sounds like a gap in your offering, we would like to hear from you.",
+    "button": "CONTACT US"
   },
   "about": {
     "eyebrow": "Who we are",
