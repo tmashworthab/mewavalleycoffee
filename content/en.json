@@ -32,23 +32,6 @@
     "statHarvest": "August 2026",
     "statHarvestLabel": "Available in the uk"
   },
-  "journey": {
-    "eyebrow": "The journey",
-    "title": "We went to the hills and asked",
-    "body1": "Reaching a producer in eastern Nepal takes a flight, a bus, and then a road that is mostly suggestion. Landslides close it in the monsoon. The last stretch is walked.",
-    "body2": "We made that trip — through Gulmi, Bhojpur, Ilam and Solukhumbu — to see the trees, taste what comes off them, and sit with the people who tend them. Not a sourcing trip arranged by an exporter. We turned up, and we kept turning up.",
-    "pullquote": "You cannot judge a coffee from a spreadsheet. You have to stand in the row and look at the tree.",
-    "captionRoad": "The public bus is often the only way up. In monsoon, landslides can close the road for days.",
-    "altRoad": "A brightly painted bus on a narrow hillside road, dwarfed by dense green forest in eastern Nepal",
-    "altValley": "Two forested ridges converging into a deep valley, cloud gathering in the gap"
-  },
-  "growers": {
-    "eyebrow": "The growers",
-    "title": "Farms of a hectare, sometimes less",
-    "body1": "Most of the coffee here is grown by families, on plots measured in hundreds of trees rather than hectares. Coffee sits alongside cardamom, citrus and whatever else the slope will hold. It is one income among several, which makes what a buyer pays matter enormously.",
-    "body2": "We deal with the cooperatives and producers directly. We know which washing station handled which lot, whose trees it came from, and what altitude it grew at. When something is uncertain, we say so.",
-    "altFarmhouse": "A tin-roofed farmhouse in the Nepali hills with dahlias flowering in the foreground and cloud descending the mountainside behind"
-  },
   "coffee": {
     "eyebrow": "The coffee",
     "title": "What is actually in the bag",
@@ -70,17 +53,13 @@
     "body": "Gulmi and the Lumbini hills to the west; Bhojpur, Ilam and Solukhumbu in Koshi to the east. Different altitudes, different processing traditions, genuinely different cups.",
     "alt": "Map of Nepal showing Mewa Valley Coffee's sourcing districts across Koshi and Lumbini provinces"
   },
-  "verify": {
-    "eyebrow": "Before we sell you anything",
-    "title": "Nothing is confirmed until it is cupped in Britain",
-    "body1": "Every figure on this site came from a producer. We have not yet put these lots in front of an independent UK cupping table, and until we do, we are not going to tell you they are specialty grade.",
-    "body2": "Samples are being arranged now. When they are scored, we will publish what comes back — including the lots that do not make the cut.",
-    "pointOneTitle": "Traceable",
-    "pointOneBody": "Named cooperative, district and altitude for every lot.",
-    "pointTwoTitle": "Unverified, and labelled as such",
-    "pointTwoBody": "Producer figures are marked as producer figures.",
-    "pointThreeTitle": "Published either way",
-    "pointThreeBody": "UK cupping results go up whatever they say."
+  "gallery": {
+    "label": "Photographs from eastern Nepal",
+    "altValley": "Two forested ridges converging into a deep valley, cloud gathering in the gap",
+    "altRoad": "A brightly painted bus on a narrow hillside road, dwarfed by dense green forest in eastern Nepal",
+    "altFarmhouse": "A tin-roofed farmhouse in the Nepali hills with dahlias flowering in the foreground and cloud descending the mountainside behind",
+    "altCherry": "A single ripe red coffee cherry on the branch, surrounded by wet green leaves after rain",
+    "altRidge": "Cloud moving across a forested ridge in the hill districts of eastern Nepal, a dirt road cut into the slope"
   },
   "cta": {
     "eyebrow": "Roasters",

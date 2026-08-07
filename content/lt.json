@@ -32,23 +32,6 @@
     "statHarvest": "2026 m. rugpjūtis",
     "statHarvestLabel": "Pasiekiama Jungtinėje Karalystėje"
   },
-  "journey": {
-    "eyebrow": "Kelionė",
-    "title": "Nuvykome į kalvas ir paklausėme",
-    "body1": "Kad pasiektum augintoją rytų Nepale, reikia skrydžio, autobuso ir kelio, kuris veikiau tik primena kelią. Musonų metu jį uždaro nuošliaužos. Paskutinę atkarpą tenka nueiti pėsčiomis.",
-    "body2": "Tą kelionę nuvažiavome – per Gulmį, Bhodžpurą, Ilamą ir Solukhumbu – kad pamatytume medžius, paragautume, kas nuo jų nuimama, ir pasėdėtume su žmonėmis, kurie juos prižiūri. Tai nebuvo eksportuotojo suorganizuota išvyka. Atvykome patys ir grįžome dar ne kartą.",
-    "pullquote": "Kavos neįvertinsi iš lentelės. Reikia atsistoti eilėje ir pažiūrėti į medį.",
-    "captionRoad": "Viešasis autobusas dažnai yra vienintelis būdas užkopti. Musonų metu nuošliaužos kelią gali uždaryti kelioms dienoms.",
-    "altRoad": "Ryškiai išdažytas autobusas siaurame kalvos kelyje, mažytis tankaus žalio miško fone rytų Nepale",
-    "altValley": "Du mišku apaugę kalnagūbriai susilieja į gilų slėnį, tarpeklyje telkiasi debesys"
-  },
-  "growers": {
-    "eyebrow": "Augintojai",
-    "title": "Ūkiai po hektarą, kartais ir mažiau",
-    "body1": "Didžiąją dalį kavos čia augina šeimos, sklypuose, kurie matuojami ne hektarais, o medžių šimtais. Kava auga šalia kardamono, citrusų ir visko, ką dar išlaiko šlaitas. Tai vienos pajamos iš kelių – todėl tai, kiek sumoka pirkėjas, turi milžinišką reikšmę.",
-    "body2": "Su kooperatyvais ir augintojais dirbame tiesiogiai. Žinome, kuri plovykla apdorojo kurią partiją, kieno medžių ji sulaukė ir kokiame aukštyje užaugo. Kai kas nors neaišku, taip ir sakome.",
-    "altFarmhouse": "Skardiniu stogu dengtas sodybos namas Nepalo kalvose, priekiniame plane žydi jurginai, už jo šlaitu leidžiasi debesys"
-  },
   "coffee": {
     "eyebrow": "Kava",
     "title": "Kas iš tikrųjų yra maiše",
@@ -70,17 +53,13 @@
     "body": "Gulmis ir Lumbinio kalvos vakaruose; Bhodžpuras, Ilamas ir Solukhumbu Košyje rytuose. Skirtingi aukščiai, skirtingos apdorojimo tradicijos, iš tiesų skirtingas skonis.",
     "alt": "Nepalo žemėlapis, kuriame pažymėti „Mewa Valley Coffee“ tiekimo rajonai Košio ir Lumbinio provincijose"
   },
-  "verify": {
-    "eyebrow": "Prieš ką nors jums parduodami",
-    "title": "Niekas nepatvirtinta, kol neparagauta Britanijoje",
-    "body1": "Kiekvienas šioje svetainėje esantis skaičius gautas iš augintojo. Šių partijų dar nepateikėme nepriklausomai degustacijai Jungtinėje Karalystėje, ir kol to nepadarysime, nesakysime jums, kad tai specialty klasės kava.",
-    "body2": "Šiuo metu ruošiami mėginiai. Kai jie bus įvertinti, paskelbsime rezultatus – įskaitant ir tas partijas, kurios neprilygs reikalavimams.",
-    "pointOneTitle": "Atsekama",
-    "pointOneBody": "Kiekvienai partijai nurodomas kooperatyvas, rajonas ir aukštis.",
-    "pointTwoTitle": "Nepatikrinta – ir taip pažymėta",
-    "pointTwoBody": "Augintojų pateikti skaičiai pažymimi kaip augintojų skaičiai.",
-    "pointThreeTitle": "Skelbiama bet kuriuo atveju",
-    "pointThreeBody": "Degustacijos Jungtinėje Karalystėje rezultatai skelbiami, kad ir kokie būtų."
+  "gallery": {
+    "label": "Nuotraukos iš rytų Nepalo",
+    "altValley": "Du mišku apaugę kalnagūbriai susilieja į gilų slėnį, tarpeklyje telkiasi debesys",
+    "altRoad": "Ryškiai išdažytas autobusas siaurame kalvos kelyje, mažytis tankaus žalio miško fone rytų Nepale",
+    "altFarmhouse": "Skardiniu stogu dengtas sodybos namas Nepalo kalvose, priekiniame plane žydi jurginai, už jo šlaitu leidžiasi debesys",
+    "altCherry": "Viena prinokusi raudona kavos uoga ant šakos, apsupta drėgnų žalių lapų po lietaus",
+    "altRidge": "Debesys slenka per mišku apaugusį kalnagūbrį rytų Nepalo kalvų rajonuose, šlaite iškirstas žvyrkelis"
   },
   "cta": {
     "eyebrow": "Kepintojams",

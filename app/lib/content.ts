@@ -53,7 +53,7 @@ export function dictionary(locale: Locale): Content {
   return dictionaries[locale] as Content;
 }
 
-/** Dot-path lookup, e.g. get("journey.body1", "lt"). */
+/** Dot-path lookup, e.g. get("premise.body1", "lt"). */
 export function get(path: string, locale: Locale = DEFAULT_LOCALE): string {
   const value = path
     .split(".")

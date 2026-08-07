@@ -349,3 +349,48 @@ body {
 [data-locale="ne"] .type-display {
   font-size: clamp(2.25rem, 6vw, 5rem);
 }
+
+/* ---------- Closing photo filmstrip ---------- */
+/* The track is rendered twice, so translating by half the width lands the
+   second copy exactly where the first began — a seamless loop. */
+
+@keyframes filmstripDrift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.filmstrip {
+  animation: filmstripDrift 60s linear infinite;
+  will-change: transform;
+}
+
+/* Pause while someone is looking at a frame, or tabbing through. */
+.filmstrip:hover,
+.filmstrip:focus-within {
+  animation-play-state: paused;
+}
+
+/* With motion suppressed the strip would freeze with most frames off-screen,
+   so it becomes an ordinary horizontal scroller instead. */
+@media (prefers-reduced-motion: reduce) {
+  .filmstrip {
+    animation: none;
+  }
+
+  .filmstrip-scroller {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .filmstrip-track[aria-hidden="true"] {
+    display: none;
+  }
+
+  .filmstrip-track > li {
+    scroll-snap-align: start;
+  }
+}

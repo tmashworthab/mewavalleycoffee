@@ -1,12 +1,10 @@
 "use client";
 import Hero from "./home/Hero";
 import Premise from "./home/Premise";
-import Journey from "./home/Journey";
-import Growers from "./home/Growers";
 import Coffee from "./home/Coffee";
 import Origins from "./home/Origins";
-import Verify from "./home/Verify";
 import Invitation from "./home/Invitation";
+import Filmstrip from "./home/Filmstrip";
 
 export default function HomeContent() {
   return (
@@ -15,23 +13,17 @@ export default function HomeContent() {
       <Hero />
       <Premise />
 
-      {/* 2 — the journey to the producers */}
-      <Journey />
-
-      {/* 3 — direct relationships with growers */}
-      <Growers />
-
-      {/* 4 — what the coffee actually is */}
+      {/* 2 — what the coffee actually is */}
       <Coffee />
 
-      {/* 5 — where it comes from */}
+      {/* 3 — where it comes from */}
       <Origins />
 
-      {/* 6 — transparency and independent verification */}
-      <Verify />
-
-      {/* 7 — the invitation */}
+      {/* 4 — the invitation */}
       <Invitation />
+
+      {/* 5 — closing photography */}
+      <Filmstrip />
     </>
   );
 }
