@@ -20,8 +20,10 @@ language. Nothing else needs touching to change copy.
 4. **Switch to the language you want to edit first**, using EN / NE / LT in the
    nav. The bar at the bottom shows which one you're editing.
 5. Click any text, type over it, press Enter
-6. Changed text is highlighted and the bar counts your unsaved edits
-7. Press **Publish**
+6. A small toolbar appears above whatever you clicked, with alignment, size
+   and (on body text) list buttons
+7. Changed text is highlighted and the bar counts your unsaved edits
+8. Press **Publish**
 
 Publishing commits that language's file to GitHub, which triggers a Railway
 deploy. The live site updates in roughly 30 seconds.
@@ -39,6 +41,33 @@ Notes:
 - **Exit** signs you out. Sessions also expire by themselves after 12 hours.
 - Every publish is a git commit recording who made it, so any change can be
   reviewed or reverted.
+
+## Formatting text
+
+Clicking any text brings up a toolbar above it:
+
+- **Alignment** — left, centre, right. Click the active one again to clear it.
+- **Size** — S, M, L. These are steps on the site's existing type scale rather
+  than free pixel values, so nothing you pick can look out of place. M is
+  whatever the design already used, so a field is only "overridden" once you
+  move off it.
+- **Lists** — bullet and numbered, on body text only. Clicking bullet while
+  already bulleted removes it; clicking numbered while bulleted converts.
+
+Formatting is **shared across all three languages**, because alignment and
+size are design decisions rather than translation decisions — this stops the
+three versions drifting apart visually. It is stored separately from the copy,
+in `content/format.json`.
+
+### Lists without the toolbar
+
+Lists are plain text, so you can also just type them. Start a line with `- `
+for a bullet or `1. ` for a number. Press Enter inside body text to start a
+new line — headings commit on Enter instead, since they are single-line.
+
+While you are editing you see the raw text (`- Washed`); visitors see a proper
+bulleted list. Nothing you type is ever treated as code, so there is no way an
+edit can break the page.
 
 ## Adding and removing editors
 

@@ -394,3 +394,40 @@ body {
     scroll-snap-align: start;
   }
 }
+
+/* ---------- Rich text ---------- */
+/* Produced by the plain-text list syntax, not by stored markup. */
+
+.rich-list {
+  margin: 0.85em 0;
+  padding-left: 1.35em;
+}
+
+.rich-list li {
+  margin-bottom: 0.4em;
+  padding-left: 0.25em;
+}
+
+.rich-list li::marker {
+  color: var(--gold);
+}
+
+.rich-list.list-disc {
+  list-style-type: disc;
+}
+
+.rich-list.list-decimal {
+  list-style-type: decimal;
+}
+
+/* Paragraph break inside a single editable field. */
+.rich-break {
+  display: block;
+  height: 0.85em;
+}
+
+/* While editing, fields show their source text, so preserve the line breaks
+   the author is typing. */
+[data-editing] [data-ck-multiline] {
+  white-space: pre-wrap;
+}

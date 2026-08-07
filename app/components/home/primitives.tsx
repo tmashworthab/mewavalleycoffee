@@ -2,12 +2,31 @@
 import Image, { type StaticImageData } from "next/image";
 import Reveal from "../Reveal";
 import { useContent } from "../../lib/locale-context";
+import { formatClasses, baseSizeClass, type Role, type Size } from "../../lib/format";
+import RichText, { isRich } from "../RichText";
 
 /**
  * Text primitives take a `ck` (content key) rather than children, so every
  * string on the page is stamped with the dot-path it came from. The editor
- * finds editable text by querying for [data-ck].
+ * finds editable text by querying for [data-ck], and reads data-ck-raw when a
+ * field's source differs from what is rendered.
  */
+
+/** Attributes the editor needs to find, classify and edit a field. */
+function editableProps(
+  ck: string,
+  text: string,
+  role: Role,
+  multiline = false
+) {
+  return {
+    "data-ck": ck,
+    "data-ck-role": role,
+    // The editor edits the source, not the rendered lists.
+    ...(isRich(text) ? { "data-ck-raw": text } : {}),
+    ...(multiline ? { "data-ck-multiline": "true" } : {}),
+  };
+}
 
 /* ---------- Layout shell ---------- */
 
@@ -46,11 +65,15 @@ export function Eyebrow({
   delay?: number;
 }) {
   const { t } = useContent();
+  const text = t(ck);
   return (
     <Reveal delay={delay} className={`flex items-center gap-4 ${className}`}>
-      <span className="h-px w-8 bg-[#c9a468]/50" />
-      <span className="type-eyebrow text-[#c9a468]" data-ck={ck}>
-        {t(ck)}
+      <span className="h-px w-8 bg-[#c9a468]/50 shrink-0" />
+      <span
+        className={`type-eyebrow text-[#c9a468] ${formatClasses(ck, "label")}`}
+        {...editableProps(ck, text, "label")}
+      >
+        {text}
       </span>
     </Reveal>
   );
@@ -70,15 +93,18 @@ export function SectionTitle({
   size?: "title" | "subtitle";
 }) {
   const { t } = useContent();
+  const text = t(ck);
+  const base = size === "title" ? baseSizeClass("title", "md") : "type-subtitle";
   return (
     <Reveal delay={delay}>
       <h2
-        data-ck={ck}
-        className={`font-serif-display ${
-          size === "title" ? "type-title" : "type-subtitle"
-        } text-[#f2ede6] text-balance ${className}`}
+        className={`font-serif-display ${base} text-[#f2ede6] text-balance ${formatClasses(
+          ck,
+          "title"
+        )} ${className}`}
+        {...editableProps(ck, text, "title")}
       >
-        {t(ck)}
+        {text}
       </h2>
     </Reveal>
   );
@@ -98,16 +124,18 @@ export function Body({
   lead?: boolean;
 }) {
   const { t } = useContent();
+  const text = t(ck);
+  const defaultSize: Size = lead ? "lg" : "md";
   return (
     <Reveal delay={delay}>
-      <p
-        data-ck={ck}
-        className={`font-serif-body ${
-          lead ? "type-lead text-[#f2ede6]/85" : "type-body text-[#f2ede6]/65"
-        } ${className}`}
+      <div
+        className={`font-serif-body ${baseSizeClass("body", defaultSize)} ${
+          lead ? "text-[#f2ede6]/85" : "text-[#f2ede6]/65"
+        } ${formatClasses(ck, "body", defaultSize)} ${className}`}
+        {...editableProps(ck, text, "body", true)}
       >
-        {t(ck)}
-      </p>
+        <RichText text={text} />
+      </div>
     </Reveal>
   );
 }
@@ -150,7 +178,13 @@ export function PhotoBreak({
       {captionCk && (
         <figcaption className="max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 pt-5">
           <Reveal>
-            <span className="type-caption text-[#f2ede6]/55" data-ck={captionCk}>
+            <span
+              className={`type-caption text-[#f2ede6]/55 ${formatClasses(
+                captionCk,
+                "label"
+              )}`}
+              {...editableProps(captionCk, t(captionCk), "label")}
+            >
               {t(captionCk)}
             </span>
           </Reveal>

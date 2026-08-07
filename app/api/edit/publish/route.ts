@@ -2,12 +2,72 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { SESSION_COOKIE, readSession } from "../../../lib/editor-session";
 import { dictionary, paths, set, isLocale } from "../../../lib/content";
+import {
+  format as currentFormat,
+  isAlignment,
+  isSize,
+  type FieldFormat,
+  type FormatMap,
+} from "../../../lib/format";
 
 export const dynamic = "force-dynamic";
 
 const MAX_FIELD_LENGTH = 4000;
 
 type Edits = Record<string, string>;
+
+interface GitHubFile {
+  path: string;
+  body: string;
+  message: string;
+}
+
+/** Commit one file, using its current SHA so a concurrent change cannot be lost. */
+async function commitFile(
+  file: GitHubFile,
+  repo: string,
+  branch: string,
+  token: string
+): Promise<{ ok: true; sha: string } | { ok: false; error: string }> {
+  const api = `https://api.github.com/repos/${repo}/contents/${file.path}`;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: "application/vnd.github+json",
+    "Content-Type": "application/json",
+  };
+
+  const currentRes = await fetch(`${api}?ref=${branch}`, {
+    headers,
+    cache: "no-store",
+  });
+  if (!currentRes.ok) {
+    return {
+      ok: false,
+      error: `Could not read ${file.path} from GitHub (${currentRes.status}).`,
+    };
+  }
+  const current = await currentRes.json();
+
+  const putRes = await fetch(api, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify({
+      message: file.message,
+      content: Buffer.from(file.body, "utf8").toString("base64"),
+      sha: current.sha,
+      branch,
+    }),
+  });
+
+  if (!putRes.ok) {
+    const detail = await putRes.text();
+    console.error("GitHub publish failed:", putRes.status, detail.slice(0, 300));
+    return { ok: false, error: `GitHub rejected the change (${putRes.status}).` };
+  }
+
+  const result = await putRes.json();
+  return { ok: true, sha: result?.commit?.sha?.slice(0, 7) ?? "" };
+}
 
 export async function POST(request: NextRequest) {
   const store = await cookies();
@@ -17,12 +77,15 @@ export async function POST(request: NextRequest) {
   }
 
   let edits: Edits;
+  let formatEdits: Record<string, unknown>;
   let locale: string;
   try {
     const body = await request.json();
     edits = body?.edits ?? {};
+    formatEdits = body?.format ?? {};
     locale = typeof body?.locale === "string" ? body.locale : "en";
     if (typeof edits !== "object" || edits === null) throw new Error();
+    if (typeof formatEdits !== "object" || formatEdits === null) throw new Error();
   } catch {
     return NextResponse.json({ error: "Bad request" }, { status: 400 });
   }
@@ -31,12 +94,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unknown language" }, { status: 400 });
   }
 
-  // Only allow writes to keys that already exist, with sane values. This stops
-  // a signed-in session from injecting new structure into the content file.
   const allowed = new Set(paths());
   const rejected: string[] = [];
-  let next = dictionary(locale);
 
+  // --- Copy ---
+  let nextContent = dictionary(locale);
   for (const [key, value] of Object.entries(edits)) {
     if (
       !allowed.has(key) ||
@@ -46,7 +108,33 @@ export async function POST(request: NextRequest) {
       rejected.push(key);
       continue;
     }
-    next = set(next, key, value);
+    nextContent = set(nextContent, key, value);
+  }
+
+  // --- Formatting ---
+  // Only the closed set of alignment and size values is accepted, so nothing
+  // arbitrary can reach a style attribute.
+  const nextFormat: FormatMap = structuredClone(currentFormat);
+  for (const [key, value] of Object.entries(formatEdits)) {
+    if (!allowed.has(key) || typeof value !== "object" || value === null) {
+      rejected.push(key);
+      continue;
+    }
+    const { align, size } = value as Record<string, unknown>;
+    if (align !== undefined && !isAlignment(align)) {
+      rejected.push(key);
+      continue;
+    }
+    if (size !== undefined && !isSize(size)) {
+      rejected.push(key);
+      continue;
+    }
+    const entry: FieldFormat = {};
+    if (isAlignment(align)) entry.align = align;
+    if (isSize(size)) entry.size = size;
+
+    if (Object.keys(entry).length === 0) delete nextFormat[key];
+    else nextFormat[key] = entry;
   }
 
   if (rejected.length) {
@@ -56,13 +144,11 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const changed = Object.keys(edits).length;
+  const changed = Object.keys(edits).length + Object.keys(formatEdits).length;
   if (changed === 0) {
     return NextResponse.json({ error: "No changes to publish" }, { status: 400 });
   }
 
-  // Config is checked only once the payload is known good, so a malformed or
-  // hostile request is rejected on its merits rather than masked by setup.
   const token = process.env.GITHUB_TOKEN;
   const repo = process.env.GITHUB_REPO;
   const branch = process.env.GITHUB_BRANCH ?? "main";
@@ -77,63 +163,43 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const contentPath = `content/${locale}.json`;
-  const api = `https://api.github.com/repos/${repo}/contents/${contentPath}`;
-  const headers = {
-    Authorization: `Bearer ${token}`,
-    Accept: "application/vnd.github+json",
-    "Content-Type": "application/json",
-  };
+  const by = `Published from the on-site editor by ${session.username}.`;
+  const commits: string[] = [];
 
-  // The current blob SHA is required for an update, and doubles as a guard
-  // against clobbering a change made from another device.
-  const currentRes = await fetch(`${api}?ref=${branch}`, {
-    headers,
-    cache: "no-store",
-  });
-
-  if (!currentRes.ok) {
-    return NextResponse.json(
-      { error: `Could not read ${contentPath} from GitHub (${currentRes.status}).` },
-      { status: 502 }
-    );
-  }
-
-  const current = await currentRes.json();
-
-  const body = JSON.stringify(next, null, 2) + "\n";
-  const encoded = Buffer.from(body, "utf8").toString("base64");
-
-  const summary =
-    changed === 1
-      ? `Edit ${locale} copy: ${Object.keys(edits)[0]}`
-      : `Edit ${locale} copy (${changed} fields)`;
-
-  const putRes = await fetch(api, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify({
-      message: `${summary}\n\nPublished from the on-site editor by ${session.username}.`,
-      content: encoded,
-      sha: current.sha,
+  if (Object.keys(edits).length) {
+    const n = Object.keys(edits).length;
+    const result = await commitFile(
+      {
+        path: `content/${locale}.json`,
+        body: JSON.stringify(nextContent, null, 2) + "\n",
+        message:
+          (n === 1
+            ? `Edit ${locale} copy: ${Object.keys(edits)[0]}`
+            : `Edit ${locale} copy (${n} fields)`) + `\n\n${by}`,
+      },
+      repo,
       branch,
-    }),
-  });
-
-  if (!putRes.ok) {
-    const detail = await putRes.text();
-    console.error("GitHub publish failed:", putRes.status, detail.slice(0, 300));
-    return NextResponse.json(
-      { error: `GitHub rejected the change (${putRes.status}).` },
-      { status: 502 }
+      token
     );
+    if (!result.ok) return NextResponse.json({ error: result.error }, { status: 502 });
+    commits.push(result.sha);
   }
 
-  const result = await putRes.json();
-  return NextResponse.json({
-    ok: true,
-    changed,
-    locale,
-    commit: result?.commit?.sha?.slice(0, 7) ?? null,
-  });
+  if (Object.keys(formatEdits).length) {
+    const n = Object.keys(formatEdits).length;
+    const result = await commitFile(
+      {
+        path: "content/format.json",
+        body: JSON.stringify(nextFormat, null, 2) + "\n",
+        message: `Edit text formatting (${n} field${n === 1 ? "" : "s"})\n\n${by}`,
+      },
+      repo,
+      branch,
+      token
+    );
+    if (!result.ok) return NextResponse.json({ error: result.error }, { status: 502 });
+    commits.push(result.sha);
+  }
+
+  return NextResponse.json({ ok: true, changed, locale, commits });
 }
