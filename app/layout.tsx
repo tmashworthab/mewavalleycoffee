@@ -1,5 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Newsreader } from "next/font/google";
+import {
+  Geist,
+  Newsreader,
+  Instrument_Serif,
+  Cormorant_Garamond,
+  Space_Grotesk,
+} from "next/font/google";
 import "./globals.css";
 
 const geist = Geist({
@@ -13,6 +19,32 @@ const newsreader = Newsreader({
   subsets: ["latin"],
   display: "swap",
   style: ["normal", "italic"],
+});
+
+/* Optional typefaces the editor can pick. preload is off so they cost nothing
+   for the majority of visitors, who only ever see the two defaults above. */
+
+const instrument = Instrument_Serif({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  preload: false,
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-classic",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
+  preload: false,
+});
+
+const grotesk = Space_Grotesk({
+  variable: "--font-modern",
+  subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.mewavalley.com";
@@ -72,7 +104,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${newsreader.variable} h-full`}
+      className={`${geist.variable} ${newsreader.variable} ${instrument.variable} ${cormorant.variable} ${grotesk.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
         <a href="#main" className="skip-link">

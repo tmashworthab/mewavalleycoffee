@@ -39,10 +39,10 @@ export default function Coffee() {
               {specs.map((s, i) => (
                 <Reveal key={s.labelCk} delay={i * 90}>
                   <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-[#c9a468]/15">
-                    <dt className={`type-eyebrow text-[#f2ede6]/55 sm:w-40 shrink-0 ${formatClasses(s.labelCk, "label")}`} data-ck={s.labelCk} data-ck-role="label">
+                    <dt className={`type-eyebrow text-[#f2ede6]/55 sm:w-40 shrink-0 ${formatClasses(s.labelCk)}`} data-ck={s.labelCk} data-ck-role="label">
                       {s.label}
                     </dt>
-                    <dd className={`font-serif-body text-[#f2ede6]/80 text-[1.0625rem] ${formatClasses(s.valueCk, "body")}`} data-ck={s.valueCk} data-ck-role="body">
+                    <dd className={`font-serif-body text-[#f2ede6]/80 text-[1.0625rem] ${formatClasses(s.valueCk)}`} data-ck={s.valueCk} data-ck-role="body">
                       {s.value}
                     </dd>
                   </div>

@@ -438,3 +438,41 @@ body {
 [data-editing] [data-ck-multiline] {
   white-space: pre-wrap;
 }
+
+/* ---------- Editor size steps ---------- */
+/* Twelve steps on a proportioned ramp. Large steps scale down on narrow
+   screens so a heading chosen on a desktop still fits a phone. */
+
+.fs-1  { font-size: 0.6875rem; }
+.fs-2  { font-size: 0.75rem; }
+.fs-3  { font-size: 0.875rem; }
+.fs-4  { font-size: 1rem; }
+.fs-5  { font-size: 1.125rem; }
+.fs-6  { font-size: 1.375rem; }
+.fs-7  { font-size: clamp(1.375rem, 3.6vw, 1.75rem); }
+.fs-8  { font-size: clamp(1.625rem, 4.4vw, 2.25rem); }
+.fs-9  { font-size: clamp(1.875rem, 5.2vw, 2.75rem); }
+.fs-10 { font-size: clamp(2.25rem, 6.4vw, 3.5rem); }
+.fs-11 { font-size: clamp(2.625rem, 7.6vw, 4.5rem); }
+.fs-12 { font-size: clamp(3rem, 9vw, 6rem); }
+
+/* Line height tightens as type grows, or large headings become airy. */
+.fs-9, .fs-10, .fs-11, .fs-12 { line-height: 1.1; }
+.fs-7, .fs-8 { line-height: 1.2; }
+
+/* ---------- Editor typefaces ---------- */
+
+.ff-serif   { font-family: var(--font-serif), Georgia, serif; }
+.ff-sans    { font-family: var(--font-geist-sans), system-ui, sans-serif; }
+.ff-display { font-family: var(--font-display), Georgia, serif; }
+.ff-classic { font-family: var(--font-classic), Georgia, serif; }
+.ff-modern  { font-family: var(--font-modern), system-ui, sans-serif; }
+
+/* A chosen face wins over the tracked-out label styling, which is tuned for
+   the default sans and looks wrong on a serif. */
+.ff-display,
+.ff-classic,
+.ff-serif {
+  letter-spacing: normal;
+  text-transform: none;
+}

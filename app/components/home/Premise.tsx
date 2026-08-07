@@ -35,11 +35,11 @@ export default function Premise() {
           <dl className="grid sm:grid-cols-3 gap-y-12 gap-x-12 pt-12 sm:pt-16">
             {stats.map((s, i) => (
               <Reveal key={s.labelCk} delay={i * 110}>
-                <dt className={`type-eyebrow text-[#f2ede6]/55 mb-4 ${formatClasses(s.labelCk, "label")}`} data-ck={s.labelCk} data-ck-role="label">
+                <dt className={`type-eyebrow text-[#f2ede6]/55 mb-4 ${formatClasses(s.labelCk)}`} data-ck={s.labelCk} data-ck-role="label">
                   {s.label}
                 </dt>
                 <dd
-                  className={`font-serif-display text-[1.75rem] sm:text-[2.125rem] text-[#c9a468] leading-none ${formatClasses(s.valueCk, "title")}`}
+                  className={`font-serif-display text-[1.75rem] sm:text-[2.125rem] text-[#c9a468] leading-none ${formatClasses(s.valueCk)}`}
                   data-ck={s.valueCk}
                   data-ck-role="title"
                 >

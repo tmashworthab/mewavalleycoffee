@@ -34,7 +34,7 @@ export default function Invitation() {
 
           <Reveal delay={80}>
             <h2
-              className={`font-serif-display type-title text-[#f2ede6] mb-8 text-balance ${formatClasses("cta.title", "title")}`}
+              className={`font-serif-display type-title text-[#f2ede6] mb-8 text-balance ${formatClasses("cta.title")}`}
               data-ck="cta.title"
               data-ck-role="title"
             >
@@ -43,7 +43,7 @@ export default function Invitation() {
           </Reveal>
 
           <Reveal delay={160}>
-            <p className={`font-serif-body type-lead text-[#f2ede6]/70 mb-12 ${formatClasses("cta.body", "body", "lg")}`} data-ck="cta.body" data-ck-role="body" data-ck-multiline="true">
+            <p className={`font-serif-body type-lead text-[#f2ede6]/70 mb-12 ${formatClasses("cta.body")}`} data-ck="cta.body" data-ck-role="body" data-ck-multiline="true">
               {c.body}
             </p>
           </Reveal>
@@ -53,7 +53,7 @@ export default function Invitation() {
               href="/contact"
               className="group inline-flex items-center gap-4 text-[#f2ede6] hover:text-[#c9a468] transition-colors duration-500"
             >
-              <span className={`type-eyebrow ${formatClasses("cta.button", "label")}`} data-ck="cta.button" data-ck-role="label">
+              <span className={`type-eyebrow ${formatClasses("cta.button")}`} data-ck="cta.button" data-ck-role="label">
                 {c.button}
               </span>
               <span className="relative block w-12 h-px bg-current overflow-hidden">

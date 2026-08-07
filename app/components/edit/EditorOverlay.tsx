@@ -3,14 +3,20 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale } from "../../lib/locale-context";
 import { LOCALE_SHORT } from "../../lib/content";
-import { format as publishedFormat, type Alignment, type Size } from "../../lib/format";
+import {
+  format as publishedFormat,
+  STEP_REM,
+  type Alignment,
+  type FontChoice,
+  type SizeStep,
+} from "../../lib/format";
 import FormatBar from "./FormatBar";
 
 const DRAFT_PREFIX = "mvc-draft-edits";
 const FORMAT_DRAFT_KEY = "mvc-draft-format";
 
 type Edits = Record<string, string>;
-type FieldFormat = { align?: Alignment; size?: Size };
+type FieldFormat = { align?: Alignment; size?: SizeStep; font?: FontChoice };
 type FormatEdits = Record<string, FieldFormat>;
 
 /* Some strings are rendered with decoration around them (the pull quote sits
@@ -115,17 +121,22 @@ export default function EditorOverlay({
       center: "text-center",
       right: "text-right",
     } as const;
-    const SCALE = { sm: "0.85em", md: "", lg: "1.25em" } as const;
+    const FONTS = ["serif", "sans", "display", "classic", "modern"] as const;
 
     for (const [key, f] of Object.entries(formatEdits)) {
       const node = document.querySelector<HTMLElement>(
         `[data-ck="${CSS.escape(key)}"]`
       );
       if (!node) continue;
+
       node.classList.remove("text-left", "text-center", "text-right");
       if (f.align) node.classList.add(ALIGN[f.align]);
-      // Preview only — published sizes come from the type scale, not em values.
-      node.style.fontSize = f.size ? SCALE[f.size] : "";
+
+      // Preview the step directly; the published version uses the .fs-N class.
+      node.style.fontSize = f.size ? `${STEP_REM[f.size]}rem` : "";
+
+      for (const name of FONTS) node.classList.remove(`ff-${name}`);
+      if (f.font) node.classList.add(`ff-${f.font}`);
     }
   }, [formatEdits]);
 
@@ -196,14 +207,37 @@ export default function EditorOverlay({
 
   /* ---------- Formatting actions ---------- */
 
+  /** Step a field's size relative to whatever it is now. */
+  const stepFieldSize = useCallback(
+    (key: string, delta: number, fallback: SizeStep) => {
+      setFormatEdits((prev) => {
+        const current: FieldFormat = {
+          ...(prev[key] ?? publishedFormat[key] ?? {}),
+        };
+        const base = current.size ?? fallback;
+        const nextStep = Math.min(12, Math.max(1, base + delta)) as SizeStep;
+        if (nextStep === current.size) return prev;
+
+        const next = { ...prev, [key]: { ...current, size: nextStep } };
+        localStorage.setItem(FORMAT_DRAFT_KEY, JSON.stringify(next));
+        return next;
+      });
+    },
+    []
+  );
+
   const setFieldFormat = useCallback((key: string, patch: FieldFormat) => {
     setFormatEdits((prev) => {
       const current: FieldFormat = {
         ...(prev[key] ?? publishedFormat[key] ?? {}),
       };
-      // Clicking the option that is already on clears it.
       for (const [k, v] of Object.entries(patch)) {
-        if (current[k as keyof FieldFormat] === v) {
+        // null means "back to the design default". Re-picking the active
+        // option also clears it — but only for align and font, which are
+        // pickers. Size is a stepper, so landing on the same number again
+        // must be a no-op rather than a reset.
+        const isToggle = k === "align" || k === "font";
+        if (v === null || (isToggle && current[k as keyof FieldFormat] === v)) {
           delete current[k as keyof FieldFormat];
         } else {
           Object.assign(current, { [k]: v });
@@ -274,6 +308,9 @@ export default function EditorOverlay({
         node.textContent = original;
         delete node.dataset.dirty;
         node.classList.remove("text-left", "text-center", "text-right");
+        for (const name of ["serif", "sans", "display", "classic", "modern"]) {
+          node.classList.remove(`ff-${name}`);
+        }
         node.style.fontSize = "";
       }
     }
@@ -350,7 +387,13 @@ export default function EditorOverlay({
         target={active}
         state={activeFormat}
         onAlign={(a) => activeKey && setFieldFormat(activeKey, { align: a })}
-        onSize={(s) => activeKey && setFieldFormat(activeKey, { size: s })}
+        onSizeStep={(delta, fallback) =>
+          activeKey && stepFieldSize(activeKey, delta, fallback)
+        }
+        onFont={(f) =>
+          activeKey &&
+          setFieldFormat(activeKey, { font: f as FontChoice | undefined })
+        }
         onList={applyList}
       />
 

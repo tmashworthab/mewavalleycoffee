@@ -5,7 +5,8 @@ import { dictionary, paths, set, isLocale } from "../../../lib/content";
 import {
   format as currentFormat,
   isAlignment,
-  isSize,
+  isSizeStep,
+  isFont,
   type FieldFormat,
   type FormatMap,
 } from "../../../lib/format";
@@ -120,18 +121,21 @@ export async function POST(request: NextRequest) {
       rejected.push(key);
       continue;
     }
-    const { align, size } = value as Record<string, unknown>;
-    if (align !== undefined && !isAlignment(align)) {
-      rejected.push(key);
-      continue;
-    }
-    if (size !== undefined && !isSize(size)) {
+    const { align, size, font } = value as Record<string, unknown>;
+    // Each property is checked against its closed set, so nothing arbitrary
+    // can reach a class name or a style attribute.
+    if (
+      (align !== undefined && !isAlignment(align)) ||
+      (size !== undefined && !isSizeStep(size)) ||
+      (font !== undefined && !isFont(font))
+    ) {
       rejected.push(key);
       continue;
     }
     const entry: FieldFormat = {};
     if (isAlignment(align)) entry.align = align;
-    if (isSize(size)) entry.size = size;
+    if (isSizeStep(size)) entry.size = size;
+    if (isFont(font)) entry.font = font;
 
     if (Object.keys(entry).length === 0) delete nextFormat[key];
     else nextFormat[key] = entry;

@@ -2,7 +2,7 @@
 import Image, { type StaticImageData } from "next/image";
 import Reveal from "../Reveal";
 import { useContent } from "../../lib/locale-context";
-import { formatClasses, baseSizeClass, type Role, type Size } from "../../lib/format";
+import { formatClasses, type Role } from "../../lib/format";
 import RichText, { isRich } from "../RichText";
 
 /**
@@ -70,7 +70,7 @@ export function Eyebrow({
     <Reveal delay={delay} className={`flex items-center gap-4 ${className}`}>
       <span className="h-px w-8 bg-[#c9a468]/50 shrink-0" />
       <span
-        className={`type-eyebrow text-[#c9a468] ${formatClasses(ck, "label")}`}
+        className={`type-eyebrow text-[#c9a468] ${formatClasses(ck)}`}
         {...editableProps(ck, text, "label")}
       >
         {text}
@@ -94,14 +94,11 @@ export function SectionTitle({
 }) {
   const { t } = useContent();
   const text = t(ck);
-  const base = size === "title" ? baseSizeClass("title", "md") : "type-subtitle";
+  const base = size === "title" ? "type-title" : "type-subtitle";
   return (
     <Reveal delay={delay}>
       <h2
-        className={`font-serif-display ${base} text-[#f2ede6] text-balance ${formatClasses(
-          ck,
-          "title"
-        )} ${className}`}
+        className={`font-serif-display ${base} text-[#f2ede6] text-balance ${formatClasses(ck)} ${className}`}
         {...editableProps(ck, text, "title")}
       >
         {text}
@@ -125,13 +122,10 @@ export function Body({
 }) {
   const { t } = useContent();
   const text = t(ck);
-  const defaultSize: Size = lead ? "lg" : "md";
   return (
     <Reveal delay={delay}>
       <div
-        className={`font-serif-body ${baseSizeClass("body", defaultSize)} ${
-          lead ? "text-[#f2ede6]/85" : "text-[#f2ede6]/65"
-        } ${formatClasses(ck, "body", defaultSize)} ${className}`}
+        className={`font-serif-body ${lead ? "type-lead text-[#f2ede6]/85" : "type-body text-[#f2ede6]/65"} ${formatClasses(ck)} ${className}`}
         {...editableProps(ck, text, "body", true)}
       >
         <RichText text={text} />
@@ -179,10 +173,7 @@ export function PhotoBreak({
         <figcaption className="max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 pt-5">
           <Reveal>
             <span
-              className={`type-caption text-[#f2ede6]/55 ${formatClasses(
-                captionCk,
-                "label"
-              )}`}
+              className={`type-caption text-[#f2ede6]/55 ${formatClasses(captionCk)}`}
               {...editableProps(captionCk, t(captionCk), "label")}
             >
               {t(captionCk)}

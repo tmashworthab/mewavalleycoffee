@@ -3,28 +3,63 @@ import raw from "../../content/format.json";
 /**
  * Presentation overrides, keyed by the same dot-paths as the copy itself.
  *
- * Deliberately a small, closed set of choices rather than free values: the
- * site reads the way it does because everything sits on one type scale, and
- * an arbitrary font-size box is the quickest way to lose that. Every option
- * here still produces something that looks like the same site.
+ * Size is a numbered step on a fixed ramp rather than a free pixel value. That
+ * gives fine control — twelve steps from caption to full display — while still
+ * guaranteeing that whatever is chosen sits on a proportioned scale, which a
+ * free font-size box cannot.
  *
- * Formatting is shared across languages — alignment and size are design
- * decisions, not translation decisions, so the three versions cannot drift
- * apart visually.
+ * Formatting is shared across languages: alignment, size and typeface are
+ * design decisions, not translation decisions, so the three versions cannot
+ * drift apart visually.
  */
 
 export const ALIGNMENTS = ["left", "center", "right"] as const;
 export type Alignment = (typeof ALIGNMENTS)[number];
 
-export const SIZES = ["sm", "md", "lg"] as const;
-export type Size = (typeof SIZES)[number];
+/** Twelve steps, smallest to largest. */
+export const SIZE_STEPS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
+export type SizeStep = (typeof SIZE_STEPS)[number];
 
-/** What kind of text a field is, which decides how a size maps to the scale. */
+export const MIN_STEP = 1;
+export const MAX_STEP = 12;
+
+/**
+ * Desktop size for each step, in rem. Steps 7 and up also scale down on narrow
+ * screens (see the .fs-N rules in globals.css) so large type stays usable.
+ */
+export const STEP_REM: Record<SizeStep, number> = {
+  1: 0.6875,
+  2: 0.75,
+  3: 0.875,
+  4: 1,
+  5: 1.125,
+  6: 1.375,
+  7: 1.75,
+  8: 2.25,
+  9: 2.75,
+  10: 3.5,
+  11: 4.5,
+  12: 6,
+};
+
+/** Typefaces an editor can choose. Each is loaded in the root layout. */
+export const FONTS = ["serif", "sans", "display", "classic", "modern"] as const;
+export type FontChoice = (typeof FONTS)[number];
+
+export const FONT_LABELS: Record<FontChoice, string> = {
+  serif: "Newsreader",
+  sans: "Geist",
+  display: "Instrument Serif",
+  classic: "Cormorant",
+  modern: "Space Grotesk",
+};
+
 export type Role = "display" | "title" | "body" | "label";
 
 export interface FieldFormat {
   align?: Alignment;
-  size?: Size;
+  size?: SizeStep;
+  font?: FontChoice;
 }
 
 export type FormatMap = Record<string, FieldFormat>;
@@ -35,46 +70,51 @@ export function isAlignment(v: unknown): v is Alignment {
   return typeof v === "string" && (ALIGNMENTS as readonly string[]).includes(v);
 }
 
-export function isSize(v: unknown): v is Size {
-  return typeof v === "string" && (SIZES as readonly string[]).includes(v);
+export function isSizeStep(v: unknown): v is SizeStep {
+  return (
+    typeof v === "number" &&
+    Number.isInteger(v) &&
+    v >= MIN_STEP &&
+    v <= MAX_STEP
+  );
+}
+
+export function isFont(v: unknown): v is FontChoice {
+  return typeof v === "string" && (FONTS as readonly string[]).includes(v);
 }
 
 const ALIGN_CLASS: Record<Alignment, string> = {
   left: "text-left",
-  center: "text-center mx-auto",
-  right: "text-right ml-auto",
-};
-
-/** Sizes stay on the existing scale; "md" is whatever the design already used. */
-const SIZE_CLASS: Record<Role, Record<Size, string>> = {
-  display: { sm: "type-title", md: "type-display", lg: "type-display" },
-  title: { sm: "type-subtitle", md: "type-title", lg: "type-display" },
-  body: { sm: "type-body", md: "type-body", lg: "type-lead" },
-  label: { sm: "type-eyebrow", md: "type-eyebrow", lg: "type-caption" },
+  center: "text-center",
+  right: "text-right",
 };
 
 /**
- * Classes for a field, given its role and the default size the design uses.
- * Returns "" when nothing has been overridden, so unstyled fields keep exactly
- * the markup they had before formatting existed.
+ * Classes for a field. Returns "" when nothing is overridden, so untouched
+ * fields keep exactly the markup they had before formatting existed.
  */
-export function formatClasses(
-  path: string,
-  role: Role,
-  defaultSize: Size = "md"
-): string {
+export function formatClasses(path: string): string {
   const f = format[path];
+  if (!f) return "";
+
   const classes: string[] = [];
-
-  if (f?.align) classes.push(ALIGN_CLASS[f.align]);
-
-  const size = f?.size ?? defaultSize;
-  if (size !== defaultSize) classes.push(SIZE_CLASS[role][size]);
-
+  if (f.align) classes.push(ALIGN_CLASS[f.align]);
+  if (isSizeStep(f.size)) classes.push(`fs-${f.size}`);
+  if (f.font) classes.push(`ff-${f.font}`);
   return classes.join(" ");
 }
 
-/** The size class a field should carry when nothing is overridden. */
-export function baseSizeClass(role: Role, defaultSize: Size = "md"): string {
-  return SIZE_CLASS[role][defaultSize];
+/** Nearest step to a pixel size, used to seed the control from the design. */
+export function nearestStep(px: number, rootPx = 16): SizeStep {
+  const rem = px / rootPx;
+  let best: SizeStep = 4;
+  let delta = Infinity;
+  for (const step of SIZE_STEPS) {
+    const d = Math.abs(STEP_REM[step] - rem);
+    if (d < delta) {
+      delta = d;
+      best = step;
+    }
+  }
+  return best;
 }

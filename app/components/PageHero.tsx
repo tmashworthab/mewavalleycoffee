@@ -28,14 +28,14 @@ export default function PageHero({ eyebrowCk, titleCk, subtitleCk }: PageHeroPro
         {eyebrowCk && (
           <div className={`flex items-center gap-4 mb-8 ${rise}`} style={{ transitionDelay: "120ms" }}>
             <span className="h-px w-8 bg-[#c9a468]/50" />
-            <span className={`type-eyebrow text-[#c9a468] ${formatClasses(eyebrowCk, "label")}`} data-ck={eyebrowCk} data-ck-role="label">
+            <span className={`type-eyebrow text-[#c9a468] ${formatClasses(eyebrowCk)}`} data-ck={eyebrowCk} data-ck-role="label">
               {t(eyebrowCk)}
             </span>
           </div>
         )}
 
         <h1
-          className={`font-serif-display type-title text-[#f2ede6] max-w-[18ch] text-balance ${rise} ${formatClasses(titleCk, "title")}`}
+          className={`font-serif-display type-title text-[#f2ede6] max-w-[18ch] text-balance ${rise} ${formatClasses(titleCk)}`}
           style={{ transitionDelay: "240ms" }}
           data-ck={titleCk}
           data-ck-role="title"
@@ -45,7 +45,7 @@ export default function PageHero({ eyebrowCk, titleCk, subtitleCk }: PageHeroPro
 
         {subtitleCk && (
           <p
-            className={`font-serif-body type-lead text-[#f2ede6]/65 max-w-[42rem] mt-8 ${rise} ${formatClasses(subtitleCk, "body", "lg")}`}
+            className={`font-serif-body type-lead text-[#f2ede6]/65 max-w-[42rem] mt-8 ${rise} ${formatClasses(subtitleCk)}`}
             style={{ transitionDelay: "380ms" }}
             data-ck={subtitleCk}
             data-ck-role="body"

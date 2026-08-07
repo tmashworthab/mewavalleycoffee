@@ -47,10 +47,16 @@ Notes:
 Clicking any text brings up a toolbar above it:
 
 - **Alignment** — left, centre, right. Click the active one again to clear it.
-- **Size** — S, M, L. These are steps on the site's existing type scale rather
-  than free pixel values, so nothing you pick can look out of place. M is
-  whatever the design already used, so a field is only "overridden" once you
-  move off it.
+- **Size** — a number from 1 to 12, with − and + either side of it. The number
+  shown is always the field's current size, so if a heading reads 10 you can
+  nudge it to 11 or down to 8 and know what you will get. These are steps on a
+  proportioned ramp rather than free pixel values, so nothing you pick can look
+  out of place, and large sizes shrink automatically on phones. The number is
+  gold once you have overridden it and grey while it is still the design's own.
+- **Typeface** — the **Aa** button. Five choices: Newsreader (the site's serif),
+  Geist (its sans), Instrument Serif, Cormorant and Space Grotesk. Pick
+  **Default** to go back. The three extra faces are only downloaded by visitors
+  if a page actually uses one.
 - **Lists** — bullet and numbered, on body text only. Clicking bullet while
   already bulleted removes it; clicking numbered while bulleted converts.
 

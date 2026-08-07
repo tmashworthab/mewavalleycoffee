@@ -78,15 +78,12 @@ export default function Hero() {
       />
       <div className="absolute inset-0 scrim-vignette pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 pb-16 sm:pb-20 lg:pb-24 pt-40">
+      <div className="relative z-10 w-full max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 pb-28 sm:pb-36 lg:pb-44 pt-40">
         <div className="grid lg:grid-cols-12 gap-y-10 gap-x-12 xl:gap-x-20 items-end">
           {/* Left — the mark */}
           <div className="lg:col-span-5">
             <p
-              className={`type-eyebrow text-[#c9a468] mb-5 ${riseClass} ${formatClasses(
-                "hero.eyebrow",
-                "label"
-              )}`}
+              className={`type-eyebrow text-[#c9a468] mb-5 ${riseClass} ${formatClasses("hero.eyebrow")}`}
               style={rise(500)}
               data-ck="hero.eyebrow"
               data-ck-role="label"
@@ -96,7 +93,7 @@ export default function Hero() {
 
             <h1 className="font-serif-display type-hero text-[#f2ede6] text-balance">
               <span
-                className={`block ${riseClass} ${formatClasses("hero.headline", "title")}`}
+                className={`block ${riseClass} ${formatClasses("hero.headline")}`}
                 style={rise(650)}
                 data-ck="hero.headline"
                 data-ck-role="title"
@@ -104,10 +101,7 @@ export default function Hero() {
                 {h.headline}
               </span>
               <span
-                className={`block text-[#f2ede6]/70 ${riseClass} ${formatClasses(
-                  "hero.sub",
-                  "title"
-                )}`}
+                className={`block text-[#f2ede6]/70 ${riseClass} ${formatClasses("hero.sub")}`}
                 style={rise(850)}
                 data-ck="hero.sub"
                 data-ck-role="title"
@@ -123,10 +117,7 @@ export default function Hero() {
             style={rise(1000)}
           >
             <div
-              className={`font-serif-body type-body text-[#f2ede6]/80 max-w-[42rem] ${formatClasses(
-                "hero.intro",
-                "body"
-              )}`}
+              className={`font-serif-body type-body text-[#f2ede6]/80 max-w-[42rem] ${formatClasses("hero.intro")}`}
               data-ck="hero.intro"
               data-ck-role="body"
               data-ck-multiline="true"
@@ -142,7 +133,7 @@ export default function Hero() {
           style={rise(1200)}
         >
           <span
-            className={`type-eyebrow text-[#f2ede6]/55 ${formatClasses("hero.scroll", "label")}`}
+            className={`type-eyebrow text-[#f2ede6]/55 ${formatClasses("hero.scroll")}`}
             data-ck="hero.scroll"
             data-ck-role="label"
           >
