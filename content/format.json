@@ -1,5 +1,8 @@
 {
   "hero.sub": {
-    "size": 7
+    "size": "sm"
+  },
+  "hero.intro": {
+    "size": "lg"
   }
 }
