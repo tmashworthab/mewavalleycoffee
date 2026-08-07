@@ -17,8 +17,10 @@ language. Nothing else needs touching to change copy.
 2. Enter your username and password
 3. You land back on the site with editing switched on — every editable phrase
    gets a dashed outline
-4. **Switch to the language you want to edit first**, using EN / NE / LT in the
-   nav. The bar at the bottom shows which one you're editing.
+4. **Pick the language you want to edit** using the EN / NE / LT buttons at
+   the left of the bar at the bottom. The highlighted one is what you are
+   editing. A gold dot on another language means it has unpublished work
+   waiting.
 5. Click any text, type over it, press Enter
 6. A small toolbar appears above whatever you clicked, with alignment, size
    and (on body text) list buttons
@@ -94,7 +96,8 @@ Editors are listed in the `EDITOR_USERS` variable in Railway, as
 EDITOR_USERS=tom:firstpassword,rasa:secondpassword
 ```
 
-- **To add someone**, append `,theirname:theirpassword` and press Deploy.
+- **To add someone**, append `,theirname:theirpassword` and press **Deploy**.
+  They can sign in straight away at `/edit` — nothing else to set up.
 - **To remove someone**, delete their pair and press Deploy. Any session they
   already had stops working immediately.
 - Usernames are case-insensitive. Avoid commas and colons in passwords, since

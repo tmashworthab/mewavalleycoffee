@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale } from "../../lib/locale-context";
-import { LOCALE_SHORT } from "../../lib/content";
+import { LOCALES, type Locale } from "../../lib/content";
 import {
   format as publishedFormat,
   STEP_REM,
@@ -12,6 +12,7 @@ import {
   type SizeStep,
 } from "../../lib/format";
 import FormatBar from "./FormatBar";
+import EditorLocalePicker from "./EditorLocalePicker";
 
 const DRAFT_PREFIX = "mvc-draft-edits";
 const FORMAT_DRAFT_KEY = "mvc-draft-format";
@@ -374,6 +375,20 @@ export default function EditorOverlay({
     setStatus({ kind: "idle" });
   }, [locale]);
 
+  // Drafts live under one key per language; read them all so the picker can
+  // show which other languages still have work waiting.
+  const unpublishedByLocale = LOCALES.reduce<Partial<Record<Locale, number>>>(
+    (acc, l) => {
+      const n =
+        l === locale
+          ? Object.keys(edits).length
+          : Object.keys(readJSON<Edits>(draftKey(l), {})).length;
+      if (n > 0) acc[l] = n;
+      return acc;
+    },
+    {}
+  );
+
   const textCount = Object.keys(edits).length;
   const formatCount = Object.keys(formatEdits).length;
   const count = textCount + formatCount;
@@ -458,9 +473,10 @@ export default function EditorOverlay({
       <div className="fixed bottom-0 inset-x-0 z-[200] pointer-events-none">
         <div className="pointer-events-auto mx-auto max-w-3xl m-3 sm:m-5 rounded-xl border border-[#c9a468]/30 bg-[#141210]/97 backdrop-blur-xl shadow-2xl">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 sm:px-5 py-3.5">
-            <span className="type-eyebrow text-[#c9a468] shrink-0">
-              Editing {LOCALE_SHORT[locale]}
-            </span>
+            <EditorLocalePicker
+              current={locale}
+              unpublishedByLocale={unpublishedByLocale}
+            />
 
             <span
               className={`text-[13px] flex-1 min-w-[9rem] ${
