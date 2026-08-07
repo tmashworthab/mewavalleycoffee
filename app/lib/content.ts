@@ -1,5 +1,5 @@
 import en from "../../content/en.json";
-import ne from "../../content/ne.json";
+import np from "../../content/np.json";
 import lt from "../../content/lt.json";
 
 /**
@@ -13,7 +13,7 @@ import lt from "../../content/lt.json";
  * locales must match.
  */
 
-export const LOCALES = ["en", "ne", "lt"] as const;
+export const LOCALES = ["en", "np", "lt"] as const;
 export type Locale = (typeof LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = "en";
@@ -23,25 +23,32 @@ export const PREFIXED_LOCALES = LOCALES.filter((l) => l !== DEFAULT_LOCALE);
 
 export const LOCALE_NAMES: Record<Locale, string> = {
   en: "English",
-  ne: "नेपाली",
+  np: "नेपाली",
   lt: "Lietuvių",
 };
 
 /** Short label for the switcher. */
 export const LOCALE_SHORT: Record<Locale, string> = {
   en: "EN",
-  ne: "NE",
+  np: "NP",
   lt: "LT",
 };
 
-/** BCP 47 tags for the html lang attribute and hreflang. */
+/**
+ * BCP 47 tags for the html lang attribute and hreflang.
+ *
+ * The Nepali page is reached at /np and labelled NP, but its language tag
+ * stays "ne-NP": `ne` is the ISO language code for Nepali, while `np` is a
+ * country code and is not a valid language. Search engines and screen readers
+ * read this tag, so it has to be right regardless of what the URL says.
+ */
 export const LOCALE_TAGS: Record<Locale, string> = {
   en: "en-GB",
-  ne: "ne-NP",
+  np: "ne-NP",
   lt: "lt-LT",
 };
 
-const dictionaries = { en, ne, lt } as const;
+const dictionaries = { en, np, lt } as const;
 
 export type Content = typeof en;
 
