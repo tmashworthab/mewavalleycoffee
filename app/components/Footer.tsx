@@ -5,6 +5,7 @@ import logoMark from "../media/logo.png";
 import Reveal from "./Reveal";
 import { localeHref } from "../lib/content";
 import { useContent } from "../lib/locale-context";
+import { formatClasses } from "../lib/format";
 
 interface FooterProps {
   phone?: string;
@@ -33,15 +34,17 @@ export default function Footer({ phone }: FooterProps) {
                 </span>
               </div>
               <p
-                className="font-serif-body text-[0.9375rem] leading-relaxed text-[#f2ede6]/55 max-w-xs"
+                className={`font-serif-body text-[0.9375rem] leading-relaxed text-[#f2ede6]/55 max-w-xs ${formatClasses("footer.tagline", "body")}`}
                 data-ck="footer.tagline"
+                data-ck-role="body"
+                data-ck-multiline="true"
               >
                 {c.footer.tagline}
               </p>
             </div>
 
             <div className="md:col-span-3">
-              <p className="type-eyebrow text-[#f2ede6]/55 mb-6" data-ck="footer.navigate">
+              <p className={`type-eyebrow text-[#f2ede6]/55 mb-6 ${formatClasses("footer.navigate", "label")}`} data-ck="footer.navigate" data-ck-role="label">
                 {c.footer.navigate}
               </p>
               <ul className="space-y-4 list-none m-0 p-0">
@@ -59,7 +62,7 @@ export default function Footer({ phone }: FooterProps) {
             </div>
 
             <div className="md:col-span-4">
-              <p className="type-eyebrow text-[#f2ede6]/55 mb-6" data-ck="footer.contactHeading">
+              <p className={`type-eyebrow text-[#f2ede6]/55 mb-6 ${formatClasses("footer.contactHeading", "label")}`} data-ck="footer.contactHeading" data-ck-role="label">
                 {c.footer.contactHeading}
               </p>
               <ul className="space-y-4 list-none m-0 p-0">
@@ -89,7 +92,7 @@ export default function Footer({ phone }: FooterProps) {
         {/* Disclosure — deliberately kept, it is part of the trust story */}
         <Reveal delay={80}>
           <div className="mt-20 pt-10 border-t border-[#c9a468]/10 flex flex-col gap-6">
-            <p className="type-caption text-[#f2ede6]/52 leading-relaxed max-w-3xl" data-ck="footer.disclaimer">
+            <p className={`type-caption text-[#f2ede6]/52 leading-relaxed max-w-3xl ${formatClasses("footer.disclaimer", "label")}`} data-ck="footer.disclaimer" data-ck-role="label" data-ck-multiline="true">
               {c.footer.disclaimer}
             </p>
             <p className="type-caption text-[#f2ede6]/52 text-[0.6875rem]">

@@ -2,10 +2,12 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useContent } from "../../lib/locale-context";
+import { formatClasses } from "../../lib/format";
+import RichText, { isRich } from "../RichText";
 import ridge from "../../media/nepal-ridge.jpg";
 
 export default function Hero() {
-  const { c } = useContent();
+  const { c, t } = useContent();
   const h = c.hero;
   const [mounted, setMounted] = useState(false);
   const [offset, setOffset] = useState(0);
@@ -39,9 +41,11 @@ export default function Hero() {
     mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
   }`;
 
+  const intro = t("hero.intro");
+
   return (
     <section className="relative min-h-[100svh] flex items-end overflow-hidden grain">
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0">
         <div
           className="absolute inset-0 will-change-transform"
           style={{ transform: `translate3d(0, ${offset}px, 0)` }}
@@ -63,42 +67,85 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Legibility scrims. This frame is bright through the middle, so the
-          text side needs its own horizontal wash on top of the bottom fade. */}
-      <div className="absolute inset-0 scrim-bottom pointer-events-none" />
+      {/* Legibility scrims. Text now runs the full width of the frame, so the
+          weight sits in a bottom fade rather than a one-sided wash. */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(100deg, rgba(20,18,16,0.88) 0%, rgba(20,18,16,0.7) 28%, rgba(20,18,16,0.28) 58%, rgba(20,18,16,0.05) 100%)",
+            "linear-gradient(to bottom, rgba(20,18,16,0.5) 0%, rgba(20,18,16,0.25) 30%, rgba(20,18,16,0.72) 62%, rgba(20,18,16,0.95) 100%)",
         }}
       />
       <div className="absolute inset-0 scrim-vignette pointer-events-none" />
 
-      <div className="relative w-full max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 pb-20 sm:pb-24 lg:pb-32 pt-40">
-        <p
-          className={`type-eyebrow text-[#c9a468] mb-6 sm:mb-8 ${riseClass}`}
-          style={rise(500)}
-          data-ck="hero.eyebrow"
-        >
-          {h.eyebrow}
-        </p>
+      <div className="relative z-10 w-full max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 pb-16 sm:pb-20 lg:pb-24 pt-40">
+        <div className="grid lg:grid-cols-12 gap-y-10 gap-x-12 xl:gap-x-20 items-end">
+          {/* Left — the mark */}
+          <div className="lg:col-span-5">
+            <p
+              className={`type-eyebrow text-[#c9a468] mb-5 ${riseClass} ${formatClasses(
+                "hero.eyebrow",
+                "label"
+              )}`}
+              style={rise(500)}
+              data-ck="hero.eyebrow"
+              data-ck-role="label"
+            >
+              {h.eyebrow}
+            </p>
 
-        <h1 className="font-serif-display type-display text-[#f2ede6] max-w-[16ch] text-balance">
-          <span className={`block ${riseClass}`} style={rise(650)} data-ck="hero.headline">
-            {h.headline}
-          </span>
-          <span
-            className={`block text-[#f2ede6]/70 ${riseClass}`}
-            style={rise(850)}
-            data-ck="hero.sub"
+            <h1 className="font-serif-display type-hero text-[#f2ede6] text-balance">
+              <span
+                className={`block ${riseClass} ${formatClasses("hero.headline", "title")}`}
+                style={rise(650)}
+                data-ck="hero.headline"
+                data-ck-role="title"
+              >
+                {h.headline}
+              </span>
+              <span
+                className={`block text-[#f2ede6]/70 ${riseClass} ${formatClasses(
+                  "hero.sub",
+                  "title"
+                )}`}
+                style={rise(850)}
+                data-ck="hero.sub"
+                data-ck-role="title"
+              >
+                {h.sub}
+              </span>
+            </h1>
+          </div>
+
+          {/* Right — who we are */}
+          <div
+            className={`lg:col-span-6 lg:col-start-7 ${riseClass}`}
+            style={rise(1000)}
           >
-            {h.sub}
-          </span>
-        </h1>
+            <div
+              className={`font-serif-body type-body text-[#f2ede6]/80 max-w-[42rem] ${formatClasses(
+                "hero.intro",
+                "body"
+              )}`}
+              data-ck="hero.intro"
+              data-ck-role="body"
+              data-ck-multiline="true"
+              {...(isRich(intro) ? { "data-ck-raw": intro } : {})}
+            >
+              <RichText text={intro} />
+            </div>
+          </div>
+        </div>
 
-        <div className={`mt-12 sm:mt-16 flex items-center gap-4 ${riseClass}`} style={rise(1100)}>
-          <span className="type-eyebrow text-[#f2ede6]/55" data-ck="hero.scroll">
+        <div
+          className={`mt-12 sm:mt-14 flex items-center gap-4 ${riseClass}`}
+          style={rise(1200)}
+        >
+          <span
+            className={`type-eyebrow text-[#f2ede6]/55 ${formatClasses("hero.scroll", "label")}`}
+            data-ck="hero.scroll"
+            data-ck-role="label"
+          >
             {h.scroll}
           </span>
           <svg

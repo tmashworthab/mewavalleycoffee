@@ -1,5 +1,6 @@
 "use client";
 import { useContent } from "../../lib/locale-context";
+import { formatClasses } from "../../lib/format";
 import Reveal from "../Reveal";
 import { Section, Eyebrow, SectionTitle, Body, Hairline } from "./primitives";
 
@@ -34,12 +35,13 @@ export default function Premise() {
           <dl className="grid sm:grid-cols-3 gap-y-12 gap-x-12 pt-12 sm:pt-16">
             {stats.map((s, i) => (
               <Reveal key={s.labelCk} delay={i * 110}>
-                <dt className="type-eyebrow text-[#f2ede6]/55 mb-4" data-ck={s.labelCk}>
+                <dt className={`type-eyebrow text-[#f2ede6]/55 mb-4 ${formatClasses(s.labelCk, "label")}`} data-ck={s.labelCk} data-ck-role="label">
                   {s.label}
                 </dt>
                 <dd
-                  className="font-serif-display text-[1.75rem] sm:text-[2.125rem] text-[#c9a468] leading-none"
+                  className={`font-serif-display text-[1.75rem] sm:text-[2.125rem] text-[#c9a468] leading-none ${formatClasses(s.valueCk, "title")}`}
                   data-ck={s.valueCk}
+                  data-ck-role="title"
                 >
                   {s.value}
                 </dd>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import PageHero from "./PageHero";
 import Reveal from "./Reveal";
 import { useContent } from "../lib/locale-context";
+import { formatClasses } from "../lib/format";
 import { PhotoBreak, Hairline } from "./home/primitives";
 import farmhouse from "../media/nepal-farmhouse.jpg";
 import valley from "../media/nepal-valley.jpg";
@@ -13,7 +14,12 @@ export default function AboutContent() {
 
   const para = (ck: string, cls: string, delay = 0) => (
     <Reveal delay={delay}>
-      <p className={cls} data-ck={ck}>
+      <p
+        className={`${cls} ${formatClasses(ck, "body")}`}
+        data-ck={ck}
+        data-ck-role="body"
+        data-ck-multiline="true"
+      >
         {t(ck)}
       </p>
     </Reveal>
@@ -62,8 +68,9 @@ export default function AboutContent() {
             <Hairline />
             <Reveal delay={80}>
               <p
-                className="font-serif-display type-subtitle text-[#f2ede6]/90 pt-12 text-balance"
+                className={`font-serif-display type-subtitle text-[#f2ede6]/90 pt-12 text-balance ${formatClasses("about.sourcingBody4", "title")}`}
                 data-ck="about.sourcingBody4"
+                data-ck-role="title"
               >
                 {a.sourcingBody4}
               </p>

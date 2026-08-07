@@ -4,6 +4,7 @@ import { useState } from "react";
 import PageHero from "./PageHero";
 import Reveal from "./Reveal";
 import { useContent } from "../lib/locale-context";
+import { formatClasses } from "../lib/format";
 
 export default function ContactContent() {
   const { c: all } = useContent();
@@ -57,12 +58,12 @@ export default function ContactContent() {
           {/* Left rail */}
           <Reveal className="lg:col-span-4">
             <p className="font-serif-body type-body text-[#f2ede6]/60">
-              <span data-ck="contact.whatNext1">{c.whatNext1}</span>
+              <span data-ck="contact.whatNext1" data-ck-role="body" className={formatClasses("contact.whatNext1", "body")}>{c.whatNext1}</span>
             </p>
 
             <div className="mt-12 pt-10 border-t border-[#c9a468]/15">
               <p className="type-eyebrow text-[#c9a468] mb-5">
-                <span data-ck="contact.directHeading">{c.directHeading}</span>
+                <span data-ck="contact.directHeading" data-ck-role="label" className={formatClasses("contact.directHeading", "label")}>{c.directHeading}</span>
               </p>
               <a
                 href="mailto:info@mewavalley.com"
@@ -96,10 +97,10 @@ export default function ContactContent() {
                   </svg>
                 </div>
                 <h2 className="font-serif-display type-subtitle text-[#f2ede6] mb-4">
-                  <span data-ck="contact.thankYouHeading">{c.thankYouHeading}</span>
+                  <span data-ck="contact.thankYouHeading" data-ck-role="title" className={formatClasses("contact.thankYouHeading", "title")}>{c.thankYouHeading}</span>
                 </h2>
                 <p className="font-serif-body type-body text-[#f2ede6]/60 max-w-md">
-                  <span data-ck="contact.thankYouBody">{c.thankYouBody}</span>
+                  <span data-ck="contact.thankYouBody" data-ck-role="body" className={formatClasses("contact.thankYouBody", "body")}>{c.thankYouBody}</span>
                 </p>
               </div>
             ) : (
@@ -107,7 +108,7 @@ export default function ContactContent() {
                 <div className="grid sm:grid-cols-2 gap-x-10 gap-y-10">
                   <div>
                     <label htmlFor="name" className={labelClass}>
-                      <span data-ck="contact.labels.name">{c.labels.name}</span>{" "}
+                      <span data-ck="contact.labels.name" data-ck-role="label" className={formatClasses("contact.labels.name", "label")}>{c.labels.name}</span>{" "}
                       <span className="text-[#c9a468]" aria-hidden="true">
                         *
                       </span>
@@ -127,7 +128,7 @@ export default function ContactContent() {
 
                   <div>
                     <label htmlFor="business" className={labelClass}>
-                      <span data-ck="contact.labels.business">{c.labels.business}</span>{" "}
+                      <span data-ck="contact.labels.business" data-ck-role="label" className={formatClasses("contact.labels.business", "label")}>{c.labels.business}</span>{" "}
                       <span className="text-[#c9a468]" aria-hidden="true">
                         *
                       </span>
@@ -148,7 +149,7 @@ export default function ContactContent() {
 
                 <div className="mt-10">
                   <label htmlFor="email" className={labelClass}>
-                    <span data-ck="contact.labels.email">{c.labels.email}</span>{" "}
+                    <span data-ck="contact.labels.email" data-ck-role="label" className={formatClasses("contact.labels.email", "label")}>{c.labels.email}</span>{" "}
                     <span className="text-[#c9a468]" aria-hidden="true">
                       *
                     </span>
@@ -168,7 +169,7 @@ export default function ContactContent() {
 
                 <div className="mt-10">
                   <label htmlFor="message" className={labelClass}>
-                    <span data-ck="contact.labels.message">{c.labels.message}</span>
+                    <span data-ck="contact.labels.message" data-ck-role="label" className={formatClasses("contact.labels.message", "label")}>{c.labels.message}</span>
                   </label>
                   <textarea
                     id="message"
@@ -186,7 +187,7 @@ export default function ContactContent() {
                     role="alert"
                     className="mt-8 font-serif-body text-[0.9375rem] text-[#e6a08a]"
                   >
-                    <span data-ck="contact.sendError">{c.sendError}</span>
+                    <span data-ck="contact.sendError" data-ck-role="body" className={formatClasses("contact.sendError", "body")}>{c.sendError}</span>
                   </p>
                 )}
 
