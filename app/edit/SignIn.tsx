@@ -11,6 +11,7 @@ export default function SignIn() {
   const [error, setError] = useState<string | null>(null);
   const [configured, setConfigured] = useState<boolean | null>(null);
   const [missing, setMissing] = useState<string[]>([]);
+  const [legacy, setLegacy] = useState(false);
 
   useEffect(() => {
     fetch("/api/edit/session", { cache: "no-store" })
@@ -18,6 +19,7 @@ export default function SignIn() {
       .then((d) => {
         setConfigured(Boolean(d?.configured));
         setMissing(Array.isArray(d?.missing) ? d.missing : []);
+        setLegacy(Boolean(d?.legacyAccount));
         if (d?.authenticated) router.replace("/");
       })
       .catch(() => setConfigured(false));
@@ -87,6 +89,13 @@ export default function SignIn() {
             >
               Username
             </label>
+            {legacy && (
+              <p className="type-caption text-[#f2ede6]/45 mb-3 leading-relaxed">
+                This deployment still uses the original single-password setup,
+                so the username is{" "}
+                <span className="font-mono text-[#c9a468]">editor</span>.
+              </p>
+            )}
             <input
               id="editor-username"
               name="username"

@@ -10,6 +10,8 @@ import {
   hintCookieOptions,
   editorConfigured,
   missingConfig,
+  usingLegacyAccount,
+  accountCount,
 } from "../../../lib/editor-session";
 
 export const dynamic = "force-dynamic";
@@ -24,6 +26,8 @@ export async function GET() {
       username: session?.username ?? null,
       configured: editorConfigured(),
       missing: missingConfig(),
+      accounts: accountCount(),
+      legacyAccount: usingLegacyAccount(),
     },
     { headers: { "Cache-Control": "no-store" } }
   );
