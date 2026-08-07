@@ -1,8 +1,13 @@
 {
   "hero.sub": {
-    "size": "sm"
+    "size": 9
+  },
+  "hero.headline": {
+    "size": 11,
+    "font": "serif"
   },
   "hero.intro": {
-    "size": "lg"
+    "size": 5,
+    "font": "sans"
   }
 }
