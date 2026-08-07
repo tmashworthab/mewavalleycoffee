@@ -5,17 +5,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logoMark from "../media/logo.png";
-import { content } from "../lib/content";
+import { localeHref } from "../lib/content";
+import { useContent } from "../lib/locale-context";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { c, locale } = useContent();
 
   const links = [
-    { label: content.nav.home, ck: "nav.home", href: "/" },
-    { label: content.nav.about, ck: "nav.about", href: "/about" },
-    { label: content.nav.contact, ck: "nav.contact", href: "/contact" },
+    { label: c.nav.home, ck: "nav.home", href: localeHref("/", locale) },
+    { label: c.nav.about, ck: "nav.about", href: localeHref("/about", locale) },
+    { label: c.nav.contact, ck: "nav.contact", href: localeHref("/contact", locale) },
   ];
 
   useEffect(() => {
@@ -55,7 +58,7 @@ export default function Nav() {
           className="max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between gap-8"
         >
           <Link
-            href="/"
+            href={localeHref("/", locale)}
             className="flex items-center gap-3 group shrink-0"
             aria-label="Mewa Valley Coffee — home"
           >
@@ -94,10 +97,14 @@ export default function Nav() {
             })}
           </ul>
 
+          <div className="hidden md:flex items-center gap-6">
+            <LanguageSwitcher />
+          </div>
+
           <button
             className="md:hidden flex flex-col items-end justify-center gap-[6px] -mr-3 min-w-11 min-h-11 px-3"
             onClick={() => setMenuOpen(true)}
-            aria-label={content.nav.menu}
+            aria-label={c.nav.menu}
             aria-expanded={menuOpen}
           >
             <span className="block h-px w-6 bg-[#f2ede6]" />
@@ -120,7 +127,7 @@ export default function Nav() {
             <Image src={logoMark} alt="" width={32} height={32} />
             <button
               onClick={() => setMenuOpen(false)}
-              aria-label={content.nav.close}
+              aria-label={c.nav.close}
               className="-mr-3 px-3 min-w-11 min-h-11 flex items-center justify-end text-[#f2ede6]"
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -146,10 +153,11 @@ export default function Nav() {
             ))}
           </ul>
 
-          <div className="pt-8 border-t border-[#c9a468]/15">
+          <div className="pt-8 border-t border-[#c9a468]/15 flex items-end justify-between gap-6">
             <a href="mailto:info@mewavalley.com" className="type-caption text-[#f2ede6]/60 link-underline">
               info@mewavalley.com
             </a>
+            <LanguageSwitcher variant="stacked" className="items-end" />
           </div>
         </div>
       </div>

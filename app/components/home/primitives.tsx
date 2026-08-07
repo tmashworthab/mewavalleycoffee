@@ -1,7 +1,7 @@
 "use client";
 import Image, { type StaticImageData } from "next/image";
 import Reveal from "../Reveal";
-import { get } from "../../lib/content";
+import { useContent } from "../../lib/locale-context";
 
 /**
  * Text primitives take a `ck` (content key) rather than children, so every
@@ -45,11 +45,12 @@ export function Eyebrow({
   className?: string;
   delay?: number;
 }) {
+  const { t } = useContent();
   return (
     <Reveal delay={delay} className={`flex items-center gap-4 ${className}`}>
       <span className="h-px w-8 bg-[#c9a468]/50" />
       <span className="type-eyebrow text-[#c9a468]" data-ck={ck}>
-        {get(ck)}
+        {t(ck)}
       </span>
     </Reveal>
   );
@@ -68,6 +69,7 @@ export function SectionTitle({
   delay?: number;
   size?: "title" | "subtitle";
 }) {
+  const { t } = useContent();
   return (
     <Reveal delay={delay}>
       <h2
@@ -76,7 +78,7 @@ export function SectionTitle({
           size === "title" ? "type-title" : "type-subtitle"
         } text-[#f2ede6] text-balance ${className}`}
       >
-        {get(ck)}
+        {t(ck)}
       </h2>
     </Reveal>
   );
@@ -95,6 +97,7 @@ export function Body({
   delay?: number;
   lead?: boolean;
 }) {
+  const { t } = useContent();
   return (
     <Reveal delay={delay}>
       <p
@@ -103,7 +106,7 @@ export function Body({
           lead ? "type-lead text-[#f2ede6]/85" : "type-body text-[#f2ede6]/65"
         } ${className}`}
       >
-        {get(ck)}
+        {t(ck)}
       </p>
     </Reveal>
   );
@@ -124,6 +127,7 @@ export function PhotoBreak({
   captionCk?: string;
   position?: string;
 }) {
+  const { t } = useContent();
   const heights = {
     tall: "h-[80svh] sm:h-[92svh]",
     mid: "h-[58svh] sm:h-[72svh]",
@@ -135,7 +139,7 @@ export function PhotoBreak({
       <div className={`relative w-full overflow-hidden grain ${heights[height]}`}>
         <Image
           src={src}
-          alt={get(altCk)}
+          alt={t(altCk)}
           fill
           sizes="100vw"
           placeholder="blur"
@@ -147,7 +151,7 @@ export function PhotoBreak({
         <figcaption className="max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 pt-5">
           <Reveal>
             <span className="type-caption text-[#f2ede6]/55" data-ck={captionCk}>
-              {get(captionCk)}
+              {t(captionCk)}
             </span>
           </Reveal>
         </figcaption>
@@ -169,12 +173,13 @@ export function InsetPhoto({
   className?: string;
   sizes?: string;
 }) {
+  const { t } = useContent();
   return (
     <Reveal variant="mask" className={className}>
       <div className="relative w-full overflow-hidden grain">
         <Image
           src={src}
-          alt={get(altCk)}
+          alt={t(altCk)}
           sizes={sizes}
           placeholder="blur"
           className="w-full h-auto object-cover"

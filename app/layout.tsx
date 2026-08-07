@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Newsreader } from "next/font/google";
 import "./globals.css";
-import EditorMount from "./components/edit/EditorMount";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -80,7 +79,6 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
-        <EditorMount />
       </body>
     </html>
   );

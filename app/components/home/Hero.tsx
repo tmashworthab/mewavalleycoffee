@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { content } from "../../lib/content";
+import { useContent } from "../../lib/locale-context";
 import ridge from "../../media/nepal-ridge.jpg";
 
 export default function Hero() {
-  const h = content.hero;
+  const { c } = useContent();
+  const h = c.hero;
   const [mounted, setMounted] = useState(false);
   const [offset, setOffset] = useState(0);
 

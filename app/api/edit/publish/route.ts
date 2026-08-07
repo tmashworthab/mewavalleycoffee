@@ -1,42 +1,48 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { SESSION_COOKIE, verifyToken } from "../../../lib/editor-session";
-import { content, paths, set } from "../../../lib/content";
+import { SESSION_COOKIE, readSession } from "../../../lib/editor-session";
+import { dictionary, paths, set, isLocale } from "../../../lib/content";
 
 export const dynamic = "force-dynamic";
 
-const CONTENT_PATH = "content/en.json";
 const MAX_FIELD_LENGTH = 4000;
 
 type Edits = Record<string, string>;
 
 export async function POST(request: NextRequest) {
   const store = await cookies();
-  if (!(await verifyToken(store.get(SESSION_COOKIE)?.value))) {
+  const session = await readSession(store.get(SESSION_COOKIE)?.value);
+  if (!session) {
     return NextResponse.json({ error: "Not signed in" }, { status: 401 });
   }
 
   let edits: Edits;
+  let locale: string;
   try {
     const body = await request.json();
     edits = body?.edits ?? {};
+    locale = typeof body?.locale === "string" ? body.locale : "en";
     if (typeof edits !== "object" || edits === null) throw new Error();
   } catch {
     return NextResponse.json({ error: "Bad request" }, { status: 400 });
+  }
+
+  if (!isLocale(locale)) {
+    return NextResponse.json({ error: "Unknown language" }, { status: 400 });
   }
 
   // Only allow writes to keys that already exist, with sane values. This stops
   // a signed-in session from injecting new structure into the content file.
   const allowed = new Set(paths());
   const rejected: string[] = [];
-  let next = content;
+  let next = dictionary(locale);
 
   for (const [key, value] of Object.entries(edits)) {
-    if (!allowed.has(key) || typeof value !== "string") {
-      rejected.push(key);
-      continue;
-    }
-    if (value.length > MAX_FIELD_LENGTH) {
+    if (
+      !allowed.has(key) ||
+      typeof value !== "string" ||
+      value.length > MAX_FIELD_LENGTH
+    ) {
       rejected.push(key);
       continue;
     }
@@ -71,7 +77,8 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const api = `https://api.github.com/repos/${repo}/contents/${CONTENT_PATH}`;
+  const contentPath = `content/${locale}.json`;
+  const api = `https://api.github.com/repos/${repo}/contents/${contentPath}`;
   const headers = {
     Authorization: `Bearer ${token}`,
     Accept: "application/vnd.github+json",
@@ -87,7 +94,7 @@ export async function POST(request: NextRequest) {
 
   if (!currentRes.ok) {
     return NextResponse.json(
-      { error: `Could not read ${CONTENT_PATH} from GitHub (${currentRes.status}).` },
+      { error: `Could not read ${contentPath} from GitHub (${currentRes.status}).` },
       { status: 502 }
     );
   }
@@ -99,14 +106,14 @@ export async function POST(request: NextRequest) {
 
   const summary =
     changed === 1
-      ? `Edit site copy: ${Object.keys(edits)[0]}`
-      : `Edit site copy (${changed} fields)`;
+      ? `Edit ${locale} copy: ${Object.keys(edits)[0]}`
+      : `Edit ${locale} copy (${changed} fields)`;
 
   const putRes = await fetch(api, {
     method: "PUT",
     headers,
     body: JSON.stringify({
-      message: `${summary}\n\nPublished from the on-site editor.`,
+      message: `${summary}\n\nPublished from the on-site editor by ${session.username}.`,
       content: encoded,
       sha: current.sha,
       branch,
@@ -126,6 +133,7 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({
     ok: true,
     changed,
+    locale,
     commit: result?.commit?.sha?.slice(0, 7) ?? null,
   });
 }

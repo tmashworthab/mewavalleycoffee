@@ -3,17 +3,20 @@ import Link from "next/link";
 import Image from "next/image";
 import logoMark from "../media/logo.png";
 import Reveal from "./Reveal";
-import { content } from "../lib/content";
+import { localeHref } from "../lib/content";
+import { useContent } from "../lib/locale-context";
 
 interface FooterProps {
   phone?: string;
 }
 
 export default function Footer({ phone }: FooterProps) {
+  const { c, locale } = useContent();
+
   const navLinks = [
-    { label: content.nav.home, href: "/" },
-    { label: content.nav.about, href: "/about" },
-    { label: content.nav.contact, href: "/contact" },
+    { label: c.nav.home, href: localeHref("/", locale) },
+    { label: c.nav.about, href: localeHref("/about", locale) },
+    { label: c.nav.contact, href: localeHref("/contact", locale) },
   ];
 
   return (
@@ -33,13 +36,13 @@ export default function Footer({ phone }: FooterProps) {
                 className="font-serif-body text-[0.9375rem] leading-relaxed text-[#f2ede6]/55 max-w-xs"
                 data-ck="footer.tagline"
               >
-                {content.footer.tagline}
+                {c.footer.tagline}
               </p>
             </div>
 
             <div className="md:col-span-3">
               <p className="type-eyebrow text-[#f2ede6]/55 mb-6" data-ck="footer.navigate">
-                {content.footer.navigate}
+                {c.footer.navigate}
               </p>
               <ul className="space-y-4 list-none m-0 p-0">
                 {navLinks.map((l) => (
@@ -57,7 +60,7 @@ export default function Footer({ phone }: FooterProps) {
 
             <div className="md:col-span-4">
               <p className="type-eyebrow text-[#f2ede6]/55 mb-6" data-ck="footer.contactHeading">
-                {content.footer.contactHeading}
+                {c.footer.contactHeading}
               </p>
               <ul className="space-y-4 list-none m-0 p-0">
                 <li>
@@ -87,11 +90,11 @@ export default function Footer({ phone }: FooterProps) {
         <Reveal delay={80}>
           <div className="mt-20 pt-10 border-t border-[#c9a468]/10 flex flex-col gap-6">
             <p className="type-caption text-[#f2ede6]/52 leading-relaxed max-w-3xl" data-ck="footer.disclaimer">
-              {content.footer.disclaimer}
+              {c.footer.disclaimer}
             </p>
             <p className="type-caption text-[#f2ede6]/52 text-[0.6875rem]">
               © {new Date().getFullYear()} Mewa Valley Coffee.{" "}
-              <span data-ck="footer.rights">{content.footer.rights}</span>
+              <span data-ck="footer.rights">{c.footer.rights}</span>
             </p>
           </div>
         </Reveal>

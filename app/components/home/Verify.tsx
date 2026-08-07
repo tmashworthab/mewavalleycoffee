@@ -1,10 +1,11 @@
 "use client";
-import { content } from "../../lib/content";
+import { useContent } from "../../lib/locale-context";
 import Reveal from "../Reveal";
 import { Section, Eyebrow, SectionTitle, Body } from "./primitives";
 
 export default function Verify() {
-  const v = content.verify;
+  const { c } = useContent();
+  const v = c.verify;
 
   const points = [
     { titleCk: "verify.pointOneTitle", bodyCk: "verify.pointOneBody", title: v.pointOneTitle, body: v.pointOneBody },

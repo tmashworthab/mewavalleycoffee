@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function SignIn() {
   const router = useRouter();
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +31,7 @@ export default function SignIn() {
       const res = await fetch("/api/edit/session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ username, password }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error ?? "Sign in failed");
@@ -80,6 +81,25 @@ export default function SignIn() {
           </div>
         ) : (
           <form onSubmit={submit}>
+            <label
+              htmlFor="editor-username"
+              className="block type-eyebrow text-[#f2ede6]/55 mb-3"
+            >
+              Username
+            </label>
+            <input
+              id="editor-username"
+              name="username"
+              type="text"
+              autoComplete="username"
+              autoCapitalize="none"
+              autoCorrect="off"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full bg-transparent border-0 border-b border-[#c9a468]/25 px-0 py-3 mb-10 font-serif-body text-[1.0625rem] text-[#f2ede6] focus:outline-none focus:border-[#c9a468] transition-colors duration-500"
+            />
+
             <label
               htmlFor="editor-password"
               className="block type-eyebrow text-[#f2ede6]/55 mb-3"

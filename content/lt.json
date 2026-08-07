@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "home": "Pradžia",
+    "about": "Apie mus",
+    "contact": "Kontaktai",
+    "menu": "Meniu",
+    "close": "Uždaryti"
+  },
+  "footer": {
+    "tagline": "Žalia kava iš rytų Nepalo kalvų rajonų. Pirmosios partijos – po 2026 m. liepos.",
+    "navigate": "Naršyti",
+    "contactHeading": "Kontaktai",
+    "disclaimer": "Šioje svetainėje pateikti degustacijų įvertinimai ir partijų duomenys gauti iš augintojų ir dar nėra nepriklausomai patikrinti. Šiuo metu organizuojame degustaciją Jungtinėje Karalystėje. Kol mėginiai nebus įvertinti Britanijoje, niekas čia nėra komercinis pasiūlymas.",
+    "rights": "Visos teisės saugomos."
+  },
+  "hero": {
+    "eyebrow": "Rytų Nepalas",
+    "headline": "Čia auga kava.",
+    "sub": "Europoje jos beveik niekas neragavo.",
+    "scroll": "Slinkti",
+    "alt": "Debesys slenka per mišku apaugusį kalnagūbrį rytų Nepalo kalvų rajonuose, šlaite iškirstas žvyrkelis"
+  },
+  "premise": {
+    "eyebrow": "Kilmė",
+    "title": "Kavos šalis, kurios jums niekas nesiūlė",
+    "body1": "Nepalas garsėja kalnais, o ne kava. Vis dėlto kalnagūbriuose žemiau Himalajų – maždaug nuo 800 iki 1 600 metrų – smulkieji ūkininkai kavą augina jau tris dešimtmečius. Vėsios sausos žiemos lėtina uogų brendimą. Musonų lietus ateina būtent tada, kai medžiui jo reikia. Vaisius neskuba.",
+    "body2": "Šalis per metus užaugina vos kelis šimtus tonų. Didžioji dalis niekada neišvyksta iš Azijos. Nėra nei nepalietiškos kavos lentynos, nei nusistovėjusio prekybos kelio į Britaniją, nei priežasties, dėl kurios būtumėte apie ją išgirdę – būtent todėl ir leidomės ieškoti.",
+    "statAltitude": "800–1 800 m virš jūros lygio",
+    "statAltitudeLabel": "Auginimo aukštis",
+    "statDistricts": "Solu, Ilamas, Bhodžpuras, Dhankuta",
+    "statDistrictsLabel": "Rajonai, iš kurių perkame",
+    "statHarvest": "2026 m. rugpjūtis",
+    "statHarvestLabel": "Pasiekiama Jungtinėje Karalystėje"
+  },
+  "journey": {
+    "eyebrow": "Kelionė",
+    "title": "Nuvykome į kalvas ir paklausėme",
+    "body1": "Kad pasiektum augintoją rytų Nepale, reikia skrydžio, autobuso ir kelio, kuris veikiau tik primena kelią. Musonų metu jį uždaro nuošliaužos. Paskutinę atkarpą tenka nueiti pėsčiomis.",
+    "body2": "Tą kelionę nuvažiavome – per Gulmį, Bhodžpurą, Ilamą ir Solukhumbu – kad pamatytume medžius, paragautume, kas nuo jų nuimama, ir pasėdėtume su žmonėmis, kurie juos prižiūri. Tai nebuvo eksportuotojo suorganizuota išvyka. Atvykome patys ir grįžome dar ne kartą.",
+    "pullquote": "Kavos neįvertinsi iš lentelės. Reikia atsistoti eilėje ir pažiūrėti į medį.",
+    "captionRoad": "Viešasis autobusas dažnai yra vienintelis būdas užkopti. Musonų metu nuošliaužos kelią gali uždaryti kelioms dienoms.",
+    "altRoad": "Ryškiai išdažytas autobusas siaurame kalvos kelyje, mažytis tankaus žalio miško fone rytų Nepale",
+    "altValley": "Du mišku apaugę kalnagūbriai susilieja į gilų slėnį, tarpeklyje telkiasi debesys"
+  },
+  "growers": {
+    "eyebrow": "Augintojai",
+    "title": "Ūkiai po hektarą, kartais ir mažiau",
+    "body1": "Didžiąją dalį kavos čia augina šeimos, sklypuose, kurie matuojami ne hektarais, o medžių šimtais. Kava auga šalia kardamono, citrusų ir visko, ką dar išlaiko šlaitas. Tai vienos pajamos iš kelių – todėl tai, kiek sumoka pirkėjas, turi milžinišką reikšmę.",
+    "body2": "Su kooperatyvais ir augintojais dirbame tiesiogiai. Žinome, kuri plovykla apdorojo kurią partiją, kieno medžių ji sulaukė ir kokiame aukštyje užaugo. Kai kas nors neaišku, taip ir sakome.",
+    "altFarmhouse": "Skardiniu stogu dengtas sodybos namas Nepalo kalvose, priekiniame plane žydi jurginai, už jo šlaitu leidžiasi debesys"
+  },
+  "coffee": {
+    "eyebrow": "Kava",
+    "title": "Kas iš tikrųjų yra maiše",
+    "body1": "Daugiausia arabika, kai kuriose Košio vietose žemesniame aukštyje – ir šiek tiek robustos. Plautas, natūralus ir geltonojo medaus apdorojimas – priklausomai nuo augintojo ir nuo to, ką tą sezoną leido orai.",
+    "body2": "Augintojų nurodyti degustacijų įvertinimai šiuo metu yra 81–85 balų ribose, drėgmė – žemiau 11 %. Tai jų, o ne mūsų skaičiai – ir laikome juos atspirties tašku, o ne teiginiu.",
+    "altCherry": "Viena prinokusi raudona kavos uoga ant šakos, apsupta drėgnų žalių lapų po lietaus",
+    "specVarietal": "Veislė",
+    "specVarietalValue": "Arabika, šiek tiek robustos",
+    "specProcess": "Apdorojimas",
+    "specProcessValue": "Plautas · Natūralus · Geltonojo medaus",
+    "specMoisture": "Drėgmė",
+    "specMoistureValue": "Žemiau 11 %",
+    "specScore": "Degustacijos įvertinimas",
+    "specScoreValue": "81–85, pagal augintojų duomenis"
+  },
+  "map": {
+    "eyebrow": "Iš kur ji atkeliauja",
+    "title": "Keturi rajonai, dvi provincijos",
+    "body": "Gulmis ir Lumbinio kalvos vakaruose; Bhodžpuras, Ilamas ir Solukhumbu Košyje rytuose. Skirtingi aukščiai, skirtingos apdorojimo tradicijos, iš tiesų skirtingas skonis.",
+    "alt": "Nepalo žemėlapis, kuriame pažymėti „Mewa Valley Coffee“ tiekimo rajonai Košio ir Lumbinio provincijose"
+  },
+  "verify": {
+    "eyebrow": "Prieš ką nors jums parduodami",
+    "title": "Niekas nepatvirtinta, kol neparagauta Britanijoje",
+    "body1": "Kiekvienas šioje svetainėje esantis skaičius gautas iš augintojo. Šių partijų dar nepateikėme nepriklausomai degustacijai Jungtinėje Karalystėje, ir kol to nepadarysime, nesakysime jums, kad tai specialty klasės kava.",
+    "body2": "Šiuo metu ruošiami mėginiai. Kai jie bus įvertinti, paskelbsime rezultatus – įskaitant ir tas partijas, kurios neprilygs reikalavimams.",
+    "pointOneTitle": "Atsekama",
+    "pointOneBody": "Kiekvienai partijai nurodomas kooperatyvas, rajonas ir aukštis.",
+    "pointTwoTitle": "Nepatikrinta – ir taip pažymėta",
+    "pointTwoBody": "Augintojų pateikti skaičiai pažymimi kaip augintojų skaičiai.",
+    "pointThreeTitle": "Skelbiama bet kuriuo atveju",
+    "pointThreeBody": "Degustacijos Jungtinėje Karalystėje rezultatai skelbiami, kad ir kokie būtų."
+  },
+  "cta": {
+    "eyebrow": "Kepintojams",
+    "title": "Paragaukite pirmi, dar prieš visus kitus",
+    "body": "Ieškome nedidelio būrio Jungtinės Karalystės ir Europos kavos kepintojų, kurie įvertintų pirmuosius mėginius. Jei Nepalas skamba kaip spraga jūsų pasiūlyme, norėtume iš jūsų išgirsti.",
+    "button": "Pradėti pokalbį"
+  },
+  "about": {
+    "eyebrow": "Kas mes esame",
+    "title": "Apie mus",
+    "aboutBody1": "Kava, kurią perkame, auga Himalajų papėdėse. Nepalo klimatas jai tinka: vėsios sausos žiemos, šilti musonų vasaros mėnesiai ir patikimas lietus tuo metų momentu, kai uogai jo labiausiai reikia.",
+    "aboutBody2": "Nepale yra jauna, sparčiai auganti kavos kultūra, apie kurią Europa nieko nežino. Norime tą bendruomenę – ir tai, ką ji augina – atvežti į Britaniją.",
+    "sourcingBody1": "Šiuo metu aktyviai bendraujame su keliais augintojais, kurių pasirengimas skiriasi: nuo įsitvirtinusių eksportuotojų iki ūkių, siunčiančių pirmąsias komercines partijas. Jie išsidėstę Košio ir Lumbinio kalvų rajonuose: Gulmyje, Bhodžpure, Ilame ir Solukhumbu.",
+    "hillAlt": "Kalvos netoli „Mewa Valley Coffee“ tiekimo rajonų Nepale",
+    "mapAlt": "„Mewa Valley Coffee“ tiekimo rajonų Nepale žemėlapis",
+    "sourcingBody2": "Kartu paėmus, mūsų augintojai dirba su plautu, natūraliu ir geltonojo medaus apdorojimu. Daugiausia arabika, kai kuriose Košio provincijos vietose žemesniame aukštyje – ir šiek tiek robustos.",
+    "sourcingBody3": "Auginimo aukštis svyruoja maždaug nuo 800 iki 1 600 metrų. Aukščiau uoga nokdama neskuba – cukrūs susitelkia, o pupelė išeina tankesnė.",
+    "sourcingBody4": "Norime dirbti su kepintojais, kuriems tai atrodo taip pat įdomu kaip ir mums."
+  },
+  "contact": {
+    "title": "Kontaktai",
+    "subtitle": "Esate kavos kepintojas, importuotojas ar pirkėjas, norintis įvertinti nepalietišką žalią kavą? Mielai iš jūsų išgirstume.",
+    "whatNext1": "Stengiamės atsakyti per 2 darbo dienas.",
+    "directHeading": "Tiesiogiai",
+    "thankYouHeading": "Ačiū",
+    "thankYouBody": "Gavome jūsų žinutę ir stengsimės atsakyti per 2 darbo dienas.",
+    "labels": {
+      "name": "Vardas",
+      "business": "Įmonė",
+      "email": "El. paštas",
+      "message": "Žinutė"
+    },
+    "placeholders": {
+      "name": "Jūsų vardas ir pavardė",
+      "business": "Įmonės arba kepyklos pavadinimas",
+      "email": "jus@pavyzdys.lt",
+      "message": "Rašykite savo žinutę čia"
+    },
+    "required": "Privaloma",
+    "submit": "Siųsti užklausą",
+    "sending": "Siunčiama…",
+    "sendError": "Siunčiant žinutę įvyko klaida. Bandykite dar kartą arba rašykite tiesiai adresu info@mewavalley.com."
+  }
+}

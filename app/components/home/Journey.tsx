@@ -1,11 +1,12 @@
 "use client";
-import { content } from "../../lib/content";
+import { useContent } from "../../lib/locale-context";
 import Reveal from "../Reveal";
 import { Section, Eyebrow, SectionTitle, Body, PhotoBreak, InsetPhoto } from "./primitives";
 import road from "../../media/nepal-road.jpg";
 import valley from "../../media/nepal-valley.jpg";
 
 export default function Journey() {
+  const { c } = useContent();
   return (
     <>
       <PhotoBreak src={valley} altCk="journey.altValley" height="mid" />
@@ -31,7 +32,7 @@ export default function Journey() {
                   className="type-caption text-[#f2ede6]/55 pt-5 max-w-sm"
                   data-ck="journey.captionRoad"
                 >
-                  {content.journey.captionRoad}
+                  {c.journey.captionRoad}
                 </p>
               </Reveal>
             </div>
@@ -45,7 +46,7 @@ export default function Journey() {
                 data-ck="journey.pullquote"
                 data-ck-wrap="quotes"
               >
-                &ldquo;{content.journey.pullquote}&rdquo;
+                &ldquo;{c.journey.pullquote}&rdquo;
               </p>
             </blockquote>
           </Reveal>

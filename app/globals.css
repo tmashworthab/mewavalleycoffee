@@ -325,3 +325,27 @@ body {
 [data-editing] body {
   padding-bottom: 5.5rem;
 }
+
+/* ---------- Script-specific typography ---------- */
+/* Devanagari has no case, and letter-spacing pulls conjunct characters apart,
+   so the tracked-out uppercase label style is Latin-only. */
+
+[data-locale="ne"] .type-eyebrow {
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-size: 0.8125rem;
+}
+
+[data-locale="ne"] .font-serif-display,
+[data-locale="ne"] .font-serif-body {
+  letter-spacing: 0;
+}
+
+/* Devanagari sits on a lower baseline and needs more room between lines. */
+[data-locale="ne"] .font-serif-display {
+  line-height: 1.35;
+}
+
+[data-locale="ne"] .type-display {
+  font-size: clamp(2.25rem, 6vw, 5rem);
+}

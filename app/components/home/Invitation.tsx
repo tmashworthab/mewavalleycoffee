@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { content } from "../../lib/content";
+import { useContent } from "../../lib/locale-context";
 import Reveal from "../Reveal";
 import { Eyebrow } from "./primitives";
 import ridge from "../../media/nepal-ridge.jpg";
 
 export default function Invitation() {
-  const c = content.cta;
+  const { c: all } = useContent();
+  const c = all.cta;
 
   return (
     <section className="relative overflow-hidden grain">

@@ -3,10 +3,11 @@
 import { useState } from "react";
 import PageHero from "./PageHero";
 import Reveal from "./Reveal";
-import { content } from "../lib/content";
+import { useContent } from "../lib/locale-context";
 
 export default function ContactContent() {
-  const c = content.contact;
+  const { c: all } = useContent();
+  const c = all.contact;
 
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);

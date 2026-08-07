@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { get } from "../lib/content";
+import { useContent } from "../lib/locale-context";
 
 interface PageHeroProps {
   eyebrowCk?: string;
@@ -9,6 +9,7 @@ interface PageHeroProps {
 }
 
 export default function PageHero({ eyebrowCk, titleCk, subtitleCk }: PageHeroProps) {
+  const { t } = useContent();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function PageHero({ eyebrowCk, titleCk, subtitleCk }: PageHeroPro
           <div className={`flex items-center gap-4 mb-8 ${rise}`} style={{ transitionDelay: "120ms" }}>
             <span className="h-px w-8 bg-[#c9a468]/50" />
             <span className="type-eyebrow text-[#c9a468]" data-ck={eyebrowCk}>
-              {get(eyebrowCk)}
+              {t(eyebrowCk)}
             </span>
           </div>
         )}
@@ -37,7 +38,7 @@ export default function PageHero({ eyebrowCk, titleCk, subtitleCk }: PageHeroPro
           style={{ transitionDelay: "240ms" }}
           data-ck={titleCk}
         >
-          {get(titleCk)}
+          {t(titleCk)}
         </h1>
 
         {subtitleCk && (
@@ -46,7 +47,7 @@ export default function PageHero({ eyebrowCk, titleCk, subtitleCk }: PageHeroPro
             style={{ transitionDelay: "380ms" }}
             data-ck={subtitleCk}
           >
-            {get(subtitleCk)}
+            {t(subtitleCk)}
           </p>
         )}
       </div>

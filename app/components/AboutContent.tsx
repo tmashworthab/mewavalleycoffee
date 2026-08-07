@@ -2,18 +2,19 @@
 import Image from "next/image";
 import PageHero from "./PageHero";
 import Reveal from "./Reveal";
-import { content, get } from "../lib/content";
+import { useContent } from "../lib/locale-context";
 import { PhotoBreak, Hairline } from "./home/primitives";
 import farmhouse from "../media/nepal-farmhouse.jpg";
 import valley from "../media/nepal-valley.jpg";
 
 export default function AboutContent() {
-  const a = content.about;
+  const { c, t } = useContent();
+  const a = c.about;
 
   const para = (ck: string, cls: string, delay = 0) => (
     <Reveal delay={delay}>
       <p className={cls} data-ck={ck}>
-        {get(ck)}
+        {t(ck)}
       </p>
     </Reveal>
   );

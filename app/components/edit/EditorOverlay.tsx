@@ -1,8 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useLocale } from "../../lib/locale-context";
+import { LOCALE_SHORT } from "../../lib/content";
 
-const DRAFT_KEY = "mvc-draft-edits";
+const DRAFT_PREFIX = "mvc-draft-edits";
 
 type Edits = Record<string, string>;
 
@@ -19,18 +21,29 @@ function bare(node: HTMLElement, raw: string): string {
   return raw.replace(/^[“"]/, "").replace(/[”"]$/, "");
 }
 
-function readDrafts(): Edits {
+function draftKey(locale: string) {
+  return `${DRAFT_PREFIX}:${locale}`;
+}
+
+function readDrafts(locale: string): Edits {
   try {
-    const parsed = JSON.parse(localStorage.getItem(DRAFT_KEY) ?? "{}");
+    const parsed = JSON.parse(localStorage.getItem(draftKey(locale)) ?? "{}");
     return parsed && typeof parsed === "object" ? parsed : {};
   } catch {
     return {};
   }
 }
 
-export default function EditorOverlay({ onExit }: { onExit: () => void }) {
+export default function EditorOverlay({
+  onExit,
+  username,
+}: {
+  onExit: () => void;
+  username: string | null;
+}) {
+  const locale = useLocale();
   // Drafts are read once, synchronously — this component never server-renders.
-  const [edits, setEdits] = useState<Edits>(readDrafts);
+  const [edits, setEdits] = useState<Edits>(() => readDrafts(locale));
   const [active, setActive] = useState<string | null>(null);
   const [status, setStatus] = useState<{
     kind: "idle" | "working" | "ok" | "error";
@@ -46,7 +59,7 @@ export default function EditorOverlay({ onExit }: { onExit: () => void }) {
     const nodes = Array.from(
       document.querySelectorAll<HTMLElement>("[data-ck]")
     );
-    const drafts = readDrafts();
+    const drafts = readDrafts(locale);
 
     for (const node of nodes) {
       const key = node.dataset.ck!;
@@ -74,7 +87,7 @@ export default function EditorOverlay({ onExit }: { onExit: () => void }) {
       }
       delete document.documentElement.dataset.editing;
     };
-  }, []);
+  }, [locale]);
 
   /* ---------- Track edits ---------- */
 
@@ -101,7 +114,7 @@ export default function EditorOverlay({ onExit }: { onExit: () => void }) {
           next[key] = value;
           el.dataset.dirty = "true";
         }
-        localStorage.setItem(DRAFT_KEY, JSON.stringify(next));
+        localStorage.setItem(draftKey(locale), JSON.stringify(next));
         return next;
       });
     };
@@ -124,7 +137,7 @@ export default function EditorOverlay({ onExit }: { onExit: () => void }) {
       document.removeEventListener("input", onInput);
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, []);
+  }, [locale]);
 
   /* ---------- Actions ---------- */
 
@@ -141,9 +154,9 @@ export default function EditorOverlay({ onExit }: { onExit: () => void }) {
       }
     }
     setEdits({});
-    localStorage.removeItem(DRAFT_KEY);
+    localStorage.removeItem(draftKey(locale));
     setStatus({ kind: "idle" });
-  }, []);
+  }, [locale]);
 
   const publish = useCallback(async () => {
     const count = Object.keys(edits).length;
@@ -153,7 +166,7 @@ export default function EditorOverlay({ onExit }: { onExit: () => void }) {
       const res = await fetch("/api/edit/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ edits }),
+        body: JSON.stringify({ edits, locale }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error ?? "Publish failed");
@@ -168,7 +181,7 @@ export default function EditorOverlay({ onExit }: { onExit: () => void }) {
           delete node.dataset.dirty;
         }
       }
-      localStorage.removeItem(DRAFT_KEY);
+      localStorage.removeItem(draftKey(locale));
       setEdits({});
       setStatus({
         kind: "ok",
@@ -180,7 +193,7 @@ export default function EditorOverlay({ onExit }: { onExit: () => void }) {
         message: err instanceof Error ? err.message : "Publish failed",
       });
     }
-  }, [edits]);
+  }, [edits, locale]);
 
   const signOut = useCallback(async () => {
     await fetch("/api/edit/session", { method: "DELETE" });
@@ -202,7 +215,9 @@ export default function EditorOverlay({ onExit }: { onExit: () => void }) {
     <div className="fixed bottom-0 inset-x-0 z-[200] pointer-events-none">
       <div className="pointer-events-auto mx-auto max-w-3xl m-3 sm:m-5 rounded-xl border border-[#c9a468]/30 bg-[#141210]/97 backdrop-blur-xl shadow-2xl">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 sm:px-5 py-3.5">
-          <span className="type-eyebrow text-[#c9a468] shrink-0">Editing</span>
+          <span className="type-eyebrow text-[#c9a468] shrink-0">
+            Editing {LOCALE_SHORT[locale]}
+          </span>
 
           <span
             className={`text-[13px] flex-1 min-w-[9rem] ${
@@ -231,9 +246,10 @@ export default function EditorOverlay({ onExit }: { onExit: () => void }) {
             </button>
             <button
               onClick={signOut}
+              title={username ? `Signed in as ${username}` : undefined}
               className="px-3 py-2 text-[12px] tracking-wide text-[#f2ede6]/50 hover:text-[#f2ede6] transition-colors"
             >
-              Exit
+              Exit{username ? ` (${username})` : ""}
             </button>
           </div>
         </div>

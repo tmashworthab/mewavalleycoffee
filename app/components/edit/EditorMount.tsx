@@ -9,6 +9,7 @@ const EditorOverlay = dynamic(() => import("./EditorOverlay"), { ssr: false });
 
 export default function EditorMount() {
   const [signedIn, setSignedIn] = useState(false);
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     // Ordinary visitors carry no hint cookie, so they never make this request
@@ -19,7 +20,10 @@ export default function EditorMount() {
     fetch("/api/edit/session", { cache: "no-store" })
       .then((r) => r.json())
       .then((d) => {
-        if (!cancelled && d?.authenticated) setSignedIn(true);
+        if (!cancelled && d?.authenticated) {
+          setSignedIn(true);
+          setUsername(d?.username ?? null);
+        }
       })
       .catch(() => {});
 
@@ -30,5 +34,5 @@ export default function EditorMount() {
 
   if (!signedIn) return null;
 
-  return <EditorOverlay onExit={() => setSignedIn(false)} />;
+  return <EditorOverlay username={username} onExit={() => setSignedIn(false)} />;
 }

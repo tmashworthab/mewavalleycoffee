@@ -1,11 +1,12 @@
 "use client";
-import { content } from "../../lib/content";
+import { useContent } from "../../lib/locale-context";
 import Reveal from "../Reveal";
 import { Section, Eyebrow, SectionTitle, Body, InsetPhoto } from "./primitives";
 import cherry from "../../media/coffee-cherry.jpg";
 
 export default function Coffee() {
-  const c = content.coffee;
+  const { c: all } = useContent();
+  const c = all.coffee;
 
   const specs = [
     { labelCk: "coffee.specVarietal", valueCk: "coffee.specVarietalValue", label: c.specVarietal, value: c.specVarietalValue },

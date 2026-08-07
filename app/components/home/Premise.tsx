@@ -1,10 +1,11 @@
 "use client";
-import { content } from "../../lib/content";
+import { useContent } from "../../lib/locale-context";
 import Reveal from "../Reveal";
 import { Section, Eyebrow, SectionTitle, Body, Hairline } from "./primitives";
 
 export default function Premise() {
-  const p = content.premise;
+  const { c } = useContent();
+  const p = c.premise;
 
   const stats = [
     { valueCk: "premise.statAltitude", labelCk: "premise.statAltitudeLabel", value: p.statAltitude, label: p.statAltitudeLabel },
