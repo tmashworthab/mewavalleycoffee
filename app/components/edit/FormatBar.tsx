@@ -73,21 +73,33 @@ export default function FormatBar({
     const place = () => {
       const r = target.getBoundingClientRect();
       const h = el.offsetHeight || 44;
-      // Flip below the field when there is no room above it.
-      const below = r.top < h + 70;
-      el.style.top = `${below ? r.bottom + 10 : r.top - h - 10}px`;
+      // On a phone the keyboard shrinks the visible area; clamp to that
+      // rather than the layout viewport so the bar never hides behind it.
+      const vv = window.visualViewport;
+      const viewH = vv?.height ?? window.innerHeight;
+      const viewW = vv?.width ?? window.innerWidth;
+
+      const above = r.top - h - 10;
+      const below = r.bottom + 10;
+      const top = above >= 8 ? above : Math.min(below, viewH - h - 8);
+
+      el.style.top = `${Math.max(8, top)}px`;
       el.style.left = `${Math.min(
         Math.max(r.left, 12),
-        Math.max(12, window.innerWidth - el.offsetWidth - 12)
+        Math.max(12, viewW - el.offsetWidth - 12)
       )}px`;
     };
 
     place();
     window.addEventListener("scroll", place, { passive: true });
     window.addEventListener("resize", place);
+    window.visualViewport?.addEventListener("resize", place);
+    window.visualViewport?.addEventListener("scroll", place);
     return () => {
       window.removeEventListener("scroll", place);
       window.removeEventListener("resize", place);
+      window.visualViewport?.removeEventListener("resize", place);
+      window.visualViewport?.removeEventListener("scroll", place);
     };
   }, [target, openForKey, colourOpenFor]);
 
@@ -118,7 +130,8 @@ export default function FormatBar({
       ref={bar}
       // Keeps focus in the text while a control is clicked.
       onMouseDown={(e) => e.preventDefault()}
-      className="fixed z-[210] flex items-center gap-1 rounded-lg border border-[#c9a468]/30 bg-[#141210]/97 backdrop-blur-xl px-2 py-1.5 shadow-2xl"
+      style={{ maxWidth: "calc(100vw - 1.5rem)" }}
+      className="fixed z-[210] flex flex-wrap items-center gap-1 rounded-lg border border-[#c9a468]/30 bg-[#141210]/97 backdrop-blur-xl px-2 py-1.5 shadow-2xl"
       role="toolbar"
       aria-label="Text formatting"
     >

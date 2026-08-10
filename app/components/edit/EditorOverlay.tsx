@@ -13,6 +13,7 @@ import {
 } from "../../lib/format";
 import FormatBar from "./FormatBar";
 import EditorLocalePicker from "./EditorLocalePicker";
+import useKeyboardInset from "./useKeyboardInset";
 
 const DRAFT_PREFIX = "mvc-draft-edits";
 const FORMAT_DRAFT_KEY = "mvc-draft-format";
@@ -79,6 +80,7 @@ export default function EditorOverlay({
   username: string | null;
 }) {
   const locale = useLocale();
+  const keyboardInset = useKeyboardInset();
   // Drafts are read once, synchronously — this component never server-renders.
   const [edits, setEdits] = useState<Edits>(() =>
     readJSON<Edits>(draftKey(locale), {})
@@ -470,16 +472,23 @@ export default function EditorOverlay({
         onList={applyList}
       />
 
-      <div className="fixed bottom-0 inset-x-0 z-[200] pointer-events-none">
+      <div
+        className="fixed bottom-0 inset-x-0 z-[200] pointer-events-none transition-[transform] duration-200"
+        style={
+          keyboardInset
+            ? { transform: `translateY(-${keyboardInset}px)` }
+            : undefined
+        }
+      >
         <div className="pointer-events-auto mx-auto max-w-3xl m-3 sm:m-5 rounded-xl border border-[#c9a468]/30 bg-[#141210]/97 backdrop-blur-xl shadow-2xl">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-3 px-4 sm:px-5 py-3.5">
+          <div className="flex items-center gap-x-3 gap-y-2 px-3 sm:px-5 py-2.5 sm:py-3.5">
             <EditorLocalePicker
               current={locale}
               unpublishedByLocale={unpublishedByLocale}
             />
 
             <span
-              className={`text-[13px] flex-1 min-w-[9rem] ${
+              className={`hidden sm:block text-[13px] flex-1 min-w-[9rem] ${
                 status.kind === "error" ? "text-[#e6a08a]" : "text-[#f2ede6]/60"
               }`}
               role={status.kind === "error" ? "alert" : undefined}
@@ -487,11 +496,11 @@ export default function EditorOverlay({
               {message}
             </span>
 
-            <div className="flex items-center gap-2 ml-auto">
+            <div className="flex items-center gap-1 sm:gap-2 ml-auto shrink-0">
               {count > 0 && status.kind !== "working" && (
                 <button
                   onClick={discardAll}
-                  className="px-3 py-2 text-[12px] tracking-wide text-[#f2ede6]/60 hover:text-[#f2ede6] transition-colors"
+                  className="px-2 sm:px-3 py-2 text-[12px] tracking-wide text-[#f2ede6]/60 hover:text-[#f2ede6] transition-colors"
                 >
                   Discard
                 </button>
@@ -499,28 +508,40 @@ export default function EditorOverlay({
               <button
                 onClick={publish}
                 disabled={count === 0 || status.kind === "working"}
-                className="px-4 py-2 rounded-md bg-[#c9a468] text-[#141210] text-[12px] font-medium tracking-wide disabled:opacity-35 disabled:cursor-not-allowed hover:bg-[#dcbb84] transition-colors"
+                className="px-3 sm:px-4 py-2 rounded-md bg-[#c9a468] text-[#141210] text-[12px] font-medium tracking-wide disabled:opacity-35 disabled:cursor-not-allowed hover:bg-[#dcbb84] transition-colors"
               >
                 {status.kind === "working" ? "Publishing…" : "Publish"}
               </button>
               <button
                 onClick={signOut}
                 title={username ? `Signed in as ${username}` : undefined}
-                className="px-3 py-2 text-[12px] tracking-wide text-[#f2ede6]/50 hover:text-[#f2ede6] transition-colors"
+                className="px-2 sm:px-3 py-2 text-[12px] tracking-wide text-[#f2ede6]/50 hover:text-[#f2ede6] transition-colors"
               >
-                Exit{username ? ` (${username})` : ""}
+                <span className="hidden sm:inline">
+                  Exit{username ? ` (${username})` : ""}
+                </span>
+                <span className="sm:hidden">Exit</span>
               </button>
             </div>
           </div>
 
+          <p
+            className={`sm:hidden px-3 pb-2.5 text-[12px] ${
+              status.kind === "error" ? "text-[#e6a08a]" : "text-[#f2ede6]/55"
+            }`}
+            role={status.kind === "error" ? "alert" : undefined}
+          >
+            {message}
+          </p>
+
           {status.kind === "error" && (
-            <p className="px-5 pb-3 text-[12px] text-[#f2ede6]/45">
+            <p className="hidden sm:block px-5 pb-3 text-[12px] text-[#f2ede6]/45">
               Nothing was published. Your edits are still here.
             </p>
           )}
 
           {activeKey && (
-            <p className="px-5 pb-3 text-[11px] text-[#f2ede6]/30 font-mono truncate">
+            <p className="hidden sm:block px-5 pb-3 text-[11px] text-[#f2ede6]/30 font-mono truncate">
               {activeKey}
               {active?.dataset.ckMultiline === "true" &&
                 " · Enter for a new line · start a line with -  or 1."}
