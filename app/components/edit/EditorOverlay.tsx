@@ -14,9 +14,12 @@ import {
 import FormatBar from "./FormatBar";
 import EditorLocalePicker from "./EditorLocalePicker";
 import useKeyboardInset from "./useKeyboardInset";
+import SectionOrder from "./SectionOrder";
+import { homeSections, type SectionId } from "../../lib/sections";
 
 const DRAFT_PREFIX = "mvc-draft-edits";
 const FORMAT_DRAFT_KEY = "mvc-draft-format";
+const LAYOUT_DRAFT_KEY = "mvc-draft-layout";
 
 type Edits = Record<string, string>;
 type FieldFormat = {
@@ -90,6 +93,13 @@ export default function EditorOverlay({
     readJSON<FormatEdits>(FORMAT_DRAFT_KEY, {})
   );
   const [active, setActive] = useState<HTMLElement | null>(null);
+  // Section order is a page-level concern, so like formatting it is not
+  // namespaced per language.
+  const [order, setOrder] = useState<SectionId[]>(() => {
+    const draft = readJSON<{ home?: SectionId[] }>(LAYOUT_DRAFT_KEY, {});
+    return draft.home ?? homeSections();
+  });
+  const [orderOpen, setOrderOpen] = useState(false);
   const [status, setStatus] = useState<{
     kind: "idle" | "working" | "ok" | "error";
     message?: string;
@@ -171,6 +181,24 @@ export default function EditorOverlay({
       node.classList.toggle("tx-underline", !!f.underline);
     }
   }, [formatEdits]);
+
+  /* ---------- Live preview of section order ---------- */
+
+  useEffect(() => {
+    const nodes = new Map<string, HTMLElement>();
+    document
+      .querySelectorAll<HTMLElement>("[data-section]")
+      .forEach((el) => nodes.set(el.dataset.section!, el));
+    if (nodes.size === 0) return;
+
+    const parent = [...nodes.values()][0].parentElement;
+    if (!parent) return;
+    // Appending in the chosen order moves each existing node into place.
+    for (const id of order) {
+      const el = nodes.get(id);
+      if (el) parent.appendChild(el);
+    }
+  }, [order]);
 
   /* ---------- Track edits ---------- */
 
@@ -372,8 +400,10 @@ export default function EditorOverlay({
     }
     setEdits({});
     setFormatEdits({});
+    setOrder(homeSections());
     localStorage.removeItem(draftKey(locale));
     localStorage.removeItem(FORMAT_DRAFT_KEY);
+    localStorage.removeItem(LAYOUT_DRAFT_KEY);
     setStatus({ kind: "idle" });
   }, [locale]);
 
@@ -391,9 +421,12 @@ export default function EditorOverlay({
     {}
   );
 
+  const orderChanged =
+    JSON.stringify(order) !== JSON.stringify(homeSections());
+
   const textCount = Object.keys(edits).length;
   const formatCount = Object.keys(formatEdits).length;
-  const count = textCount + formatCount;
+  const count = textCount + formatCount + (orderChanged ? 1 : 0);
 
   const publish = useCallback(async () => {
     if (!count) return;
@@ -402,7 +435,12 @@ export default function EditorOverlay({
       const res = await fetch("/api/edit/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ edits, format: formatEdits, locale }),
+        body: JSON.stringify({
+          edits,
+          format: formatEdits,
+          layout: orderChanged ? { home: order } : undefined,
+          locale,
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error ?? "Publish failed");
@@ -418,6 +456,7 @@ export default function EditorOverlay({
       }
       localStorage.removeItem(draftKey(locale));
       localStorage.removeItem(FORMAT_DRAFT_KEY);
+      localStorage.removeItem(LAYOUT_DRAFT_KEY);
       setEdits({});
       setFormatEdits({});
       setStatus({
@@ -430,7 +469,7 @@ export default function EditorOverlay({
         message: err instanceof Error ? err.message : "Publish failed",
       });
     }
-  }, [edits, formatEdits, count, locale]);
+  }, [edits, formatEdits, order, orderChanged, count, locale]);
 
   const signOut = useCallback(async () => {
     await fetch("/api/edit/session", { method: "DELETE" });
@@ -497,6 +536,18 @@ export default function EditorOverlay({
             </span>
 
             <div className="flex items-center gap-1 sm:gap-2 ml-auto shrink-0">
+              <button
+                onClick={() => setOrderOpen((v) => !v)}
+                aria-expanded={orderOpen}
+                className={`px-2 sm:px-3 py-2 text-[12px] tracking-wide transition-colors ${
+                  orderOpen || orderChanged
+                    ? "text-[#c9a468]"
+                    : "text-[#f2ede6]/60 hover:text-[#f2ede6]"
+                }`}
+              >
+                Sections
+              </button>
+
               {count > 0 && status.kind !== "working" && (
                 <button
                   onClick={discardAll}
@@ -538,6 +589,20 @@ export default function EditorOverlay({
             <p className="hidden sm:block px-5 pb-3 text-[12px] text-[#f2ede6]/45">
               Nothing was published. Your edits are still here.
             </p>
+          )}
+
+          {orderOpen && (
+            <SectionOrder
+              order={order}
+              onChange={(next) => {
+                setOrder(next);
+                localStorage.setItem(
+                  LAYOUT_DRAFT_KEY,
+                  JSON.stringify({ home: next })
+                );
+              }}
+              onClose={() => setOrderOpen(false)}
+            />
           )}
 
           {activeKey && (

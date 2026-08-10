@@ -87,6 +87,19 @@ While you are editing you see the raw text (`- Washed`); visitors see a proper
 bulleted list. Nothing you type is ever treated as code, so there is no way an
 edit can break the page.
 
+## Moving sections
+
+Press **Sections** in the editor bar. The panel lists every section of the
+homepage in the order it appears. Drag the handle on the left, or use the up
+and down arrows — the arrows are easier on a phone and work with a keyboard.
+
+The page rearranges as you go so you can see the result before committing to
+it. Press Publish when you are happy, or Discard to put it back.
+
+The set of sections is fixed — each one is a designed piece of the page — so
+you can reorder them but not invent new ones. Reordering applies to all three
+languages at once, since it is a layout decision rather than a translation.
+
 ## Adding and removing editors
 
 Editors are listed in the `EDITOR_USERS` variable in Railway, as

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useContent } from "../lib/locale-context";
 import { formatClasses } from "../lib/format";
+import { CONTAINER, Grid, COL } from "./Grid";
 
 interface PageHeroProps {
   eyebrowCk?: string;
@@ -23,8 +24,9 @@ export default function PageHero({ eyebrowCk, titleCk, subtitleCk }: PageHeroPro
   }`;
 
   return (
-    <section className="relative px-6 sm:px-10 lg:px-16 pt-40 sm:pt-48 lg:pt-56 pb-16 sm:pb-20">
-      <div className="max-w-[88rem] mx-auto">
+    <section className="relative pt-40 sm:pt-48 lg:pt-56 pb-16 sm:pb-20">
+      <div className={CONTAINER}>
+        <Grid gapY="gap-y-6"><div className={COL.text}>
         {eyebrowCk && (
           <div className={`flex items-center gap-4 mb-8 ${rise}`} style={{ transitionDelay: "120ms" }}>
             <span className="h-px w-8 bg-[#c9a468]/50" />
@@ -45,7 +47,7 @@ export default function PageHero({ eyebrowCk, titleCk, subtitleCk }: PageHeroPro
 
         {subtitleCk && (
           <p
-            className={`font-serif-body type-lead text-[#f2ede6]/65 max-w-[42rem] mt-8 ${rise} ${formatClasses(subtitleCk)}`}
+            className={`font-serif-body type-lead text-[#f2ede6]/65 mt-8 ${rise} ${formatClasses(subtitleCk)}`}
             style={{ transitionDelay: "380ms" }}
             data-ck={subtitleCk}
             data-ck-role="body"
@@ -53,6 +55,7 @@ export default function PageHero({ eyebrowCk, titleCk, subtitleCk }: PageHeroPro
             {t(subtitleCk)}
           </p>
         )}
+        </div></Grid>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import Reveal from "./Reveal";
 import { useContent } from "../lib/locale-context";
 import { formatClasses } from "../lib/format";
 import { PhotoBreak, Hairline } from "./home/primitives";
+import { CONTAINER, Grid, COL } from "./Grid";
 import farmhouse from "../media/nepal-farmhouse.jpg";
 import valley from "../media/nepal-valley.jpg";
 
@@ -32,27 +33,30 @@ export default function AboutContent() {
     <>
       <PageHero eyebrowCk="about.eyebrow" titleCk="about.title" />
 
-      <section className="px-6 sm:px-10 lg:px-16 pb-24 sm:pb-32">
-        <div className="max-w-[88rem] mx-auto">
-          <div className="max-w-[46rem]">
-            {para("about.aboutBody1", `${lead} mb-8`)}
-            {para("about.aboutBody2", body, 110)}
-          </div>
+      <section className="pb-24 sm:pb-32">
+        <div className={CONTAINER}>
+          <Grid>
+            <div className={COL.text}>
+              {para("about.aboutBody1", `${lead} mb-8`)}
+              {para("about.aboutBody2", body, 110)}
+            </div>
+          </Grid>
         </div>
       </section>
 
       <PhotoBreak src={valley} altCk="about.hillAlt" height="mid" />
 
-      <section className="px-6 sm:px-10 lg:px-16 py-28 sm:py-36">
-        <div className="max-w-[88rem] mx-auto">
-          <div className="max-w-[46rem] mb-20 sm:mb-28">
-            {para("about.sourcingBody1", `${lead} mb-8`)}
-            {para("about.sourcingBody2", `${body} mb-8`, 110)}
-            {para("about.sourcingBody3", body, 190)}
-          </div>
+      <section className="py-28 sm:py-36">
+        <div className={CONTAINER}>
+          <Grid gapY="gap-y-16">
+            <div className={COL.text}>
+              {para("about.sourcingBody1", `${lead} mb-8`)}
+              {para("about.sourcingBody2", `${body} mb-8`, 110)}
+              {para("about.sourcingBody3", body, 190)}
+            </div>
 
-          <Reveal variant="mask" delay={80}>
-            <div className="relative w-full max-w-[64rem]">
+          <Reveal variant="mask" delay={80} className={COL.full}>
+            <div className="relative w-full">
               <Image
                 src="/nepal-sourcing-map.png"
                 alt={a.mapAlt}
@@ -64,7 +68,7 @@ export default function AboutContent() {
             </div>
           </Reveal>
 
-          <div className="mt-20 sm:mt-28 max-w-[46rem]">
+          <div className={`${COL.text} mt-4`}>
             <Hairline />
             <Reveal delay={80}>
               <p
@@ -76,6 +80,7 @@ export default function AboutContent() {
               </p>
             </Reveal>
           </div>
+          </Grid>
         </div>
       </section>
 

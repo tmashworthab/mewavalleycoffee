@@ -4,6 +4,7 @@ import Reveal from "../Reveal";
 import { useContent } from "../../lib/locale-context";
 import { formatClasses, type Role } from "../../lib/format";
 import RichText, { isRich } from "../RichText";
+import { CONTAINER } from "../Grid";
 
 /**
  * Text primitives take a `ck` (content key) rather than children, so every
@@ -44,11 +45,11 @@ export function Section({
   return (
     <section
       id={id}
-      className={`relative px-6 sm:px-10 lg:px-16 py-28 sm:py-36 lg:py-48 ${
+      className={`relative py-28 sm:py-36 lg:py-48 ${
         tone === "raised" ? "bg-[#1c1916]" : ""
       } ${className}`}
     >
-      {children}
+      <div className={CONTAINER}>{children}</div>
     </section>
   );
 }
@@ -170,7 +171,7 @@ export function PhotoBreak({
         <div className="absolute inset-0 scrim-vignette pointer-events-none" />
       </div>
       {captionCk && (
-        <figcaption className="max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 pt-5">
+        <figcaption className={`${CONTAINER} pt-5`}>
           <Reveal>
             <span
               className={`type-caption text-[#f2ede6]/55 ${formatClasses(captionCk)}`}

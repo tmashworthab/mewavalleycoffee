@@ -5,6 +5,7 @@ import PageHero from "./PageHero";
 import Reveal from "./Reveal";
 import { useContent } from "../lib/locale-context";
 import { formatClasses } from "../lib/format";
+import { CONTAINER, Grid } from "./Grid";
 
 export default function ContactContent() {
   const { c: all } = useContent();
@@ -66,10 +67,11 @@ export default function ContactContent() {
     <>
       <PageHero titleCk="contact.title" subtitleCk="contact.subtitle" />
 
-      <section className="px-6 sm:px-10 lg:px-16 pb-32 sm:pb-40 pt-8">
-        <div className="max-w-[88rem] mx-auto grid lg:grid-cols-12 gap-y-16 gap-x-16">
+      <section className="pb-32 sm:pb-40 pt-8">
+        <div className={CONTAINER}>
+        <Grid gapY="gap-y-16">
           {/* Left rail */}
-          <Reveal className="lg:col-span-4">
+          <Reveal className="col-span-4 md:col-span-8 lg:col-span-4">
             <p className="font-serif-body type-body text-[#f2ede6]/60">
               <span data-ck="contact.whatNext1" data-ck-role="body" className={formatClasses("contact.whatNext1")}>{c.whatNext1}</span>
             </p>
@@ -134,7 +136,7 @@ export default function ContactContent() {
           </Reveal>
 
           {/* Form */}
-          <Reveal delay={120} className="lg:col-span-8 lg:pl-8">
+          <Reveal delay={120} className="col-span-4 md:col-span-8 lg:col-span-7 lg:col-start-6">
             {submitted ? (
               <div
                 className="py-10"
@@ -163,7 +165,7 @@ export default function ContactContent() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="max-w-[40rem]" noValidate={false}>
+              <form onSubmit={handleSubmit} noValidate={false}>
                 <div className="grid sm:grid-cols-2 gap-x-10 gap-y-10">
                   <div>
                     <label htmlFor="name" className={labelClass}>
@@ -279,6 +281,7 @@ export default function ContactContent() {
               </form>
             )}
           </Reveal>
+        </Grid>
         </div>
       </section>
     </>

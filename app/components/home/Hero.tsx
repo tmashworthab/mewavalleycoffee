@@ -5,6 +5,7 @@ import { useContent } from "../../lib/locale-context";
 import { formatClasses } from "../../lib/format";
 import RichText, { isRich } from "../RichText";
 import ridge from "../../media/nepal-ridge.jpg";
+import { CONTAINER, Grid, COL } from "../Grid";
 
 export default function Hero() {
   const { c, t } = useContent();
@@ -78,10 +79,10 @@ export default function Hero() {
       />
       <div className="absolute inset-0 scrim-vignette pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 pb-28 sm:pb-36 lg:pb-44 pt-40">
-        <div className="grid lg:grid-cols-12 gap-y-10 gap-x-12 xl:gap-x-20 items-end">
+      <div className={`relative z-10 ${CONTAINER} pb-28 sm:pb-36 lg:pb-44 pt-40`}>
+        <Grid className="items-end" gapY="gap-y-10">
           {/* Left — the mark */}
-          <div className="lg:col-span-5">
+          <div className={COL.half}>
             <p
               className={`type-eyebrow text-[#c9a468] mb-5 ${riseClass} ${formatClasses("hero.eyebrow")}`}
               style={rise(500)}
@@ -112,12 +113,9 @@ export default function Hero() {
           </div>
 
           {/* Right — who we are */}
-          <div
-            className={`lg:col-span-6 lg:col-start-7 ${riseClass}`}
-            style={rise(1000)}
-          >
+          <div className={`${COL.halfEnd} ${riseClass}`} style={rise(1000)}>
             <div
-              className={`font-serif-body type-body text-[#f2ede6]/80 max-w-[42rem] ${formatClasses("hero.intro")}`}
+              className={`font-serif-body type-body text-[#f2ede6]/80 ${formatClasses("hero.intro")}`}
               data-ck="hero.intro"
               data-ck-role="body"
               data-ck-multiline="true"
@@ -126,7 +124,7 @@ export default function Hero() {
               <RichText text={intro} />
             </div>
           </div>
-        </div>
+        </Grid>
 
         <div
           className={`mt-12 sm:mt-14 flex items-center gap-4 ${riseClass}`}

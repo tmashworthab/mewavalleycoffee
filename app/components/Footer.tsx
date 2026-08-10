@@ -6,6 +6,7 @@ import Reveal from "./Reveal";
 import { localeHref } from "../lib/content";
 import { useContent } from "../lib/locale-context";
 import { formatClasses } from "../lib/format";
+import { CONTAINER, Grid } from "./Grid";
 
 interface FooterProps {
   phone?: string;
@@ -21,11 +22,11 @@ export default function Footer({ phone }: FooterProps) {
   ];
 
   return (
-    <footer className="relative border-t border-[#c9a468]/10 px-6 sm:px-10 lg:px-16 py-20 sm:py-24">
-      <div className="max-w-[88rem] mx-auto">
+    <footer className="relative border-t border-[#c9a468]/10 py-20 sm:py-24">
+      <div className={CONTAINER}>
         <Reveal>
-          <div className="grid md:grid-cols-12 gap-y-14 gap-x-12">
-            <div className="md:col-span-5">
+          <Grid gapY="gap-y-14">
+            <div className="col-span-4 md:col-span-8 lg:col-span-5">
               <div className="flex items-center gap-3 mb-6">
                 <Image src={logoMark} alt="" width={38} height={38} style={{ opacity: 0.8 }} />
                 <span className="flex flex-col leading-none">
@@ -43,7 +44,7 @@ export default function Footer({ phone }: FooterProps) {
               </p>
             </div>
 
-            <div className="md:col-span-3">
+            <div className="col-span-4 md:col-span-4 lg:col-span-3">
               <p className={`type-eyebrow text-[#f2ede6]/55 mb-6 ${formatClasses("footer.navigate")}`} data-ck="footer.navigate" data-ck-role="label">
                 {c.footer.navigate}
               </p>
@@ -61,7 +62,7 @@ export default function Footer({ phone }: FooterProps) {
               </ul>
             </div>
 
-            <div className="md:col-span-4">
+            <div className="col-span-4 md:col-span-4 lg:col-span-4">
               <p className={`type-eyebrow text-[#f2ede6]/55 mb-6 ${formatClasses("footer.contactHeading")}`} data-ck="footer.contactHeading" data-ck-role="label">
                 {c.footer.contactHeading}
               </p>
@@ -86,7 +87,7 @@ export default function Footer({ phone }: FooterProps) {
                 )}
               </ul>
             </div>
-          </div>
+          </Grid>
         </Reveal>
 
         {/* Disclosure — deliberately kept, it is part of the trust story */}

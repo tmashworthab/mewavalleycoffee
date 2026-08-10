@@ -11,6 +11,7 @@ import {
   type FieldFormat,
   type FormatMap,
 } from "../../../lib/format";
+import { normaliseOrder } from "../../../lib/sections";
 
 export const dynamic = "force-dynamic";
 
@@ -80,11 +81,13 @@ export async function POST(request: NextRequest) {
 
   let edits: Edits;
   let formatEdits: Record<string, unknown>;
+  let layout: unknown;
   let locale: string;
   try {
     const body = await request.json();
     edits = body?.edits ?? {};
     formatEdits = body?.format ?? {};
+    layout = body?.layout;
     locale = typeof body?.locale === "string" ? body.locale : "en";
     if (typeof edits !== "object" || edits === null) throw new Error();
     if (typeof formatEdits !== "object" || formatEdits === null) throw new Error();
@@ -161,7 +164,24 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const changed = Object.keys(edits).length + Object.keys(formatEdits).length;
+  // Section order: only known ids, no repeats, no invented sections.
+  let nextOrder: string[] | null = null;
+  if (layout !== undefined) {
+    const home = (layout as { home?: unknown })?.home;
+    const valid = normaliseOrder(home);
+    if (!valid) {
+      return NextResponse.json(
+        { error: "Unrecognised section order" },
+        { status: 400 }
+      );
+    }
+    nextOrder = valid;
+  }
+
+  const changed =
+    Object.keys(edits).length +
+    Object.keys(formatEdits).length +
+    (nextOrder ? 1 : 0);
   if (changed === 0) {
     return NextResponse.json({ error: "No changes to publish" }, { status: 400 });
   }
@@ -209,6 +229,21 @@ export async function POST(request: NextRequest) {
         path: "content/format.json",
         body: JSON.stringify(nextFormat, null, 2) + "\n",
         message: `Edit text formatting (${n} field${n === 1 ? "" : "s"})\n\n${by}`,
+      },
+      repo,
+      branch,
+      token
+    );
+    if (!result.ok) return NextResponse.json({ error: result.error }, { status: 502 });
+    commits.push(result.sha);
+  }
+
+  if (nextOrder) {
+    const result = await commitFile(
+      {
+        path: "content/layout.json",
+        body: JSON.stringify({ home: nextOrder }, null, 2) + "\n",
+        message: `Reorder page sections\n\n${by}`,
       },
       repo,
       branch,

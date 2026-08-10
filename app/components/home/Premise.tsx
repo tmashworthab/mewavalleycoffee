@@ -3,6 +3,7 @@ import { useContent } from "../../lib/locale-context";
 import { formatClasses } from "../../lib/format";
 import Reveal from "../Reveal";
 import { Section, Eyebrow, SectionTitle, Body, Hairline } from "./primitives";
+import { Grid, COL } from "../Grid";
 
 export default function Premise() {
   const { c } = useContent();
@@ -16,25 +17,24 @@ export default function Premise() {
 
   return (
     <Section id="origin">
-      <div className="max-w-[88rem] mx-auto">
-        <div className="grid lg:grid-cols-12 gap-y-12 gap-x-16">
-          <div className="lg:col-span-4">
+        <Grid>
+          <div className={COL.rail}>
             <Eyebrow ck="premise.eyebrow" />
           </div>
 
-          <div className="lg:col-span-8 max-w-[46rem]">
+          <div className={COL.afterRail}>
             <SectionTitle ck="premise.title" className="mb-10 sm:mb-14" />
             <Body ck="premise.body1" lead delay={140} className="mb-8" />
             <Body ck="premise.body2" delay={220} />
           </div>
-        </div>
+        </Grid>
 
         {/* Facts — quiet, not a marketing band */}
         <div className="mt-24 sm:mt-32">
           <Hairline />
-          <dl className="grid sm:grid-cols-3 gap-y-12 gap-x-12 pt-12 sm:pt-16">
+          <Grid as="dl" className="pt-12 sm:pt-16" gapY="gap-y-12">
             {stats.map((s, i) => (
-              <Reveal key={s.labelCk} delay={i * 110}>
+              <Reveal key={s.labelCk} delay={i * 110} className="col-span-4 lg:col-span-4">
                 <dt className={`type-eyebrow text-[#f2ede6]/55 mb-4 ${formatClasses(s.labelCk)}`} data-ck={s.labelCk} data-ck-role="label">
                   {s.label}
                 </dt>
@@ -47,9 +47,8 @@ export default function Premise() {
                 </dd>
               </Reveal>
             ))}
-          </dl>
+          </Grid>
         </div>
-      </div>
     </Section>
   );
 }

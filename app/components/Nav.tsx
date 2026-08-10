@@ -8,6 +8,7 @@ import logoMark from "../media/logo.png";
 import { localeHref } from "../lib/content";
 import { useContent } from "../lib/locale-context";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { CONTAINER } from "./Grid";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -55,7 +56,7 @@ export default function Nav() {
       >
         <nav
           aria-label="Primary"
-          className="max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between gap-8"
+          className={`${CONTAINER} flex items-center justify-between gap-8`}
         >
           <Link
             href={localeHref("/", locale)}

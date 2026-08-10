@@ -6,6 +6,7 @@ import { formatClasses } from "../../lib/format";
 import Reveal from "../Reveal";
 import { Eyebrow } from "./primitives";
 import ridge from "../../media/nepal-ridge.jpg";
+import { CONTAINER, Grid, COL } from "../Grid";
 
 export default function Invitation() {
   const { c: all } = useContent();
@@ -28,8 +29,9 @@ export default function Invitation() {
       <div className="absolute inset-0 bg-[#141210]/78" />
       <div className="absolute inset-0 scrim-vignette pointer-events-none" />
 
-      <div className="relative max-w-[88rem] mx-auto px-6 sm:px-10 lg:px-16 py-32 sm:py-44 lg:py-56">
-        <div className="max-w-[40rem]">
+      <div className={`relative ${CONTAINER} py-32 sm:py-44 lg:py-56`}>
+        <Grid>
+        <div className={COL.text}>
           <Eyebrow ck="cta.eyebrow" className="mb-8" />
 
           <Reveal delay={80}>
@@ -78,6 +80,7 @@ export default function Invitation() {
             </Link>
           </Reveal>
         </div>
+        </Grid>
       </div>
     </section>
   );

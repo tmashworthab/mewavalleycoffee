@@ -3,6 +3,7 @@ import { useContent } from "../../lib/locale-context";
 import { formatClasses } from "../../lib/format";
 import Reveal from "../Reveal";
 import { Section, Eyebrow, SectionTitle, Body, InsetPhoto } from "./primitives";
+import { Grid, COL } from "../Grid";
 import cherry from "../../media/coffee-cherry.jpg";
 
 export default function Coffee() {
@@ -18,9 +19,8 @@ export default function Coffee() {
 
   return (
     <Section tone="raised">
-      <div className="max-w-[88rem] mx-auto">
-        <div className="grid lg:grid-cols-12 gap-y-16 gap-x-16 items-center">
-          <div className="lg:col-span-5 order-2 lg:order-1">
+      <Grid className="items-center" gapY="gap-y-16">
+          <div className={`${COL.half} order-2 lg:order-1`}>
             <InsetPhoto
               src={cherry}
               altCk="coffee.altCherry"
@@ -28,7 +28,7 @@ export default function Coffee() {
             />
           </div>
 
-          <div className="lg:col-span-7 lg:pl-10 order-1 lg:order-2 max-w-[44rem]">
+          <div className={`${COL.halfEnd} order-1 lg:order-2`}>
             <Eyebrow ck="coffee.eyebrow" className="mb-8" />
             <SectionTitle ck="coffee.title" className="mb-10" />
             <Body ck="coffee.body1" lead delay={140} className="mb-8" />
@@ -38,11 +38,14 @@ export default function Coffee() {
             <dl className="border-t border-[#c9a468]/15">
               {specs.map((s, i) => (
                 <Reveal key={s.labelCk} delay={i * 90}>
-                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 py-5 border-b border-[#c9a468]/15">
-                    <dt className={`type-eyebrow text-[#f2ede6]/55 sm:w-40 shrink-0 ${formatClasses(s.labelCk)}`} data-ck={s.labelCk} data-ck-role="label">
+                  {/* A nested six-column grid at the same gutter, so the
+                      label and value land on the page's real columns rather
+                      than a fixed width that misses them by a few pixels. */}
+                  <div className="grid grid-cols-1 sm:grid-cols-6 gap-x-6 sm:gap-x-8 lg:gap-x-10 gap-y-1 items-baseline py-5 border-b border-[#c9a468]/15">
+                    <dt className={`type-eyebrow text-[#f2ede6]/55 sm:col-span-2 ${formatClasses(s.labelCk)}`} data-ck={s.labelCk} data-ck-role="label">
                       {s.label}
                     </dt>
-                    <dd className={`font-serif-body text-[#f2ede6]/80 text-[1.0625rem] ${formatClasses(s.valueCk)}`} data-ck={s.valueCk} data-ck-role="body">
+                    <dd className={`font-serif-body text-[#f2ede6]/80 text-[1.0625rem] sm:col-span-4 ${formatClasses(s.valueCk)}`} data-ck={s.valueCk} data-ck-role="body">
                       {s.value}
                     </dd>
                   </div>
@@ -50,8 +53,7 @@ export default function Coffee() {
               ))}
             </dl>
           </div>
-        </div>
-      </div>
+      </Grid>
     </Section>
   );
 }
