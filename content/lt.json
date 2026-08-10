@@ -26,7 +26,7 @@
     "title": "Kodėl Nepalas?",
     "body1": "Nepalas labiau žinomas dėl kalnų nei dėl kavos. Tačiau kalvose žemiau Himalajų kava klesti jau ne vieną dešimtmetį.\n\nAuginama maždaug 800–1 600 metrų aukštyje, Nepalo kava turi naudos iš vėsios temperatūros, ryškių sezonų ir gausių musoninių liūčių.\n\nTokios sąlygos leidžia uogoms bręsti lėtai ir padeda pamatus sudėtingoms, raiškioms kavoms.",
     "body2": "Tai kava, kurią suformavo Nepalo kraštovaizdis: rūpestingai išauginta ir neabejotinai savo vietos.",
-    "statAltitude": "800-1800 m virš jūros lygio",
+    "statAltitude": "800–1 800 m virš jūros lygio",
     "statAltitudeLabel": "Auginimo aukštis",
     "statDistricts": "Solu, Ilamas, Bhodžpuras, Dhankuta",
     "statDistrictsLabel": "Rajonai, iš kurių perkame",
@@ -35,7 +35,7 @@
   },
   "coffee": {
     "eyebrow": "Kava",
-    "title": "Ką siūlome",
+    "title": "Mes siūlome",
     "body1": "Esame Jungtinėje Karalystėje įsikūrusi įmonė su atsidavusia komanda Nepale. Atrenkame pačią geriausią Nepalo kavą, dirbdami su patikimais ir gerą vardą turinčiais augintojais. Prieš pasiekdama jūsų duris, mūsų kava pereina griežtą kokybės patikros ir sertifikavimo procesą.\n\nDirbame su arabikos pupelėmis, o jų tarpe daugiausia su Bourbon ir Typica veislėmis. Šios tradicinės veislės kartu su savita Nepalo geografija ir klimatu sukuria pagrindą kavoms, pasižyminčioms skaidrumu, saldumu ir gyvu rūgštingumu.\n\nNepalo kava turi didžiulį neišnaudotą potencialą, o paklausa kasmet sparčiai auga. Rytinis regionas vis labiau garsėja išskirtinės kokybės kava. Įvertintos partijos ne kartą surinko daugiau nei 85 balus 50–100 SCA skalėje.\n\n2020 m. aklame vertinime, kurį atliko „Press House Coffee“ (Kalifornijos prekybos žurnalas), Nepalo kava surinko 92 balus ir buvo apibūdinta kaip „subtili, subalansuota ir saldaus tono“.\n\nRūpinamės, kad ūkininkai, sunkiai dirbantys dėl šio nepaprasto produkto, gautų sąžiningą atlygį. 1 % mūsų pelno keliauja tiesiai jiems.",
     "body2": "",
     "altCherry": "Viena prinokusi raudona kavos uoga ant šakos, apsupta drėgnų žalių lapų po lietaus",
