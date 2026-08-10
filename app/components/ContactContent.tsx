@@ -45,6 +45,19 @@ export default function ContactContent() {
     }
   };
 
+  const people = [
+    {
+      name: c.person1Name, nameCk: "contact.person1Name",
+      role: c.person1Role, roleCk: "contact.person1Role",
+      phone: c.person1Phone, phoneCk: "contact.person1Phone",
+    },
+    {
+      name: c.person2Name, nameCk: "contact.person2Name",
+      role: c.person2Role, roleCk: "contact.person2Role",
+      phone: c.person2Phone, phoneCk: "contact.person2Phone",
+    },
+  ];
+
   const labelClass = "block type-eyebrow text-[#f2ede6]/55 mb-3";
   const inputClass =
     "w-full bg-transparent border-0 border-b border-[#c9a468]/25 px-0 py-3 font-serif-body text-[1.0625rem] text-[#f2ede6] placeholder-[#f2ede6]/50 focus:outline-none focus:border-[#c9a468] transition-colors duration-500";
@@ -71,6 +84,52 @@ export default function ContactContent() {
               >
                 info@mewavalley.com
               </a>
+            </div>
+
+            {/* Named contacts, one either end of the supply chain */}
+            <div className="mt-12 pt-10 border-t border-[#c9a468]/15">
+              <p className="type-eyebrow text-[#c9a468] mb-6">
+                <span
+                  data-ck="contact.peopleHeading"
+                  data-ck-role="label"
+                  className={formatClasses("contact.peopleHeading")}
+                >
+                  {c.peopleHeading}
+                </span>
+              </p>
+
+              <ul className="space-y-8 list-none m-0 p-0">
+                {people.map((person) => (
+                  <li key={person.nameCk}>
+                    <p
+                      className={`font-serif-display text-[1.125rem] text-[#f2ede6] ${formatClasses(person.nameCk)}`}
+                      data-ck={person.nameCk}
+                      data-ck-role="title"
+                    >
+                      {person.name}
+                    </p>
+                    <p
+                      className={`type-caption text-[#f2ede6]/55 mt-1.5 ${formatClasses(person.roleCk)}`}
+                      data-ck={person.roleCk}
+                      data-ck-role="label"
+                    >
+                      {person.role}
+                    </p>
+                    <a
+                      href={`tel:${person.phone.replace(/[^+\d]/g, "")}`}
+                      className="inline-block font-serif-body text-[1rem] text-[#f2ede6]/70 hover:text-[#c9a468] transition-colors duration-500 link-underline mt-2.5"
+                    >
+                      <span
+                        data-ck={person.phoneCk}
+                        data-ck-role="body"
+                        className={formatClasses(person.phoneCk)}
+                      >
+                        {person.phone}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Reveal>
 
