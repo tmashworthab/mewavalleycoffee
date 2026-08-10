@@ -56,14 +56,15 @@ export const metadata: Metadata = {
     template: "%s — Mewa Valley Coffee",
   },
   description:
-    "Nepal grows coffee that almost no one in Europe has tasted. We travel the hill districts of Koshi and Lumbini, meet the people who grow it, and bring their green coffee to UK and European roasters.",
+    "Nepal grows coffee that almost no one in Europe has tasted. We work with producers across the hill districts of Koshi — Solu, Bhojpur, Dhankuta and Ilam — and bring their green coffee to UK and European roasters.",
   keywords: [
     "Nepali green coffee",
     "Nepal coffee origin",
     "green coffee importer UK",
     "specialty coffee Nepal",
-    "Gulmi coffee",
     "Ilam coffee",
+    "Bhojpur coffee",
+    "Koshi coffee",
     "green coffee sourcing",
   ],
   authors: [{ name: "Mewa Valley Coffee" }],
@@ -78,13 +79,13 @@ export const metadata: Metadata = {
     siteName: "Mewa Valley Coffee",
     title: "Mewa Valley Coffee — Green coffee from the hills of eastern Nepal",
     description:
-      "Nepal grows coffee that almost no one in Europe has tasted. We go to the hills, meet the growers, and bring their green coffee to UK and European roasters.",
+      "Nepal grows coffee that almost no one in Europe has tasted. We work with producers across the hill districts of Koshi and bring their green coffee to UK and European roasters.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Mewa Valley Coffee — Green coffee from the hills of eastern Nepal",
     description:
-      "Nepal grows coffee that almost no one in Europe has tasted. We go to the hills, meet the growers, and bring their green coffee to UK and European roasters.",
+      "Nepal grows coffee that almost no one in Europe has tasted. We work with producers across the hill districts of Koshi and bring their green coffee to UK and European roasters.",
   },
   robots: {
     index: true,

@@ -16,7 +16,15 @@ const orgJsonLd = {
   email: "info@mewavalley.com",
   telephone: "+44-7341-848470",
   areaServed: ["GB", "EU"],
-  knowsAbout: ["Nepali green coffee", "Specialty coffee sourcing", "Ilam", "Bhojpur", "Solukhumbu"],
+  knowsAbout: [
+    "Nepali green coffee",
+    "Specialty coffee sourcing",
+    "Koshi Province",
+    "Solu",
+    "Bhojpur",
+    "Dhankuta",
+    "Ilam",
+  ],
 };
 
 export default function Home() {
