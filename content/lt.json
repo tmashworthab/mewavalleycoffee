@@ -17,8 +17,8 @@
     "eyebrow": "Nepalas",
     "headline": "Aukščiausios kokybės kava",
     "sub": "iš Himalajų papėdžių",
-    "intro": "„Mewa Valley Coffee“ pristato išskirtinę specialty kavą iš rytų Nepalo visam pasauliui.\n\nĮsikūrę Jungtinėje Karalystėje, glaudžiai dirbame su atsidavusia komanda Nepale, kad atrastume puikias kavas iš viso regiono augintojų. Kiekvieną kavą kruopščiai atrenkame pagal kokybę, charakterį ir ryškų vietos pojūtį — taip sujungdami Nepalo augintojus su kavos verslais ir jos gėrėjais už Nepalo ribų.",
-    "scroll": "Slinkti",
+    "intro": "„Mewa Valley Coffee“ pristato išskirtinę specialty kavą iš rytų Nepalo visam pasauliui.\n\nĮsikūrę Jungtinėje Karalystėje, glaudžiai dirbame su atsidavusia komanda Nepale, kad atrastume puikias kavas iš viso regiono augintojų. Kiekvieną kavą kruopščiai atrenkame pagal kokybę, charakterį ir ryškų vietos pojūtį, taip sujungdami Nepalo augintojus su kavos verslais ir jos gėrėjais už Nepalo ribų.",
+    "scroll": "ŽEMYN",
     "alt": "Debesys slenka per mišku apaugusį kalnagūbrį rytų Nepalo kalvų rajonuose, šlaite iškirstas žvyrkelis"
   },
   "premise": {
@@ -30,7 +30,7 @@
     "statAltitudeLabel": "Auginimo aukštis",
     "statDistricts": "Solu, Ilamas, Bhodžpuras, Dhankuta",
     "statDistrictsLabel": "Rajonai, iš kurių perkame",
-    "statHarvest": "2026 m. rugpjūtis",
+    "statHarvest": "Dabar",
     "statHarvestLabel": "Pasiekiama Jungtinėje Karalystėje"
   },
   "coffee": {
