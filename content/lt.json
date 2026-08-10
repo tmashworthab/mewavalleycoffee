@@ -17,8 +17,8 @@
     "eyebrow": "Nepalas",
     "headline": "Aukščiausios kokybės kava",
     "sub": "iš Himalajų papėdžių",
-    "intro": "„Mewa Valley Coffee“ pristato išskirtinę specialty kavą iš rytų Nepalo visam pasauliui.\n\nĮsikūrę Jungtinėje Karalystėje, glaudžiai dirbame su atsidavusia komanda Nepale, kad atrastume puikias kavas iš viso regiono augintojų. Kiekvieną kavą kruopščiai atrenkame pagal kokybę, charakterį ir ryškų vietos pojūtį, taip sujungdami Nepalo augintojus su kavos verslais ir jos gėrėjais už Nepalo ribų.",
-    "scroll": "ŽEMYN",
+    "intro": "„Mewa Valley Coffee“ pristato išskirtinę specialty kavą iš rytų Nepalo visam pasauliui.\n\nĮsikūrę Jungtinėje Karalystėje, glaudžiai dirbame su atsidavusia komanda Nepale, kad atrastume puikias kavas iš viso regiono augintojų. Kiekvieną kavą kruopščiai atrenkame pagal kokybę, charakterį ir ryškų vietos pojūtį — taip sujungdami Nepalo augintojus su kavos verslais ir jos gėrėjais už Nepalo ribų.",
+    "scroll": "Slinkti",
     "alt": "Debesys slenka per mišku apaugusį kalnagūbrį rytų Nepalo kalvų rajonuose, šlaite iškirstas žvyrkelis"
   },
   "premise": {
@@ -26,11 +26,11 @@
     "title": "Kodėl Nepalas?",
     "body1": "Nepalas labiau žinomas dėl kalnų nei dėl kavos. Tačiau kalvose žemiau Himalajų kava klesti jau ne vieną dešimtmetį.\n\nAuginama maždaug 800–1 600 metrų aukštyje, Nepalo kava turi naudos iš vėsios temperatūros, ryškių sezonų ir gausių musoninių liūčių.\n\nTokios sąlygos leidžia uogoms bręsti lėtai ir padeda pamatus sudėtingoms, raiškioms kavoms.",
     "body2": "Tai kava, kurią suformavo Nepalo kraštovaizdis: rūpestingai išauginta ir neabejotinai savo vietos.",
-    "statAltitude": "800–1 800 m virš jūros lygio",
+    "statAltitude": "800-1 800 m virš jūros lygio",
     "statAltitudeLabel": "Auginimo aukštis",
-    "statDistricts": "Solu, Ilamas, Bhodžpuras, Dhankuta",
+    "statDistricts": "Solu, Ilam, Bhojpur, Dhankuta",
     "statDistrictsLabel": "Rajonai, iš kurių perkame",
-    "statHarvest": "Dabar",
+    "statHarvest": "2026 m. rugpjūtis",
     "statHarvestLabel": "Pasiekiama Jungtinėje Karalystėje"
   },
   "coffee": {
