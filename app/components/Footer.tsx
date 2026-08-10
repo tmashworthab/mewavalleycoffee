@@ -8,12 +8,23 @@ import { useContent } from "../lib/locale-context";
 import { formatClasses } from "../lib/format";
 import { CONTAINER, Grid } from "./Grid";
 
-interface FooterProps {
-  phone?: string;
-}
-
-export default function Footer({ phone }: FooterProps) {
+export default function Footer() {
   const { c, locale } = useContent();
+
+  // The same content keys as the contact page, so a title edited in one place
+  // changes in both.
+  const people = [
+    {
+      name: c.contact.person1Name, nameCk: "contact.person1Name",
+      role: c.contact.person1Role, roleCk: "contact.person1Role",
+      phone: c.contact.person1Phone, phoneCk: "contact.person1Phone",
+    },
+    {
+      name: c.contact.person2Name, nameCk: "contact.person2Name",
+      role: c.contact.person2Role, roleCk: "contact.person2Role",
+      phone: c.contact.person2Phone, phoneCk: "contact.person2Phone",
+    },
+  ];
 
   const navLinks = [
     { label: c.nav.home, href: localeHref("/", locale) },
@@ -26,7 +37,7 @@ export default function Footer({ phone }: FooterProps) {
       <div className={CONTAINER}>
         <Reveal>
           <Grid gapY="gap-y-14">
-            <div className="col-span-4 md:col-span-8 lg:col-span-5">
+            <div className="col-span-4 md:col-span-8 lg:col-span-4">
               <div className="flex items-center gap-3 mb-6">
                 <Image src={logoMark} alt="" width={38} height={38} style={{ opacity: 0.8 }} />
                 <span className="flex flex-col leading-none">
@@ -44,7 +55,7 @@ export default function Footer({ phone }: FooterProps) {
               </p>
             </div>
 
-            <div className="col-span-4 md:col-span-4 lg:col-span-3">
+            <div className="col-span-4 md:col-span-3 lg:col-span-2">
               <p className={`type-eyebrow text-[#f2ede6]/55 mb-6 ${formatClasses("footer.navigate")}`} data-ck="footer.navigate" data-ck-role="label">
                 {c.footer.navigate}
               </p>
@@ -62,29 +73,50 @@ export default function Footer({ phone }: FooterProps) {
               </ul>
             </div>
 
-            <div className="col-span-4 md:col-span-4 lg:col-span-4">
+            <div className="col-span-4 md:col-span-5 lg:col-span-6">
               <p className={`type-eyebrow text-[#f2ede6]/55 mb-6 ${formatClasses("footer.contactHeading")}`} data-ck="footer.contactHeading" data-ck-role="label">
                 {c.footer.contactHeading}
               </p>
-              <ul className="space-y-4 list-none m-0 p-0">
-                <li>
-                  <a
-                    href="mailto:info@mewavalley.com"
-                    className="type-caption text-[#f2ede6]/60 hover:text-[#c9a468] transition-colors duration-500 link-underline"
-                  >
-                    info@mewavalley.com
-                  </a>
-                </li>
-                {phone && (
-                  <li>
-                    <a
-                      href={`tel:${phone.replace(/\s+/g, "")}`}
-                      className="type-caption text-[#f2ede6]/60 hover:text-[#c9a468] transition-colors duration-500 link-underline"
+              <a
+                href="mailto:info@mewavalley.com"
+                className="type-caption text-[#f2ede6]/60 hover:text-[#c9a468] transition-colors duration-500 link-underline"
+              >
+                info@mewavalley.com
+              </a>
+
+              {/* Nested at the same gutter, so each person starts on a real
+                  column of the page grid. */}
+              <ul className="mt-8 grid grid-cols-1 sm:grid-cols-6 gap-x-6 sm:gap-x-8 lg:gap-x-10 gap-y-7 list-none m-0 p-0">
+                {people.map((person) => (
+                  <li key={person.nameCk} className="sm:col-span-3">
+                    <p
+                      className={`font-serif-display text-[1rem] text-[#f2ede6]/90 ${formatClasses(person.nameCk)}`}
+                      data-ck={person.nameCk}
+                      data-ck-role="title"
                     >
-                      {phone}
+                      {person.name}
+                    </p>
+                    <p
+                      className={`type-caption text-[#f2ede6]/50 mt-1 ${formatClasses(person.roleCk)}`}
+                      data-ck={person.roleCk}
+                      data-ck-role="label"
+                    >
+                      {person.role}
+                    </p>
+                    <a
+                      href={`tel:${person.phone.replace(/[^+\d]/g, "")}`}
+                      className="inline-block type-caption text-[#f2ede6]/60 hover:text-[#c9a468] transition-colors duration-500 link-underline mt-2"
+                    >
+                      <span
+                        data-ck={person.phoneCk}
+                        data-ck-role="body"
+                        className={formatClasses(person.phoneCk)}
+                      >
+                        {person.phone}
+                      </span>
                     </a>
                   </li>
-                )}
+                ))}
               </ul>
             </div>
           </Grid>

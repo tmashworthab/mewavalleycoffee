@@ -24,7 +24,7 @@ export default function SiteShell({
       <div data-locale={locale} className="contents">
         <Nav />
         <main id="main">{children}</main>
-        <Footer phone="+44 7341848470" />
+        <Footer />
         {/* Inside the provider so the editor knows which language it is editing. */}
         <EditorMount />
       </div>

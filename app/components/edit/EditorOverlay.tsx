@@ -62,6 +62,18 @@ function typedText(node: HTMLElement): string {
   return node.innerText ?? node.textContent ?? "";
 }
 
+/**
+ * Every element bound to a content key. The same key can appear more than once
+ * on a page — the named contacts run in both the page body and the footer — so
+ * styling, restoring and re-baselining must reach all of them, not just the
+ * first match.
+ */
+function nodesFor(key: string): HTMLElement[] {
+  return Array.from(
+    document.querySelectorAll<HTMLElement>(`[data-ck="${CSS.escape(key)}"]`)
+  );
+}
+
 function draftKey(locale: string) {
   return `${DRAFT_PREFIX}:${locale}`;
 }
@@ -159,11 +171,7 @@ export default function EditorOverlay({
     const COLOURS = ["cream", "muted", "gold", "goldLight", "white"] as const;
 
     for (const [key, f] of Object.entries(formatEdits)) {
-      const node = document.querySelector<HTMLElement>(
-        `[data-ck="${CSS.escape(key)}"]`
-      );
-      if (!node) continue;
-
+      for (const node of nodesFor(key)) {
       node.classList.remove("text-left", "text-center", "text-right");
       if (f.align) node.classList.add(ALIGN[f.align]);
 
@@ -179,6 +187,7 @@ export default function EditorOverlay({
       node.classList.toggle("tx-bold", !!f.bold);
       node.classList.toggle("tx-italic", !!f.italic);
       node.classList.toggle("tx-underline", !!f.underline);
+      }
     }
   }, [formatEdits]);
 
@@ -223,15 +232,20 @@ export default function EditorOverlay({
       const value = bare(el, typedText(el));
       const original = bare(el, originals.current.get(key) ?? "");
 
+      // Mirror into any other copy of this field on the page, skipping the one
+      // being typed into so the caret is left alone.
+      for (const twin of nodesFor(key)) {
+        if (twin !== el) applyText(twin, value);
+      }
+
       setEdits((prev) => {
         const next = { ...prev };
-        if (value === original) {
-          delete next[key];
-          delete el.dataset.dirty;
-        } else {
-          next[key] = value;
-          el.dataset.dirty = "true";
+        for (const node of nodesFor(key)) {
+          if (value === original) delete node.dataset.dirty;
+          else node.dataset.dirty = "true";
         }
+        if (value === original) delete next[key];
+        else next[key] = value;
         localStorage.setItem(draftKey(locale), JSON.stringify(next));
         return next;
       });
@@ -337,9 +351,7 @@ export default function EditorOverlay({
       const key = active?.dataset.ck;
       if (!key) return;
       // Re-query rather than mutating the node held in state.
-      const el = document.querySelector<HTMLElement>(
-        `[data-ck="${CSS.escape(key)}"]`
-      );
+      const el = nodesFor(key)[0];
       if (!el) return;
       const lines = typedText(el).split("\n");
       const anyMarker = /^\s*([-•*]|\d+[.)])\s+/;
@@ -381,10 +393,7 @@ export default function EditorOverlay({
   const discardAll = useCallback(() => {
     if (!confirm("Discard all unpublished edits and restore the live text?")) return;
     for (const [key, original] of originals.current) {
-      const node = document.querySelector<HTMLElement>(
-        `[data-ck="${CSS.escape(key)}"]`
-      );
-      if (node) {
+      for (const node of nodesFor(key)) {
         node.textContent = original;
         delete node.dataset.dirty;
         node.classList.remove("text-left", "text-center", "text-right");
@@ -446,13 +455,9 @@ export default function EditorOverlay({
       if (!res.ok) throw new Error(data?.error ?? "Publish failed");
 
       for (const key of Object.keys(edits)) {
-        const node = document.querySelector<HTMLElement>(
-          `[data-ck="${CSS.escape(key)}"]`
-        );
-        if (node) {
-          originals.current.set(key, typedText(node));
-          delete node.dataset.dirty;
-        }
+        const nodes = nodesFor(key);
+        if (nodes.length) originals.current.set(key, typedText(nodes[0]));
+        for (const node of nodes) delete node.dataset.dirty;
       }
       localStorage.removeItem(draftKey(locale));
       localStorage.removeItem(FORMAT_DRAFT_KEY);
