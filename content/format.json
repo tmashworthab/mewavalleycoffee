@@ -4,11 +4,14 @@
   },
   "hero.headline": {
     "size": 11,
-    "font": "serif"
+    "font": "nature",
+    "bold": true
   },
   "hero.intro": {
-    "size": 5,
-    "font": "sans"
+    "align": "left",
+    "size": 6,
+    "font": "nature",
+    "colour": "white"
   },
   "premise.body1": {
     "size": 5,
