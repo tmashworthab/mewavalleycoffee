@@ -80,7 +80,9 @@ export default function Hero() {
       <div className="absolute inset-0 scrim-vignette pointer-events-none" />
 
       <div className={`relative z-10 ${CONTAINER} pb-28 sm:pb-36 lg:pb-44 pt-40`}>
-        <Grid className="items-end" gapY="gap-y-10">
+        {/* Top-aligned: the intro is the taller column, and bottom-aligning the
+            two left the headline sitting far below it. */}
+        <Grid className="items-start" gapY="gap-y-10">
           {/* Left — the mark */}
           <div className={COL.half}>
             <p
