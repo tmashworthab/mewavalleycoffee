@@ -43,7 +43,14 @@ export const STEP_REM: Record<SizeStep, number> = {
 };
 
 /** Typefaces an editor can choose. Each is loaded in the root layout. */
-export const FONTS = ["serif", "sans", "display", "classic", "modern"] as const;
+export const FONTS = [
+  "serif",
+  "sans",
+  "display",
+  "classic",
+  "modern",
+  "nature",
+] as const;
 export type FontChoice = (typeof FONTS)[number];
 
 export const FONT_LABELS: Record<FontChoice, string> = {
@@ -52,6 +59,7 @@ export const FONT_LABELS: Record<FontChoice, string> = {
   display: "Instrument Serif",
   classic: "Cormorant",
   modern: "Space Grotesk",
+  nature: "ZT Nature",
 };
 
 /**

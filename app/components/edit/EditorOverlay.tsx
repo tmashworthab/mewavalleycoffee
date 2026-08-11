@@ -6,6 +6,10 @@ import { usePathname } from "next/navigation";
 import { LOCALES, localeHref, type Locale } from "../../lib/content";
 import {
   format as publishedFormat,
+  // The single source of truth for what a typeface or colour can be. Local
+  // copies of these lists went stale the moment a new face was added.
+  FONTS,
+  COLOURS,
   STEP_REM,
   type Alignment,
   type Colour,
@@ -178,8 +182,6 @@ export default function EditorOverlay({
       center: "text-center",
       right: "text-right",
     } as const;
-    const FONTS = ["serif", "sans", "display", "classic", "modern"] as const;
-    const COLOURS = ["cream", "muted", "gold", "goldLight", "white"] as const;
 
     for (const [key, f] of Object.entries(formatEdits)) {
       for (const node of nodesFor(key)) {
@@ -408,12 +410,8 @@ export default function EditorOverlay({
         node.textContent = original;
         delete node.dataset.dirty;
         node.classList.remove("text-left", "text-center", "text-right");
-        for (const name of ["serif", "sans", "display", "classic", "modern"]) {
-          node.classList.remove(`ff-${name}`);
-        }
-        for (const c of ["cream", "muted", "gold", "goldLight", "white"]) {
-          node.classList.remove(`tc-${c}`);
-        }
+        for (const name of FONTS) node.classList.remove(`ff-${name}`);
+        for (const c of COLOURS) node.classList.remove(`tc-${c}`);
         node.classList.remove("tx-bold", "tx-italic", "tx-underline");
         node.style.fontSize = "";
       }

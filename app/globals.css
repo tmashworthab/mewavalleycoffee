@@ -498,11 +498,13 @@ body {
 .ff-display { font-family: var(--font-display), Georgia, serif; }
 .ff-classic { font-family: var(--font-classic), Georgia, serif; }
 .ff-modern  { font-family: var(--font-modern), system-ui, sans-serif; }
+.ff-nature  { font-family: var(--font-nature), Georgia, serif; }
 
 /* A chosen face wins over the tracked-out label styling, which is tuned for
    the default sans and looks wrong on a serif. */
 .ff-display,
 .ff-classic,
+.ff-nature,
 .ff-serif {
   letter-spacing: normal;
   text-transform: none;

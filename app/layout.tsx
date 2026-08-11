@@ -6,6 +6,7 @@ import {
   Cormorant_Garamond,
   Space_Grotesk,
 } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const geist = Geist({
@@ -45,6 +46,25 @@ const grotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
   preload: false,
+});
+
+/* Self-hosted rather than fetched from Google. All four cuts are declared, so
+   the editor's bold and italic use the drawn ones instead of letting the
+   browser slant and smear the regular. */
+const nature = localFont({
+  variable: "--font-nature",
+  display: "swap",
+  preload: false,
+  src: [
+    { path: "./fonts/ZTNature-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ZTNature-Italic.woff2", weight: "400", style: "italic" },
+    { path: "./fonts/ZTNature-Bold.woff2", weight: "700", style: "normal" },
+    {
+      path: "./fonts/ZTNature-BoldItalic.woff2",
+      weight: "700",
+      style: "italic",
+    },
+  ],
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.mewavalley.com";
@@ -105,7 +125,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${newsreader.variable} ${instrument.variable} ${cormorant.variable} ${grotesk.variable} h-full`}
+      className={`${geist.variable} ${newsreader.variable} ${instrument.variable} ${cormorant.variable} ${grotesk.variable} ${nature.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
         <a href="#main" className="skip-link">

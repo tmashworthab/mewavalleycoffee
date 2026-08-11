@@ -55,10 +55,15 @@ Clicking any text brings up a toolbar above it:
   proportioned ramp rather than free pixel values, so nothing you pick can look
   out of place, and large sizes shrink automatically on phones. The number is
   gold once you have overridden it and grey while it is still the design's own.
-- **Typeface** — the **Aa** button. Five choices: Newsreader (the site's serif),
-  Geist (its sans), Instrument Serif, Cormorant and Space Grotesk. Pick
-  **Default** to go back. The three extra faces are only downloaded by visitors
-  if a page actually uses one.
+- **Typeface** — the **Aa** button. Six choices: Newsreader (the site's serif),
+  Geist (its sans), Instrument Serif, Cormorant, Space Grotesk and ZT Nature.
+  Each is shown in its own face in the menu. Pick **Default** to go back. The
+  four extra faces are only downloaded by visitors if a page actually uses one.
+
+  ZT Nature is self-hosted from `app/fonts/`, licensed for commercial web use
+  (`app/fonts/ZT-Nature-LICENSE.txt`). It has no Devanagari, so Nepali text set
+  in it falls back to the reader's system font — the same is true of every
+  optional face, since all of them are Latin-only.
 - **Bold, italic, underline** — the **B**, *I* and U buttons. These apply to
   the whole field, not to a selected word.
 - **Colour** — the circular swatch. Five choices plus Default. Every option is
