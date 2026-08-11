@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale } from "../../lib/locale-context";
-import { LOCALES, type Locale } from "../../lib/content";
+import { usePathname } from "next/navigation";
+import { LOCALES, localeHref, type Locale } from "../../lib/content";
 import {
   format as publishedFormat,
   STEP_REM,
@@ -112,6 +113,10 @@ export default function EditorOverlay({
     return draft.home ?? homeSections();
   });
   const [orderOpen, setOrderOpen] = useState(false);
+  // Only the homepage is built from reorderable sections. Offering the control
+  // elsewhere just looks broken: the list moves and nothing on screen does.
+  const pathname = usePathname();
+  const onHome = pathname === localeHref("/", locale);
   const [status, setStatus] = useState<{
     kind: "idle" | "working" | "ok" | "error";
     message?: string;
@@ -541,6 +546,7 @@ export default function EditorOverlay({
             </span>
 
             <div className="flex items-center gap-1 sm:gap-2 ml-auto shrink-0">
+              {onHome && (
               <button
                 onClick={() => setOrderOpen((v) => !v)}
                 aria-expanded={orderOpen}
@@ -552,6 +558,7 @@ export default function EditorOverlay({
               >
                 Sections
               </button>
+              )}
 
               {count > 0 && status.kind !== "working" && (
                 <button
@@ -596,7 +603,7 @@ export default function EditorOverlay({
             </p>
           )}
 
-          {orderOpen && (
+          {orderOpen && onHome && (
             <SectionOrder
               order={order}
               onChange={(next) => {

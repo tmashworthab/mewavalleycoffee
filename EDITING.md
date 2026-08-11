@@ -89,9 +89,13 @@ edit can break the page.
 
 ## Moving sections
 
-Press **Sections** in the editor bar. The panel lists every section of the
-homepage in the order it appears. Drag the handle on the left, or use the up
-and down arrows — the arrows are easier on a phone and work with a keyboard.
+Go to the **homepage** and press **Sections** in the editor bar. The panel
+lists every section of the page in the order it appears. Drag a row — anywhere
+on it, not just the grip on the left — or use the up and down arrows, which
+are easier on a phone and work with a keyboard.
+
+The **Sections** button only appears on the homepage, because that is the only
+page assembled from movable sections. The other pages are single pieces.
 
 The page rearranges as you go so you can see the result before committing to
 it. Press Publish when you are happy, or Discard to put it back.

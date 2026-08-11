@@ -23,6 +23,15 @@ export default function SectionOrder({
   const [dragging, setDragging] = useState<number | null>(null);
   const [overIndex, setOverIndex] = useState<number | null>(null);
   const rowRefs = useRef<(HTMLLIElement | null)[]>([]);
+  // A press only becomes a drag once the pointer has actually travelled, so
+  // tapping a row does not swallow the press meant for its arrow buttons.
+  // State rather than a ref, because arming the press is what causes the
+  // window listeners below to be attached.
+  const [pending, setPending] = useState<{ index: number; y: number } | null>(
+    null
+  );
+  const dragRef = useRef<number | null>(null);
+  const overRef = useRef<number | null>(null);
 
   function move(from: number, to: number) {
     if (to < 0 || to >= order.length || from === to) return;
@@ -32,23 +41,47 @@ export default function SectionOrder({
     onChange(next);
   }
 
+  const DRAG_THRESHOLD = 4;
+
   // While a row is held, work out which row the pointer is over.
   useEffect(() => {
-    if (dragging === null) return;
+    if (dragging === null && pending === null) return;
 
     const onMove = (e: PointerEvent) => {
+      let from = dragging;
+
+      if (pending !== null) {
+        if (Math.abs(e.clientY - pending.y) < DRAG_THRESHOLD) return;
+        // Promote the press to a drag, and carry on to the hit test below in
+        // the same event — a fast drag may only produce one pointermove, and
+        // waiting for a second would drop it.
+        from = pending.index;
+        dragRef.current = from;
+        setPending(null);
+        setDragging(from);
+      }
+      if (from === null) return;
+
       const y = e.clientY;
-      let target = dragging;
+      let target = from;
       rowRefs.current.forEach((row, i) => {
         if (!row) return;
         const r = row.getBoundingClientRect();
         if (y >= r.top && y <= r.bottom) target = i;
       });
+      overRef.current = target;
       setOverIndex(target);
     };
 
+    // Read through refs: a drag can begin and end inside a single burst of
+    // events, before React has re-rendered and refreshed these closures.
     const onUp = () => {
-      if (overIndex !== null && overIndex !== dragging) move(dragging, overIndex);
+      const from = dragRef.current;
+      const to = overRef.current;
+      setPending(null);
+      dragRef.current = null;
+      overRef.current = null;
+      if (from !== null && to !== null && to !== from) move(from, to);
       setDragging(null);
       setOverIndex(null);
     };
@@ -85,7 +118,19 @@ export default function SectionOrder({
               ref={(el) => {
                 rowRefs.current[i] = el;
               }}
-              className={`flex items-center gap-1 rounded-md pl-0 pr-1 transition-colors ${
+              // The whole row is the drag surface, not just the handle — a
+              // 44px grip was too small a target to find, and grabbing the
+              // label is what everyone tries first.
+              onPointerDown={(e) => {
+                if ((e.target as HTMLElement).closest("button[data-arrow]")) {
+                  return;
+                }
+                e.preventDefault();
+                setPending({ index: i, y: e.clientY });
+              }}
+              className={`flex items-center gap-1 rounded-md pl-0 pr-1 touch-none select-none transition-colors ${
+                held ? "cursor-grabbing" : "cursor-grab"
+              } ${
                 held
                   ? "bg-[#c9a468]/25"
                   : isTarget
@@ -93,14 +138,9 @@ export default function SectionOrder({
                     : "bg-[#f2ede6]/[0.04]"
               }`}
             >
-              <button
-                onPointerDown={(e) => {
-                  e.preventDefault();
-                  setDragging(i);
-                  setOverIndex(i);
-                }}
-                aria-label={`Reorder ${SECTION_LABELS[id]}`}
-                className="cursor-grab touch-none min-w-11 min-h-11 flex items-center justify-center text-[#f2ede6]/40 hover:text-[#f2ede6]"
+              <span
+                aria-hidden="true"
+                className="min-w-11 min-h-11 flex items-center justify-center text-[#f2ede6]/40"
               >
                 <svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true">
                   <path
@@ -110,13 +150,14 @@ export default function SectionOrder({
                     strokeLinecap="round"
                   />
                 </svg>
-              </button>
+              </span>
 
               <span className="flex-1 text-[13px] text-[#f2ede6]/80 truncate">
                 {SECTION_LABELS[id]}
               </span>
 
               <button
+                data-arrow
                 onClick={() => move(i, i - 1)}
                 disabled={i === 0}
                 aria-label={`Move ${SECTION_LABELS[id]} up`}
@@ -127,6 +168,7 @@ export default function SectionOrder({
                 </svg>
               </button>
               <button
+                data-arrow
                 onClick={() => move(i, i + 1)}
                 disabled={i === order.length - 1}
                 aria-label={`Move ${SECTION_LABELS[id]} down`}
