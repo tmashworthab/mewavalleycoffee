@@ -83,10 +83,15 @@ export default function Hero() {
         {/* Top-aligned: the intro is the taller column, and bottom-aligning the
             two left the headline sitting far below it. */}
         <Grid className="items-start" gapY="gap-y-10">
-          {/* Left — the mark */}
-          <div className={COL.half}>
+          {/* Left — the mark. From the two-up breakpoint the eyebrow is lifted
+              out of the flow so the headline, not the eyebrow, is what lines up
+              with the intro opposite; the eyebrow then sits just above that
+              line. Taking it out of flow rather than nudging the column by a
+              fixed amount means it stays correct at whatever size the eyebrow
+              is set to in the editor. */}
+          <div className={`${COL.half} md:relative`}>
             <p
-              className={`type-eyebrow text-[#c9a468] mb-5 ${riseClass} ${formatClasses("hero.eyebrow")}`}
+              className={`type-eyebrow text-[#c9a468] mb-5 md:absolute md:bottom-full md:left-0 md:mb-4 ${riseClass} ${formatClasses("hero.eyebrow")}`}
               style={rise(500)}
               data-ck="hero.eyebrow"
               data-ck-role="label"
