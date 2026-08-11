@@ -15,7 +15,7 @@ import {
 import FormatBar from "./FormatBar";
 import EditorLocalePicker from "./EditorLocalePicker";
 import useKeyboardInset from "./useKeyboardInset";
-import SectionOrder from "./SectionOrder";
+import SectionArranger from "./SectionArranger";
 import { homeSections, type SectionId } from "../../lib/sections";
 
 const DRAFT_PREFIX = "mvc-draft-edits";
@@ -112,7 +112,9 @@ export default function EditorOverlay({
     const draft = readJSON<{ home?: SectionId[] }>(LAYOUT_DRAFT_KEY, {});
     return draft.home ?? homeSections();
   });
-  const [orderOpen, setOrderOpen] = useState(false);
+  // Arranging is a mode, not a panel: the page itself becomes the thing you
+  // drag, so text editing steps aside while it is on.
+  const [arranging, setArranging] = useState(false);
   // Only the homepage is built from reorderable sections. Offering the control
   // elsewhere just looks broken: the list moves and nothing on screen does.
   const pathname = usePathname();
@@ -146,8 +148,12 @@ export default function EditorOverlay({
         node.textContent = node.dataset.ckRaw;
       }
 
-      node.setAttribute("contenteditable", "plaintext-only");
-      node.setAttribute("spellcheck", "true");
+      // While sections are being arranged the text is deliberately left
+      // uneditable, so pressing a section drags it instead of placing a caret.
+      if (!arranging) {
+        node.setAttribute("contenteditable", "plaintext-only");
+        node.setAttribute("spellcheck", "true");
+      }
       node.dataset.editable = "true";
     }
 
@@ -162,7 +168,7 @@ export default function EditorOverlay({
       }
       delete document.documentElement.dataset.editing;
     };
-  }, [locale]);
+  }, [locale, arranging]);
 
   /* ---------- Live preview of formatting changes ---------- */
 
@@ -438,6 +444,11 @@ export default function EditorOverlay({
   const orderChanged =
     JSON.stringify(order) !== JSON.stringify(homeSections());
 
+  const applyOrder = useCallback((next: SectionId[]) => {
+    setOrder(next);
+    localStorage.setItem(LAYOUT_DRAFT_KEY, JSON.stringify({ home: next }));
+  }, []);
+
   const textCount = Object.keys(edits).length;
   const formatCount = Object.keys(formatEdits).length;
   const count = textCount + formatCount + (orderChanged ? 1 : 0);
@@ -521,6 +532,14 @@ export default function EditorOverlay({
         onList={applyList}
       />
 
+      {arranging && onHome && (
+        <SectionArranger
+          order={order}
+          onChange={applyOrder}
+          onDone={() => setArranging(false)}
+        />
+      )}
+
       <div
         className="fixed bottom-0 inset-x-0 z-[200] pointer-events-none transition-[transform] duration-200"
         style={
@@ -547,17 +566,20 @@ export default function EditorOverlay({
 
             <div className="flex items-center gap-1 sm:gap-2 ml-auto shrink-0">
               {onHome && (
-              <button
-                onClick={() => setOrderOpen((v) => !v)}
-                aria-expanded={orderOpen}
-                className={`px-2 sm:px-3 py-2 text-[12px] tracking-wide transition-colors ${
-                  orderOpen || orderChanged
-                    ? "text-[#c9a468]"
-                    : "text-[#f2ede6]/60 hover:text-[#f2ede6]"
-                }`}
-              >
-                Sections
-              </button>
+                <button
+                  onClick={() => {
+                    setArranging((v) => !v);
+                    setActive(null);
+                  }}
+                  aria-pressed={arranging}
+                  className={`px-2 sm:px-3 py-2 text-[12px] tracking-wide transition-colors ${
+                    arranging || orderChanged
+                      ? "text-[#c9a468]"
+                      : "text-[#f2ede6]/60 hover:text-[#f2ede6]"
+                  }`}
+                >
+                  {arranging ? "Done moving" : "Move sections"}
+                </button>
               )}
 
               {count > 0 && status.kind !== "working" && (
@@ -603,19 +625,6 @@ export default function EditorOverlay({
             </p>
           )}
 
-          {orderOpen && onHome && (
-            <SectionOrder
-              order={order}
-              onChange={(next) => {
-                setOrder(next);
-                localStorage.setItem(
-                  LAYOUT_DRAFT_KEY,
-                  JSON.stringify({ home: next })
-                );
-              }}
-              onClose={() => setOrderOpen(false)}
-            />
-          )}
 
           {activeKey && (
             <p className="hidden sm:block px-5 pb-3 text-[11px] text-[#f2ede6]/30 font-mono truncate">

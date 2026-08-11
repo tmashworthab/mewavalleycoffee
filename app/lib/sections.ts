@@ -51,6 +51,27 @@ export function homeSections(): SectionId[] {
   return order;
 }
 
+/**
+ * Move one section to where another currently sits.
+ *
+ * Pure, and shared by every control that reorders — dragging, and the up and
+ * down arrows — so they cannot drift apart in how they interpret a move.
+ */
+export function moveSection(
+  order: SectionId[],
+  from: SectionId,
+  to: SectionId
+): SectionId[] {
+  const fromIndex = order.indexOf(from);
+  const toIndex = order.indexOf(to);
+  if (fromIndex < 0 || toIndex < 0 || fromIndex === toIndex) return order;
+
+  const next = [...order];
+  next.splice(fromIndex, 1);
+  next.splice(toIndex, 0, from);
+  return next;
+}
+
 /** Validate an incoming order before it is published. */
 export function normaliseOrder(value: unknown): SectionId[] | null {
   if (!Array.isArray(value)) return null;

@@ -89,13 +89,28 @@ edit can break the page.
 
 ## Moving sections
 
-Go to the **homepage** and press **Sections** in the editor bar. The panel
-lists every section of the page in the order it appears. Drag a row — anywhere
-on it, not just the grip on the left — or use the up and down arrows, which
-are easier on a phone and work with a keyboard.
+Go to the **homepage** and press **Move sections** in the editor bar.
 
-The **Sections** button only appears on the homepage, because that is the only
-page assembled from movable sections. The other pages are single pieces.
+The page changes mode. Every section gets a dashed outline and a gold label in
+its top-left corner — Hero, Why Nepal, Map, and so on. **Text is deliberately
+not editable while you are in this mode**, so clicking a section picks it up
+instead of putting a cursor in the words.
+
+Two ways to move a section, and they do exactly the same thing:
+
+- **Drag its label.** Press the label, move, and the section you are hovering
+  is outlined in gold — that is where it will land. Let go to drop it. Drag
+  near the top or bottom of the window and the page scrolls with you, so you
+  can move a section past ones that are off screen.
+- **Press the ↑ and ↓ arrows** on the label. Easier on a phone, and they work
+  from the keyboard. On a page this tall, they are usually the quicker option.
+
+The page rearranges as you go, so you see the result before committing to it.
+Press **Done moving** to get back to editing text, then **Publish** when you
+are happy, or **Discard** to put it back.
+
+**Move sections** only appears on the homepage, because that is the only page
+assembled from movable sections. The other pages are single pieces.
 
 The page rearranges as you go so you can see the result before committing to
 it. Press Publish when you are happy, or Discard to put it back.

@@ -322,6 +322,37 @@ body {
   background-color: rgba(201, 164, 104, 0.1);
 }
 
+/* While sections are being arranged, the page shows its seams — and text is
+   deliberately not editable, so a click grabs the section rather than the
+   words inside it. */
+[data-arranging] [data-section] {
+  outline: 1px dashed rgba(201, 164, 104, 0.45);
+  outline-offset: -6px;
+  border-radius: 4px;
+  transition: outline-color 0.2s ease, background-color 0.2s ease;
+}
+
+[data-arranging] [data-section]:hover {
+  outline-color: rgba(201, 164, 104, 0.9);
+  background-color: rgba(201, 164, 104, 0.04);
+}
+
+[data-arranging] [data-editable] {
+  outline: none;
+  cursor: grab;
+}
+
+/* The section under the hand, and the one it would land on. */
+[data-arranging] [data-section][data-dragging] {
+  opacity: 0.45;
+  outline-color: var(--gold);
+}
+
+[data-arranging] [data-section][data-drop-target] {
+  outline: 2px solid var(--gold);
+  background-color: rgba(201, 164, 104, 0.08);
+}
+
 /* Reveal animations would otherwise hide text mid-edit. */
 [data-editing] [data-reveal] {
   opacity: 1 !important;
