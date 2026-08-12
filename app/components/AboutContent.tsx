@@ -8,6 +8,7 @@ import { PhotoBreak, Hairline } from "./home/primitives";
 import { CONTAINER, Grid, COL } from "./Grid";
 import farmhouse from "../media/nepal-farmhouse.jpg";
 import valley from "../media/nepal-valley.jpg";
+import backdrop from "../media/about-backdrop.jpg";
 
 export default function AboutContent() {
   const { c, t } = useContent();
@@ -31,6 +32,37 @@ export default function AboutContent() {
 
   return (
     <>
+      {/* Page backdrop. Fixed rather than scrolling, so a single frame covers a
+          long page without tiling or stretching, and scrimmed hard because body
+          copy has to stay readable over it at AA. aria-hidden: it is decoration,
+          and the page's own photographs carry the descriptions. */}
+      <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <Image
+          src={backdrop}
+          alt=""
+          fill
+          // Eager: it is the page's ground, visible from the first paint and at
+          // every scroll position, so it must never be deferred.
+          preload
+          // 75 is the declared ordinary tier (85 is reserved for the hero); an
+          // undeclared value would just be coerced anyway, and detail is
+          // academic under an 80% scrim.
+          quality={75}
+          sizes="100vw"
+          placeholder="blur"
+          className="object-cover object-center"
+        />
+        {/* 0.80 is the floor, not a taste call: measured against the brightest
+            part of the photograph, body copy needs 0.75 and the gold eyebrows
+            0.80 to stay at AA contrast. */}
+        <div className="absolute inset-0 bg-[#141210]/80" />
+        <div className="absolute inset-0 scrim-vignette" />
+      </div>
+
+      {/* Above the backdrop. A positive z-index on the content rather than a
+          negative one on the image: body carries an opaque background, so
+          anything behind it at -z would never be seen. */}
+      <div className="relative z-10">
       <PageHero eyebrowCk="about.eyebrow" titleCk="about.title" />
 
       <section className="pb-24 sm:pb-32">
@@ -85,6 +117,7 @@ export default function AboutContent() {
       </section>
 
       <PhotoBreak src={farmhouse} altCk="about.hillAlt" height="mid" position="object-[center_40%]" />
+      </div>
     </>
   );
 }
