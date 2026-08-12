@@ -9,12 +9,20 @@
   },
   "hero.intro": {
     "align": "left",
-    "size": 5,
+    "size": 6,
     "font": "nature",
     "colour": "white"
   },
   "premise.body1": {
     "size": 5,
     "font": "sans"
+  },
+  "about.title": {
+    "size": 10,
+    "font": "nature",
+    "bold": true
+  },
+  "about.aboutBody1": {
+    "font": "classic"
   }
 }
