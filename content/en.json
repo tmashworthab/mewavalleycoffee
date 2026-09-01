@@ -78,7 +78,11 @@
     "mapAlt": "Map of Mewa Valley Coffee's sourcing districts in Nepal",
     "sourcingBody2": "Between them our producers work across washed, natural and yellow honey processing. Predominantly Arabica, with some Robusta at lower altitude in parts of Koshi Province.",
     "sourcingBody3": "\n",
-    "sourcingBody4": ""
+    "sourcingBody4": "",
+    "photoBuyingAlt": "Green coffee weighed out and handed across a table at a producer's home in eastern Nepal",
+    "photoJeepAlt": "A mud-covered jeep on a steep track above a village in the hills",
+    "photoVillageAlt": "A tin-roofed house on a forested hillside, monsoon cloud filling the valley behind",
+    "photoWalkingAlt": "Walking a grass path between coffee plots on a hillside"
   },
   "contact": {
     "title": "Contact",

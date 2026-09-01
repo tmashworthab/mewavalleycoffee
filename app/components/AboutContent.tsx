@@ -9,6 +9,10 @@ import { CONTAINER, Grid, COL } from "./Grid";
 import farmhouse from "../media/nepal-farmhouse.jpg";
 import valley from "../media/nepal-valley.jpg";
 import backdrop from "../media/about-backdrop.jpg";
+import buying from "../media/about-buying.jpg";
+import jeep from "../media/about-jeep.jpg";
+import village from "../media/about-village.jpg";
+import walking from "../media/about-walking.jpg";
 
 export default function AboutContent() {
   const { c, t } = useContent();
@@ -29,6 +33,34 @@ export default function AboutContent() {
 
   const lead = "font-serif-body type-lead text-[#f2ede6]/85";
   const body = "font-serif-body type-body text-[#f2ede6]/65";
+
+  /**
+   * The photographs that run down the right of the page, in the order they are
+   * met while scrolling. One list rather than markup scattered through the
+   * page, so the order is a single readable thing and adding one is a line.
+   */
+  const photos = [
+    { src: buying, alt: "about.photoBuyingAlt" },
+    { src: jeep, alt: "about.photoJeepAlt" },
+    { src: village, alt: "about.photoVillageAlt" },
+    { src: walking, alt: "about.photoWalkingAlt" },
+  ];
+
+  /** A slice of that column, sitting beside one block of prose. */
+  const rail = (from: number, to?: number) => (
+    <div className={`${COL.railEnd} space-y-14 sm:space-y-20`}>
+      {photos.slice(from, to).map((p, i) => (
+        <Reveal key={p.alt} variant="mask" delay={i * 90}>
+          <Image
+            src={p.src}
+            alt={t(p.alt)}
+            sizes="(max-width: 1024px) 100vw, 24rem"
+            className="w-full h-auto"
+          />
+        </Reveal>
+      ))}
+    </div>
+  );
 
   return (
     <>
@@ -68,10 +100,14 @@ export default function AboutContent() {
       <section className="pb-24 sm:pb-32">
         <div className={CONTAINER}>
           <Grid>
-            <div className={COL.text}>
+            {/* The rail is taller than the prose, so the text pins beside it
+                rather than leaving the left half empty as the photographs go
+                past. Only from the two-up breakpoint; below it they stack. */}
+            <div className={`${COL.text} lg:sticky lg:top-32 lg:self-start`}>
               {para("about.aboutBody1", `${lead} mb-8`)}
               {para("about.aboutBody2", body, 110)}
             </div>
+            {rail(0, 2)}
           </Grid>
         </div>
       </section>
@@ -81,11 +117,12 @@ export default function AboutContent() {
       <section className="py-28 sm:py-36">
         <div className={CONTAINER}>
           <Grid gapY="gap-y-16">
-            <div className={COL.text}>
+            <div className={`${COL.text} lg:sticky lg:top-32 lg:self-start`}>
               {para("about.sourcingBody1", `${lead} mb-8`)}
               {para("about.sourcingBody2", `${body} mb-8`, 110)}
               {para("about.sourcingBody3", body, 190)}
             </div>
+            {rail(2)}
 
           <Reveal variant="mask" delay={80} className={COL.full}>
             <div className="relative w-full">

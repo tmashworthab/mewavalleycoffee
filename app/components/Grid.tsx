@@ -63,6 +63,9 @@ export const COL = {
   rail: "col-span-4 md:col-span-8 lg:col-span-3",
   /** Content that starts after the rail. */
   afterRail: "col-span-4 md:col-span-8 lg:col-span-8 lg:col-start-5",
+  /** Right rail beside the reading column, with column 8 left as breathing
+      space. Below the two-up breakpoint it falls under the text. */
+  railEnd: "col-span-4 md:col-span-8 lg:col-span-4 lg:col-start-9",
   /** One half of a two-up. */
   half: "col-span-4 md:col-span-4 lg:col-span-6",
   /** Right half, explicitly placed so the gutter is the real grid gutter. */
